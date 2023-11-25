@@ -1,0 +1,10 @@
+﻿@model Railway_Group01.Data.User;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    
+    @if(Model != null) @Model.UserName
+</div>
