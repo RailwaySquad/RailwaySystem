@@ -1,15 +1,27 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Railway_Group01.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Railway_Group01.Data
 {
     public class Station
     {
         [Key]
+
         public int Id { get; set; }
-        public string? Code { get; set; }
-        public string? Name { get; set; }
+        [Required]
+        public string? StationCode { get; set; }
+        [Required]
+        public string? StationName { get; set; }
+        [AllowNull]
         public string? NameOfDivision { get; set; }
+        [Required]
         public string? Zone { get; set; }
-        public string? ZipCode { get; set; }
+        public int? ZipCode { get; set; }
+        public ICollection<Route>? StartRoutes { get; set; }
+        public ICollection<Route>? EndRoutes { get; set; }
+        public ICollection<RouteDetails>? DepartureRouteDetails { get; set; }
+        public ICollection<RouteDetails>? ArrivalRouteDetails { get; set; }
     }
 }

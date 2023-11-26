@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Railway_Group01.Data
 {
@@ -6,12 +7,21 @@ namespace Railway_Group01.Data
     {
         [Key]
         public int Id { get; set; }
-        public int CoachNo { get; set; }
-        public string? Class { get; set; }
-        public int NoOfCompartments { get; set; }
-        public int NoOfSeats { get; set; }
-        public string? AvailableSeats { get; set; }
+        [Required]
+        public string? TrainCode { get; set; }
+        [ForeignKey("TrainCode")]
+        public Train? Trains { get; set; }
+        [Required]
+        public string? Name { get; set; }
+        [Required]
+        public string? TypeCode { get; set; }
+        [Range(0, int.MaxValue)]
+        public int NoOfCompartment { get; set; }
+        [Range(0, int.MaxValue)]
+        public int NoOfSeat { get; set; }
+        [Range(0, int.MaxValue)]
+        public int SeatAvailable { get; set; }
+        [Required]
         public string? Description { get; set; }
-        public Train? Train { get; set; }
     }
 }
