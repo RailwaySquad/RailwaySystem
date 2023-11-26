@@ -6,14 +6,14 @@ using Railway_Group01.Data;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("AppDbContextConnection") ?? throw new InvalidOperationException("Connection string 'AppDbContextConnection' not found.");
 
-builder.Services.AddDbContext<RailwayDbContext>(options =>
+/*builder.Services.AddDbContext<RailwayDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddDbContext<RailwayDbContext>(options =>
     options.UseSqlServer(connectionString));
-
-/*Tuong connect SQL Server 
-builder.Services.AddDbContext<RailwayDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("TuongsDBConnection")));*/
+*/
+/*Tuong connect SQL Server */
+builder.Services.AddDbContext<RailwayDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("TuongsDBConnection")));
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedEmail = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<RailwayDbContext>();

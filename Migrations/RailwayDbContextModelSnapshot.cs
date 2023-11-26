@@ -1635,8 +1635,7 @@ namespace Railway_Group01.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("RouteId")
-                        .IsRequired()
+                    b.Property<int>("RouteId")
                         .HasColumnType("int");
 
                     b.Property<bool>("ScheduleCompleted")
@@ -2236,13 +2235,13 @@ namespace Railway_Group01.Migrations
             modelBuilder.Entity("Railway_Group01.Data.Route", b =>
                 {
                     b.HasOne("Railway_Group01.Data.Station", "EndStation")
-                        .WithMany("EndRoutes")
+                        .WithMany()
                         .HasForeignKey("EndStationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Railway_Group01.Data.Station", "StartStation")
-                        .WithMany("StartRoutes")
+                        .WithMany()
                         .HasForeignKey("StartStationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -2356,10 +2355,6 @@ namespace Railway_Group01.Migrations
                     b.Navigation("ArrivalRouteDetails");
 
                     b.Navigation("DepartureRouteDetails");
-
-                    b.Navigation("EndRoutes");
-
-                    b.Navigation("StartRoutes");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Ticket", b =>

@@ -92,3 +92,24 @@ html {
 .nav-link.active {
     color: #EC5B24 !important;
 }
+.bg-gradient-cus {
+    line-height: 1.5;
+    box-sizing: border-box;
+    background: linear-gradient(45deg,#721053,#AD2E41);
+    padding: 80px 80px 40px;
+    display: block;
+}
+
+.item {
+    border: 1px solid #CFE3BA;
+    background: #fffefe;
+    border-radius: 4px;
+    width: 120px;
+    height: 57px;
+    border: 1px 10px #cccccc;
+}
+
+.card-active {
+    border-color: #EC5B24 !important;
+    background-color: #FEEFEA !important;
+}

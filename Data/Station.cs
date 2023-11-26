@@ -19,8 +19,6 @@ namespace Railway_Group01.Data
         [Required]
         public string? Zone { get; set; }
         public int? ZipCode { get; set; }
-        public ICollection<Route>? StartRoutes { get; set; }
-        public ICollection<Route>? EndRoutes { get; set; }
         public ICollection<RouteDetails>? DepartureRouteDetails { get; set; }
         public ICollection<RouteDetails>? ArrivalRouteDetails { get; set; }
     }

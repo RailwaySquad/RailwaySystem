@@ -17,7 +17,7 @@ namespace Railway_Group01.Data
         [AllowNull]
         public string? Description { get; set; }
         public ICollection<Schedule>? Schedules { get; set; }
-        public ICollection<Coach>? Coaches { get; set; }
+        public ICollection<CoachModel>? Coaches { get; set; }
 
     }
 }

@@ -1,20 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Railway_Group01.Data;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Railway_Group01.Data
+namespace Railway_Group01.Models
 {
-    public class Coach
+    public class CoachModel
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
         public string? TrainCode { get; set; }
-        [ForeignKey("TrainCode")]
         public Train? Trains { get; set; }
-        [Required]
         public string? Name { get; set; }
-        [Required]
         public string? TypeCode { get; set; }
         [Range(0, int.MaxValue)]
         public int NoOfCompartment { get; set; }
@@ -22,8 +18,8 @@ namespace Railway_Group01.Data
         public int NoOfSeat { get; set; }
         [Range(0, int.MaxValue)]
         public int SeatAvailable { get; set; }
-        [Required]
         public string? Description { get; set; }
-        
+        [AllowNull]
+        public int? CoachFare { get; set; }
     }
 }

@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Space+Mono&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2f28ccbbd6.js" crossorigin="anonymous"></script>
+    
     <style>
         body {
             margin-bottom: 0 !important;
@@ -128,6 +130,40 @@
                 </div>
             </div>
         </header>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header border-bottom">
+                <div class="text-start">
+                    <h5 id="offcanvasRightLabel" class="mb-0 fs-4" style="color: #EC5B24;">Your Tickets</h5>
+                </div>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item ms-1 d-flex flex-column">
+                            <div class="row">
+                                <div class="col-10">
+                                    <span class="tenGa me-2">A01</span>
+                                    <span class="chuyenTau">Sai Gon - Ha Noi</span>
+                                </div>
+                                <div class="col-2">
+                                    <a class="text-danger" href="">
+                                        <img src="./svg/trash3.svg" class="ms-4" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div>18/11/2023 10:00:00</div>
+                            <div>Coarch A - Seat A10</div>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="" class="btn btn-orange">Buy Now</a>
+                        <a href="" class="btn btn-outline-secondary">Clear Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <main role="main" class="d-flex flex-column z-1" style="padding-bottom:100px">
             @RenderBody()
         </main>
@@ -144,6 +180,7 @@
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-ui-1.13.2.custom/jquery-ui.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

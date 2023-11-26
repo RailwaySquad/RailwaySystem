@@ -44,8 +44,6 @@ public class RailwayDbContext : IdentityDbContext<User>
         .WithOne(e => e.Ticket)
         .HasForeignKey<BookingDetails>(e => e.PNRNo)
         .IsRequired();
-        builder.Entity<Station>().HasMany(p => p.StartRoutes).WithOne(p => p.StartStation);
-        builder.Entity<Station>().HasMany(p => p.EndRoutes).WithOne(p => p.EndStation);
         builder.Entity<Station>().HasMany(p => p.DepartureRouteDetails).WithOne(p => p.DepartureStation);
         builder.Entity<Station>().HasMany(p => p.ArrivalRouteDetails).WithOne(p => p.ArrivalStation);
         builder.Entity<Station>().HasData(
