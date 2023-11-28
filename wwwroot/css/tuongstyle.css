@@ -93,10 +93,10 @@ html {
     color: #EC5B24 !important;
 }
 .bg-gradient-cus {
-    line-height: 1.5;
+    line-height: 1.2;
     box-sizing: border-box;
     background: linear-gradient(45deg,#721053,#AD2E41);
-    padding: 80px 80px 40px;
+    padding: 80px 80px 10px;
     display: block;
 }
 
@@ -112,4 +112,28 @@ html {
 .card-active {
     border-color: #EC5B24 !important;
     background-color: #FEEFEA !important;
+}
+
+.c-input-cntr {
+    position: relative !important;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    height: 100%;
+    line-height: 24px;
+}
+    .c-input-cntr .input-label {
+        font-size: 12px;
+        color: rgba(0,0,0,.38);
+        transform: translate(0,0);
+        transition-duration: .2s;
+        cursor: text;
+        height: 23px;
+        overflow: visible;
+    }
+.form-cntr .train-form .form-fields .c-input-cntr .c-input {
+    background: 0 0;
+    font-size: 16px;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

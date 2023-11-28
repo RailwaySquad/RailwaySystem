@@ -16,10 +16,20 @@ namespace Railway_Group01.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> SearchRoute()
+        public async Task<IActionResult> SearchRoute(
+            [FromQuery(Name = "departure")] string departure, 
+            [FromQuery(Name = "arrival")] string arrival, 
+            [FromQuery(Name = "time")] string? time, 
+            [FromQuery(Name = "price")] string? price, 
+            [FromQuery(Name = "coach")] string? coach)
         {
-            List<int> routes = await ctx.Routes!.Where(x => x.StartStationId == 1 && x.EndStationId == 4).Select(x=>x.Id).ToListAsync();
-            IEnumerable<Schedule> schedules = await ctx.Schedules!.Where(x=>routes.Contains(x.RouteId)).ToListAsync();
+            int departureId = !String.IsNullOrEmpty(departure) || int.TryParse(departure, out _) ? Int32.Parse(departure): 1;
+            int arrivalId = !String.IsNullOrEmpty(arrival) || int.TryParse(arrival,out _) ? Int32.Parse(arrival):4;
+
+            List<int> routedetails = await ctx.Routes!
+                .Where(x => x.StartStationId == departureId && x.EndStationId== arrivalId).Select(x=>x.Id)
+                .ToListAsync();
+            IEnumerable<Schedule> schedules = await ctx.Schedules!.Where(x=> routedetails.Contains(x.RouteId)).ToListAsync();
             foreach (var item in schedules)
             {
                 item.Train = await ctx.Trains!.FindAsync(item.TrainCode);
@@ -35,10 +45,14 @@ namespace Railway_Group01.Controllers
                 foreach (var item2 in item.Train.Coaches)
                 {
                     Fare? fee = await ctx.Fares!.FirstOrDefaultAsync(x => x.TypeOfTrain == item.Train.TypeCode && x.TypeOfClass == item2.TypeCode);
-                    item2.CoachFare =  fee.Price + fee.DistanceRange * item.Route.Distance;
+                    Console.WriteLine(fee.Price);
+                    item2.CoachFare =  (fee.Price+1 )* (fee.DistanceRange * item.Route.Distance)/100;
                 }
             }
-            return View(schedules);
+            IEnumerable<Coach> coaches2 = await ctx.Coachs.ToListAsync();
+            var coach3 = coaches2.DistinctBy(x => x.Name);
+            var tupleModel = new Tuple<IEnumerable<Schedule>,IEnumerable<Coach>>(schedules,coach3);
+            return View(tupleModel);
 
         }
     }

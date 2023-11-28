@@ -125,105 +125,229 @@ public class RailwayDbContext : IdentityDbContext<User>
             new Coach { Id = 44, TypeCode = "GE", Name = "Class D", NoOfCompartment = 4, NoOfSeat = 16, TrainCode = "SE801", SeatAvailable = 22, Description = "basic amenities\nbudget-friendly\nbench-type seats\nmore people" }
             );
         builder.Entity<Route>().HasData(
-            new Route { Id = 1, StartStationId = 1, EndStationId = 4, Distance = 1726 },
-            new Route { Id = 2, StartStationId = 1, EndStationId = 4, Distance = 1726 },
-            new Route { Id = 3, StartStationId = 4, EndStationId = 1, Distance = 1726 },
-            new Route { Id = 4, StartStationId = 4, EndStationId = 1, Distance = 1726 }
+            new Route { Id = 1, StartStationId = 1, EndStationId = 4, Distance = 1726 },//SG-HaNoi 1 SG-NT-Hue-HN
+            new Route { Id = 2, StartStationId = 1, EndStationId = 2, Distance = 411 },//SG-NhaTrang
+            new Route { Id = 3, StartStationId = 2, EndStationId = 3, Distance = 627 },//NhaTrang-Hue
+            new Route { Id = 4, StartStationId = 1, EndStationId = 3, Distance = 1038 },//SG-Hue 1 SG-NT-Hue
+            new Route { Id = 5, StartStationId = 1, EndStationId = 3, Distance = 1038 },//SG-Hue 2 SG-Hue
+            new Route { Id = 6, StartStationId = 2, EndStationId = 4, Distance = 1315 },//NT-HN 1 NT-Hue-HN
+            new Route { Id = 7, StartStationId = 2, EndStationId = 4, Distance = 1315 },//NT-HN 2 NT-HN
+            new Route { Id = 8, StartStationId = 3, EndStationId = 4, Distance = 688 },//Hue-HaNoi
+
+            new Route { Id = 9, StartStationId = 1, EndStationId = 4, Distance = 1726 },//SG-HN 2 SG-NT-HN
+            new Route { Id = 10, StartStationId = 1, EndStationId = 4, Distance = 1726 },//SG-HN 3 SG-Hue-HN
+
+            new Route { Id = 11, StartStationId = 4, EndStationId = 1, Distance = 1726 },//HN-SG 1 HN-Hue-NT-SG
+            new Route { Id = 12, StartStationId = 4, EndStationId = 3, Distance = 688 },//HN-Hue
+            new Route { Id = 13, StartStationId = 4, EndStationId = 2, Distance = 1315 },//HN-NT 1 HN-Hue-NT
+            new Route { Id = 14, StartStationId = 4, EndStationId = 2, Distance = 1315 },//HN-NT 2 HN-NT
+            new Route { Id = 15, StartStationId = 3, EndStationId = 2, Distance = 627},//Hue-NT
+            new Route { Id = 16, StartStationId = 3, EndStationId = 1, Distance = 1038 },//Hue-SG 1 Hue-NT-SG
+            new Route { Id = 17, StartStationId = 3, EndStationId = 1, Distance = 1038 },//Hue-SG 2 Hue-SG
+            new Route { Id = 18, StartStationId = 2, EndStationId = 1, Distance = 411 },//NT-SG
+
+            new Route { Id = 19, StartStationId = 4, EndStationId = 1, Distance = 1726 },//HN-SG 2 HaNoi-Hue-SaiGon
+            new Route { Id = 20, StartStationId = 4, EndStationId = 1, Distance = 1726 }//HN-SG-3 HaNoi-NhaTrang-SaiGon
             );
+        
         builder.Entity<RouteDetails>().HasData(
-            new RouteDetails { Id = 1, DepartureStationId = 1, ArrivalStationId = 2, DelayTime = 13, Distance = 411, TravelTime = 8, RouteId = 1 }, //Sai Gon - Nha Trang
-            new RouteDetails { Id = 2, DepartureStationId = 2, ArrivalStationId = 3, DelayTime = 13, Distance = 627, TravelTime = 12.4, RouteId = 1 }, //Nha Trang - Hue
-            new RouteDetails { Id = 3, DepartureStationId = 3, ArrivalStationId = 4, DelayTime = 12, Distance = 688, TravelTime = 15.6, RouteId = 1 }, // Hue - HN
-            new RouteDetails { Id = 4, DepartureStationId = 1, ArrivalStationId = 3, DelayTime = 10, Distance = 1038, TravelTime = 21.4, RouteId = 2 }, // SG - Hue
-            new RouteDetails { Id = 5, DepartureStationId = 3, ArrivalStationId = 4, DelayTime = 12, Distance = 688, TravelTime = 10.6, RouteId = 2 }, // Hue - HN
-            new RouteDetails { Id = 6, DepartureStationId = 4, ArrivalStationId = 3, DelayTime = 10, Distance = 688, TravelTime = 12.6, RouteId = 3 }, // HN - Hue
-            new RouteDetails { Id = 7, DepartureStationId = 3, ArrivalStationId = 2, DelayTime = 12, Distance = 627, TravelTime = 13.6, RouteId = 3 }, // Hue - NT
-            new RouteDetails { Id = 8, DepartureStationId = 2, ArrivalStationId = 1, DelayTime = 12, Distance = 411, TravelTime = 8.6, RouteId = 3 }, // NT - SG
-            new RouteDetails { Id = 9, DepartureStationId = 4, ArrivalStationId = 2, DelayTime = 12, Distance = 1315, TravelTime = 22.6, RouteId = 4 }, // HN - NT
-            new RouteDetails { Id = 10, DepartureStationId = 2, ArrivalStationId = 1, DelayTime = 12, Distance = 411, TravelTime = 7.6, RouteId = 4 } // NT - SG
+            //RouteId=1 SaiGon-HaNoi 1 SG-NT-Hue-HN
+            new RouteDetails { Id = 1, DepartureStationId = 1, ArrivalStationId = 2, DelayTime = 15, Distance = 411, TravelTime = 8, RouteId = 1 }, 
+            new RouteDetails { Id = 2, DepartureStationId = 2, ArrivalStationId = 3, DelayTime = 13, Distance = 627, TravelTime = 12.4, RouteId = 1 },
+            new RouteDetails { Id = 3, DepartureStationId = 3, ArrivalStationId = 4, DelayTime = 12, Distance = 688, TravelTime = 15.6, RouteId = 1 },
+            new RouteDetails { Id = 4, DepartureStationId = 1, ArrivalStationId = 4, DelayTime = 13, Distance = 1726, TravelTime = 36, RouteId = 1},
+            //RouteId=2 SG-NhaTrang
+            new RouteDetails { Id = 5, DepartureStationId = 1, ArrivalStationId = 2, DelayTime = 15, Distance = 411, TravelTime = 8, RouteId = 2},
+            //RouteId=3 NhaTrang-Hue
+            new RouteDetails { Id = 6, DepartureStationId = 2, ArrivalStationId = 3, DelayTime = 13, Distance = 627, TravelTime = 12.4, RouteId = 3 },
+            //RouteId=4 SG-Hue 1 SG-NT-Hue
+            new RouteDetails { Id = 7, DepartureStationId = 1, ArrivalStationId = 2, DelayTime = 15, Distance = 411, TravelTime = 8, RouteId = 4 },
+            new RouteDetails { Id = 8, DepartureStationId = 2, ArrivalStationId = 3, DelayTime = 13, Distance = 627, TravelTime = 12.4, RouteId = 4 },
+            new RouteDetails { Id = 9, DepartureStationId = 1, ArrivalStationId = 3, DelayTime = 14, Distance = 1038, TravelTime = 20.4, RouteId = 4 },
+            //RouteId=5 SG-Hue 2 SG-Hue
+            new RouteDetails { Id = 10, DepartureStationId = 1, ArrivalStationId = 3, DelayTime = 15, Distance = 1038, TravelTime = 19.5, RouteId = 5 },
+            //RouteId=6 NhaTrang-HaNoi   1  NhaTrang-Hue-HaNoi
+            new RouteDetails { Id = 11, DepartureStationId = 2, ArrivalStationId = 3, DelayTime = 13, Distance = 627, TravelTime = 12.4, RouteId = 6 },
+            new RouteDetails { Id = 12, DepartureStationId = 3, ArrivalStationId = 4, DelayTime = 12, Distance = 688, TravelTime = 15.6, RouteId = 6 }, 
+            new RouteDetails { Id = 13, DepartureStationId = 2, ArrivalStationId = 4, DelayTime = 13, Distance = 1315, TravelTime = 28, RouteId = 6 },
+            //RouteId=7 NT-HN 2 NhaTrang-HaNoi
+            new RouteDetails { Id = 14, DepartureStationId = 2, ArrivalStationId = 4, DelayTime = 13, Distance = 1315, TravelTime = 27, RouteId = 7 },
+            //RouteId=8 Hue-HaNoi
+            new RouteDetails { Id = 15, DepartureStationId = 3, ArrivalStationId = 4, DelayTime = 12, Distance = 688, TravelTime = 15.6, RouteId = 8 },
+            
+            //RouteId=9 SaiGon-HaNoi 2 SaiGon-NhaTrang-HaNoi
+            new RouteDetails { Id = 16, DepartureStationId = 1, ArrivalStationId = 2, DelayTime = 15, Distance = 411, TravelTime = 8, RouteId = 9 },
+            new RouteDetails { Id = 17, DepartureStationId = 2, ArrivalStationId = 4, DelayTime = 13, Distance = 1315, TravelTime = 27, RouteId = 9 },
+            new RouteDetails { Id = 18, DepartureStationId = 1, ArrivalStationId = 4, DelayTime = 14, Distance = 1726, TravelTime = 35, RouteId = 9 },
+            //RouteId=10  SaiGon-HaNoi 3 SaiGon-Hue-HaNoi
+            new RouteDetails { Id = 19, DepartureStationId = 1, ArrivalStationId = 3, DelayTime = 15, Distance = 1038, TravelTime = 18, RouteId = 10 },
+            new RouteDetails { Id = 20, DepartureStationId = 3, ArrivalStationId = 4, DelayTime = 12, Distance = 688, TravelTime = 14, RouteId =10 },
+            new RouteDetails { Id = 21, DepartureStationId = 1, ArrivalStationId = 4, DelayTime = 14, Distance = 1726, TravelTime = 32, RouteId = 10 },
+
+            //RouteId=11  HaNoi-SaiGon 1 HaNoi-Hue-NhaTrang-SaiGon
+            new RouteDetails { Id = 22, DepartureStationId = 4, ArrivalStationId = 3, DelayTime = 15, Distance = 688, TravelTime = 15.6, RouteId = 11 },
+            new RouteDetails { Id = 23, DepartureStationId = 3, ArrivalStationId = 2, DelayTime = 13, Distance = 627, TravelTime = 12.4, RouteId = 11 },
+            new RouteDetails { Id = 24, DepartureStationId = 2, ArrivalStationId = 1, DelayTime = 15, Distance = 411, TravelTime = 8, RouteId = 11 },
+            new RouteDetails { Id = 25, DepartureStationId = 4, ArrivalStationId = 1, DelayTime = 15, Distance = 1726, TravelTime = 36, RouteId = 11 },
+            //RouteId=12 HaNoi-Hue
+            new RouteDetails { Id = 26, DepartureStationId = 4, ArrivalStationId = 3, DelayTime = 15, Distance = 688, TravelTime = 15.6, RouteId = 12 },
+            //RouteId=13 HaNoi-NhaTrang 1 HaNoi-Hue-NhaTrang
+            new RouteDetails { Id = 27, DepartureStationId = 4, ArrivalStationId = 3, DelayTime = 15, Distance = 688, TravelTime = 15.6, RouteId = 13 },
+            new RouteDetails { Id = 28, DepartureStationId = 3, ArrivalStationId = 2, DelayTime = 13, Distance = 627, TravelTime = 12.4, RouteId = 13 },
+            new RouteDetails { Id = 29, DepartureStationId = 4, ArrivalStationId = 2, DelayTime = 14, Distance = 1315, TravelTime = 28, RouteId = 13 },
+            //RouteId=14 HaNoi-NhaTrang 2  HaNoi-NhaTrang
+            new RouteDetails { Id = 30, DepartureStationId = 4, ArrivalStationId = 2, DelayTime = 14, Distance = 1315, TravelTime = 27, RouteId = 14 },
+            //RouteId=15 Hue-NhaTrang
+            new RouteDetails { Id = 31, DepartureStationId = 3, ArrivalStationId = 2, DelayTime = 13, Distance = 627, TravelTime = 12.4, RouteId = 15 },
+            //RouteId=16 Hue-SaiGon 1 Hue-NhaTrang-SaiGon
+            new RouteDetails { Id = 32, DepartureStationId = 3, ArrivalStationId = 2, DelayTime = 13, Distance = 627, TravelTime = 12.4, RouteId = 16 },
+            new RouteDetails { Id = 33, DepartureStationId = 2, ArrivalStationId = 1, DelayTime = 15, Distance = 411, TravelTime = 8, RouteId = 16 },
+            new RouteDetails { Id = 34, DepartureStationId = 3, ArrivalStationId = 1, DelayTime = 14, Distance = 1038, TravelTime = 20.4, RouteId = 16 },
+            //RouteId=17 Hue-SaiGon 2 Hue-SaiGon
+            new RouteDetails { Id = 35, DepartureStationId = 3, ArrivalStationId = 1, DelayTime = 14, Distance = 1038, TravelTime = 19.5, RouteId = 17 },
+            //RouteId=18 NhaTrang-SaiGon
+            new RouteDetails { Id = 36, DepartureStationId = 2, ArrivalStationId = 1, DelayTime = 15, Distance = 411, TravelTime = 8, RouteId = 18 },
+
+            //RouteId=19 HaNoi-SaiGon 2 HaNoi-Hue-SaiGon
+            new RouteDetails { Id = 37, DepartureStationId = 4, ArrivalStationId = 3, DelayTime = 15, Distance = 688, TravelTime = 14, RouteId = 19 },
+            new RouteDetails { Id = 38, DepartureStationId = 3, ArrivalStationId = 1, DelayTime = 14, Distance = 1038, TravelTime = 18, RouteId = 19 },
+            new RouteDetails { Id = 39, DepartureStationId = 4, ArrivalStationId = 1, DelayTime = 15, Distance = 1726, TravelTime = 32, RouteId = 19 },
+            //RouteId=20 HaNoi-SaiGon 3  HaNoi-NhaTrang-SaiGon
+            new RouteDetails { Id = 40, DepartureStationId = 4, ArrivalStationId = 2, DelayTime = 15, Distance = 1315, TravelTime = 27, RouteId = 20 },
+            new RouteDetails { Id = 41, DepartureStationId = 2, ArrivalStationId = 1, DelayTime = 13, Distance = 411, TravelTime = 8, RouteId = 20 },
+            new RouteDetails { Id = 42, DepartureStationId = 4, ArrivalStationId = 1, DelayTime = 15, Distance = 1726, TravelTime = 35, RouteId = 20 }
             );
         builder.Entity<Schedule>().HasData(
-            new Schedule { Id = 1, RouteId = 1, ScheduleCompleted = false, StartAt = new DateTime(2023, 11, 26, 6, 0, 0), EndAt = new DateTime(2023, 11, 27, 19, 12, 0), TrainCode = "SE801" },
-            new Schedule { Id = 2, RouteId = 1, ScheduleCompleted = false, StartAt = new DateTime(2023, 11, 26, 16, 0, 0), EndAt = new DateTime(2023, 11, 28, 2, 30, 0), TrainCode = "SE601" },
-            new Schedule { Id = 3, RouteId = 1, ScheduleCompleted = false, StartAt = new DateTime(2023, 11, 26, 19, 20, 0), EndAt = new DateTime(2023, 11, 28, 7, 10, 0), TrainCode = "SE201" },
-            new Schedule { Id = 4, RouteId = 2, ScheduleCompleted = false, StartAt = new DateTime(2023, 11, 26, 8, 0, 0), EndAt = new DateTime(2023, 11, 27, 13, 0, 0), TrainCode = "SE401" },
-            new Schedule { Id = 5, RouteId = 3, ScheduleCompleted = false, StartAt = new DateTime(2023, 11, 26, 9, 30, 0), EndAt = new DateTime(2023, 11, 27, 20, 32, 0), TrainCode = "SE701" },
-            new Schedule { Id = 6, RouteId = 3, ScheduleCompleted = false, StartAt = new DateTime(2023, 11, 26, 11, 30, 0), EndAt = new DateTime(2023, 11, 29, 3, 12, 0), TrainCode = "SE501" },
-            new Schedule { Id = 7, RouteId = 3, ScheduleCompleted = false, StartAt = new DateTime(2023, 11, 26, 6, 30, 0), EndAt = new DateTime(2023, 11, 27, 13, 30, 0), TrainCode = "SE101" },
-            new Schedule { Id = 8, RouteId = 4, ScheduleCompleted = false, StartAt = new DateTime(2023, 11, 26, 7, 30, 0), EndAt = new DateTime(2023, 11, 27, 8, 25, 0), TrainCode = "SE301" }
+            //SG-NT-H-HN 1 ngayXP 2-12 SE801
+                //SG-HN
+            new Schedule { Id = 1, RouteId = 1, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 6, 0, 0), EndAt = new DateTime(2023, 12, 3, 18, 12, 0), TrainCode = "SE801" },
+                //SG-NT
+            new Schedule { Id = 2, RouteId = 2, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 6, 0, 0), EndAt = new DateTime(2023, 12, 2, 8, 15, 0), TrainCode = "SE801" },
+                //NT-H
+            new Schedule { Id = 3, RouteId = 3, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 8, 28, 0), EndAt = new DateTime(2023, 12, 2, 21, 0, 0), TrainCode = "SE801" },
+                //H-HN
+            new Schedule { Id = 4, RouteId = 8, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 21, 12, 0), EndAt = new DateTime(2023, 12, 3, 18, 0, 0), TrainCode = "SE801" },
+                //SG-H
+            new Schedule { Id = 5, RouteId = 4, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 6, 0, 0), EndAt = new DateTime(2023, 12, 2, 21, 0, 0), TrainCode = "SE801" },
+                //NT-HN
+            new Schedule { Id = 6, RouteId = 6, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 8, 28, 0), EndAt = new DateTime(2023, 12, 3, 18, 0, 0), TrainCode = "SE801" },
+            //SG-NT-HN  ngayXP 2-12 SE202
+                //SG-HN 
+            new Schedule { Id = 7, RouteId = 9, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 14, 00, 0), EndAt = new DateTime(2023, 12, 4, 1, 30, 0), TrainCode = "SE201" },
+                //SG-NT
+            new Schedule { Id = 8, RouteId = 2, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 14, 00, 0), EndAt = new DateTime(2023, 12, 2, 22, 15, 0), TrainCode = "SE201" },
+                //NT-HN
+            new Schedule { Id = 9, RouteId = 7, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 22, 27, 0), EndAt = new DateTime(2023, 12, 4, 1, 30, 0), TrainCode = "SE201" },
+            //SG-H-HN ngayXP 3-12 SE401 
+                //SG-HN
+            new Schedule { Id = 10, RouteId = 10, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 3, 7, 30, 0), EndAt = new DateTime(2023, 12, 4, 16, 0, 0), TrainCode = "SE401" },
+                //SG-H
+            new Schedule { Id = 11, RouteId = 5, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 3, 7, 30, 0), EndAt = new DateTime(2023, 12, 4, 3, 10, 0), TrainCode = "SE401" },
+                //H-HN
+            new Schedule { Id = 12, RouteId = 8, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 4, 3, 25, 0), EndAt = new DateTime(2023, 12, 4, 16, 0, 0), TrainCode = "SE401" },
+
+            //HN-H-NT-SG ngayXP 2-12
+                //HN-SG 
+            new Schedule { Id = 13, RouteId = 11, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 7, 20, 0), EndAt = new DateTime(2023, 12, 3, 19, 20, 0), TrainCode = "SE701" },
+                //HN-H 
+            new Schedule { Id = 14, RouteId = 12, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 7, 20, 0), EndAt = new DateTime(2023, 12, 2, 23, 0, 0), TrainCode = "SE701" },
+                //H-NT
+            new Schedule { Id = 15, RouteId = 15, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 23, 13, 0), EndAt = new DateTime(2023, 12, 3, 12, 0, 0), TrainCode = "SE701" },
+                //NT-SG
+            new Schedule { Id = 16, RouteId = 18, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 3, 12, 15, 0), EndAt = new DateTime(2023, 12, 3, 19, 20, 0), TrainCode = "SE701" },
+                //HN-NT
+            new Schedule { Id = 17, RouteId = 13, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 7, 20, 0), EndAt = new DateTime(2023, 12, 3, 12, 0, 0), TrainCode = "SE701" },
+                //H-SG
+            new Schedule { Id = 18, RouteId = 16, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 23, 13, 0), EndAt = new DateTime(2023, 12, 3, 19, 20, 0), TrainCode = "SE701" },
+            
+            //HN-H-SG ngayXP 2-12 
+                //HN-SG
+            new Schedule { Id = 19, RouteId = 19, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 17, 20, 0), EndAt = new DateTime(2023, 12, 4, 1, 20, 0), TrainCode = "SE301" },
+                //HN-H
+            new Schedule { Id = 20, RouteId = 12, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 2, 17, 20, 0), EndAt = new DateTime(2023, 12, 3, 7, 20, 0), TrainCode = "SE301" },
+                //H-SG
+            new Schedule { Id = 21, RouteId = 17, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 3, 7, 34, 0), EndAt = new DateTime(2023, 12, 4, 1, 20, 0), TrainCode = "SE301" },
+
+            //HN-NT-SG ngay XP 3-12
+                //HN-SG
+            new Schedule { Id = 22, RouteId = 20, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 3, 9, 0, 0), EndAt = new DateTime(2023, 12, 4, 20, 13, 0), TrainCode = "SE101" },
+                //HN-NT
+            new Schedule { Id = 23, RouteId = 14, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 3, 9, 0, 0), EndAt = new DateTime(2023, 12, 4, 12, 0, 0), TrainCode = "SE101" },
+                //NT-SG
+            new Schedule { Id = 24, RouteId = 20, ScheduleCompleted = false, StartAt = new DateTime(2023, 12, 4, 12, 13, 0), EndAt = new DateTime(2023, 12, 4, 20, 0, 0), TrainCode = "SE101" }
             );
         builder.Entity<Fare>().HasData(
-            new Fare { Id = 1, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC1", TypeOfTrain = "SF", Price = 500000 },
-            new Fare { Id = 2, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC2", TypeOfTrain = "SF", Price = 300000 },
-            new Fare { Id = 3, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC3", TypeOfTrain = "SF", Price = 200000 },
-            new Fare { Id = 4, RouteId = 1, DistanceRange = 12000, TypeOfClass = "SL", TypeOfTrain = "SF", Price = 100000 },
-            new Fare { Id = 5, RouteId = 1, DistanceRange = 12000, TypeOfClass = "GE", TypeOfTrain = "SF", Price = 50000 },
+            new Fare { Id = 1, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC1", TypeOfTrain = "SF", Price = 30 },
+            new Fare { Id = 2, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC2", TypeOfTrain = "SF", Price = 25 },
+            new Fare { Id = 3, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC3", TypeOfTrain = "SF", Price = 20 },
+            new Fare { Id = 4, RouteId = 1, DistanceRange = 12000, TypeOfClass = "SL", TypeOfTrain = "SF", Price = 10 },
+            new Fare { Id = 5, RouteId = 1, DistanceRange = 12000, TypeOfClass = "GE", TypeOfTrain = "SF", Price = 5 },
 
-            new Fare { Id = 6, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC1", TypeOfTrain = "F", Price = 400000 },
-            new Fare { Id = 7, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC2", TypeOfTrain = "F", Price = 200000 },
-            new Fare { Id = 8, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC3", TypeOfTrain = "F", Price = 150000 },
-            new Fare { Id = 9, RouteId = 1, DistanceRange = 12000, TypeOfClass = "SL", TypeOfTrain = "F", Price = 80000 },
-            new Fare { Id = 10, RouteId = 1, DistanceRange = 12000, TypeOfClass = "GE", TypeOfTrain = "F", Price = 40000 },
+            new Fare { Id = 6, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC1", TypeOfTrain = "F", Price = 27 },
+            new Fare { Id = 7, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC2", TypeOfTrain = "F", Price = 20 },
+            new Fare { Id = 8, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC3", TypeOfTrain = "F", Price = 15 },
+            new Fare { Id = 9, RouteId = 1, DistanceRange = 12000, TypeOfClass = "SL", TypeOfTrain = "F", Price = 8 },
+            new Fare { Id = 10, RouteId = 1, DistanceRange = 12000, TypeOfClass = "GE", TypeOfTrain = "F", Price = 4 },
 
-            new Fare { Id = 11, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC1", TypeOfTrain = "S", Price = 360000 },
-            new Fare { Id = 12, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC2", TypeOfTrain = "S", Price = 180000 },
-            new Fare { Id = 13, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC3", TypeOfTrain = "S", Price = 120000 },
-            new Fare { Id = 14, RouteId = 1, DistanceRange = 12000, TypeOfClass = "SL", TypeOfTrain = "S", Price = 60000 },
-            new Fare { Id = 15, RouteId = 1, DistanceRange = 12000, TypeOfClass = "GE", TypeOfTrain = "S", Price = 30000 },
+            new Fare { Id = 11, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC1", TypeOfTrain = "S", Price = 25 },
+            new Fare { Id = 12, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC2", TypeOfTrain = "S", Price = 18 },
+            new Fare { Id = 13, RouteId = 1, DistanceRange = 12000, TypeOfClass = "AC3", TypeOfTrain = "S", Price = 12 },
+            new Fare { Id = 14, RouteId = 1, DistanceRange = 12000, TypeOfClass = "SL", TypeOfTrain = "S", Price = 6 },
+            new Fare { Id = 15, RouteId = 1, DistanceRange = 12000, TypeOfClass = "GE", TypeOfTrain = "S", Price = 3 },
 
-            new Fare { Id = 16, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC1", TypeOfTrain = "SF", Price = 550000 },
-            new Fare { Id = 17, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC2", TypeOfTrain = "SF", Price = 350000 },
-            new Fare { Id = 18, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC3", TypeOfTrain = "SF", Price = 250000 },
-            new Fare { Id = 19, RouteId = 2, DistanceRange = 18000, TypeOfClass = "SL", TypeOfTrain = "SF", Price = 150000 },
-            new Fare { Id = 20, RouteId = 2, DistanceRange = 18000, TypeOfClass = "GE", TypeOfTrain = "SF", Price = 55000 },
+            new Fare { Id = 16, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC1", TypeOfTrain = "SF", Price = 30 },
+            new Fare { Id = 17, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC2", TypeOfTrain = "SF", Price = 35 },
+            new Fare { Id = 18, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC3", TypeOfTrain = "SF", Price = 25 },
+            new Fare { Id = 19, RouteId = 2, DistanceRange = 18000, TypeOfClass = "SL", TypeOfTrain = "SF", Price = 15 },
+            new Fare { Id = 20, RouteId = 2, DistanceRange = 18000, TypeOfClass = "GE", TypeOfTrain = "SF", Price = 5.5 },
 
-            new Fare { Id = 21, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC1", TypeOfTrain = "F", Price = 450000 },
-            new Fare { Id = 22, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC2", TypeOfTrain = "F", Price = 250000 },
-            new Fare { Id = 23, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC3", TypeOfTrain = "F", Price = 200000 },
-            new Fare { Id = 24, RouteId = 2, DistanceRange = 18000, TypeOfClass = "SL", TypeOfTrain = "F", Price = 85000 },
-            new Fare { Id = 25, RouteId = 2, DistanceRange = 18000, TypeOfClass = "GE", TypeOfTrain = "F", Price = 45000 },
+            new Fare { Id = 21, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC1", TypeOfTrain = "F", Price = 45 },
+            new Fare { Id = 22, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC2", TypeOfTrain = "F", Price = 25 },
+            new Fare { Id = 23, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC3", TypeOfTrain = "F", Price = 20 },
+            new Fare { Id = 24, RouteId = 2, DistanceRange = 18000, TypeOfClass = "SL", TypeOfTrain = "F", Price = 8.5 },
+            new Fare { Id = 25, RouteId = 2, DistanceRange = 18000, TypeOfClass = "GE", TypeOfTrain = "F", Price = 4.5 },
 
-            new Fare { Id = 26, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC1", TypeOfTrain = "S", Price = 390000 },
-            new Fare { Id = 27, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC2", TypeOfTrain = "S", Price = 200000 },
-            new Fare { Id = 28, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC3", TypeOfTrain = "S", Price = 160000 },
-            new Fare { Id = 29, RouteId = 2, DistanceRange = 18000, TypeOfClass = "SL", TypeOfTrain = "S", Price = 65000 },
-            new Fare { Id = 30, RouteId = 2, DistanceRange = 18000, TypeOfClass = "GE", TypeOfTrain = "S", Price = 35000 },
+            new Fare { Id = 26, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC1", TypeOfTrain = "S", Price = 39 },
+            new Fare { Id = 27, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC2", TypeOfTrain = "S", Price = 20 },
+            new Fare { Id = 28, RouteId = 2, DistanceRange = 18000, TypeOfClass = "AC3", TypeOfTrain = "S", Price = 16 },
+            new Fare { Id = 29, RouteId = 2, DistanceRange = 18000, TypeOfClass = "SL", TypeOfTrain = "S", Price = 6.5 },
+            new Fare { Id = 30, RouteId = 2, DistanceRange = 18000, TypeOfClass = "GE", TypeOfTrain = "S", Price = 3.5 },
 
-            new Fare { Id = 31, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC1", TypeOfTrain = "SF", Price = 500000 },
-            new Fare { Id = 32, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC2", TypeOfTrain = "SF", Price = 300000 },
-            new Fare { Id = 33, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC3", TypeOfTrain = "SF", Price = 200000 },
-            new Fare { Id = 34, RouteId = 3, DistanceRange = 12000, TypeOfClass = "SL", TypeOfTrain = "SF", Price = 100000 },
-            new Fare { Id = 35, RouteId = 3, DistanceRange = 12000, TypeOfClass = "GE", TypeOfTrain = "SF", Price = 50000 },
+            new Fare { Id = 31, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC1", TypeOfTrain = "SF", Price = 50 },
+            new Fare { Id = 32, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC2", TypeOfTrain = "SF", Price = 30 },
+            new Fare { Id = 33, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC3", TypeOfTrain = "SF", Price = 20 },
+            new Fare { Id = 34, RouteId = 3, DistanceRange = 12000, TypeOfClass = "SL", TypeOfTrain = "SF", Price = 10 },
+            new Fare { Id = 35, RouteId = 3, DistanceRange = 12000, TypeOfClass = "GE", TypeOfTrain = "SF", Price = 5 },
 
-            new Fare { Id = 36, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC1", TypeOfTrain = "F", Price = 400000 },
-            new Fare { Id = 37, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC2", TypeOfTrain = "F", Price = 200000 },
-            new Fare { Id = 38, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC3", TypeOfTrain = "F", Price = 150000 },
-            new Fare { Id = 39, RouteId = 3, DistanceRange = 12000, TypeOfClass = "SL", TypeOfTrain = "F", Price = 80000 },
-            new Fare { Id = 40, RouteId = 3, DistanceRange = 12000, TypeOfClass = "GE", TypeOfTrain = "F", Price = 40000 },
+            new Fare { Id = 36, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC1", TypeOfTrain = "F", Price = 40 },
+            new Fare { Id = 37, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC2", TypeOfTrain = "F", Price = 20 },
+            new Fare { Id = 38, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC3", TypeOfTrain = "F", Price = 15 },
+            new Fare { Id = 39, RouteId = 3, DistanceRange = 12000, TypeOfClass = "SL", TypeOfTrain = "F", Price = 8 },
+            new Fare { Id = 40, RouteId = 3, DistanceRange = 12000, TypeOfClass = "GE", TypeOfTrain = "F", Price = 4 },
 
-            new Fare { Id = 41, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC1", TypeOfTrain = "S", Price = 360000 },
-            new Fare { Id = 42, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC2", TypeOfTrain = "S", Price = 180000 },
-            new Fare { Id = 43, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC3", TypeOfTrain = "S", Price = 120000 },
-            new Fare { Id = 44, RouteId = 3, DistanceRange = 12000, TypeOfClass = "SL", TypeOfTrain = "S", Price = 60000 },
-            new Fare { Id = 45, RouteId = 3, DistanceRange = 12000, TypeOfClass = "GE", TypeOfTrain = "S", Price = 30000 },
+            new Fare { Id = 41, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC1", TypeOfTrain = "S", Price = 36 },
+            new Fare { Id = 42, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC2", TypeOfTrain = "S", Price = 18 },
+            new Fare { Id = 43, RouteId = 3, DistanceRange = 12000, TypeOfClass = "AC3", TypeOfTrain = "S", Price = 12 },
+            new Fare { Id = 44, RouteId = 3, DistanceRange = 12000, TypeOfClass = "SL", TypeOfTrain = "S", Price = 6 },
+            new Fare { Id = 45, RouteId = 3, DistanceRange = 12000, TypeOfClass = "GE", TypeOfTrain = "S", Price = 3 },
 
-            new Fare { Id = 46, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC1", TypeOfTrain = "SF", Price = 550000 },
-            new Fare { Id = 47, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC2", TypeOfTrain = "SF", Price = 350000 },
-            new Fare { Id = 48, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC3", TypeOfTrain = "SF", Price = 250000 },
-            new Fare { Id = 49, RouteId = 4, DistanceRange = 18000, TypeOfClass = "SL", TypeOfTrain = "SF", Price = 150000 },
-            new Fare { Id = 50, RouteId = 4, DistanceRange = 18000, TypeOfClass = "GE", TypeOfTrain = "SF", Price = 55000 },
+            new Fare { Id = 46, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC1", TypeOfTrain = "SF", Price = 55 },
+            new Fare { Id = 47, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC2", TypeOfTrain = "SF", Price = 35 },
+            new Fare { Id = 48, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC3", TypeOfTrain = "SF", Price = 25 },
+            new Fare { Id = 49, RouteId = 4, DistanceRange = 18000, TypeOfClass = "SL", TypeOfTrain = "SF", Price = 12 },
+            new Fare { Id = 50, RouteId = 4, DistanceRange = 18000, TypeOfClass = "GE", TypeOfTrain = "SF", Price = 5.5 },
 
-            new Fare { Id = 51, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC1", TypeOfTrain = "F", Price = 450000 },
-            new Fare { Id = 52, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC2", TypeOfTrain = "F", Price = 250000 },
-            new Fare { Id = 53, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC3", TypeOfTrain = "F", Price = 200000 },
-            new Fare { Id = 54, RouteId = 4, DistanceRange = 18000, TypeOfClass = "SL", TypeOfTrain = "F", Price = 85000 },
-            new Fare { Id = 55, RouteId = 4, DistanceRange = 18000, TypeOfClass = "GE", TypeOfTrain = "F", Price = 45000 },
+            new Fare { Id = 51, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC1", TypeOfTrain = "F", Price = 45 },
+            new Fare { Id = 52, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC2", TypeOfTrain = "F", Price = 25 },
+            new Fare { Id = 53, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC3", TypeOfTrain = "F", Price = 20 },
+            new Fare { Id = 54, RouteId = 4, DistanceRange = 18000, TypeOfClass = "SL", TypeOfTrain = "F", Price = 8.5 },
+            new Fare { Id = 55, RouteId = 4, DistanceRange = 18000, TypeOfClass = "GE", TypeOfTrain = "F", Price = 4.5 },
 
-            new Fare { Id = 56, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC1", TypeOfTrain = "S", Price = 390000 },
-            new Fare { Id = 57, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC2", TypeOfTrain = "S", Price = 200000 },
-            new Fare { Id = 58, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC3", TypeOfTrain = "S", Price = 160000 },
-            new Fare { Id = 59, RouteId = 4, DistanceRange = 18000, TypeOfClass = "SL", TypeOfTrain = "S", Price = 65000 },
-            new Fare { Id = 60, RouteId = 4, DistanceRange = 18000, TypeOfClass = "GE", TypeOfTrain = "S", Price = 35000 }
+            new Fare { Id = 56, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC1", TypeOfTrain = "S", Price = 39 },
+            new Fare { Id = 57, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC2", TypeOfTrain = "S", Price = 20 },
+            new Fare { Id = 58, RouteId = 4, DistanceRange = 18000, TypeOfClass = "AC3", TypeOfTrain = "S", Price = 16 },
+            new Fare { Id = 59, RouteId = 4, DistanceRange = 18000, TypeOfClass = "SL", TypeOfTrain = "S", Price = 6.5 },
+            new Fare { Id = 60, RouteId = 4, DistanceRange = 18000, TypeOfClass = "GE", TypeOfTrain = "S", Price = 3.5 }
             );
     }
 

@@ -18,7 +18,7 @@ namespace Railway_Group01.Data
         [Required]
         public string? TypeOfTrain { get; set; }
         [Required]
-        [Range(0, int.MaxValue)]
-        public int Price { get; set; }
+        [Range(0, 100)]
+        public double Price { get; set; }
     }
 }

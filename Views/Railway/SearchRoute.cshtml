@@ -1,33 +1,44 @@
 ﻿@using System.Globalization;
-@model IEnumerable<Railway_Group01.Data.Schedule>
+@model Tuple<IEnumerable<Railway_Group01.Data.Schedule>,IEnumerable<Railway_Group01.Data.Coach>>
 @{
     ViewData["Title"] = "SearchRoute";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
 }
+
 <div class="bg-gradient-cus">
     <div class="form-fields">
-        <form class="row g-3 ui form w-lg-50  w-md-100 mx-auto">
-            <div class="col-sm-3 field">
-                <label for="gaDi" class="form-label text-light fw-700">From</label>
-                <input type="text" id="gaDi" name="gaDi" class="form-control" />
+        <form class="row g-1 ui form w-lg-50  w-md-100 mx-auto">
+            <div class="col-sm-2 col-4  field">
+                <label for="gaDi" class="form-label text-white-50 fw-500" style="font-size:12px">From</label>
+                <input type="text" id="gaDi" name="gaDi" class="form-control bg-transparent text-light" style="border-bottom:solid 1px white; border-top:0; border-left:0; border-right:0;" />
             </div>
-
-            <div class="col-sm-3">
-                <label for="gaDen" class="form-label text-light fw-700">To</label>
-                <input type="text" class="form-control" id="gaDen" name="gaDen" />
+            <div class="col-sm-2 col-4">
+                <label for="gaDen" class="form-label text-white-50 fw-500" style="font-size:12px">To</label>
+                <input type="text" class="form-control bg-transparent text-light bg-transparent text-light" id="gaDen" name="gaDen" style="border-bottom:solid 1px white; border-top:0; border-left:0; border-right:0;" />
             </div>
-            <div class="col-sm-3">
-                <label for="ngayXP" class="form-label text-light fw-700">Date</label>
-                <input type="date" class="form-control" id="ngayXP" name="ngayXP" />
+            <div class="col-sm-2">
+                <label for="ngayXP" class="form-label text-white-50 fw-500" style="font-size:12px">Date</label>
+                <input type="date" class="form-control bg-transparent text-light bg-transparent text-light" id="ngayXP" name="ngayXP" style="border-bottom:solid 1px white; border-top:0; border-left:0; border-right:0;" />
             </div>
-            <button type="submit" class="col-sm-2 mx-auto text-uppercase mt-5 btn btn-orange">
-                <div class="u-ripple">
-                    <span class="u-ripple-circle"></span>
-                </div>Search
-            </button>
+            <div class="d-flex flex-row justify-content-center align-items-center col-sm-2">
+                <button type="submit" class=" text-uppercase btn btn-orange" style="width:120px">
+                    Search
+                </button>
+            </div>
         </form>
     </div>
 </div>
+<script>
+    const [today] = new Date().toISOString().split('T');
+
+    const maxDate = new Date();
+    maxDate.setDate(maxDate.getDate() + 10);
+    const [maxDateFormatted] = maxDate.toISOString().split('T');
+
+    const dateInput = document.getElementById('ngayXP');
+    dateInput.setAttribute('min', today);
+    dateInput.setAttribute('max', maxDateFormatted);
+</script>
 <div class="container-fluid pt-4 pb-3 mb-3 shadow">
     <div class="row">
         <div class="d-flex flex-row col-10 mx-auto">
@@ -35,26 +46,12 @@
                 <div class="mb-2">Class</div>
                 <div class="d-inline-flex p-2">
                     <div class="d-flex flex-row flex-wrap">
-                        <div class="form-check form-check-inline ">
-                            <input type="checkbox" class="form-check-input" id="inlineCheckbox1" name="inlineCheckbox1" />
-                            <label class="form-check-label" for="inlineCheckbox1">1B</label>
-                        </div>
-                        <div class="form-check form-check-inline ">
-                            <input type="checkbox" class="form-check-input" id="inlineCheckbox2" name="inlineCheckbox2" />
-                            <label class="form-check-label" for="inlineCheckbox2">1C</label>
-                        </div>
-                        <div class="form-check form-check-inline ">
-                            <input type="checkbox" class="form-check-input" id="inlineCheckbox3" name="inlineCheckbox3" />
-                            <label class="form-check-label" for="inlineCheckbox3">2A</label>
-                        </div>
-                        <div class="form-check form-check-inline ">
-                            <input type="checkbox" class="form-check-input" id="inlineCheckbox4" name="inlineCheckbox4" />
-                            <label class="form-check-label" for="inlineCheckbox4">2B</label>
-                        </div>
-                        <div class="form-check form-check-inline ">
-                            <input type="checkbox" class="form-check-input" id="inlineCheckbox5" name="inlineCheckbox5" />
-                            <label class="form-check-label" for="inlineCheckbox5">2C</label>
-                        </div>
+                        @foreach(var coach in Model.Item2){
+                            <div class="form-check form-check-inline ">
+                                <input type="checkbox" class="form-check-input" id="coach_@coach.Id" name="coach" />
+                                <label class="form-check-label" for="coach_@coach.Id">@coach.Name</label>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -255,8 +252,8 @@
                     </button>
                 </div>
             </div>
-            @if(Model.Any()){
-                @foreach(var item in Model)
+            @if(Model.Item1.Any()){
+                @foreach(var item in Model.Item1)
                 {
                     <div class="mt-4">
                         <div class="card p-2">
@@ -279,8 +276,8 @@
                                                         <div class="tip"></div>
                                                     </div>
                                                 </div>
-                                                <div class="time">@Html.DisplayFor(x=>item.StartAt.Date)</div>
-                                                <div class="date"></div>
+                                                <div class="time">@item.StartAt.ToString("hh:mm tt")</div>
+                                                <div class="date">@item.StartAt.ToString("ddd, dd MMM")</div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="mt-4 d-flex flex-column align-items-center">
@@ -298,8 +295,8 @@
                                                         <div class="tip"></div>
                                                     </div>
                                                 </div>
-                                                <div class="time">@Html.DisplayFor(x=>item.EndAt.Date)</div>
-                                                <div class="date"></div>
+                                                <div class="time">@item.EndAt.ToString("hh:mm tt")</div>
+                                                <div class="date">@item.EndAt.ToString("ddd, dd MMM")</div>
                                             </div>
                                         </div>
                                     </div>

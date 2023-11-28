@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Railway_Group01.Data;
 
@@ -11,9 +12,10 @@ using Railway_Group01.Data;
 namespace Railway_Group01.Migrations
 {
     [DbContext(typeof(RailwayDbContext))]
-    partial class RailwayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231127022348_v2")]
+    partial class v2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -770,7 +772,7 @@ namespace Railway_Group01.Migrations
                         {
                             Id = 1,
                             DistanceRange = 12000,
-                            Price = 30.0,
+                            Price = 50.0,
                             RouteId = 1,
                             TypeOfClass = "AC1",
                             TypeOfTrain = "SF"
@@ -779,7 +781,7 @@ namespace Railway_Group01.Migrations
                         {
                             Id = 2,
                             DistanceRange = 12000,
-                            Price = 25.0,
+                            Price = 30.0,
                             RouteId = 1,
                             TypeOfClass = "AC2",
                             TypeOfTrain = "SF"
@@ -806,7 +808,7 @@ namespace Railway_Group01.Migrations
                         {
                             Id = 5,
                             DistanceRange = 12000,
-                            Price = 5.0,
+                            Price = 50.0,
                             RouteId = 1,
                             TypeOfClass = "GE",
                             TypeOfTrain = "SF"
@@ -815,7 +817,7 @@ namespace Railway_Group01.Migrations
                         {
                             Id = 6,
                             DistanceRange = 12000,
-                            Price = 27.0,
+                            Price = 40.0,
                             RouteId = 1,
                             TypeOfClass = "AC1",
                             TypeOfTrain = "F"
@@ -860,7 +862,7 @@ namespace Railway_Group01.Migrations
                         {
                             Id = 11,
                             DistanceRange = 12000,
-                            Price = 25.0,
+                            Price = 36.0,
                             RouteId = 1,
                             TypeOfClass = "AC1",
                             TypeOfTrain = "S"
@@ -905,7 +907,7 @@ namespace Railway_Group01.Migrations
                         {
                             Id = 16,
                             DistanceRange = 18000,
-                            Price = 30.0,
+                            Price = 55.0,
                             RouteId = 2,
                             TypeOfClass = "AC1",
                             TypeOfTrain = "SF"
@@ -1464,132 +1466,20 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 2,
-                            Distance = 411,
-                            EndStationId = 2,
+                            Distance = 1726,
+                            EndStationId = 4,
                             StartStationId = 1
                         },
                         new
                         {
                             Id = 3,
-                            Distance = 627,
-                            EndStationId = 3,
-                            StartStationId = 2
+                            Distance = 1726,
+                            EndStationId = 1,
+                            StartStationId = 4
                         },
                         new
                         {
                             Id = 4,
-                            Distance = 1038,
-                            EndStationId = 3,
-                            StartStationId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Distance = 1038,
-                            EndStationId = 3,
-                            StartStationId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Distance = 1315,
-                            EndStationId = 4,
-                            StartStationId = 2
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Distance = 1315,
-                            EndStationId = 4,
-                            StartStationId = 2
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Distance = 688,
-                            EndStationId = 4,
-                            StartStationId = 3
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Distance = 1726,
-                            EndStationId = 4,
-                            StartStationId = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Distance = 1726,
-                            EndStationId = 4,
-                            StartStationId = 1
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Distance = 1726,
-                            EndStationId = 1,
-                            StartStationId = 4
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Distance = 688,
-                            EndStationId = 3,
-                            StartStationId = 4
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Distance = 1315,
-                            EndStationId = 2,
-                            StartStationId = 4
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Distance = 1315,
-                            EndStationId = 2,
-                            StartStationId = 4
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Distance = 627,
-                            EndStationId = 2,
-                            StartStationId = 3
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Distance = 1038,
-                            EndStationId = 1,
-                            StartStationId = 3
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Distance = 1038,
-                            EndStationId = 1,
-                            StartStationId = 3
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Distance = 411,
-                            EndStationId = 1,
-                            StartStationId = 2
-                        },
-                        new
-                        {
-                            Id = 19,
-                            Distance = 1726,
-                            EndStationId = 1,
-                            StartStationId = 4
-                        },
-                        new
-                        {
-                            Id = 20,
                             Distance = 1726,
                             EndStationId = 1,
                             StartStationId = 4
@@ -1637,7 +1527,7 @@ namespace Railway_Group01.Migrations
                         {
                             Id = 1,
                             ArrivalStationId = 2,
-                            DelayTime = 15,
+                            DelayTime = 13,
                             DepartureStationId = 1,
                             Distance = 411,
                             RouteId = 1,
@@ -1666,392 +1556,72 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 4,
-                            ArrivalStationId = 4,
-                            DelayTime = 13,
+                            ArrivalStationId = 3,
+                            DelayTime = 10,
                             DepartureStationId = 1,
-                            Distance = 1726,
-                            RouteId = 1,
-                            TravelTime = 36.0
+                            Distance = 1038,
+                            RouteId = 2,
+                            TravelTime = 21.399999999999999
                         },
                         new
                         {
                             Id = 5,
-                            ArrivalStationId = 2,
-                            DelayTime = 15,
-                            DepartureStationId = 1,
-                            Distance = 411,
+                            ArrivalStationId = 4,
+                            DelayTime = 12,
+                            DepartureStationId = 3,
+                            Distance = 688,
                             RouteId = 2,
-                            TravelTime = 8.0
+                            TravelTime = 10.6
                         },
                         new
                         {
                             Id = 6,
                             ArrivalStationId = 3,
-                            DelayTime = 13,
-                            DepartureStationId = 2,
-                            Distance = 627,
+                            DelayTime = 10,
+                            DepartureStationId = 4,
+                            Distance = 688,
                             RouteId = 3,
-                            TravelTime = 12.4
+                            TravelTime = 12.6
                         },
                         new
                         {
                             Id = 7,
                             ArrivalStationId = 2,
-                            DelayTime = 15,
-                            DepartureStationId = 1,
-                            Distance = 411,
-                            RouteId = 4,
-                            TravelTime = 8.0
+                            DelayTime = 12,
+                            DepartureStationId = 3,
+                            Distance = 627,
+                            RouteId = 3,
+                            TravelTime = 13.6
                         },
                         new
                         {
                             Id = 8,
-                            ArrivalStationId = 3,
-                            DelayTime = 13,
+                            ArrivalStationId = 1,
+                            DelayTime = 12,
                             DepartureStationId = 2,
-                            Distance = 627,
-                            RouteId = 4,
-                            TravelTime = 12.4
+                            Distance = 411,
+                            RouteId = 3,
+                            TravelTime = 8.5999999999999996
                         },
                         new
                         {
                             Id = 9,
-                            ArrivalStationId = 3,
-                            DelayTime = 14,
-                            DepartureStationId = 1,
-                            Distance = 1038,
+                            ArrivalStationId = 2,
+                            DelayTime = 12,
+                            DepartureStationId = 4,
+                            Distance = 1315,
                             RouteId = 4,
-                            TravelTime = 20.399999999999999
+                            TravelTime = 22.600000000000001
                         },
                         new
                         {
                             Id = 10,
-                            ArrivalStationId = 3,
-                            DelayTime = 15,
-                            DepartureStationId = 1,
-                            Distance = 1038,
-                            RouteId = 5,
-                            TravelTime = 19.5
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ArrivalStationId = 3,
-                            DelayTime = 13,
-                            DepartureStationId = 2,
-                            Distance = 627,
-                            RouteId = 6,
-                            TravelTime = 12.4
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ArrivalStationId = 4,
+                            ArrivalStationId = 1,
                             DelayTime = 12,
-                            DepartureStationId = 3,
-                            Distance = 688,
-                            RouteId = 6,
-                            TravelTime = 15.6
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ArrivalStationId = 4,
-                            DelayTime = 13,
-                            DepartureStationId = 2,
-                            Distance = 1315,
-                            RouteId = 6,
-                            TravelTime = 28.0
-                        },
-                        new
-                        {
-                            Id = 14,
-                            ArrivalStationId = 4,
-                            DelayTime = 13,
-                            DepartureStationId = 2,
-                            Distance = 1315,
-                            RouteId = 7,
-                            TravelTime = 27.0
-                        },
-                        new
-                        {
-                            Id = 15,
-                            ArrivalStationId = 4,
-                            DelayTime = 12,
-                            DepartureStationId = 3,
-                            Distance = 688,
-                            RouteId = 8,
-                            TravelTime = 15.6
-                        },
-                        new
-                        {
-                            Id = 16,
-                            ArrivalStationId = 2,
-                            DelayTime = 15,
-                            DepartureStationId = 1,
-                            Distance = 411,
-                            RouteId = 9,
-                            TravelTime = 8.0
-                        },
-                        new
-                        {
-                            Id = 17,
-                            ArrivalStationId = 4,
-                            DelayTime = 13,
-                            DepartureStationId = 2,
-                            Distance = 1315,
-                            RouteId = 9,
-                            TravelTime = 27.0
-                        },
-                        new
-                        {
-                            Id = 18,
-                            ArrivalStationId = 4,
-                            DelayTime = 14,
-                            DepartureStationId = 1,
-                            Distance = 1726,
-                            RouteId = 9,
-                            TravelTime = 35.0
-                        },
-                        new
-                        {
-                            Id = 19,
-                            ArrivalStationId = 3,
-                            DelayTime = 15,
-                            DepartureStationId = 1,
-                            Distance = 1038,
-                            RouteId = 10,
-                            TravelTime = 18.0
-                        },
-                        new
-                        {
-                            Id = 20,
-                            ArrivalStationId = 4,
-                            DelayTime = 12,
-                            DepartureStationId = 3,
-                            Distance = 688,
-                            RouteId = 10,
-                            TravelTime = 14.0
-                        },
-                        new
-                        {
-                            Id = 21,
-                            ArrivalStationId = 4,
-                            DelayTime = 14,
-                            DepartureStationId = 1,
-                            Distance = 1726,
-                            RouteId = 10,
-                            TravelTime = 32.0
-                        },
-                        new
-                        {
-                            Id = 22,
-                            ArrivalStationId = 3,
-                            DelayTime = 15,
-                            DepartureStationId = 4,
-                            Distance = 688,
-                            RouteId = 11,
-                            TravelTime = 15.6
-                        },
-                        new
-                        {
-                            Id = 23,
-                            ArrivalStationId = 2,
-                            DelayTime = 13,
-                            DepartureStationId = 3,
-                            Distance = 627,
-                            RouteId = 11,
-                            TravelTime = 12.4
-                        },
-                        new
-                        {
-                            Id = 24,
-                            ArrivalStationId = 1,
-                            DelayTime = 15,
                             DepartureStationId = 2,
                             Distance = 411,
-                            RouteId = 11,
-                            TravelTime = 8.0
-                        },
-                        new
-                        {
-                            Id = 25,
-                            ArrivalStationId = 1,
-                            DelayTime = 15,
-                            DepartureStationId = 4,
-                            Distance = 1726,
-                            RouteId = 11,
-                            TravelTime = 36.0
-                        },
-                        new
-                        {
-                            Id = 26,
-                            ArrivalStationId = 3,
-                            DelayTime = 15,
-                            DepartureStationId = 4,
-                            Distance = 688,
-                            RouteId = 12,
-                            TravelTime = 15.6
-                        },
-                        new
-                        {
-                            Id = 27,
-                            ArrivalStationId = 3,
-                            DelayTime = 15,
-                            DepartureStationId = 4,
-                            Distance = 688,
-                            RouteId = 13,
-                            TravelTime = 15.6
-                        },
-                        new
-                        {
-                            Id = 28,
-                            ArrivalStationId = 2,
-                            DelayTime = 13,
-                            DepartureStationId = 3,
-                            Distance = 627,
-                            RouteId = 13,
-                            TravelTime = 12.4
-                        },
-                        new
-                        {
-                            Id = 29,
-                            ArrivalStationId = 2,
-                            DelayTime = 14,
-                            DepartureStationId = 4,
-                            Distance = 1315,
-                            RouteId = 13,
-                            TravelTime = 28.0
-                        },
-                        new
-                        {
-                            Id = 30,
-                            ArrivalStationId = 2,
-                            DelayTime = 14,
-                            DepartureStationId = 4,
-                            Distance = 1315,
-                            RouteId = 14,
-                            TravelTime = 27.0
-                        },
-                        new
-                        {
-                            Id = 31,
-                            ArrivalStationId = 2,
-                            DelayTime = 13,
-                            DepartureStationId = 3,
-                            Distance = 627,
-                            RouteId = 15,
-                            TravelTime = 12.4
-                        },
-                        new
-                        {
-                            Id = 32,
-                            ArrivalStationId = 2,
-                            DelayTime = 13,
-                            DepartureStationId = 3,
-                            Distance = 627,
-                            RouteId = 16,
-                            TravelTime = 12.4
-                        },
-                        new
-                        {
-                            Id = 33,
-                            ArrivalStationId = 1,
-                            DelayTime = 15,
-                            DepartureStationId = 2,
-                            Distance = 411,
-                            RouteId = 16,
-                            TravelTime = 8.0
-                        },
-                        new
-                        {
-                            Id = 34,
-                            ArrivalStationId = 1,
-                            DelayTime = 14,
-                            DepartureStationId = 3,
-                            Distance = 1038,
-                            RouteId = 16,
-                            TravelTime = 20.399999999999999
-                        },
-                        new
-                        {
-                            Id = 35,
-                            ArrivalStationId = 1,
-                            DelayTime = 14,
-                            DepartureStationId = 3,
-                            Distance = 1038,
-                            RouteId = 17,
-                            TravelTime = 19.5
-                        },
-                        new
-                        {
-                            Id = 36,
-                            ArrivalStationId = 1,
-                            DelayTime = 15,
-                            DepartureStationId = 2,
-                            Distance = 411,
-                            RouteId = 18,
-                            TravelTime = 8.0
-                        },
-                        new
-                        {
-                            Id = 37,
-                            ArrivalStationId = 3,
-                            DelayTime = 15,
-                            DepartureStationId = 4,
-                            Distance = 688,
-                            RouteId = 19,
-                            TravelTime = 14.0
-                        },
-                        new
-                        {
-                            Id = 38,
-                            ArrivalStationId = 1,
-                            DelayTime = 14,
-                            DepartureStationId = 3,
-                            Distance = 1038,
-                            RouteId = 19,
-                            TravelTime = 18.0
-                        },
-                        new
-                        {
-                            Id = 39,
-                            ArrivalStationId = 1,
-                            DelayTime = 15,
-                            DepartureStationId = 4,
-                            Distance = 1726,
-                            RouteId = 19,
-                            TravelTime = 32.0
-                        },
-                        new
-                        {
-                            Id = 40,
-                            ArrivalStationId = 2,
-                            DelayTime = 15,
-                            DepartureStationId = 4,
-                            Distance = 1315,
-                            RouteId = 20,
-                            TravelTime = 27.0
-                        },
-                        new
-                        {
-                            Id = 41,
-                            ArrivalStationId = 1,
-                            DelayTime = 13,
-                            DepartureStationId = 2,
-                            Distance = 411,
-                            RouteId = 20,
-                            TravelTime = 8.0
-                        },
-                        new
-                        {
-                            Id = 42,
-                            ArrivalStationId = 1,
-                            DelayTime = 15,
-                            DepartureStationId = 4,
-                            Distance = 1726,
-                            RouteId = 20,
-                            TravelTime = 35.0
+                            RouteId = 4,
+                            TravelTime = 7.5999999999999996
                         });
                 });
 
@@ -2091,218 +1661,74 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1,
-                            EndAt = new DateTime(2023, 12, 3, 18, 12, 0, 0, DateTimeKind.Unspecified),
+                            EndAt = new DateTime(2023, 11, 27, 19, 12, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 1,
                             ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 6, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartAt = new DateTime(2023, 11, 26, 6, 0, 0, 0, DateTimeKind.Unspecified),
                             TrainCode = "SE801"
                         },
                         new
                         {
                             Id = 2,
-                            EndAt = new DateTime(2023, 12, 2, 8, 15, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 2,
+                            EndAt = new DateTime(2023, 11, 28, 2, 30, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 1,
                             ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE801"
+                            StartAt = new DateTime(2023, 11, 26, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            TrainCode = "SE601"
                         },
                         new
                         {
                             Id = 3,
-                            EndAt = new DateTime(2023, 12, 2, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 3,
+                            EndAt = new DateTime(2023, 11, 28, 7, 10, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 1,
                             ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 8, 28, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE801"
+                            StartAt = new DateTime(2023, 11, 26, 19, 20, 0, 0, DateTimeKind.Unspecified),
+                            TrainCode = "SE201"
                         },
                         new
                         {
                             Id = 4,
-                            EndAt = new DateTime(2023, 12, 3, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 8,
+                            EndAt = new DateTime(2023, 11, 27, 13, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 2,
                             ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 21, 12, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE801"
+                            StartAt = new DateTime(2023, 11, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            TrainCode = "SE401"
                         },
                         new
                         {
                             Id = 5,
-                            EndAt = new DateTime(2023, 12, 2, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 4,
+                            EndAt = new DateTime(2023, 11, 27, 20, 32, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 3,
                             ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE801"
+                            StartAt = new DateTime(2023, 11, 26, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TrainCode = "SE701"
                         },
                         new
                         {
                             Id = 6,
-                            EndAt = new DateTime(2023, 12, 3, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 6,
+                            EndAt = new DateTime(2023, 11, 29, 3, 12, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 3,
                             ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 8, 28, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE801"
+                            StartAt = new DateTime(2023, 11, 26, 11, 30, 0, 0, DateTimeKind.Unspecified),
+                            TrainCode = "SE501"
                         },
                         new
                         {
                             Id = 7,
-                            EndAt = new DateTime(2023, 12, 4, 1, 30, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 9,
+                            EndAt = new DateTime(2023, 11, 27, 13, 30, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 3,
                             ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE201"
+                            StartAt = new DateTime(2023, 11, 26, 6, 30, 0, 0, DateTimeKind.Unspecified),
+                            TrainCode = "SE101"
                         },
                         new
                         {
                             Id = 8,
-                            EndAt = new DateTime(2023, 12, 2, 22, 15, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 2,
+                            EndAt = new DateTime(2023, 11, 27, 8, 25, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 4,
                             ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE201"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            EndAt = new DateTime(2023, 12, 4, 1, 30, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 7,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 22, 27, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE201"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            EndAt = new DateTime(2023, 12, 4, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 10,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 3, 7, 30, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE401"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            EndAt = new DateTime(2023, 12, 4, 3, 10, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 5,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 3, 7, 30, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE401"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            EndAt = new DateTime(2023, 12, 4, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 8,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 4, 3, 25, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE401"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            EndAt = new DateTime(2023, 12, 3, 19, 20, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 11,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 7, 20, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE701"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            EndAt = new DateTime(2023, 12, 2, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 12,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 7, 20, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE701"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            EndAt = new DateTime(2023, 12, 3, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 15,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 23, 13, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE701"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            EndAt = new DateTime(2023, 12, 3, 19, 20, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 18,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 3, 12, 15, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE701"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            EndAt = new DateTime(2023, 12, 3, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 13,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 7, 20, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE701"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            EndAt = new DateTime(2023, 12, 3, 19, 20, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 16,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 23, 13, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE701"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            EndAt = new DateTime(2023, 12, 4, 1, 20, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 19,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 17, 20, 0, 0, DateTimeKind.Unspecified),
+                            StartAt = new DateTime(2023, 11, 26, 7, 30, 0, 0, DateTimeKind.Unspecified),
                             TrainCode = "SE301"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            EndAt = new DateTime(2023, 12, 3, 7, 20, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 12,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 2, 17, 20, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE301"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            EndAt = new DateTime(2023, 12, 4, 1, 20, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 17,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 3, 7, 34, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE301"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            EndAt = new DateTime(2023, 12, 4, 20, 13, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 20,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 3, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE101"
-                        },
-                        new
-                        {
-                            Id = 23,
-                            EndAt = new DateTime(2023, 12, 4, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 14,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 3, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE101"
-                        },
-                        new
-                        {
-                            Id = 24,
-                            EndAt = new DateTime(2023, 12, 4, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 20,
-                            ScheduleCompleted = false,
-                            StartAt = new DateTime(2023, 12, 4, 12, 13, 0, 0, DateTimeKind.Unspecified),
-                            TrainCode = "SE101"
                         });
                 });
 

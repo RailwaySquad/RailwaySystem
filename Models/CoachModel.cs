@@ -20,6 +20,6 @@ namespace Railway_Group01.Models
         public int SeatAvailable { get; set; }
         public string? Description { get; set; }
         [AllowNull]
-        public int? CoachFare { get; set; }
+        public double? CoachFare { get; set; }
     }
 }
