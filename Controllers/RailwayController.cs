@@ -26,10 +26,10 @@ namespace Railway_Group01.Controllers
             int departureId = !String.IsNullOrEmpty(departure) || int.TryParse(departure, out _) ? Int32.Parse(departure): 1;
             int arrivalId = !String.IsNullOrEmpty(arrival) || int.TryParse(arrival,out _) ? Int32.Parse(arrival):4;
 
-            List<int> routedetails = await ctx.Routes!
+            List<int> routes = await ctx.Routes!
                 .Where(x => x.StartStationId == departureId && x.EndStationId== arrivalId).Select(x=>x.Id)
                 .ToListAsync();
-            IEnumerable<Schedule> schedules = await ctx.Schedules!.Where(x=> routedetails.Contains(x.RouteId)).ToListAsync();
+            IEnumerable<Schedule> schedules = await ctx.Schedules!.Where(x=> routes.Contains(x.RouteId)).ToListAsync();
             foreach (var item in schedules)
             {
                 item.Train = await ctx.Trains!.FindAsync(item.TrainCode);
@@ -54,6 +54,28 @@ namespace Railway_Group01.Controllers
             var tupleModel = new Tuple<IEnumerable<Schedule>,IEnumerable<Coach>>(schedules,coach3);
             return View(tupleModel);
 
+        }
+
+        public async Task<IActionResult> TrainDetail(
+            [FromQuery(Name = "departure")] string departure,
+            [FromQuery(Name = "arrival")] string arrival, 
+            [FromQuery(Name = "time")] string? time)
+        {
+            int departureId = !String.IsNullOrEmpty(departure) || int.TryParse(departure, out _) ? Int32.Parse(departure) : 1;
+            int arrivalId = !String.IsNullOrEmpty(arrival) || int.TryParse(arrival, out _) ? Int32.Parse(arrival) : 4;
+            int routeId = await ctx.Routes!.Where(x => x.StartStationId == departureId && x.EndStationId == arrivalId).Select(x=>x.Id).FirstOrDefaultAsync();
+            DateTime timeS = !String.IsNullOrEmpty(time) || DateTime.TryParse(time, out _) ? DateTime.Parse(time) : DateTime.Parse("2023-11-30");
+            Console.WriteLine(timeS);
+            //Schedule sche = await ctx.Schedules!.Where(x => x.StartAt.Equals(timeS)&& x.RouteId==routeId && x.TrainCode == "SE801").Include(x=>x.Route).FirstOrDefaultAsync();
+            //Error Schedule sche = await ctx.Schedules!.Where(x => x.StartAt.Equals(timeS)&& x.RouteId==routeId).Include(x=>x.Route).FirstAsync();
+            Schedule sche = await ctx.Schedules.Where(x => x.TrainCode == "SE801").Include(x=>x.Route).FirstAsync();
+            sche.Route.StartStation = await ctx.Stations!.FindAsync(sche.Route.StartStationId);
+            sche.Route.EndStation = await ctx.Stations!.FindAsync(sche.Route.EndStationId);
+            int stop = await ctx.RouteDetailss!.Where(x => x.RouteId == routeId).CountAsync() - 2;
+            Train train = await ctx.Trains!.Include(x=>x.Schedules).Include(x=>x.CoachesData).FirstOrDefaultAsync(x=>x.TrainCode=="SE801");
+            
+            var tuple = new Tuple<Schedule, Train,int>(sche, train,stop);
+            return View(tuple);
         }
     }
 }

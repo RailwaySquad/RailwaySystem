@@ -1,0 +1,329 @@
+﻿@model Tuple<Railway_Group01.Data.Schedule,Railway_Group01.Data.Train,int>
+@{
+    ViewData["Title"] = "TrainDetail";
+    Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+}
+
+<div class="row position-relative " style=" padding-top: 65px; ">
+    <div class="col-12 bg-white shadow position-fixed start-0 w-100 px-4 py-0" style="z-index:3">
+        <nav id="navbar-example2" class="navbar px-5 pb-0" >
+            <ul class="nav nav-underline">
+                <li class="nav-item" style="width:120px">
+                    <a class="nav-link text-uppercase" href="#overview">
+                        <span class="text-secondary text-decoration-none">OVERVIEW</span>
+                    </a>
+                </li>
+                <li class="nav-item" style="width:120px">
+                    <a class="nav-link text-uppercase" href="#availability">
+                        <span class="text-secondary text-decoration-none">AVAILABILITY</span>
+                    </a>
+                </li>
+                <li class="nav-item" style="width:120px">
+                    <a class="nav-link text-uppercase" href="#schedule">
+                        <span class="text-secondary text-decoration-none">SCHEDULE</span>
+                    </a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+    <div class="col-lg-8 mx-auto mb-3" style="margin-top: 60px; ">
+        <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+            <div class="data-section" id="overview">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a class="text-decoration-none text-orange" href="/trains">Trains</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a class="text-decoration-none text-orange" href="/trains/trains-list">Trains List</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">@Html.DisplayFor(x=>Model.Item2.TrainCode)</li>
+                    </ol>
+                </nav>
+                <div class="card rounded-0 shadow my-3">
+                    <div class="card-body">
+                        <div class="border-bottom">
+                            <h1 style="color: #ee6d3b; font-weight:300" >Schedule @Model.Item1.Route.StartStation.StationCode @Model.Item1.Route.EndStation.StationCode @Model.Item2.TrainCode Train</h1>
+                        </div>
+                        <div class="d-flex flex-row justify-content-around py-5">
+                            <div class="lh-2 row">
+                                <div class="col-3 align-top pt-2" style="width: 100px;">
+                                    <div class="h6 ">@Html.DisplayFor(x=>x.Item1.Route.StartStation.StationCode)</div>
+                                    <div class="fw-600" style="font-size:17px">@Html.DisplayFor(x=>x.Item1.StartAt.TimeOfDay)</div>
+                                    <div class="text-secondary text-decoration-none">@Html.DisplayFor(x=>x.Item1.Route.StartStation.StationName)</div>
+                                </div>
+                                <div class="col-6 d-flex flex-column justify-content-center align-items-center" style="width: 200px;padding: 0 10px 10px;">
+                                    <div class="text-center w-100">15hr</div>
+                                    <div class="position-relative w-100">
+                                        <div class="progress" role="progressbar" aria-label="Progress" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="height: 1px;">
+                                            <div class="progress-bar" style="width: 100%"></div>
+                                        </div>
+                                        <a class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 0.5rem; height:1rem;"></a>
+                                        <a class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 0.5rem; height:1rem;"></a>
+                                    </div>
+                                    <div class="text-center w-100">@Model.Item3 stops</div>
+                                </div>
+                                <div class="col-3 align-top pt-2"style="width: 100px;">
+                                    <div class="h6 ">@Html.DisplayFor(x=>x.Item1.Route.EndStation.StationCode)</div>
+                                    <div class="fw-600" style="font-size:17px">@Html.DisplayFor(x=>x.Item1.EndAt.TimeOfDay)</div>
+                                    <div class="text-secondary text-decoration-none">@Html.DisplayFor(x=>x.Item1.Route.EndStation.StationName)</div>
+                                </div>
+                            </div>
+                            <div class="lh-2 pt-3" >
+                                <table class="table table-borderless">
+                                    <tr>
+                                        <td>
+                                            <i class="fa-solid fa-utensils me-2"></i>Pantry
+                                        </td>
+                                        <td>
+                                            <i class="fa-solid fa-clock-rotate-left me-2"></i>Superfast
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <i class="fa-solid fa-moon me-2"></i>Overnight
+                                        </td>
+                                        <td>
+                                            <i class="fa-solid fa-bell-concierge me-2"></i>Catering
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="data-section my-3" id="availability">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 style="color: #ee6d3b; margin:20px;font-weight:300">@Model.Item1.Route.StartStation.StationCode - @Model.Item1.Route.EndStation.StationCode Express @Model.Item2.Name Ticket Prices</h2>
+                        <p>@Html.DisplayFor(x=>Model.Item2.Description)</p>
+                        <div class="row p-3">
+                            <form class=" col-6 d-flex flex-row justify-content-around align-items-center">
+                                <div  class="form-floating border-bottom">
+                                    <select class="form-select  border-0" id="fromStation" name="fromStation"style=" width: 170px;" >
+                                        <option></option>
+                                    </select>
+                                    <label for="fromStation">From</label>
+                                </div>
+                                <div class="d-block" style="width:100px">
+                                    <i class="fa-solid fa-arrow-right-long fa-lg"></i>
+                                </div>
+                                <div  class="form-floating border-bottom">
+                                    <select class="form-select  border-0" id="toStation" name="toStation" style=" width: 170px;" >
+                                        <option></option>
+                                    </select>
+                                    <label for="toStation">To</label>
+                                </div>
+                                <div class="form-floating border-bottom" id="quota"  name="quota">
+                                    <select class="form-select  border-0" style=" width: 150px;" >
+                                        <option>General</option>
+                                        <option>Luxury</option>
+                                    </select>
+                                    <label for="quota">Quota</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <ul class="nav-class nav-class-fare">
+                        @if (Model.Item2.CoachesData.Any())
+                        {
+                            @foreach (var item in Model.Item2.CoachesData)
+                            {
+                                if (item.Equals(Model.Item2.CoachesData.First()))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">@item.Name</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">@item.Name</a>
+                                    </li>
+                                }
+                            }
+                        }
+                    </ul>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-center"> November 2023 </div>
+                            <div class="d-block">
+                                <div class="d-inline-block day-item red">
+                                    <div class="date">Mon, 20 Nov</div>
+                                    <div>
+                                        <div class="avail-text"> WL11</div>
+                                        <div class="chance-text">53% Chances</div>
+                                        <div class="sync-text">42min</div>
+                                    </div>
+                                </div>
+                                <div class="day-item d-inline-block red">
+                                    <div class="date">Tue, 21 Nov</div>
+                                    <div>
+                                        <div class="avail-text"> WL13</div>
+                                        <div class="chance-text">69% Chances</div>
+                                        <div class="sync-text">42min</div>
+                                    </div>
+                                </div>
+                                <div class="day-item d-inline-block red">
+                                    <div class="date">Wed, 22 Nov</div>
+                                    <div>
+                                        <div class="avail-text"> WL9</div>
+                                        <div class="chance-text">82% Chances</div>
+                                        <div class="sync-text"></div>
+                                    </div>
+                                </div>
+                                <div class="day-item d-inline-block red">
+                                    <div class="date">Thu, 23 Nov</div>
+                                    <div>
+                                        <div class="avail-text"> WL6</div>
+                                        <div class="chance-text">86% Chances</div>
+                                        <div class="sync-text"></div>
+                                    </div>
+                                </div>
+                                <div class="day-item d-inline-block red">
+                                    <div class="date">Fri, 24 Nov</div>
+                                    <div>
+                                        <div class="avail-text"> WL10</div>
+                                        <div class="chance-text">84% Chances</div>
+                                        <div class="sync-text"></div>
+                                    </div>
+                                </div>
+                                <div class="day-item d-inline-block red">
+                                    <div class="date">Sat, 25 Nov</div>
+                                    <div>
+                                        <div class="avail-text"> WL12</div>
+                                        <div class="chance-text">85% Chances</div>
+                                        <div class="sync-text"></div>
+                                    </div>
+                                </div>
+                                <div class="day-item d-inline-block red">
+                                    <div class="date">Sun, 26 Nov</div>
+                                    <div>
+                                        <div class="avail-text"> WL9</div>
+                                        <div class="chance-text">85% Chances</div>
+                                        <div class="sync-text"></div>
+                                    </div>
+                                </div>
+                                <div class="day-item d-inline-block green">
+                                    <div class="date">Mon, 27 Nov</div>
+                                    <div>
+                                        <div class="avail-text"> WL6</div>
+                                        <div class="chance-text">87% Chances</div>
+                                        <div class="sync-text"></div>
+                                    </div>
+                                </div><a class="day-item d-inline-block calendar-page-link"
+                                    href="/trains/12916/seat-availability">View 4 Months Calendar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+            </div>
+            
+            <div class="data-section my-3" id="availability" >
+                <h2 class="heading my-4">Train Details</h2>
+                <table class="table w-100  table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="w-50">Classes</td>
+                            <td class="w-50 fw-bold">1A, 2A, 3A, 3E, SL</td>
+                        </tr>
+                        <tr >
+                            <td class="w-50">Service Days</td>
+                            <td class="w-50 fw-bold"> Mon, Tue, Wed, Thu, Fri, Sat, Sun</td>
+                        </tr>
+                        <tr >
+                            <td class="w-50">Stops</td>
+                            <td class="w-50 fw-bold">20</td>
+                        </tr>
+                        <tr >
+                            <td class="w-50">Duration</td>
+                            <td class="w-50 fw-bold">15hr </td>
+                        </tr>
+                        <tr >
+                            <td class="w-50">Type</td>
+                            <td class="w-50 fw-bold">Mail Express</td>
+                        </tr>
+                        <tr>
+                            <td class="w-50">Pantry</td>
+                            <td class="w-50 fw-bold">No</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="data-section my-4" id="schedule">
+                <h3 class="fw-400 my-5">Ashram Express 12916 Schedule, Routes &amp; Time Table</h3>
+                <div class="description">Train no. 12916 Ashram Express is one of the major trains on this route for
+                    travellers. It starts from Old Delhi station and ends at Ahmedabad Jn. Due to its 21 stoppage
+                    stations, the total time taken by this train is around -9hr . You can easily 
+                    <a class="u-link" href="https://www.ixigo.com/trains">book train tickets</a> at ixigo for any stations between Old
+                    Delhi and Ahmedabad Jn and enjoy amazing deals.
+                </div>
+                <table class="table my-3 table-bordered">
+                    <thead>
+                        <tr class="p-2">
+                            <th class="table-cell code">Stn Code</th>
+                            <th class="table-cell station-name">Stn Name</th>
+                            <th class="table-cell">Arrives</th>
+                            <th class="table-cell">Departs</th>
+                            <th class="table-cell">Stop time</th>
+                            <th class="table-cell">Distance</th>
+                            <th class="table-cell platform">Platform</th>
+                            <th class="table-cell">Route</th>
+                            <th class="table-cell day">Day</th>
+                            <th class="table-cell delay">Avg delay</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr>
+                            <td class="table-cell code">DLI</td>
+                            <td class="table-cell station-name"><a title="trains from Old Delhi"
+                                    href="/trains/OldDelhi-DLI">Old Delhi</a></td>
+                            <td class="table-cell">starts</td>
+                            <td class="table-cell">15:20</td>
+                            <td class="table-cell">-</td>
+                            <td class="table-cell">0</td>
+                            <td class="table-cell platform">3</td>
+                            <td class="table-cell">1</td>
+                            <td class="table-cell day">1</td>
+                            <td class="table-cell delay">On Time</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell code">DEC</td>
+                            <td class="table-cell station-name"><a title="trains from Delhi Cantt"
+                                    href="/trains/DelhiCantt-DEC">Delhi Cantt</a></td>
+                            <td class="table-cell">15:48</td>
+                            <td class="table-cell">15:50</td>
+                            <td class="table-cell">2min</td>
+                            <td class="table-cell">14 km</td>
+                            <td class="table-cell platform">1</td>
+                            <td class="table-cell">1</td>
+                            <td class="table-cell day">1</td>
+                            <td class="table-cell delay">4min</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell code">GGN</td>
+                            <td class="table-cell station-name"><a title="trains from Gurgaon"
+                                    href="/trains/Gurgaon-GGN">Gurgaon</a></td>
+                            <td class="table-cell">16:06</td>
+                            <td class="table-cell">16:08</td>
+                            <td class="table-cell">2min</td>
+                            <td class="table-cell">31 km</td>
+                            <td class="table-cell platform">1</td>
+                            <td class="table-cell">1</td>
+                            <td class="table-cell day">1</td>
+                            <td class="table-cell delay">8min</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+                
+        </div>
+    </div>
+</div>
+

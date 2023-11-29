@@ -10,7 +10,6 @@ namespace Railway_Group01.Data
         public int Id { get; set; }
         [Required]
         public string? TrainCode { get; set; }
-        [ForeignKey("TrainCode")]
         public Train? Trains { get; set; }
         [Required]
         public string? Name { get; set; }

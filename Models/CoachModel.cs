@@ -1,4 +1,5 @@
-﻿using Railway_Group01.Data;
+﻿
+using Railway_Group01.Data;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
@@ -8,6 +9,8 @@ namespace Railway_Group01.Models
     public class CoachModel
     {
         public int Id { get; set; }
+        [AllowNull]
+        public int? Index { get; set; }
         public string? TrainCode { get; set; }
         public Train? Trains { get; set; }
         public string? Name { get; set; }

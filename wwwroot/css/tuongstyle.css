@@ -137,3 +137,105 @@ html {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.nav-class {
+    --bs-nav-link-padding-x: 1rem;
+    --bs-nav-link-padding-y: 0.5rem;
+    --bs-nav-link-font-weight:;
+    --bs-nav-link-color: #EC5B24;
+    --bs-nav-link-hover-color: #ee6d3b;
+    --bs-nav-link-disabled-color: rgba(222, 226, 230, 0.75);
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.nav-class-fare {
+    --bs-nav-underline-gap: 1rem;
+    --bs-nav-underline-border-width: 0.125rem;
+    --bs-nav-underline-link-active-color: #EC5B24;
+    gap: var(--bs-nav-underline-gap);
+}
+    .nav-class-fare .nav-link.active, .nav-class-fare .show > .nav-link {
+        font-weight: 700;
+        color: #EC5B24;
+        border-bottom-color: #EC5B24;
+    }
+    .nav-class-fare .nav-link {
+        padding-right: 0;
+        padding-left: 0;
+        border-bottom: var(--bs-nav-underline-border-width) solid transparent;
+        width:120px;
+        text-align:center;
+        font-size:18px;
+        font-weight:600;
+    }
+.day-item {
+    width: 120px;
+    height: 120px;
+    margin: 4px 4px 0 0;
+    padding-top:5px;
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 4px;
+    text-align: center;
+    vertical-align: top;
+    position: relative;
+    cursor: pointer;
+}
+    .day-item.chance-text {
+        font-size: 11px;
+        letter-spacing: 0;
+        text-align: center;
+        color: rgba(0,0,0,.64)
+    }
+    .day-item.sync-text {
+        position: absolute;
+        font-size: 11px;
+        letter-spacing: 0;
+        text-align: center;
+        color: rgba(0,0,0,.64);
+        left: 0;
+        right: 0;
+        bottom: 4px
+    }
+    .day-item.date {
+        font-size: 16px;
+        color: rgba(0,0,0,.87);
+        margin: 10px 0 5px
+    }
+    .day-item.red {
+        background: rgba(208,1,27,.05);
+        border-color: rgba(208,1,27,.2)
+    }
+        .day-item.red .avail-text {
+            color: #dc3545;
+            font-weight: 600;
+            font-size: 18px
+        }
+    .day-item.green {
+        background: rgba(85,155,9,.1);
+        border-color: rgba(85,155,9,.2)
+    }
+        .day-item.green .avail-text {
+            color: #198754;
+            font-weight: 600;
+            font-size: 18px
+        }
+    .day-item.na {
+            background: #f2f2f2;
+            border-color: #d8d8d8
+        }
+        .day-item.na .avail-text {
+            color: #6c757d;
+            font-weight: 600;
+            font-size: 18px
+        }
+.day-item.calendar-page-link {
+    text-align: center;
+    text-decoration: none;
+    color: #EC5B24;
+    padding: 35px 10px;
+    border-color: #EC5B24;
+    font-size: 14px;
+    font-weight: 400
+}
