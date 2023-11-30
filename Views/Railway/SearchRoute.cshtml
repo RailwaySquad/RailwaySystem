@@ -304,7 +304,7 @@
                                 <div class=" d-flex flex-row justify-content-around my-4">
                                     @if(item.Train.Coaches.Any()){
                                         @foreach(var detail in item.Train.Coaches){
-                                            <a role="button" class="text-decoration-none text-black">
+                                            <a role="button" class="text-decoration-none text-black" data-bs-toggle="collapse" href=".@item.TrainCode" aria-expanded="false" aria-controls="@item.TrainCode">
                                                 <div class="card">
                                                     <div class="card-body d-flex flex-column  p-2">
                                                         <div class="fs-6 text-center" style="color: #EC5B24;">Coach @Html.DisplayFor(x=>detail.Name)</div>
@@ -312,110 +312,928 @@
                                                         <div>
                                                             Cost: @String.Format(CultureInfo.InvariantCulture,"{0:0,0}", detail.CoachFare) VND
                                                         </div>
-                                                        <small class="text-secondary">49 min ago</small>
                                                     </div>
                                                 </div>
                                             </a>
                                         }
                                     }
-                                    @* <a data-bs-toggle="collapse" href=".collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" class="text-decoration-none text-black">
-                                        <div class="card ">
-                                            <div class="card-body d-flex flex-column p-2">
-                                                <div class="text-center fs-6" style="color: #EC5B24;">Toa B</div>
-                                                <div>Last: 20</div>
-                                                <div>Cost: 20.000.000 VND</div>
-                                                <small class="text-secondary">49 min ago</small>
-                                            </div>
-                                        </div>
-                                    </a> *@
                                 </div>
-                                <div class="collapse collapseExample">
+                                <div class="collapse @item.TrainCode">
                                     <div class="d-flex flex-row align-items-center pt-3">
-                                        <div class="w-100 row ">
-                                            <div class="col-10 mx-auto rounded-2 border border-primary">
-                                                <div class="row p-3">
-                                                    <div class="col-3 row my-2">
-                                                        <input type="checkbox" class="btn-check " id="coarch-1" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-1">A01</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-2" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-2">A02</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-3" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-3">A03</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-4" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-4">A04</label>
+                                        
+                                        <div class="row et-car-floor">
+                                            <div class="et-car-door"></div>
+                                            <div class="et-car-nm-64-half-block">
+                                                <div class="et-full-width">
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">1</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-3 row my-2">
-                                                        <input type="checkbox" class="btn-check " id="coarch-5" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-5">A05</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-6" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-6">A06</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-7" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-7">A07</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-8" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-8">A08</label>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">8</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-3 row my-2">
-                                                        <input type="checkbox" class="btn-check " id="coarch-9" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-9">A09</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-10" autocomplete="off" checked>
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-10">A10</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-11" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-11">A11</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-12" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-12">A12</label>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">9</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-3 row my-2">
-                                                        <input type="checkbox" class="btn-check " id="coarch-13" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-13">A13</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-14" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-14">A14</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-15" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-15">A15</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-16" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-16">A16</label>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">16</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-3 row my-2">
-                                                        <input type="checkbox" class="btn-check " id="coarch-17" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-17">A17</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-18" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-18">A18</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-19" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-19">A19</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-20" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-20">A20</label>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">17</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-3 row my-2">
-                                                        <input type="checkbox" class="btn-check " id="coarch-21" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-21">A21</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-22" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-22">A22</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-23" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-23">A23</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-24" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-24">A24</label>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">24</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-3 row my-2">
-                                                        <input type="checkbox" class="btn-check " id="coarch-25" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-25">A25</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-26" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-26">A26</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-27" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-27">A27</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-28" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-28">A28</label>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">25</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-3 row my-2">
-                                                        <input type="checkbox" class="btn-check " id="coarch-29" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-21">A29</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-30" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-22">A30</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-31" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-23">A31</label>
-                                                        <input type="checkbox" class="btn-check " id="coarch-32" autocomplete="off">
-                                                        <label class="btn btn-outline-warning me-2 col-4 mb-2  " for="coarch-24">A32</label>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">32</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">2</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-booked">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">7</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-avaiable">
+                                                                    <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">10</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">15</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">18</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">23</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">26</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">31</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-way et-full-width"></div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-avaiable">
+                                                                    <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">3</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">6</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">11</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">14</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">19</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">22</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">27</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">30</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">4</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">5</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">12</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">13</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">20</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">21</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">28</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                <div class="et-sit-sur text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">29</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="et-car-seperator">
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <div class="et-car-nm-64-half-block">
+                                                <div class="et-full-width">
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">33</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">40</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">41</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">48</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">49</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">56</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">57</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                                                                    <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">64</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">34</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">39</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">42</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">47</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">50</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                                                                    <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">55</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">58</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                                                                    <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">63</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-way et-full-width"></div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-booked">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">35</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">38</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                                                                    <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">43</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">46</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                                                                    <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">51</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                                                                    <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">54</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                                                                    <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">59</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                                                                    <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">62</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">36</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                                                                    <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">37</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">44</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">45</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">52</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                                                                    <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">53</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">60</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
+                                                        <div class="et-car-seat-right et-seat-h-35">
+                                                            <div class="et-col-84 et-sit-sur-outer-invert">
+                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
+                                                                    <div data-popover="Ticket sold" data-popover-title="Not available seat"
+                                                                            data-popover-trigger="mouseenter" data-popover-placement="top"
+                                                                            class="et-sit-no ng-scope">
+                                                                        <span ng-show="!seat.waiting" class="ng-binding">61</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="et-car-door"></div>
                                         </div>
                                     </div>
                                 </div>

@@ -20,7 +20,7 @@ namespace Railway_Group01.Data
         public ICollection<Schedule>? Schedules { get; set; }
         [ForeignKey("TrainCode")]
         public ICollection<Coach>? CoachesData {  get; set; }    
-        public ICollection<CoachModel>? Coaches { get; set; }
+        public ICollection<CoachDto>? Coaches { get; set; }
 
         public override string ToString()
         {

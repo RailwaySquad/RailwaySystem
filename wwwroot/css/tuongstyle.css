@@ -239,3 +239,10 @@ html {
     font-size: 14px;
     font-weight: 400
 }
+.et-car-floor {
+    border-radius: 10px;
+    border: 3px solid #385d8a;
+    margin: 0;
+    padding: 5px 10px;
+    height: 176px;
+}
