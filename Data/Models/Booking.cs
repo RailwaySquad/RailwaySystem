@@ -6,10 +6,14 @@ namespace Railway_Group01.Data
     {
         [Key]
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "User is required.")]
         public User? User { get; set; }
-        public DateTime BookAt { get; set; }
-        public List<BookingDetails>? BookingDetails { get; set; }
+
+        public DateTime? CreatedAt { get; set; }
+
+        public List<BookingDetail>? BookingDetails { get; set; }
+
         public List<Transaction>? Transactions { get; set; }
-        public List<Refund>? Refunds { get; set; }
     }
 }
