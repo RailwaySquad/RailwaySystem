@@ -8,15 +8,15 @@ namespace Railway_Group01.Data
         [Key]
         public int Id { get; set; }
 
-        [Required]
         public int ValidFrom { get; set; }
 
-        [Required]
         public int ValidTo { get; set; }
 
         [Required(ErrorMessage = "Refund Amount is required.")]
+        public int RefundAmount { get; set; }
+
         [Column(TypeName = "decimal(18, 2)")]
-        public decimal RefundAmount { get; set; }
+        public decimal RefundFee { get; set; }
 
     }
 }

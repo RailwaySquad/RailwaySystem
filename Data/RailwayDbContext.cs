@@ -59,11 +59,17 @@ public class RailwayDbContext : IdentityDbContext<User>
         builder.Entity<Station>().HasMany(p => p.DepartureRouteDetails).WithOne(p => p.DepartureStation).OnDelete(DeleteBehavior.NoAction);
         builder.Entity<Station>().HasMany(p => p.ArrivalRouteDetails).WithOne(p => p.ArrivalStation).OnDelete(DeleteBehavior.NoAction);
         
+        // m:1
         builder.Entity<CoachClass>().HasMany(p => p.Coaches).WithOne(p => p.Class);
+        builder.Entity<CoachClass>().HasMany(p => p.Fares).WithOne(p => p.Class);
         builder.Entity<Train>().HasMany(p => p.Coaches).WithOne(p => p.Train);
+        builder.Entity<Train>().HasMany(p => p.Schedules).WithOne(p => p.Train);
         builder.Entity<TrainType>().HasMany(p => p.Trains).WithOne(p => p.Type);
+        builder.Entity<TrainType>().HasMany(p => p.Fares).WithOne(p => p.TrainType);
         builder.Entity<Coach>().HasMany(p => p.Seats).WithOne(p => p.Coach);
         builder.Entity<Route>().HasMany(p => p.RouteDetails).WithOne(p => p.Route);
+        builder.Entity<Route>().HasMany(p => p.Schedules).WithOne(p => p.Route);
+        builder.Entity<Route>().HasMany(p => p.Fares).WithOne(p => p.Route);
 
         ModelBuilderExtension.Seed(builder);
     }

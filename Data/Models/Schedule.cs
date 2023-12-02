@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Railway_Group01.Data
 {
@@ -19,13 +20,17 @@ namespace Railway_Group01.Data
         [DataType(DataType.DateTime)]
         public DateTime? Arrival { get; set; }
 
-        public bool IsFinished { get; set; }
+        public bool IsFinished { get; set; } = false;
 
+        [ForeignKey("TrainCode")]
         [Required(ErrorMessage = "Train is required.")]
         public Train? Train { get; set; }
+        public string? TrainCode { get; set; }
 
+        [ForeignKey("RouteId")]
         [Required(ErrorMessage = "Route is required.")]
         public Route? Route { get; set; }
+        public int RouteId { get; set; }
 
         public List<Ticket>? Tickets { get; set; }
     }
