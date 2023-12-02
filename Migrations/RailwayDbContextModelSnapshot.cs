@@ -167,7 +167,7 @@ namespace Railway_Group01.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime?>("BookAt")
+                    b.Property<DateTime>("BookAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
@@ -177,7 +177,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Booking");
+                    b.ToTable("Bookings");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.BookingDetails", b =>
@@ -205,7 +205,7 @@ namespace Railway_Group01.Migrations
                     b.HasIndex("PNRNo")
                         .IsUnique();
 
-                    b.ToTable("BookingDetails");
+                    b.ToTable("BookingDetailss");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Coach", b =>
@@ -241,7 +241,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("TrainCode");
 
-                    b.ToTable("Coach");
+                    b.ToTable("Coachs");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Fare", b =>
@@ -274,7 +274,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("RouteId");
 
-                    b.ToTable("Fare");
+                    b.ToTable("Fares");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Feedback", b =>
@@ -311,7 +311,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Feedback");
+                    b.ToTable("Feedbacks");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Passenger", b =>
@@ -372,7 +372,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("TransactionId");
 
-                    b.ToTable("Refund");
+                    b.ToTable("Refunds");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.RefundRule", b =>
@@ -394,7 +394,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RefundRule");
+                    b.ToTable("RefundRules");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Route", b =>
@@ -420,7 +420,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("StartStationId");
 
-                    b.ToTable("Route");
+                    b.ToTable("Routes");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.RouteDetails", b =>
@@ -457,7 +457,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("RouteId");
 
-                    b.ToTable("RouteDetails");
+                    b.ToTable("RouteDetailss");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Schedule", b =>
@@ -489,7 +489,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("TrainCode");
 
-                    b.ToTable("Schedule");
+                    b.ToTable("Schedules");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Station", b =>
@@ -517,7 +517,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Station");
+                    b.ToTable("Stations");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Ticket", b =>
@@ -578,7 +578,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasKey("TrainCode");
 
-                    b.ToTable("Train");
+                    b.ToTable("Trains");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Transaction", b =>
@@ -605,7 +605,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("BookingId");
 
-                    b.ToTable("Transaction");
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.User", b =>
@@ -857,11 +857,13 @@ namespace Railway_Group01.Migrations
                         .WithMany("Schedules")
                         .HasForeignKey("RouteId");
 
-                    b.HasOne("Railway_Group01.Data.Train", null)
+                    b.HasOne("Railway_Group01.Data.Train", "Train")
                         .WithMany("Schedules")
                         .HasForeignKey("TrainCode");
 
                     b.Navigation("Route");
+
+                    b.Navigation("Train");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Ticket", b =>

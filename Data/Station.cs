@@ -6,10 +6,15 @@ namespace Railway_Group01.Data
     {
         [Key]
         public int Id { get; set; }
-        public string? Code { get; set; }
-        public string? Name { get; set; }
-        public string? NameOfDivision { get; set; }
-        public string? Zone { get; set; }
-        public string? ZipCode { get; set; }
+		[Required]
+		public string? Code { get; set; }
+		[Required]
+		public string? Name { get; set; }
+		[Required]
+		public string? NameOfDivision { get; set; }
+		[Required]
+		public string? Zone { get; set; }
+		[Required]
+		public string? ZipCode { get; set; }
     }
 }

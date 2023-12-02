@@ -75,7 +75,7 @@ namespace Railway_Group01.Areas.Identity.Pages.Account
                 user.UserName = Input.Username;
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
-                await _userManager.AddToRoleAsync(user, "Passenger");
+                await _userManager.AddToRoleAsync(user, "Passenger");   
 
                 if (result.Succeeded)
                 {

@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Railway_Group01.Migrations
 {
-    public partial class v0 : Migration
+    public partial class v1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "RefundRule",
+                name: "RefundRules",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -21,7 +21,7 @@ namespace Railway_Group01.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RefundRule", x => x.Id);
+                    table.PrimaryKey("PK_RefundRules", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -39,7 +39,7 @@ namespace Railway_Group01.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Station",
+                name: "Stations",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -52,11 +52,11 @@ namespace Railway_Group01.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Station", x => x.Id);
+                    table.PrimaryKey("PK_Stations", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Train",
+                name: "Trains",
                 columns: table => new
                 {
                     TrainCode = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -67,7 +67,7 @@ namespace Railway_Group01.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Train", x => x.TrainCode);
+                    table.PrimaryKey("PK_Trains", x => x.TrainCode);
                 });
 
             migrationBuilder.CreateTable(
@@ -117,7 +117,7 @@ namespace Railway_Group01.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Route",
+                name: "Routes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -128,21 +128,21 @@ namespace Railway_Group01.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Route", x => x.Id);
+                    table.PrimaryKey("PK_Routes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Route_Station_EndStationId",
+                        name: "FK_Routes_Stations_EndStationId",
                         column: x => x.EndStationId,
-                        principalTable: "Station",
+                        principalTable: "Stations",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Route_Station_StartStationId",
+                        name: "FK_Routes_Stations_StartStationId",
                         column: x => x.StartStationId,
-                        principalTable: "Station",
+                        principalTable: "Stations",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Coach",
+                name: "Coachs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -157,28 +157,28 @@ namespace Railway_Group01.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Coach", x => x.Id);
+                    table.PrimaryKey("PK_Coachs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Coach_Train_TrainCode",
+                        name: "FK_Coachs_Trains_TrainCode",
                         column: x => x.TrainCode,
-                        principalTable: "Train",
+                        principalTable: "Trains",
                         principalColumn: "TrainCode");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Booking",
+                name: "Bookings",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    BookAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    BookAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Booking", x => x.Id);
+                    table.PrimaryKey("PK_Bookings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Booking_Users_UserId",
+                        name: "FK_Bookings_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
@@ -291,7 +291,7 @@ namespace Railway_Group01.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Fare",
+                name: "Fares",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -305,16 +305,16 @@ namespace Railway_Group01.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Fare", x => x.Id);
+                    table.PrimaryKey("PK_Fares", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Fare_Route_RouteId",
+                        name: "FK_Fares_Routes_RouteId",
                         column: x => x.RouteId,
-                        principalTable: "Route",
+                        principalTable: "Routes",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "RouteDetails",
+                name: "RouteDetailss",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -328,26 +328,26 @@ namespace Railway_Group01.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RouteDetails", x => x.Id);
+                    table.PrimaryKey("PK_RouteDetailss", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RouteDetails_Route_RouteId",
+                        name: "FK_RouteDetailss_Routes_RouteId",
                         column: x => x.RouteId,
-                        principalTable: "Route",
+                        principalTable: "Routes",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_RouteDetails_Station_ArrivalStationId",
+                        name: "FK_RouteDetailss_Stations_ArrivalStationId",
                         column: x => x.ArrivalStationId,
-                        principalTable: "Station",
+                        principalTable: "Stations",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_RouteDetails_Station_DepartureStationId",
+                        name: "FK_RouteDetailss_Stations_DepartureStationId",
                         column: x => x.DepartureStationId,
-                        principalTable: "Station",
+                        principalTable: "Stations",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Schedule",
+                name: "Schedules",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -355,26 +355,26 @@ namespace Railway_Group01.Migrations
                     StartAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EndAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsCompleted = table.Column<bool>(type: "bit", nullable: false),
-                    RouteId = table.Column<int>(type: "int", nullable: true),
-                    TrainCode = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    TrainCode = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    RouteId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Schedule", x => x.Id);
+                    table.PrimaryKey("PK_Schedules", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Schedule_Route_RouteId",
+                        name: "FK_Schedules_Routes_RouteId",
                         column: x => x.RouteId,
-                        principalTable: "Route",
+                        principalTable: "Routes",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Schedule_Train_TrainCode",
+                        name: "FK_Schedules_Trains_TrainCode",
                         column: x => x.TrainCode,
-                        principalTable: "Train",
+                        principalTable: "Trains",
                         principalColumn: "TrainCode");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Transaction",
+                name: "Transactions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -386,11 +386,11 @@ namespace Railway_Group01.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transaction", x => x.Id);
+                    table.PrimaryKey("PK_Transactions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Transaction_Booking_BookingId",
+                        name: "FK_Transactions_Bookings_BookingId",
                         column: x => x.BookingId,
-                        principalTable: "Booking",
+                        principalTable: "Bookings",
                         principalColumn: "Id");
                 });
 
@@ -411,9 +411,9 @@ namespace Railway_Group01.Migrations
                 {
                     table.PrimaryKey("PK_Tickets", x => x.PNRNo);
                     table.ForeignKey(
-                        name: "FK_Tickets_Coach_CoachId",
+                        name: "FK_Tickets_Coachs_CoachId",
                         column: x => x.CoachId,
-                        principalTable: "Coach",
+                        principalTable: "Coachs",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Tickets_Passengers_CIDNo",
@@ -422,14 +422,14 @@ namespace Railway_Group01.Migrations
                         principalColumn: "CIDNo",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tickets_Schedule_ScheduleId",
+                        name: "FK_Tickets_Schedules_ScheduleId",
                         column: x => x.ScheduleId,
-                        principalTable: "Schedule",
+                        principalTable: "Schedules",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Refund",
+                name: "Refunds",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -442,26 +442,26 @@ namespace Railway_Group01.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Refund", x => x.Id);
+                    table.PrimaryKey("PK_Refunds", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Refund_Booking_BookingId",
+                        name: "FK_Refunds_Bookings_BookingId",
                         column: x => x.BookingId,
-                        principalTable: "Booking",
+                        principalTable: "Bookings",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Refund_RefundRule_RefundRuleId",
+                        name: "FK_Refunds_RefundRules_RefundRuleId",
                         column: x => x.RefundRuleId,
-                        principalTable: "RefundRule",
+                        principalTable: "RefundRules",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Refund_Transaction_TransactionId",
+                        name: "FK_Refunds_Transactions_TransactionId",
                         column: x => x.TransactionId,
-                        principalTable: "Transaction",
+                        principalTable: "Transactions",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "BookingDetails",
+                name: "BookingDetailss",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -472,14 +472,14 @@ namespace Railway_Group01.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookingDetails", x => x.Id);
+                    table.PrimaryKey("PK_BookingDetailss", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BookingDetails_Booking_BookingId",
+                        name: "FK_BookingDetailss_Bookings_BookingId",
                         column: x => x.BookingId,
-                        principalTable: "Booking",
+                        principalTable: "Bookings",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_BookingDetails_Tickets_PNRNo",
+                        name: "FK_BookingDetailss_Tickets_PNRNo",
                         column: x => x.PNRNo,
                         principalTable: "Tickets",
                         principalColumn: "PNRNo",
@@ -487,7 +487,7 @@ namespace Railway_Group01.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Feedback",
+                name: "Feedbacks",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -501,55 +501,55 @@ namespace Railway_Group01.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Feedback", x => x.Id);
+                    table.PrimaryKey("PK_Feedbacks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Feedback_Tickets_PNRNo",
+                        name: "FK_Feedbacks_Tickets_PNRNo",
                         column: x => x.PNRNo,
                         principalTable: "Tickets",
                         principalColumn: "PNRNo",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Feedback_Users_UserId",
+                        name: "FK_Feedbacks_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Booking_UserId",
-                table: "Booking",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BookingDetails_BookingId",
-                table: "BookingDetails",
+                name: "IX_BookingDetailss_BookingId",
+                table: "BookingDetailss",
                 column: "BookingId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookingDetails_PNRNo",
-                table: "BookingDetails",
+                name: "IX_BookingDetailss_PNRNo",
+                table: "BookingDetailss",
                 column: "PNRNo",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Coach_TrainCode",
-                table: "Coach",
+                name: "IX_Bookings_UserId",
+                table: "Bookings",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Coachs_TrainCode",
+                table: "Coachs",
                 column: "TrainCode");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fare_RouteId",
-                table: "Fare",
+                name: "IX_Fares_RouteId",
+                table: "Fares",
                 column: "RouteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Feedback_PNRNo",
-                table: "Feedback",
+                name: "IX_Feedbacks_PNRNo",
+                table: "Feedbacks",
                 column: "PNRNo",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Feedback_UserId",
-                table: "Feedback",
+                name: "IX_Feedbacks_UserId",
+                table: "Feedbacks",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -558,18 +558,18 @@ namespace Railway_Group01.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Refund_BookingId",
-                table: "Refund",
+                name: "IX_Refunds_BookingId",
+                table: "Refunds",
                 column: "BookingId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Refund_RefundRuleId",
-                table: "Refund",
+                name: "IX_Refunds_RefundRuleId",
+                table: "Refunds",
                 column: "RefundRuleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Refund_TransactionId",
-                table: "Refund",
+                name: "IX_Refunds_TransactionId",
+                table: "Refunds",
                 column: "TransactionId");
 
             migrationBuilder.CreateIndex(
@@ -585,38 +585,38 @@ namespace Railway_Group01.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Route_EndStationId",
-                table: "Route",
-                column: "EndStationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Route_StartStationId",
-                table: "Route",
-                column: "StartStationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RouteDetails_ArrivalStationId",
-                table: "RouteDetails",
+                name: "IX_RouteDetailss_ArrivalStationId",
+                table: "RouteDetailss",
                 column: "ArrivalStationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RouteDetails_DepartureStationId",
-                table: "RouteDetails",
+                name: "IX_RouteDetailss_DepartureStationId",
+                table: "RouteDetailss",
                 column: "DepartureStationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RouteDetails_RouteId",
-                table: "RouteDetails",
+                name: "IX_RouteDetailss_RouteId",
+                table: "RouteDetailss",
                 column: "RouteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Schedule_RouteId",
-                table: "Schedule",
+                name: "IX_Routes_EndStationId",
+                table: "Routes",
+                column: "EndStationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Routes_StartStationId",
+                table: "Routes",
+                column: "StartStationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Schedules_RouteId",
+                table: "Schedules",
                 column: "RouteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Schedule_TrainCode",
-                table: "Schedule",
+                name: "IX_Schedules_TrainCode",
+                table: "Schedules",
                 column: "TrainCode");
 
             migrationBuilder.CreateIndex(
@@ -636,8 +636,8 @@ namespace Railway_Group01.Migrations
                 column: "ScheduleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transaction_BookingId",
-                table: "Transaction",
+                name: "IX_Transactions_BookingId",
+                table: "Transactions",
                 column: "BookingId");
 
             migrationBuilder.CreateIndex(
@@ -671,22 +671,22 @@ namespace Railway_Group01.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BookingDetails");
+                name: "BookingDetailss");
 
             migrationBuilder.DropTable(
-                name: "Fare");
+                name: "Fares");
 
             migrationBuilder.DropTable(
-                name: "Feedback");
+                name: "Feedbacks");
 
             migrationBuilder.DropTable(
-                name: "Refund");
+                name: "Refunds");
 
             migrationBuilder.DropTable(
                 name: "RoleClaims");
 
             migrationBuilder.DropTable(
-                name: "RouteDetails");
+                name: "RouteDetailss");
 
             migrationBuilder.DropTable(
                 name: "UserClaims");
@@ -704,37 +704,37 @@ namespace Railway_Group01.Migrations
                 name: "Tickets");
 
             migrationBuilder.DropTable(
-                name: "RefundRule");
+                name: "RefundRules");
 
             migrationBuilder.DropTable(
-                name: "Transaction");
+                name: "Transactions");
 
             migrationBuilder.DropTable(
                 name: "Roles");
 
             migrationBuilder.DropTable(
-                name: "Coach");
+                name: "Coachs");
 
             migrationBuilder.DropTable(
                 name: "Passengers");
 
             migrationBuilder.DropTable(
-                name: "Schedule");
+                name: "Schedules");
 
             migrationBuilder.DropTable(
-                name: "Booking");
+                name: "Bookings");
 
             migrationBuilder.DropTable(
-                name: "Route");
+                name: "Routes");
 
             migrationBuilder.DropTable(
-                name: "Train");
+                name: "Trains");
 
             migrationBuilder.DropTable(
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Station");
+                name: "Stations");
         }
     }
 }
