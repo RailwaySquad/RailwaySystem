@@ -54,7 +54,6 @@ namespace Railway_Group01.Controllers.Admin
 			{
 				return NotFound();
 			}
-			var station2 = await ctx.
 			ctx.Stations!.Remove(station);
 			await ctx.SaveChangesAsync();
             TempData["SuccessMessage"] = "Station Delete successfully.";
