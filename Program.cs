@@ -7,9 +7,6 @@ var connectionString = builder.Configuration.GetConnectionString("AppDbContextCo
 builder.Services.AddDbContext<RailwayDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDbContext<RailwayDbContext>(options =>
-    options.UseSqlServer(connectionString));
-
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedEmail = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<RailwayDbContext>();
