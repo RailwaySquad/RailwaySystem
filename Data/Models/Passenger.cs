@@ -15,8 +15,6 @@ namespace Railway_Group01.Data
         [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
 
-        public User? User { get; set; }
-
         public Ticket? Ticket { get; set; }
     }
 }

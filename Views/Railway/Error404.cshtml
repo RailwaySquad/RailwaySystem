@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Error404";
+    Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+}
+
+<div id="notfound">
+    <div class="notfound">
+        <div class="notfound-404">
+            <div></div>
+            <h1>404</h1>
+        </div>
+        <h2>@ViewData["message_title"]</h2>
+        <p>@ViewData["message_detail"]</p>
+        <a asp-action="Index" asp-controller="Railway">Home page</a>
+    </div>
+</div>
+
