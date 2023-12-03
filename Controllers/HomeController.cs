@@ -22,10 +22,15 @@ namespace Railway_Group01.Controllers
 
         public IActionResult Index()
         {
-            var stations = _ctx.Stations!.Select(s => new SelectListItem() { Text = s.Name, Value = s.Id.ToString() }).ToList();
-            ViewData["Stations"] = stations;
+            var stations = _ctx.Stations!.ToList();
+            var stationSelectList = new List<SelectListItem> { new SelectListItem() { Text = "", Value = "" } };
+
+            foreach (var s in stations)
+            {
+                stationSelectList.Add(new SelectListItem() { Text = s.Name, Value = s.Id.ToString() });
+            }
             var model = new HomeViewModel();
-            model.StationsSelectList = stations;
+            model.StationsSelectList = stationSelectList;
 
             return View(model);
         }
@@ -33,12 +38,103 @@ namespace Railway_Group01.Controllers
 
         public async Task<IActionResult> Search(int from, int to, DateTime date)
         {
-            var d = date.ToString();
-            var schedules = await _ctx.Schedules!.Where(s => s.Route!.StartStationId == from && s.Route.EndStationId == to && s.Departure.Date == date.Date).ToListAsync();
+            var trains = await SearchTrainByRoute(from, to);
+            var schedules = await _ctx.Schedules!
+                .Where(
+                    s => trains.Contains(s) &&
+                    s.Departure.Date == date.Date
+                ).ToListAsync();
             return View(schedules);
         }
 
+        private async Task<List<Schedule>> SearchTrainByRoute(int from, int to)
+        {
+            var query = string.Empty;
+            if (from < to)
+            {
+                query = @"
+                    WITH QueryRoute AS (
+                      SELECT * 
+                      FROM RouteDetails 
+                      WHERE DepartureStationId = {0} AND DepartureStationId < ArrivalStationId
+                      UNION
+                      SELECT * 
+                      FROM RouteDetails 
+                      WHERE ArrivalStationId = {1} AND DepartureStationId < ArrivalStationId
+                    )
+                    , RankedDistances AS (
+                      SELECT 
+                        s.Id,
+                        s.TrainCode,
+	                    s.Arrival,
+	                    s.Departure,
+	                    s.IsFinished,
+	                    s.Name,
+	                    s.RouteId,
+                        qr.Distance,
+                        ROW_NUMBER() OVER (PARTITION BY s.TrainCode ORDER BY qr.Distance DESC) AS rn
+                      FROM 
+                        QueryRoute qr 
+                        JOIN Schedules s ON qr.RouteId = s.RouteId
+                    )
+                    SELECT
+                      Id,
+                      TrainCode,
+	                  Arrival,
+	                  Departure,
+	                  IsFinished,
+	                  Name,
+	                  RouteId
+                    FROM
+                      RankedDistances
+                    WHERE
+                      rn = 1;";
+            }
+            else
+            {
+                query = @"
+                    WITH QueryRoute AS (
+                      SELECT * 
+                      FROM RouteDetails 
+                      WHERE DepartureStationId = {0} AND DepartureStationId > ArrivalStationId
+                      UNION
+                      SELECT * 
+                      FROM RouteDetails 
+                      WHERE ArrivalStationId = {1} AND DepartureStationId > ArrivalStationId
+                    )
+                    , RankedDistances AS (
+                      SELECT 
+                        s.Id,
+                        s.TrainCode,
+	                    s.Arrival,
+	                    s.Departure,
+	                    s.IsFinished,
+	                    s.Name,
+	                    s.RouteId,
+                        qr.Distance,
+                        ROW_NUMBER() OVER (PARTITION BY s.TrainCode ORDER BY qr.Distance DESC) AS rn
+                      FROM 
+                        QueryRoute qr 
+                        JOIN Schedules s ON qr.RouteId = s.RouteId
+                    )
+                    SELECT
+                      Id,
+                      TrainCode,
+	                  Arrival,
+	                  Departure,
+	                  IsFinished,
+	                  Name,
+	                  RouteId,
+                    FROM
+                      RankedDistances
+                    WHERE
+                      rn = 1;";
+            }
 
+            var result = await _ctx.Schedules!.FromSqlRaw(query, from, to).ToListAsync();
+
+            return result;
+        }
 
 
 
