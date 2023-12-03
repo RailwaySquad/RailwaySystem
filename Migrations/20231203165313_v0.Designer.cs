@@ -12,7 +12,7 @@ using Railway_Group01.Data;
 namespace Railway_Group01.Migrations
 {
     [DbContext(typeof(RailwayDbContext))]
-    [Migration("20231203062439_v0")]
+    [Migration("20231203165313_v0")]
     partial class v0
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1196,14 +1196,9 @@ namespace Railway_Group01.Migrations
                     b.Property<string>("PassengerTypeCode")
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("ID");
 
                     b.HasIndex("PassengerTypeCode");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Passengers");
                 });
@@ -3022,8 +3017,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1,
-                            Arrival = new DateTime(2023, 12, 4, 22, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
-                            Departure = new DateTime(2023, 12, 4, 13, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
+                            Arrival = new DateTime(2023, 12, 5, 8, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Departure = new DateTime(2023, 12, 4, 23, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -3032,8 +3027,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 2,
-                            Arrival = new DateTime(2023, 12, 4, 22, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
-                            Departure = new DateTime(2023, 12, 4, 13, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
+                            Arrival = new DateTime(2023, 12, 5, 8, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Departure = new DateTime(2023, 12, 4, 23, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -3042,8 +3037,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 3,
-                            Arrival = new DateTime(2023, 12, 5, 6, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
-                            Departure = new DateTime(2023, 12, 4, 21, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
+                            Arrival = new DateTime(2023, 12, 5, 16, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Departure = new DateTime(2023, 12, 5, 7, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -3052,8 +3047,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 4,
-                            Arrival = new DateTime(2023, 12, 5, 6, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
-                            Departure = new DateTime(2023, 12, 4, 21, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
+                            Arrival = new DateTime(2023, 12, 5, 16, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Departure = new DateTime(2023, 12, 5, 7, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -3062,8 +3057,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 5,
-                            Arrival = new DateTime(2023, 12, 5, 14, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
-                            Departure = new DateTime(2023, 12, 5, 5, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
+                            Arrival = new DateTime(2023, 12, 6, 0, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Departure = new DateTime(2023, 12, 5, 15, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -3072,8 +3067,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 6,
-                            Arrival = new DateTime(2023, 12, 5, 14, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
-                            Departure = new DateTime(2023, 12, 5, 5, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
+                            Arrival = new DateTime(2023, 12, 6, 0, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Departure = new DateTime(2023, 12, 5, 15, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -3105,7 +3100,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("CoachId");
 
-                    b.ToTable("Seat");
+                    b.ToTable("Seats");
 
                     b.HasData(
                         new
@@ -13294,12 +13289,6 @@ namespace Railway_Group01.Migrations
                     b.HasOne("Railway_Group01.Data.PassengerType", null)
                         .WithMany("Passengers")
                         .HasForeignKey("PassengerTypeCode");
-
-                    b.HasOne("Railway_Group01.Data.User", "User")
-                        .WithMany("Passengers")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Route", b =>
@@ -13535,8 +13524,6 @@ namespace Railway_Group01.Migrations
                     b.Navigation("Cancellings");
 
                     b.Navigation("Feedbacks");
-
-                    b.Navigation("Passengers");
                 });
 #pragma warning restore 612, 618
         }
