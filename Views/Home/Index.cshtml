@@ -1,10 +1,17 @@
-﻿@model Railway_Group01.Data.User;
+﻿@model Railway_Group01.Models.ViewModels.HomeViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    
-    @if(Model != null) @Model.UserName
+
+    <form asp-action="Search">
+        <label class="form-label">From Station</label>
+        <select class="form-select" name="from" asp-items="Model.StationsSelectList"></select>
+        |
+        <label class="form-label">To Station</label>
+        <select class="form-select" name="to" asp-items="Model.StationsSelectList"></select>
+        <input type="date" name="date" />
+        <input type="submit" />
+    </form>
 </div>
