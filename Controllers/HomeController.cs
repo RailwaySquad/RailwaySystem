@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Railway_Group01.Data;
 using Railway_Group01.Models;
+using Railway_Group01.Models.ViewModels;
 using System.Diagnostics;
 
 namespace Railway_Group01.Controllers
@@ -18,15 +20,23 @@ namespace Railway_Group01.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            List<User> userList = _ctx.Users.ToList(); // get User list from context
-            var id = _userManager.GetUserId(this.User); // get the current user id
-            return View(await _ctx.Users!.SingleOrDefaultAsync(u => u.Id == id));
+            var stations = _ctx.Stations!.Select(s => new SelectListItem() { Text = s.Name, Value = s.Id.ToString() }).ToList();
+            ViewData["Stations"] = stations;
+            var model = new HomeViewModel();
+            model.StationsSelectList = stations;
+
+            return View(model);
         }
 
 
-
+        public async Task<IActionResult> Search(int from, int to, DateTime date)
+        {
+            var d = date.ToString();
+            var schedules = await _ctx.Schedules!.Where(s => s.Route!.StartStationId == from && s.Route.EndStationId == to && s.Departure.Date == date.Date).ToListAsync();
+            return View(schedules);
+        }
 
 
 
