@@ -366,4 +366,5 @@ public class RailwayDbContext : IdentityDbContext<User>
     public DbSet<Coach>? Coachs { get; set; }
     public DbSet<Station>? Stations { get; set; }
     public DbSet<Fare>? Fares { get; set; }
+    public DbSet<Cart> Carts {  get; set; }
 }
