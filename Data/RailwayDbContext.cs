@@ -12,6 +12,26 @@ public class RailwayDbContext : IdentityDbContext<User>
     {
     }
 
+    public DbSet<Passenger>? Passengers { get; set; }
+    public DbSet<PassengerType>? PassengerTypes { get; set; }
+    public DbSet<Ticket>? Tickets { get; set; }
+    public DbSet<Feedback>? Feedbacks { get; set; }
+    public DbSet<Booking>? Bookings { get; set; }
+    public DbSet<BookingDetail>? BookingDetails { get; set; }
+    public DbSet<Transaction>? Transactions { get; set; }
+    public DbSet<Cancelling>? Cancellings { get; set; }
+    public DbSet<RefundRule>? RefundRules { get; set; }
+    public DbSet<Schedule>? Schedules { get; set; }
+    public DbSet<Train>? Trains { get; set; }
+    public DbSet<TrainType>? TrainTypes { get; set; }
+    public DbSet<Route>? Routes { get; set; }
+    public DbSet<RouteDetail>? RouteDetails { get; set; }
+    public DbSet<Coach>? Coaches { get; set; }
+    public DbSet<Seat>? Seats { get; set; }
+    public DbSet<CoachClass>? CoachClasses { get; set; }
+    public DbSet<Station>? Stations { get; set; }
+    public DbSet<Fare>? Fares { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -73,23 +93,4 @@ public class RailwayDbContext : IdentityDbContext<User>
 
         ModelBuilderExtension.Seed(builder);
     }
-
-    public DbSet<Passenger>? Passengers { get; set; }
-    public DbSet<PassengerType>? PassengerTypes { get; set; }
-    public DbSet<Ticket>? Tickets { get; set; }
-    public DbSet<Feedback>? Feedbacks { get; set; }
-    public DbSet<Booking>? Bookings { get; set; }
-    public DbSet<BookingDetail>? BookingDetails { get; set; }
-    public DbSet<Transaction>? Transactions { get; set; }
-    public DbSet<Cancelling>? Cancellings { get; set; }
-    public DbSet<RefundRule>? RefundRules { get; set; }
-    public DbSet<Schedule>? Schedules { get; set; }
-    public DbSet<Train>? Trains { get; set; }
-    public DbSet<TrainType>? TrainTypes { get; set; }
-    public DbSet<Route>? Routes { get; set; }
-    public DbSet<RouteDetail>? RouteDetails { get; set; }
-    public DbSet<Coach>? Coaches { get; set; }
-    public DbSet<CoachClass>? CoachClasses { get; set; }
-    public DbSet<Station>? Stations { get; set; }
-    public DbSet<Fare>? Fares { get; set; }
 }
