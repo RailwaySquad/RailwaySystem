@@ -12,7 +12,7 @@ using Railway_Group01.Data;
 namespace Railway_Group01.Migrations
 {
     [DbContext(typeof(RailwayDbContext))]
-    [Migration("20231202094402_v0")]
+    [Migration("20231203062439_v0")]
     partial class v0
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -169,7 +169,7 @@ namespace Railway_Group01.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime?>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
@@ -194,12 +194,17 @@ namespace Railway_Group01.Migrations
                     b.Property<int?>("BookingId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ScheduleId")
+                        .HasColumnType("int");
+
                     b.Property<int>("SeatId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BookingId");
+
+                    b.HasIndex("ScheduleId");
 
                     b.HasIndex("SeatId")
                         .IsUnique();
@@ -215,7 +220,7 @@ namespace Railway_Group01.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime?>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PNRNo")
@@ -1153,7 +1158,7 @@ namespace Railway_Group01.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<DateTime?>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Rating")
@@ -1180,7 +1185,7 @@ namespace Railway_Group01.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<DateTime?>("Birthday")
+                    b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
@@ -2984,12 +2989,10 @@ namespace Railway_Group01.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime?>("Arrival")
-                        .IsRequired()
+                    b.Property<DateTime>("Arrival")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("Departure")
-                        .IsRequired()
+                    b.Property<DateTime>("Departure")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsFinished")
@@ -3019,8 +3022,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1,
-                            Arrival = new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3545),
-                            Departure = new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3536),
+                            Arrival = new DateTime(2023, 12, 4, 22, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
+                            Departure = new DateTime(2023, 12, 4, 13, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -3029,8 +3032,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 2,
-                            Arrival = new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3545),
-                            Departure = new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3536),
+                            Arrival = new DateTime(2023, 12, 4, 22, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
+                            Departure = new DateTime(2023, 12, 4, 13, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -3039,8 +3042,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 3,
-                            Arrival = new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3553),
-                            Departure = new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3544),
+                            Arrival = new DateTime(2023, 12, 5, 6, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
+                            Departure = new DateTime(2023, 12, 4, 21, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -3049,8 +3052,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 4,
-                            Arrival = new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3553),
-                            Departure = new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3544),
+                            Arrival = new DateTime(2023, 12, 5, 6, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
+                            Departure = new DateTime(2023, 12, 4, 21, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -3059,8 +3062,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 5,
-                            Arrival = new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3561),
-                            Departure = new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3552),
+                            Arrival = new DateTime(2023, 12, 5, 14, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
+                            Departure = new DateTime(2023, 12, 5, 5, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -3069,8 +3072,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 6,
-                            Arrival = new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3561),
-                            Departure = new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3552),
+                            Arrival = new DateTime(2023, 12, 5, 14, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
+                            Departure = new DateTime(2023, 12, 5, 5, 24, 38, 344, DateTimeKind.Local).AddTicks(4845),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -13036,7 +13039,7 @@ namespace Railway_Group01.Migrations
                     b.Property<int?>("CancellingId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PaymentId")
@@ -13193,6 +13196,10 @@ namespace Railway_Group01.Migrations
                         .WithMany("BookingDetails")
                         .HasForeignKey("BookingId");
 
+                    b.HasOne("Railway_Group01.Data.Schedule", "Schedule")
+                        .WithMany("BookingDetails")
+                        .HasForeignKey("ScheduleId");
+
                     b.HasOne("Railway_Group01.Data.Seat", "Seat")
                         .WithOne("BookingDetail")
                         .HasForeignKey("Railway_Group01.Data.BookingDetail", "SeatId")
@@ -13200,6 +13207,8 @@ namespace Railway_Group01.Migrations
                         .IsRequired();
 
                     b.Navigation("Booking");
+
+                    b.Navigation("Schedule");
 
                     b.Navigation("Seat");
                 });
@@ -13479,6 +13488,8 @@ namespace Railway_Group01.Migrations
 
             modelBuilder.Entity("Railway_Group01.Data.Schedule", b =>
                 {
+                    b.Navigation("BookingDetails");
+
                     b.Navigation("Tickets");
                 });
 

@@ -13,7 +13,7 @@ namespace Railway_Group01.Data
         public string? Name { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime? Birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
         public User? User { get; set; }
 
