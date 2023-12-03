@@ -316,9 +316,9 @@ namespace Railway_Group01.Data
 
 
             var now = DateTime.Now;
-            var oneDay = new TimeSpan(24);
-            var twoThirdDay = new TimeSpan(8);
-            var traveltime = new TimeSpan(9);
+            var oneDay = new TimeSpan(1, 0, 0, 0);
+            var twoThirdDay = new TimeSpan(8, 0, 0);
+            var traveltime = new TimeSpan(9, 0, 0);
             var depart1 = now.Add(oneDay);
             var depart2 = depart1.Add(twoThirdDay);
             var depart3 = depart2.Add(twoThirdDay);

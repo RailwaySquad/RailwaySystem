@@ -189,7 +189,7 @@ namespace Railway_Group01.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -211,7 +211,7 @@ namespace Railway_Group01.Migrations
                     Comments = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     Suggestions = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     Rating = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -231,7 +231,7 @@ namespace Railway_Group01.Migrations
                 {
                     ID = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     PassengerTypeCode = table.Column<string>(type: "nvarchar(10)", nullable: true)
                 },
@@ -487,6 +487,7 @@ namespace Railway_Group01.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SeatId = table.Column<int>(type: "int", nullable: false),
+                    ScheduleId = table.Column<int>(type: "int", nullable: true),
                     BookingId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -496,6 +497,11 @@ namespace Railway_Group01.Migrations
                         name: "FK_BookingDetails_Bookings_BookingId",
                         column: x => x.BookingId,
                         principalTable: "Bookings",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_BookingDetails_Schedules_ScheduleId",
+                        column: x => x.ScheduleId,
+                        principalTable: "Schedules",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_BookingDetails_Seat_SeatId",
@@ -552,7 +558,7 @@ namespace Railway_Group01.Migrations
                     Reason = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     Sender = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Receiver = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     RefundRuleId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     PNRNo = table.Column<string>(type: "nvarchar(10)", nullable: false)
@@ -590,7 +596,7 @@ namespace Railway_Group01.Migrations
                     Sender = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Receiver = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BookingId = table.Column<int>(type: "int", nullable: true),
                     CancellingId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -1038,17 +1044,17 @@ namespace Railway_Group01.Migrations
                 columns: new[] { "Id", "Arrival", "Departure", "IsFinished", "Name", "RouteId", "TrainCode" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3545), new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3536), false, "SE1 HN-SG Fast Train", 4, "SE1" },
-                    { 2, new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3545), new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3536), false, "SE2 SG-HN Fast Train", 3, "SE2" },
-                    { 3, new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3553), new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3544), false, "SE3 HN-SG Super Fast Train", 6, "SE3" },
-                    { 4, new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3553), new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3544), false, "SE4 SG-HN Super Fast Train", 5, "SE4" },
-                    { 5, new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3561), new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3552), false, "SE5 HN-SG Slow Train", 2, "SE5" }
+                    { 1, new DateTime(2023, 12, 4, 22, 24, 38, 344, DateTimeKind.Local).AddTicks(4845), new DateTime(2023, 12, 4, 13, 24, 38, 344, DateTimeKind.Local).AddTicks(4845), false, "SE1 HN-SG Fast Train", 4, "SE1" },
+                    { 2, new DateTime(2023, 12, 4, 22, 24, 38, 344, DateTimeKind.Local).AddTicks(4845), new DateTime(2023, 12, 4, 13, 24, 38, 344, DateTimeKind.Local).AddTicks(4845), false, "SE2 SG-HN Fast Train", 3, "SE2" },
+                    { 3, new DateTime(2023, 12, 5, 6, 24, 38, 344, DateTimeKind.Local).AddTicks(4845), new DateTime(2023, 12, 4, 21, 24, 38, 344, DateTimeKind.Local).AddTicks(4845), false, "SE3 HN-SG Super Fast Train", 6, "SE3" },
+                    { 4, new DateTime(2023, 12, 5, 6, 24, 38, 344, DateTimeKind.Local).AddTicks(4845), new DateTime(2023, 12, 4, 21, 24, 38, 344, DateTimeKind.Local).AddTicks(4845), false, "SE4 SG-HN Super Fast Train", 5, "SE4" },
+                    { 5, new DateTime(2023, 12, 5, 14, 24, 38, 344, DateTimeKind.Local).AddTicks(4845), new DateTime(2023, 12, 5, 5, 24, 38, 344, DateTimeKind.Local).AddTicks(4845), false, "SE5 HN-SG Slow Train", 2, "SE5" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Schedules",
                 columns: new[] { "Id", "Arrival", "Departure", "IsFinished", "Name", "RouteId", "TrainCode" },
-                values: new object[] { 6, new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3561), new DateTime(2023, 12, 2, 16, 44, 2, 142, DateTimeKind.Local).AddTicks(3552), false, "SE6 SG-HN Slow Train", 1, "SE6" });
+                values: new object[] { 6, new DateTime(2023, 12, 5, 14, 24, 38, 344, DateTimeKind.Local).AddTicks(4845), new DateTime(2023, 12, 5, 5, 24, 38, 344, DateTimeKind.Local).AddTicks(4845), false, "SE6 SG-HN Slow Train", 1, "SE6" });
 
             migrationBuilder.InsertData(
                 table: "Seat",
@@ -2428,6 +2434,11 @@ namespace Railway_Group01.Migrations
                 column: "BookingId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BookingDetails_ScheduleId",
+                table: "BookingDetails",
+                column: "ScheduleId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_BookingDetails_SeatId",
                 table: "BookingDetails",
                 column: "SeatId",
@@ -2659,10 +2670,10 @@ namespace Railway_Group01.Migrations
                 name: "Passengers");
 
             migrationBuilder.DropTable(
-                name: "Schedules");
+                name: "Bookings");
 
             migrationBuilder.DropTable(
-                name: "Bookings");
+                name: "Schedules");
 
             migrationBuilder.DropTable(
                 name: "Seat");
@@ -2671,10 +2682,10 @@ namespace Railway_Group01.Migrations
                 name: "PassengerTypes");
 
             migrationBuilder.DropTable(
-                name: "Routes");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Routes");
 
             migrationBuilder.DropTable(
                 name: "Coaches");
