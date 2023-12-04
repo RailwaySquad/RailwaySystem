@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Railway_Group01.Data;
-using Railway_Group01.Models;
 using Railway_Group01.Models.ViewModels;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Railway_Group01.Controllers
 {
@@ -52,28 +50,36 @@ namespace Railway_Group01.Controllers
                     s => schedulesMatchRoute.Contains(s) &&
                     s.Departure.Date == railwayModel.StartDate.Date
                 ).ToListAsync();
-            railwayModel.Schedules = GetScheduleRelationships(result);
+            railwayModel.Schedules = await GetScheduleRelationships(result);
+            
             ViewData["FromStationSelectList"] = GetStationSelectList(railwayModel.From);
             ViewData["ToStationSelectList"] = GetStationSelectList(railwayModel.To);
             ViewData["ClassList"] = ctx.CoachClasses!.ToList();
             return View(railwayModel);
         }
 
-        private List<Schedule> GetScheduleRelationships(List<Schedule> schedules)
+        private async Task<List<Schedule>> GetScheduleRelationships(List<Schedule> schedules)
         {
             foreach (var schedule in schedules)
             {
+                if (schedule.Route == null)
+                {
+                    schedule.Route = await ctx.Routes!.FindAsync(schedule.RouteId);
+                    schedule.Route!.StartStation = await ctx.Stations!.FindAsync(schedule.Route.StartStationId);
+                    schedule.Route.EndStation = await ctx.Stations!.FindAsync(schedule.Route.EndStationId);
+                }
+
                 if (schedule.Train == null)
                 {
-                    schedule.Train = ctx.Trains!.SingleOrDefault(t => t.Code == schedule.TrainCode);
+                    schedule.Train = await ctx.Trains!.SingleOrDefaultAsync(t => t.Code == schedule.TrainCode);
 
                     if (schedule.Train!.Coaches == null)
                     {
-                        schedule.Train.Coaches = ctx.Coaches!.Where(c => c.TrainCode == schedule.TrainCode).ToList();
+                        schedule.Train.Coaches = await ctx.Coaches!.Where(c => c.TrainCode == schedule.TrainCode).ToListAsync();
 
                         foreach (var coach in schedule.Train.Coaches)
                         {
-                            coach.Seats ??= ctx.Seats!.Where(s => s.CoachId == coach.Id).ToList();
+                            coach.Seats ??= await ctx.Seats!.Where(s => s.CoachId == coach.Id).Select(s => s).ToListAsync();
                         }
                     }
                 }
@@ -104,7 +110,7 @@ namespace Railway_Group01.Controllers
             Schedule? sche = await ctx.Schedules!.Where(x => x.Departure >= timeS && x.Arrival<= timeS.AddDays(1) && x.RouteId==routeId && x.TrainCode=="SE801").Include(x=>x.Route).FirstAsync();
             if (sche != null)
             {
-                sche.Route.StartStation = await ctx.Stations!.FindAsync(sche.Route.StartStationId);
+                sche.Route!.StartStation = await ctx.Stations!.FindAsync(sche.Route.StartStationId);
                 sche.Route.EndStation = await ctx.Stations!.FindAsync(sche.Route.EndStationId);
                 sche.Route.RouteDetails = await ctx.RouteDetails!.Where(x => x.RouteId == sche.Route.Id).Include(x=>x.ArrivalStation).Include(x=>x.DepartureStation).ToListAsync();
             }

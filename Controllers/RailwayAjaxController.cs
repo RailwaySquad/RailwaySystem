@@ -35,16 +35,17 @@ namespace Railway_Group01.Controllers
         {
             CartDto cart = new CartDto { ScheduleId = ScheduleId, CoachId = CoachId, Seat = Seat };
             Schedule? sche = await ctx.Schedules!.Include(x => x.Route).Include(x => x.Train).FirstOrDefaultAsync(x => x.Id == cart.ScheduleId);
-            Coach? coa = await ctx.Coachs!.FirstOrDefaultAsync(x => x.Id == cart.CoachId);
+            Coach? coa = await ctx.Coaches!.FirstOrDefaultAsync(x => x.Id == cart.CoachId);
             if (sche == null ||coa ==null)
             {
                 return BadRequest();
             }
-            sche.Route.StartStation = await ctx.Stations.FirstOrDefaultAsync(x =>x.Id == sche.Route.StartStationId);
-            sche.Route.EndStation = await ctx.Stations.FirstOrDefaultAsync(x =>x.Id == sche.Route.EndStationId);
-            string title = sche.Train.Name + " " + sche.Route.StartStation.StationCode + " - " + sche.Route.EndStation.StationCode;
+            sche.Route.StartStation = await ctx.Stations.FirstOrDefaultAsync(x => x.Id == sche.Route.StartStationId);
+            sche.Route.EndStation = await ctx.Stations.FirstOrDefaultAsync(x => x.Id == sche.Route.EndStationId);
+            string title = sche.Name + " " + sche.Route.StartStation.Code+ " - " + sche.Route.EndStation.Code;
+            string seatDetail = coa.ClassCode + " - Seat: " + cart.Seat;
             cart.Title = title;
-            cart.StartAt = sche.StartAt.ToString("HH:mm dd/MM");
+            cart.StartAt = sche.Departure.ToString("HH:mm dd/MM");
             cart.SeatDetail = seatDetail;
             Console.WriteLine(HttpContext.Session.GetString("listCart"));
             List<CartDto> list;
