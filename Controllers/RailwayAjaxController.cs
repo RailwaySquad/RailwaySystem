@@ -31,9 +31,9 @@ namespace Railway_Group01.Controllers
             }
             sche.Route.StartStation = await ctx.Stations.FirstOrDefaultAsync(x =>x.Id == sche.Route.StartStationId);
             sche.Route.EndStation = await ctx.Stations.FirstOrDefaultAsync(x =>x.Id == sche.Route.EndStationId);
-            string title = sche.Train.Name + " " + sche.Route.StartStation.StationCode + " - " + sche.Route.EndStation.StationCode;
+            string title = sche.Train.Code + " " + sche.Route.StartStation.Code + " - " + sche.Route.EndStation.Code;
             cart.Title = title;
-            cart.StartAt = sche.StartAt;
+            cart.StartAt = sche.Departure;
             try { 
                 
             }catch(Exception ex)

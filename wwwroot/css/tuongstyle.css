@@ -332,14 +332,8 @@ html {
         font-size: 12px;
     }
 
+    .container_signup button,
     .container_signup a {
-        color: #333;
-        font-size: 13px;
-        text-decoration: none;
-        margin: 15px 0 10px;
-    }
-
-    .container_signup button {
         background-color: #ec5b24;
         color: #fff;
         font-size: 12px;
@@ -353,7 +347,7 @@ html {
         cursor: pointer;
     }
 
-        .container_signup button.hidden {
+        .container_signup a.hidden {
             background-color: transparent;
             border-color: #fff;
         }

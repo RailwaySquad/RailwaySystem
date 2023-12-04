@@ -325,15 +325,15 @@
                                     int count = 1;
                                     <div class="collapse " id="@item.TrainCode-@coach.Id">
                                         <div class="d-flex flex-row align-items-center justify-content-center pt-3">
-                                            @if (coach.TypeCode == "GE")
+                                            @if (coach.ClassCode == "GE")
                                             {  
                                                 <div class="row et-car-floor ">
                                                     <div class="et-car-door"></div>
                                                     
                                                     <div class="et-car-nm-64-half-block">
-                                                        @for(int i = 0; i< coach.NoOfCompartment/2;i++){
+                                                        @for(int i = 0; i< coach.NoOfCompartments/2;i++){
                                                             <div class="et-full-width">
-                                                                @for (int j = 0; j < coach.NoOfSeat; j++)
+                                                                @for (int j = 0; j < coach.NoOfSeats; j++)
                                                                 {
                                                                     <div class="et-car-nm-64-sit ng-isolate-scope">
                                                                         <div class="et-car-seat-left et-seat-h-35">
@@ -358,9 +358,9 @@
                                                         <div></div>
                                                     </div>
                                                     <div class="et-car-nm-64-half-block">
-                                                        @for (int i = 0; i < coach.NoOfCompartment / 2; i++){
+                                                        @for (int i = 0; i < coach.NoOfCompartments / 2; i++){
                                                         <div class="et-full-width">
-                                                                @for(int j = 0; j < coach.NoOfSeat; j++)
+                                                                @for(int j = 0; j < coach.NoOfSeats; j++)
                                                                 {
                                                                     <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
                                                                         <div class="et-car-seat-right et-seat-h-35">
@@ -387,16 +387,16 @@
                                             {
                                                 <div class="row et-car-floor w-100">
                                                     @{
-                                                        int col = 12 / coach.NoOfCompartment;
+                                                        int col = 12 / coach.NoOfCompartments;
                                                     }
-                                                    @for (int i = 1; i <= coach.NoOfCompartment; i++)
+                                                    @for (int i = 1; i <= coach.NoOfCompartments; i++)
                                                     {
                                                         <div class="col-@col row">
                                                             <div class="et-bed-way et-full-width et-text-sm col-12">
                                                                     <div class="text-center ng-binding">Cabin @i</div>
                                                             </div>
 
-                                                            @for(int j = 0; j < coach.NoOfSeat; j++)
+                                                            @for(int j = 0; j < coach.NoOfSeats; j++)
                                                             {
                                                                 if(j%2 ==0)
                                                                 {
