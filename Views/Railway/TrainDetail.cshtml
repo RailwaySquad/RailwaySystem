@@ -629,7 +629,7 @@
                 </div>
                 <div class="data-section my-4" id="schedule">
                     <h3 class="fw-400 my-5">Ashram Express 12916 Schedule, Routes &amp; Time Table</h3>
-                    <div class="description">@Model.Item2.Description
+                    <div class="description">
                     </div>
                     <table class="table my-3 ">
                         <thead>
@@ -650,8 +650,8 @@
                             if (item.ArrivalStationId == Model.Item1.Route.EndStationId && item.DepartureStationId == Model.Item1.Route.StartStationId)
                             {
                                 <tr>
-                                    <td class="event-timeline text-center">@item.ArrivalStation.StationCode</td>
-                                    <td class="">@item.ArrivalStation.StationName</td>
+                                    <td class="event-timeline text-center">@item.ArrivalStation.Code</td>
+                                    <td class="">@item.ArrivalStation.Name</td>
                                     <td>@string.Format("{0:%h}hr {0:%m}min",TimeSpan.FromHours(item.TravelTime))</td>
                                     <td class="">@Html.DisplayFor(x=>item.Distance) km</td>
                                     <td class="">@Html.DisplayFor(x=>item.RouteId)</td>
@@ -660,8 +660,8 @@
                                 </tr>
                             }else if(item.DepartureStationId == Model.Item1.Route.StartStationId){
                                 <tr>
-                                    <td class="event-timeline text-center">@item.DepartureStation.StationCode</td>
-                                    <td class="">@item.DepartureStation.StationName</td>
+                                    <td class="event-timeline text-center">@item.DepartureStation.Code</td>
+                                    <td class="">@item.DepartureStation.Name</td>
                                     <td>-</td>
                                     <td class="">@Html.DisplayFor(x=>item.Distance) km</td>
                                     <td class="">@Html.DisplayFor(x=>item.RouteId)</td>
@@ -672,8 +672,8 @@
                             else
                             {
                                 <tr>
-                                    <td class="event-timeline text-center">@item.DepartureStation.StationCode</td>
-                                    <td class="">@item.DepartureStation.StationName</td>
+                                    <td class="event-timeline text-center">@item.DepartureStation.Code</td>
+                                    <td class="">@item.DepartureStation.Name</td>
                                     <td class="">
                                         @string.Format("{0:%h}hr {0:%m}min",TimeSpan.FromHours(item.TravelTime))
                                     </td>

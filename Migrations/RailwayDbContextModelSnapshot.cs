@@ -210,7 +210,7 @@ namespace Railway_Group01.Migrations
                     b.ToTable("BookingDetails");
                 });
 
-            modelBuilder.Entity("Railway_Group01.Data.Cancelling", b =>
+            modelBuilder.Entity("Railway_Group01.Data.Coach", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -13504,6 +13504,8 @@ namespace Railway_Group01.Migrations
             modelBuilder.Entity("Railway_Group01.Data.Train", b =>
                 {
                     b.Navigation("Coaches");
+
+                    b.Navigation("CoachesData");
 
                     b.Navigation("Schedules");
                 });

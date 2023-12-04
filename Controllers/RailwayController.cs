@@ -37,38 +37,38 @@ namespace Railway_Group01.Controllers
             }
             return View();
         }
-        //public async Task<IActionResult> SearchRoute(
-        //    [FromQuery(Name = "departure")] string departure,
-        //    [FromQuery(Name = "arrival")] string arrival,
-        //    [FromQuery(Name = "time")] string? time,
-        //    [FromQuery(Name = "price")] string? price,
-        //    [FromQuery(Name = "coach")] string? coach)
-        //{
-        //    int departureId = !String.IsNullOrEmpty(departure) || int.TryParse(departure, out _) ? Int32.Parse(departure) : 1;
-        //    int arrivalId = !String.IsNullOrEmpty(arrival) || int.TryParse(arrival, out _) ? Int32.Parse(arrival) : 4;
+        public async Task<IActionResult> SearchRoute(
+            [FromQuery(Name = "departure")] string departure,
+            [FromQuery(Name = "arrival")] string arrival,
+            [FromQuery(Name = "time")] string? time,
+            [FromQuery(Name = "price")] string? price,
+            [FromQuery(Name = "coach")] string? coach)
+        {
+            int departureId = !String.IsNullOrEmpty(departure) || int.TryParse(departure, out _) ? Int32.Parse(departure) : 1;
+            int arrivalId = !String.IsNullOrEmpty(arrival) || int.TryParse(arrival, out _) ? Int32.Parse(arrival) : 38;
 
-        //    List<int> routes = await ctx.Routes!
-        //        .Where(x => x.StartStationId == departureId && x.EndStationId == arrivalId).Select(x => x.Id)
-        //        .ToListAsync();
-        //    IEnumerable<Schedule> schedules = await ctx.Schedules!.Where(x => routes.Contains(x.RouteId)).ToListAsync();
-        //    foreach (var item in schedules)
-        //    {
-        //        item.Train = await ctx.Trains!.FindAsync(item.TrainCode);
-        //        item.Route = await ctx.Routes!.FindAsync(item.RouteId);
-        //        item.Route.StartStation = await ctx.Stations.FindAsync(item.Route.StartStationId);
-        //        item.Route.EndStation = await ctx.Stations.FindAsync(item.Route.EndStationId);
-        //        List<Coach> coaches = await ctx.Coaches.Where(x => x.TrainCode == item.TrainCode).ToListAsync();
-        //        item.Train.Coaches = new List<Coach>();
-        //        foreach (var item1 in coaches)
-        //        {
-        //            item.Train.Coaches.Add(new Coach { Id = item1.Id, CoachNo = item1.CoachNo, NoOfSeats = item1.NoOfSeats, NoOfCompartments = item1.NoOfCompartments, TrainCode = item1.TrainCode, Class = item1.Class, Seats = item1.Seats });
-        //        }
-        //    }
-        //    IEnumerable<Coach> coaches2 = await ctx.Coaches.ToListAsync();
-        //    var coach3 = coaches2.DistinctBy(x => x.CoachNo);
-        //    var tupleModel = new Tuple<IEnumerable<Schedule>, IEnumerable<Coach>>(schedules, coach3);
-        //    return View(tupleModel);
-        //}
+            List<int> routes = await ctx.Routes!
+                .Where(x => x.StartStationId == departureId && x.EndStationId == arrivalId).Select(x => x.Id)
+                .ToListAsync();
+            IEnumerable<Schedule> schedules = await ctx.Schedules!.Where(x => routes.Contains(x.RouteId)).ToListAsync();
+            foreach (var item in schedules)
+            {
+                item.Train = await ctx.Trains!.FindAsync(item.TrainCode);
+                item.Route = await ctx.Routes!.FindAsync(item.RouteId);
+                item.Route.StartStation = await ctx.Stations.FindAsync(item.Route.StartStationId);
+                item.Route.EndStation = await ctx.Stations.FindAsync(item.Route.EndStationId);
+                List<Coach> coaches = await ctx.Coaches.Where(x => x.TrainCode == item.TrainCode).ToListAsync();
+                item.Train.Coaches = new List<Coach>();
+                foreach (var item1 in coaches)
+                {
+                    item.Train.Coaches.Add(new Coach { Id = item1.Id, CoachNo = item1.CoachNo, NoOfSeats = item1.NoOfSeats, NoOfCompartments = item1.NoOfCompartments, TrainCode = item1.TrainCode, Class = item1.Class, Seats = item1.Seats });
+                }
+            }
+            IEnumerable<Coach> coaches2 = await ctx.Coaches.ToListAsync();
+            var coach3 = coaches2.DistinctBy(x => x.CoachNo);
+            var tupleModel = new Tuple<IEnumerable<Schedule>, IEnumerable<Coach>>(schedules, coach3);
+            return View(tupleModel);
+        }
 
         public async Task<IActionResult> Search(int from, int to, DateTime date)
         {
@@ -77,10 +77,18 @@ namespace Railway_Group01.Controllers
                 .Where(
                     s => schedulesMatchRoute.Contains(s) &&
                     s.Departure.Date == date.Date
-                ).ToListAsync();
+                ).Include(x=>x.Train).Include(x=>x.Route).ToListAsync();
             foreach (var schedule in result)
             {
-                if (schedule.Train == null)
+                schedule.Route.StartStation = await ctx.Stations.FindAsync(schedule.Route.StartStationId);
+                schedule.Route.EndStation = await ctx.Stations.FindAsync(schedule.Route.EndStationId);
+                List<Coach> coaches = await ctx.Coaches.Where(x => x.TrainCode == schedule.TrainCode).ToListAsync();
+                schedule.Train.Coaches = new List<Coach>();
+                foreach (var item1 in coaches)
+                {
+                    schedule.Train.Coaches.Add(new Coach { Id = item1.Id, CoachNo = item1.CoachNo, NoOfSeats = item1.NoOfSeats, NoOfCompartments = item1.NoOfCompartments, TrainCode = item1.TrainCode, Class = item1.Class, Seats = item1.Seats });
+                }
+                /*if (schedule.Train == null)
                 {
                     schedule.Train = ctx.Trains!.SingleOrDefault(t => t.Code == schedule.TrainCode);
 
@@ -96,7 +104,7 @@ namespace Railway_Group01.Controllers
                             }
                         }
                     }
-                }
+                }*/
             }
             ViewData["StationSelectList"] = GetStationSelectList();
             ViewData["ClassList"] = ctx.CoachClasses!.ToList();
