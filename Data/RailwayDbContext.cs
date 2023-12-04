@@ -11,7 +11,6 @@ public class RailwayDbContext : IdentityDbContext<User>
         : base(options)
     {
     }
-
     public DbSet<Passenger>? Passengers { get; set; }
     public DbSet<PassengerType>? PassengerTypes { get; set; }
     public DbSet<Ticket>? Tickets { get; set; }
@@ -92,5 +91,59 @@ public class RailwayDbContext : IdentityDbContext<User>
         builder.Entity<Route>().HasMany(p => p.Fares).WithOne(p => p.Route);
 
         ModelBuilderExtension.Seed(builder);
+    }
+
+    /*
+     * @
+     */
+    public async Task<List<Schedule>> SearchScheduleByRoute(int from, int to)
+    {
+        List<Schedule> result;
+        string op = from < to ? "<" : ">";
+        var query = @"
+                    WITH QueryRoute AS (
+                      SELECT * 
+                      FROM RouteDetails 
+                      WHERE DepartureStationId = {0} AND DepartureStationId "+ op + @" ArrivalStationId
+                      UNION
+                      SELECT * 
+                      FROM RouteDetails 
+                      WHERE ArrivalStationId = {1} AND DepartureStationId "+ op + @" ArrivalStationId
+                    )
+                    , RankedDistances AS (
+                      SELECT 
+                        s.Id,
+                        s.TrainCode,
+	                    s.Arrival,
+	                    s.Departure,
+	                    s.IsFinished,
+	                    s.Name,
+	                    s.RouteId,
+                        qr.Distance,
+                        ROW_NUMBER() OVER (PARTITION BY s.TrainCode ORDER BY qr.Distance DESC) AS rn
+                      FROM 
+                        QueryRoute qr 
+                        JOIN Schedules s ON qr.RouteId = s.RouteId
+                    )
+                    SELECT
+                      Id,
+                      TrainCode,
+	                  Arrival,
+	                  Departure,
+	                  IsFinished,
+	                  Name,
+	                  RouteId
+                    FROM
+                      RankedDistances
+                    WHERE
+                      rn = 1;";
+        try
+        {
+            result = await Schedules!.FromSqlRaw(query, from, to).ToListAsync();
+        }
+        catch {
+            throw new Exception("Query error");
+        }
+        return result;
     }
 }

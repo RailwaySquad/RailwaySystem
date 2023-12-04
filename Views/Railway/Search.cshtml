@@ -1,26 +1,30 @@
 ﻿@using System.Globalization;
-@model IEnumerable<Railway_Group01.Data.Schedule>
+@model Railway_Group01.Models.ViewModels.RailwaySearchModel;
 @{
     ViewData["Title"] = "Search";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+    var now = DateTime.Now;
+    var tenMoreDays = now.AddDays(10);
+    var nowString = now.ToString("yyyy-MM-dd");
+    var tenMoreDaysString = tenMoreDays.ToString("yyyy-MM-dd");
 }
 
 <div class="bg-gradient-cus">
     <div class="form-fields">
-        <form class="row g-1 ui form w-lg-50  w-md-100 mx-auto" method="post">
+        <form class="row g-1 ui form w-lg-50  w-md-100 mx-auto" method="get">
             <div class="col-sm-2 col-4  field">
                 <label for="gaDi" class="form-label text-white-50 fw-500" style="font-size:12px">From</label>
-                <select id="gaDi" class="form-select" name="from" asp-items="ViewBag.StationSelectList"
+                <select id="gaDi" class="form-select" name="From" asp-items="ViewBag.FromStationSelectList"
                         style="border-bottom:solid 1px white; border-top:0; border-left:0; border-right:0;"></select>
             </div>
             <div class="col-sm-2 col-4">
                 <label for="gaDen" class="form-label text-white-50 fw-500" style="font-size:12px">To</label>
-                <select id="gaDen" class="form-select" name="to" asp-items="ViewBag.StationSelectList"
+                <select id="gaDen" class="form-select" name="To" asp-items="ViewBag.ToStationSelectList"
                         style="border-bottom:solid 1px white; border-top:0; border-left:0; border-right:0"></select>
             </div>
             <div class="col-sm-2">
                 <label for="ngayXP" class="form-label text-white-50 fw-500" style="font-size:12px">Date</label>
-                <input type="date" class="form-control" id="ngayXP" name="date" 
+                <input type="date" class="form-control" id="ngayXP" asp-for="@Model.StartDate" min="@nowString" max="@tenMoreDaysString"
                     style="border-bottom:solid 1px white; border-top:0; border-left:0; border-right:0;" />
             </div>
             <div class="d-flex flex-row justify-content-center align-items-center col-sm-2">
@@ -31,18 +35,6 @@
         </form>
     </div>
 </div>
-
-<script>
-    const [today] = new Date().toISOString().split('T');
-
-    const maxDate = new Date();
-    maxDate.setDate(maxDate.getDate() + 10);
-    const [maxDateFormatted] = maxDate.toISOString().split('T');
-
-    const dateInput = document.getElementById('ngayXP');
-    dateInput.setAttribute('min', today);
-    dateInput.setAttribute('max', maxDateFormatted);
-</script>
 
 <div class="container-fluid pt-4 pb-3 mb-3 shadow">
     <div class="row">
@@ -260,9 +252,9 @@
                     </button>
                 </div>
             </div>
-            @if (Model.Any())
+            @if (Model.Schedules != null && Model.Schedules.Any())
             {
-                @foreach (var schedule in Model)
+                @foreach (var schedule in Model.Schedules)
                 {
                     <div class="mt-4">
                         <div class="card p-2">
@@ -313,9 +305,9 @@
                                     </div>
                                 </div>
                                 <div class=" d-flex flex-row justify-content-around my-4">
-                                    @if (schedule.Train.Coaches.Any())
+                                    @if (schedule.Train!.Coaches!.Any())
                                     {
-                                        @foreach (var coach in schedule.Train.Coaches)
+                                        @foreach (var coach in schedule.Train.Coaches!)
                                         {
                                             <a role="button" class="text-decoration-none text-black" data-bs-toggle="collapse" href=".@schedule.TrainCode" aria-expanded="false" aria-controls="@schedule.TrainCode">
                                                 <div class="card">

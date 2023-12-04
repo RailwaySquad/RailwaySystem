@@ -1,8 +1,12 @@
-﻿@model List<SelectListItem>
+﻿@model Railway_Group01.Models.ViewModels.RailwayIndexModel
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+    var now = DateTime.Now;
+    var tenMoreDays = now.AddDays(10);
+    var nowString = now.ToString("yyyy-MM-dd");
+    var tenMoreDaysString = tenMoreDays.ToString("yyyy-MM-dd");
 }
 
 <div class="banner">
@@ -36,19 +40,19 @@
         <div class="tab-content z-2 bg-white pt-3 px-4" id="myTabContent" style="height: 200px;width: 800px;border-radius: 0 0 4px 4px;">
             <div id="trainSearchForm" class="tab-pane fade show active w-100" role="tabpanel" tabindex="0">
                 <div class="d-flex flex-row justify-content-center align-items-center">
-                    <form class="row" method="post" asp-action="Search">
+                    <form class="row" method="get" asp-action="Search">
                         <div class="col-md-4 ">
                             <label for="gaDi" class="form-label">From</label>
-                            <select class="form-select" name="from" asp-items="Model"></select>
+                            <select class="form-select" name="From" asp-items="@Model.SelectListItems" required></select>
 
                         </div>
                         <div class="col-md-4">
                             <label for="gaDen" class="form-label">To</label>
-                            <select class="form-select" name="to" asp-items="Model"></select>
+                            <select class="form-select" name="To" asp-items="@Model.SelectListItems" required></select>
                         </div>
                         <div class="col-md-3 mx-auto">
                             <label for="ngayXP" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="ngayXP" name="date" />
+                            <input type="date" class="form-control" id="ngayXP" asp-for="@Model.StartDate" min="@nowString" max="@tenMoreDaysString" required />
                         </div>
                         <div class="col-12 mt-2">
                             <button type="submit" class="text-uppercase btn btn-orange">
@@ -58,6 +62,7 @@
                     </form>
                 </div>
             </div>
+
             <div id="pnrStatusForm" class="tab-pane fade w-100 " role="tabpanel" tabindex="0">
                 <div class="row">
                     <div class="col-5">
@@ -259,4 +264,3 @@
         </div>
     </div>
 </div>
-
