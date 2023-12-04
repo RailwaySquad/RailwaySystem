@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Railway_Group01.Data;
-using Railway_Group01.Models;
 using Railway_Group01.Models.ViewModels;
 
 namespace Railway_Group01.Controllers
@@ -16,8 +15,13 @@ namespace Railway_Group01.Controllers
         }
         public IActionResult Index()
         {
-            return View(GetStationSelectList());
+            RailwayIndexModel railwayIndexModel = new()
+            {
+                SelectListItems = GetStationSelectList()
+            };
+            return View(railwayIndexModel);
         }
+
         public IActionResult Error404([FromQuery(Name ="type")] string? type)
         {
             switch (type)
@@ -37,176 +41,61 @@ namespace Railway_Group01.Controllers
             }
             return View();
         }
-        public async Task<IActionResult> SearchRoute(
-            [FromQuery(Name = "departure")] string departure,
-            [FromQuery(Name = "arrival")] string arrival,
-            [FromQuery(Name = "time")] string? time,
-            [FromQuery(Name = "price")] string? price,
-            [FromQuery(Name = "coach")] string? coach)
-        {
-            int departureId = !String.IsNullOrEmpty(departure) || int.TryParse(departure, out _) ? Int32.Parse(departure) : 1;
-            int arrivalId = !String.IsNullOrEmpty(arrival) || int.TryParse(arrival, out _) ? Int32.Parse(arrival) : 38;
 
-            List<int> routes = await ctx.Routes!
-                .Where(x => x.StartStationId == departureId && x.EndStationId == arrivalId).Select(x => x.Id)
-                .ToListAsync();
-            IEnumerable<Schedule> schedules = await ctx.Schedules!.Where(x => routes.Contains(x.RouteId)).ToListAsync();
-            foreach (var item in schedules)
-            {
-                item.Train = await ctx.Trains!.FindAsync(item.TrainCode);
-                item.Route = await ctx.Routes!.FindAsync(item.RouteId);
-                item.Route.StartStation = await ctx.Stations.FindAsync(item.Route.StartStationId);
-                item.Route.EndStation = await ctx.Stations.FindAsync(item.Route.EndStationId);
-                List<Coach> coaches = await ctx.Coaches.Where(x => x.TrainCode == item.TrainCode).ToListAsync();
-                item.Train.Coaches = new List<Coach>();
-                foreach (var item1 in coaches)
-                {
-                    item.Train.Coaches.Add(new Coach { Id = item1.Id, CoachNo = item1.CoachNo, NoOfSeats = item1.NoOfSeats, NoOfCompartments = item1.NoOfCompartments, TrainCode = item1.TrainCode, Class = item1.Class, Seats = item1.Seats });
-                }
-            }
-            IEnumerable<Coach> coaches2 = await ctx.Coaches.ToListAsync();
-            var coach3 = coaches2.DistinctBy(x => x.CoachNo);
-            var tupleModel = new Tuple<IEnumerable<Schedule>, IEnumerable<Coach>>(schedules, coach3);
-            return View(tupleModel);
-        }
-
-        public async Task<IActionResult> Search(int from, int to, DateTime date)
+        public async Task<IActionResult> Search([FromQuery] RailwaySearchModel railwayModel)
         {
-            var schedulesMatchRoute = await SearchScheduleByRoute(from, to);
+            var schedulesMatchRoute = await ctx.SearchScheduleByRoute(railwayModel.From, railwayModel.To);
             var result = await ctx.Schedules!
                 .Where(
                     s => schedulesMatchRoute.Contains(s) &&
-                    s.Departure.Date == date.Date
-                ).Include(x=>x.Train).Include(x=>x.Route).ToListAsync();
-            foreach (var schedule in result)
-            {
-                schedule.Route.StartStation = await ctx.Stations.FindAsync(schedule.Route.StartStationId);
-                schedule.Route.EndStation = await ctx.Stations.FindAsync(schedule.Route.EndStationId);
-                List<Coach> coaches = await ctx.Coaches.Where(x => x.TrainCode == schedule.TrainCode).ToListAsync();
-                schedule.Train.Coaches = new List<Coach>();
-                foreach (var item1 in coaches)
-                {
-                    schedule.Train.Coaches.Add(new Coach { Id = item1.Id, CoachNo = item1.CoachNo, NoOfSeats = item1.NoOfSeats, NoOfCompartments = item1.NoOfCompartments, TrainCode = item1.TrainCode, Class = item1.Class, Seats = item1.Seats });
-                }
-                /*if (schedule.Train == null)
-                {
-                    schedule.Train = ctx.Trains!.SingleOrDefault(t => t.Code == schedule.TrainCode);
+                    s.Departure.Date == railwayModel.StartDate.Date
+                ).ToListAsync();
+            railwayModel.Schedules = await GetScheduleRelationships(result);
+            
+            ViewData["FromStationSelectList"] = GetStationSelectList(railwayModel.From);
+            ViewData["ToStationSelectList"] = GetStationSelectList(railwayModel.To);
+            ViewData["ClassList"] = ctx.CoachClasses!.ToList();
+            return View(railwayModel);
+        }
 
-                    if (schedule.Train.Coaches == null)
+        private async Task<List<Schedule>> GetScheduleRelationships(List<Schedule> schedules)
+        {
+            foreach (var schedule in schedules)
+            {
+                if (schedule.Route == null)
+                {
+                    schedule.Route = await ctx.Routes!.FindAsync(schedule.RouteId);
+                    schedule.Route!.StartStation = await ctx.Stations!.FindAsync(schedule.Route.StartStationId);
+                    schedule.Route.EndStation = await ctx.Stations!.FindAsync(schedule.Route.EndStationId);
+                }
+
+                if (schedule.Train == null)
+                {
+                    schedule.Train = await ctx.Trains!.SingleOrDefaultAsync(t => t.Code == schedule.TrainCode);
+
+                    if (schedule.Train!.Coaches == null)
                     {
-                        schedule.Train.Coaches = ctx.Coaches!.Where(c => c.TrainCode == schedule.TrainCode).ToList();
-                        
+                        schedule.Train.Coaches = await ctx.Coaches!.Where(c => c.TrainCode == schedule.TrainCode).ToListAsync();
+
                         foreach (var coach in schedule.Train.Coaches)
                         {
-                            if (coach.Seats == null)
-                            {
-                                coach.Seats = ctx.Seats!.Where(s => s.CoachId == coach.Id).ToList();
-                            }
+                            coach.Seats ??= await ctx.Seats!.Where(s => s.CoachId == coach.Id).Select(s => s).ToListAsync();
                         }
                     }
-                }*/
+                }
             }
-            ViewData["StationSelectList"] = GetStationSelectList();
-            ViewData["ClassList"] = ctx.CoachClasses!.ToList();
-            return View(result);
+            return schedules;
         }
 
-        private List<SelectListItem> GetStationSelectList()
+        private List<SelectListItem> GetStationSelectList(int selectedStationId = -1)
         {
             var stations = ctx.Stations!.ToList();
-            var stationSelectList = new List<SelectListItem> { new SelectListItem() { Text = "", Value = "" } };
+            var stationSelectList = new List<SelectListItem> { new SelectListItem() { Text = " Station", Value = "", Disabled = true, Selected = true } };
             foreach (var s in stations)
             {
-                stationSelectList.Add(new SelectListItem() { Text = s.Name, Value = s.Id.ToString() });
+                stationSelectList.Add(new SelectListItem() { Text = s.Name, Value = s.Id.ToString(), Selected = selectedStationId == s.Id });
             }
             return stationSelectList;
-        }
-
-        private async Task<List<Schedule>> SearchScheduleByRoute(int from, int to)
-        {
-            var query = string.Empty;
-            if (from < to)
-            {
-                query = @"
-                    WITH QueryRoute AS (
-                      SELECT * 
-                      FROM RouteDetails 
-                      WHERE DepartureStationId = {0} AND DepartureStationId < ArrivalStationId
-                      UNION
-                      SELECT * 
-                      FROM RouteDetails 
-                      WHERE ArrivalStationId = {1} AND DepartureStationId < ArrivalStationId
-                    )
-                    , RankedDistances AS (
-                      SELECT 
-                        s.Id,
-                        s.TrainCode,
-	                    s.Arrival,
-	                    s.Departure,
-	                    s.IsFinished,
-	                    s.Name,
-	                    s.RouteId,
-                        qr.Distance,
-                        ROW_NUMBER() OVER (PARTITION BY s.TrainCode ORDER BY qr.Distance DESC) AS rn
-                      FROM 
-                        QueryRoute qr 
-                        JOIN Schedules s ON qr.RouteId = s.RouteId
-                    )
-                    SELECT
-                      Id,
-                      TrainCode,
-	                  Arrival,
-	                  Departure,
-	                  IsFinished,
-	                  Name,
-	                  RouteId
-                    FROM
-                      RankedDistances
-                    WHERE
-                      rn = 1;";
-            }
-            else
-            {
-                query = @"
-                    WITH QueryRoute AS (
-                      SELECT * 
-                      FROM RouteDetails 
-                      WHERE DepartureStationId = {0} AND DepartureStationId > ArrivalStationId
-                      UNION
-                      SELECT * 
-                      FROM RouteDetails 
-                      WHERE ArrivalStationId = {1} AND DepartureStationId > ArrivalStationId
-                    )
-                    , RankedDistances AS (
-                      SELECT 
-                        s.Id,
-                        s.TrainCode,
-	                    s.Arrival,
-	                    s.Departure,
-	                    s.IsFinished,
-	                    s.Name,
-	                    s.RouteId,
-                        qr.Distance,
-                        ROW_NUMBER() OVER (PARTITION BY s.TrainCode ORDER BY qr.Distance DESC) AS rn
-                      FROM 
-                        QueryRoute qr 
-                        JOIN Schedules s ON qr.RouteId = s.RouteId
-                    )
-                    SELECT
-                      Id,
-                      TrainCode,
-	                  Arrival,
-	                  Departure,
-	                  IsFinished,
-	                  Name,
-	                  RouteId
-                    FROM
-                      RankedDistances
-                    WHERE
-                      rn = 1;";
-            }
-          
-            return await ctx.Schedules!.FromSqlRaw(query, from, to).ToListAsync();
         }
 
         public async Task<IActionResult> TrainDetail(
@@ -221,7 +110,7 @@ namespace Railway_Group01.Controllers
             Schedule? sche = await ctx.Schedules!.Where(x => x.Departure >= timeS && x.Arrival<= timeS.AddDays(1) && x.RouteId==routeId && x.TrainCode=="SE801").Include(x=>x.Route).FirstAsync();
             if (sche != null)
             {
-                sche.Route.StartStation = await ctx.Stations!.FindAsync(sche.Route.StartStationId);
+                sche.Route!.StartStation = await ctx.Stations!.FindAsync(sche.Route.StartStationId);
                 sche.Route.EndStation = await ctx.Stations!.FindAsync(sche.Route.EndStationId);
                 sche.Route.RouteDetails = await ctx.RouteDetails!.Where(x => x.RouteId == sche.Route.Id).Include(x=>x.ArrivalStation).Include(x=>x.DepartureStation).ToListAsync();
             }
@@ -238,11 +127,8 @@ namespace Railway_Group01.Controllers
             var tuple = new Tuple<Schedule, Train,int>(sche, train,stop);
             return View(tuple);
         }
+
         public IActionResult AboutUs()
-        {
-            return View();
-        }
-        public IActionResult SignUp()
         {
             return View();
         }

@@ -91,26 +91,9 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link header-nav-link" data="5" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-                                    <span >
-                                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg">
-                                            <g fill="none" fill-rule="evenodd">
-                                                <path d="M0 0h30v30H0z" />
-                                                <g transform="translate(4 4)">
-                                                    <circle fill-opacity=".18" fill="#595959" fill-rule="nonzero" cx="11" cy="11" r="11" />
-                                                    <g transform="translate(3.27 2.237)" stroke="#595959" stroke-linecap="round">
-                                                        <circle cx="7.857" cy="3.766" r="3.766" />
-                                                        <path d="m0 17.13.212.028a63.762 63.762 0 0 0 15.233-.17v-.155c0-1.996-1.019-3.865-2.605-5.054C9.528 9.273 3.723 9.754 1.218 13.18A6.185 6.185 0 0 0 0 16.833v.297z" />
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </svg>
 
-                                        <span class="d-md-inline d-none me-2">Login/SignUp</span>
-                                    </span>
-                                </a>
-                            </li>
+                            <partial name="_LoginPartial"></partial>
+
                             <li class="nav-item">
                                 <a class="nav-link header-nav-link position-relative btn_showcart" href="#offcanvasRight" data-bs-target="#offcanvasRight" data-bs-toggle="offcanvas" aria-controls="offcanvasRight">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package">
@@ -166,67 +149,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-dialog">
-                    <div class="modal-content position-relative">
-                        <div class="modal-header position-absolute top-0 end-0 z-2">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-5 d-flex flex-column justify-content-center align-items-center position-relative">
-                                        <div class="h-100 w-100 login-banner" >
-                                        </div>
-                                        <img src="~/images/tauthehe3-toangoi.jpg" class="img-fluid z-1" />
-                                    </div>
-                                    <div class="col-7 mt-4 ps-4">
-                                        <div class="text-end pe-3">
-                                            <p class="text-secondary">Don't have an account? <a asp-controller="Railway" asp-action="SignUp">SIGN UP</a></p>
-                                        </div>
-                                        <div class="text-start fs-4 my-4" style="font-family: 'Allerta Stencil', sans-serif;">
-                                            Log in to ixigo
-                                        </div>
-                                        <form>
-                                            <div class="row mb-3">
-                                                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                                                <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="inputEmail3">
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                                                <div class="col-sm-10">
-                                                    <input type="password" class="form-control" id="inputPassword3">
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-orange">Sign in</button>
-                                        </form>
-                                        <div class="my-4 text-center">OR</div>
-                                        <div class="d-flex flex-row justify-content-center align-items-center mb-3">
-                                            <div class="">
-                                                <a href="#" role="button" class="rounded-pill btn btn-outline-primary">
-                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" />
-                                                    Sign in Google
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="text-secondary ">
-                                            By logging in, I understand &amp; agree to ixigo
-                                            <a target="_blank" href="/about/more-info/terms-of-use/">Terms of Use</a>
-                                            and
-                                            <a target="_blank" href="/about/more-info/privacy/">Privacy Policy</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <main role="main" class="d-flex flex-column z-1" style="padding-bottom:100px">
+        <main role="main" class="d-flex flex-column z-1" style="padding-bottom:100px; min-height: calc(100vh - 25px)">
             @RenderBody()
         </main>
         <footer class="border-top footer text-muted">
