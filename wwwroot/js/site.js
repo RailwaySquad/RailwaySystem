@@ -3,38 +3,80 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
-    $(".et-sit-no").click(function () {
+    const listItemCart = (dataCart) => {
+        let lis = "";
+        if (!dataCart) {
+            lis += `<li class="list-group-item ms-1 text-center">Emty</li>`;
+        }
+        dataCart.forEach((item, i) => {
+            lis += `<li class="list-group-item ms-1 d-flex flex-column">
+                                <div class="row w-100">
+                                    <div class="col-10 ">
+                                    ${item.title}
+                                    </div>
+                                    <div class="col-2">
+                                    <a class="text-danger" href="">
+                                        <i class="bi bi-trash3"></i>
+                                    </a>
+                                    </div>
+                                </div>
+                                <div>${item.startAt}</div>
+                                <div>${item.seatDetail}</div</li>`;
+        });
+        $("#list-cart").html(lis);
+        $("#countCart").text(dataCart.length);
+    };
+    $(".sit-available").click(function () {
         let schedule = $(this).data("schedule");
         let coach = $(this).data("coach");
         let seat = $(this).data("seat");
-        let userid = $(this).data("user");
-        let url = window.location.origin + "/api/RailwayAjax/addbooking";
+        let urlAdd = window.location.origin + "/api/RailwayAjax/addcart";
+        let urlRemove = window.location.origin + "/api/RailwayAjax/removeitem";
         /*alert(`Schedule: ${schedule}\nCoach: ${coach}\nSeat :${seat}`);*/
         console.log({
-            'ScheduleId': schedule,
-            'CoachId': coach,
-            'Seat': seat,
-            'CIDNo': userid
+            "ScheduleId": schedule,
+            "CoachId": coach,
+            "Seat": seat
         });
-        console.log(url);
-        /*$.ajax({
-            type: "POST",
-            url: url,
-            data: {
-                'ScheduleId': schedule,
-                'CoachId': coach,
-                'Seat': seat,
-                'CIDNo': userid
-            },
-            success: function (data) {
-                console.log(data)
-            },
-            dataType: 'json'
-        }).fail(function () {
-            alert("error");
-        }).always(function () {
-            alert("complete");
-        });;*/
+        if ($(this).parent().hasClass("et-sit-avaiable")) {
+            $.ajax({
+                type: "POST",
+                url: urlAdd,
+                data: {
+                    "ScheduleId": schedule,
+                    "CoachId": coach,
+                    "Seat": seat
+                },
+                success: function (data) {
+                    listItemCart(data);
+                },
+                dataType: 'json'
+            }).fail(function () {
+                console.log("error");
+            }).always(function () {
+                console.log("complete");
+            });;
+        } else {
+            $.ajax({
+                type: "POST",
+                url: urlRemove,
+                data: {
+                    "ScheduleId": schedule,
+                    "CoachId": coach,
+                    "Seat": seat
+                },
+                success: function (data) {
+                    listItemCart(data);
+                },
+                dataType: 'json'
+            }).fail(function () {
+                console.log("error");
+            }).always(function () {
+                console.log("complete");
+            });;
+        }
+        $(this).parent().toggleClass("et-sit-avaiable");
+        $(this).parent().toggleClass("et-sit-buying");
     });
     $(".train-coach").click(function () {
         $(this).siblings().removeClass("active");

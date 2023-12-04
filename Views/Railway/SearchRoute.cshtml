@@ -339,8 +339,8 @@
                                                                         <div class="et-car-seat-left et-seat-h-35">
                                                                             <div class="et-col-16 et-sit-side"></div>
                                                                             <div class="et-col-84 et-sit-sur-outer">
-                                                                                <div class="et-sit-sur text-center et-sit-bought">
-                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Not available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no">
+                                                                                <div class="et-sit-sur text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Not available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available">
                                                                                         <span >@count</span>
                                                                                     </div>
                                                                                 </div>
@@ -365,8 +365,8 @@
                                                                     <div class="et-car-nm-64-sit ng-isolate-scope" et-seat-right="">
                                                                         <div class="et-car-seat-right et-seat-h-35">
                                                                             <div class="et-col-84 et-sit-sur-outer-invert">
-                                                                                <div class="et-sit-sur-invert text-center et-sit-bought">
-                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Not available seat" data-bs-placement="top" class="et-sit-no" data-bs-custom-class="custom-tooltip" data-schedule="@item.Id" data-coach="@coach.Id" data-seat="@count">
+                                                                                <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Not available seat" data-bs-placement="top" class="et-sit-no sit-available" data-bs-custom-class="custom-tooltip" data-schedule="@item.Id" data-coach="@coach.Id" data-seat="@count">
                                                                                         <span>@count</span>
                                                                                     </div>
                                                                                 </div>
@@ -404,7 +404,7 @@
                                                                         <div class="et-bed-right">
                                                                             <div class="et-bed-outer">
                                                                                 <div class="et-bed text-center et-sit-avaiable">
-                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no" data-schedule="@item.Id" data-coach="@coach.Id" data-seat="@count">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available" data-schedule="@item.Id" data-coach="@coach.Id" data-seat="@count">
                                                                                         <span >@count</span>
                                                                                     </div>
                                                                                 </div>
@@ -419,7 +419,7 @@
                                                                         <div class="et-bed-left" >
                                                                             <div class="et-bed-outer">
                                                                                 <div class="et-bed text-center et-sit-avaiable">
-                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no" data-schedule="@item.Id" data-coach="@coach.Id" data-seat="@count">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available" data-schedule="@item.Id" data-coach="@coach.Id" data-seat="@count">
                                                                                         <span>@count</span> </div>
                                                                                 </div>
                                                                                 <div class="et-bed-illu"></div>
@@ -480,9 +480,10 @@
                     <h5 style="color: #EC5B24;">Your Tickets </h5>
                 </div>
                 <div class="card-body pt-1">
-                    <p class="text-primary mb-2" style="text-align: end;">Total: 1</p>
-                    <ul class="list-group">
-                        <li class="list-group-item ms-1 d-flex flex-column">
+                    <p class="text-primary mb-2" style="text-align: end;">Total: <span id="countCart">0</span></p>
+                    <ul class="list-group " id="list-cart">
+                        <li class="list-group-item ms-1 text-center text-secondary-emphasis">Emty Cart</li>
+                        @* <li class="list-group-item ms-1 d-flex flex-column">
                             <div>
                                 <span class="tenGa me-2">A01</span>
                                 <span class="chuyenTau">Sai Gon - Ha Noi</span>
@@ -492,7 +493,7 @@
                             </div>
                             <div>18/11/2023 10:00:00</div>
                             <div>Coarch A - Seat A10</div>
-                        </li>
+                        </li> *@
                     </ul>
                 </div>
                 <div class="card-footer text-center">
