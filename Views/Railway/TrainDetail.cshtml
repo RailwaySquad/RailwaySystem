@@ -359,7 +359,7 @@
                                                 </div>
                                             </div>
                                             <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[30]">
-                                                <div class="et-bed-left ng-hide">
+                                            <div class="et-bed-left invisible">
                                                     <div class="et-bed-outer">
                                                         <div class="et-bed text-center">
                                                             <div data-popover="Ticket sold" data-popover-title="Not available seat"
@@ -372,7 +372,7 @@
                                                 </div>
                                             </div>
                                             <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right ng-hide">
+                                            <div class="et-bed-right invisible">
                                                     <div class="et-bed-outer">
                                                         <div class="et-bed text-center">
                                                             <div data-popover="Ticket sold" data-popover-title="Not available seat"
@@ -567,7 +567,7 @@
                                                 </div>
                                             </div>
                                             <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[28]">
-                                                <div class="et-bed-left ng-hide">
+                                            <div class="et-bed-left invisible">
                                                     <div class="et-bed-outer">
                                                         <div class="et-bed text-center">
                                                             <div data-popover="Ticket sold" data-popover-title="Not available seat"
@@ -580,7 +580,7 @@
                                                 </div>
                                             </div>
                                             <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right ng-hide">
+                                            <div class="et-bed-right invisible">
                                                     <div class="et-bed-outer">
                                                         <div class="et-bed text-center">
                                                             <div data-popover="Ticket sold" data-popover-title="Not available seat"
@@ -629,38 +629,60 @@
                 </div>
                 <div class="data-section my-4" id="schedule">
                     <h3 class="fw-400 my-5">Ashram Express 12916 Schedule, Routes &amp; Time Table</h3>
-                    <div class="description">Train no. 12916 Ashram Express is one of the major trains on this route for
-                        travellers. It starts from Old Delhi station and ends at Ahmedabad Jn. Due to its 21 stoppage
-                        stations, the total time taken by this train is around -9hr . You can easily 
-                        <a class="u-link" href="https://www.ixigo.com/trains">book train tickets</a> at ixigo for any stations between Old
-                        Delhi and Ahmedabad Jn and enjoy amazing deals.
+                    <div class="description">@Model.Item2.Description
                     </div>
                     <table class="table my-3 ">
                         <thead>
                             <tr class="p-2">
                                 <th class="h6">Stn Code</th>
                                 <th class="h6">Stn Name</th>
-                                <th class="h6">Travel Time</th>
+                                <th class="h6">Travel Time</th
+                                >
                                 <th class="h6">Distance</th>
                                 <th class="h6">Route</th>
                                 <th class="h6">Day</th>
                                 <th class="h6">Avg delay</th>
                             </tr>
                         </thead>
-                        <tbody >
+                    <tbody class="timeline">
                         @foreach(var item in Model.Item1.Route.RouteDetails)
                         {
-                            <tr>
-                                <td class="">@item.DepartureStation.Code</td>
-                                <td class="">@item.DepartureStation.Name</td>
-                                <td class="">
-                                    @string.Format("{0:%h}hr {0:%m}min",TimeSpan.FromHours(item.TravelTime))
-                                </td>
-                                <td class="">@Html.DisplayFor(x=>item.Distance) km</td>
-                                <td class="">@Html.DisplayFor(x=>item.RouteId)</td>
-                                <td class="">@Html.DisplayFor(x=>TimeSpan.FromHours(item.TravelTime).Days)</td>
-                                <td class="">@Html.DisplayFor(x=>TimeSpan.FromMinutes(item.DelayTime).TotalMinutes) min</td>
-                            </tr>
+                            if (item.ArrivalStationId == Model.Item1.Route.EndStationId && item.DepartureStationId == Model.Item1.Route.StartStationId)
+                            {
+                                <tr>
+                                    <td class="event-timeline text-center">@item.ArrivalStation.StationCode</td>
+                                    <td class="">@item.ArrivalStation.StationName</td>
+                                    <td>@string.Format("{0:%h}hr {0:%m}min",TimeSpan.FromHours(item.TravelTime))</td>
+                                    <td class="">@Html.DisplayFor(x=>item.Distance) km</td>
+                                    <td class="">@Html.DisplayFor(x=>item.RouteId)</td>
+                                    <td class="">@Html.DisplayFor(x=>TimeSpan.FromHours(item.TravelTime).Days)</td>
+                                    <td class="">@Html.DisplayFor(x=>TimeSpan.FromMinutes(item.DelayTime).TotalMinutes) min</td>
+                                </tr>
+                            }else if(item.DepartureStationId == Model.Item1.Route.StartStationId){
+                                <tr>
+                                    <td class="event-timeline text-center">@item.DepartureStation.StationCode</td>
+                                    <td class="">@item.DepartureStation.StationName</td>
+                                    <td>-</td>
+                                    <td class="">@Html.DisplayFor(x=>item.Distance) km</td>
+                                    <td class="">@Html.DisplayFor(x=>item.RouteId)</td>
+                                    <td class="">@Html.DisplayFor(x=>TimeSpan.FromHours(item.TravelTime).Days)</td>
+                                    <td class="">@Html.DisplayFor(x=>TimeSpan.FromMinutes(item.DelayTime).TotalMinutes) min</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="event-timeline text-center">@item.DepartureStation.StationCode</td>
+                                    <td class="">@item.DepartureStation.StationName</td>
+                                    <td class="">
+                                        @string.Format("{0:%h}hr {0:%m}min",TimeSpan.FromHours(item.TravelTime))
+                                    </td>
+                                    <td class="">@Html.DisplayFor(x=>item.Distance) km</td>
+                                    <td class="">@Html.DisplayFor(x=>item.RouteId)</td>
+                                    <td class="">@Html.DisplayFor(x=>TimeSpan.FromHours(item.TravelTime).Days)</td>
+                                    <td class="">@Html.DisplayFor(x=>TimeSpan.FromMinutes(item.DelayTime).TotalMinutes) min</td>
+                                </tr>
+                            }
                         }
                         </tbody>
                     </table>

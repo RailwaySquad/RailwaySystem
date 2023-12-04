@@ -13516,6 +13516,8 @@ namespace Railway_Group01.Migrations
                 {
                     b.Navigation("Coaches");
 
+                    b.Navigation("CoachesData");
+
                     b.Navigation("Schedules");
                 });
 
