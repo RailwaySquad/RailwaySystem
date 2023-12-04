@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "SignUp";
+    Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+}
+<div class="container" style=" padding-top: 102px;z-index:1 ">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="container_signup active" id="container" style="height:550px">
+            <div class="form-container sign-up">
+                <form>
+                    <h1>Create Account</h1>
+                    <div class="social-icons">
+                        <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    </div>
+                    <span>or use your email for registeration</span>
+                    <input type="text" placeholder="Name" class="input_sign">
+                    <input type="email" placeholder="Email" class="input_sign">
+                    <input type="password" placeholder="Password" class="input_sign">
+                    <input type="password" placeholder="Confirm Password" class="input_sign">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="accepted" id="accepted">
+                        <label class="form-check-label" for="accepted">
+                            By continuing, you agree to our
+                            <a href="#" class="text-orange text-decoration-underline"> Terms of Service</a> &
+                            <a href="#" class="text-orange text-decoration-underline">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <button class="btn btn-orange">Sign Up</button>
+                </form>
+            </div>
+            <div class="form-container sign-in">
+                <form>
+                    <h1>Sign In</h1>
+                    <div class="social-icons">
+                        <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    </div>
+                    <span>or use your email password</span>
+                    <input type="email" placeholder="Email" class="input_sign">
+                    <input type="password" placeholder="Password" class="input_sign">
+                    <a href="#">Forget Your Password?</a>
+                    <button>Sign In</button>
+                </form>
+            </div>
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-left">
+                        <h1>Welcome Back!</h1>
+                        <p>If you have registered an account.</p>
+                        <button class="hidden" id="login">Sign In</button>
+                    </div>
+                    <div class="toggle-panel toggle-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Register with your personal details to buy ticket</p>
+                        <button class="hidden" id="register">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        const container = document.getElementById('container');
+        const registerBtn = document.getElementById('register');
+        const loginBtn = document.getElementById('login');
+
+        registerBtn.addEventListener('click', () => {
+            container.classList.add("active");
+        });
+
+        loginBtn.addEventListener('click', () => {
+            container.classList.remove("active");
+        });
+    </script>
+}

@@ -16,7 +16,7 @@ namespace Railway_Group01.Data
         [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5.")]
         public int Rating { get; set; }
 
-        public DateTime? CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Required(ErrorMessage = "User is required.")]
         public User? User { get; set; }

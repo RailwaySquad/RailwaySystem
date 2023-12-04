@@ -14,7 +14,7 @@ namespace Railway_Group01.Data
 
         public string? Receiver { get; set; }
 
-        public DateTime? CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Required]
         public RefundRule? RefundRule { get; set; }
