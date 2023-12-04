@@ -230,5 +230,13 @@ namespace Railway_Group01.Controllers
             var tuple = new Tuple<Schedule, Train,int>(sche, train,stop);
             return View(tuple);
         }
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+        public IActionResult SignUp()
+        {
+            return View();
+        }
     }
 }

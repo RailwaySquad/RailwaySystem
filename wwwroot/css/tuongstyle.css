@@ -246,3 +246,283 @@ html {
     padding: 5px 10px;
     height: 176px;
 }
+
+.timeline {
+    border-left: 4px solid #4298C3;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    margin: 50px auto;
+    letter-spacing: 0.5px;
+    position: relative;
+    line-height: 1.4em;
+    font-size: 1.03em;
+    padding: 50px;
+    list-style: none;
+    text-align: left;
+    font-weight: 100;
+    max-width: 30%;
+}
+    .event-timeline {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-bottom: 25px;
+    margin-bottom: 50px;
+    position: relative;
+    height: 70px;
+}
+    .event-timeline:last-of-type {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border: none;
+    }
+
+    .event-timeline:before, .event-timeline:after {
+        position: absolute;
+        display: block;
+    }
+
+        .event-timeline:after {
+            box-shadow: 0 0 0 4px #4298c3;
+            left: -6.85px;
+            background: #0d6efd;
+            border-radius: 50%;
+            height: 11px;
+            width: 11px;
+            content: "";
+            top: 25px;
+        }
+
+.custom-tooltip {
+    --bs-tooltip-bg: #ee6d3b !important;
+    --bs-tooltip-color: #fff;
+}
+.slick-arrow {
+    border: 0;
+    background-color: #fff;
+}
+.login-banner {
+    background: url(../images/tauthehe3-toangoi.jpg) no-repeat center;
+    background-size: cover;
+    filter: blur(5px);
+    -webkit-filter: blur(8px);
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.container_signup {
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+    .container_signup p {
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.3px;
+        margin: 20px 0;
+    }
+
+    .container_signup span {
+        font-size: 12px;
+    }
+
+    .container_signup a {
+        color: #333;
+        font-size: 13px;
+        text-decoration: none;
+        margin: 15px 0 10px;
+    }
+
+    .container_signup button {
+        background-color: #ec5b24;
+        color: #fff;
+        font-size: 12px;
+        padding: 10px 45px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+        .container_signup button.hidden {
+            background-color: transparent;
+            border-color: #fff;
+        }
+
+    .container_signup form {
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 40px;
+        height: 100%;
+    }
+
+    .container_signup .input_sign {
+        background-color: #eee;
+        border: none;
+        margin: 8px 0;
+        padding: 10px 15px;
+        font-size: 13px;
+        border-radius: 8px;
+        width: 100%;
+        outline: none;
+    }
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.container_signup.active .sign-in {
+    transform: translateX(100%);
+}
+
+.sign-up {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container_signup.active .sign-up {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+@keyframes move {
+    0%, 49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%, 100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.social-icons {
+    margin: 20px 0;
+}
+
+    .social-icons a {
+        border: 1px solid #ccc;
+        border-radius: 20%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 3px;
+        width: 40px;
+        height: 40px;
+    }
+
+.toggle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+}
+
+.container_signup.active .toggle-container {
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+.toggle {
+    background-color: #ec5b24;
+    height: 100%;
+    background: linear-gradient(to right, #ec5b24,#ff987c);
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.container_signup.active .toggle {
+    transform: translateX(50%);
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-left {
+    transform: translateX(-200%);
+}
+
+.container_signup.active .toggle-left {
+    transform: translateX(0);
+}
+
+.toggle-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container_signup.active .toggle-right {
+    transform: translateX(200%);
+}
+
+.login-header {
+    font-size: 16px;
+    background-color: #efefef;
+    letter-spacing: .4px;
+    color: rgba(0,0,0,.87);
+    margin: -35px -40px 20px;
+    padding: 35px 40px 0;
+    font-weight: 800;
+}
+.brand-banner {
+    background: #721053;
+    background: -webkit-linear-gradient(45deg,#721053,#AD2E41);
+    background: -o-linear-gradient(45deg,#721053,#AD2E41);
+    background: -moz-linear-gradient(45deg,#721053,#AD2E41);
+    background: linear-gradient(45deg,#721053,#AD2E41);
+    height: 300px;
+    width: 100%;
+}
+.train-coach.active .card {
+    margin-bottom: 10px;
+    border-color: #EC5B24 !important;
+    background-color: #FEEFEA !important;
+}

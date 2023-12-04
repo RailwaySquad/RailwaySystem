@@ -2408,9 +2408,19 @@ button.close {
     float: left;
     min-height: 1px
 }
+.et-col-2-8 {
+    width: 25%;
+    float: left;
+    min-height: 1px
+}
 
 .et-col-1-16 {
     width: 6.25%;
+    float: left;
+    min-height: 1px
+}
+.et-col-1-12 {
+    width: 6.5%;
     float: left;
     min-height: 1px
 }
