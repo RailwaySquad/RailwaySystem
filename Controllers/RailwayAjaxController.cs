@@ -103,5 +103,22 @@ namespace Railway_Group01.Controllers
                 return BadRequest();
             }
         }
+        [HttpGet]
+        [Route("clearCart")]
+        public ActionResult<bool> ClearCart()
+        {
+            try { 
+                string? jsonListcart = HttpContext.Session.GetString("listCart");
+                if (jsonListcart != null)
+                {
+                    HttpContext.Session.Remove("listCart");
+                }
+                return true;
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
     }
 }

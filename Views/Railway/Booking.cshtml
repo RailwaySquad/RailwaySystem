@@ -1,0 +1,17 @@
+﻿@model List<CartDto>
+@{
+    ViewData["Title"] = "Booking";
+    Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+}
+<div class="container-fluid">
+    <div class="row" style="padding-top:80px">
+        <ol>
+            @foreach(var item in Model)
+            {
+                <li>
+                    @item.Title<br />@item.SeatDetail</li>
+                
+            }
+        </ol>
+    </div>
+</div> 

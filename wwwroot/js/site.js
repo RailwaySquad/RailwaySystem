@@ -7,24 +7,25 @@ $(document).ready(function () {
         let lis = "";
         if (!dataCart) {
             lis += `<li class="list-group-item ms-1 text-center">Emty</li>`;
+        } else {
+            dataCart.forEach((item, i) => {
+                lis += `<li class="list-group-item ms-1 d-flex flex-column">
+                                    <div class="row w-100">
+                                        <div class="col-10 ">
+                                        ${item.title}
+                                        </div>
+                                        <div class="col-2">
+                                        <a class="text-danger" href="">
+                                            <i class="bi bi-trash3"></i>
+                                        </a>
+                                        </div>
+                                    </div>
+                                    <div>${item.startAt}</div>
+                                    <div>${item.seatDetail}</div</li>`;
+            });
         }
-        dataCart.forEach((item, i) => {
-            lis += `<li class="list-group-item ms-1 d-flex flex-column">
-                                <div class="row w-100">
-                                    <div class="col-10 ">
-                                    ${item.title}
-                                    </div>
-                                    <div class="col-2">
-                                    <a class="text-danger" href="">
-                                        <i class="bi bi-trash3"></i>
-                                    </a>
-                                    </div>
-                                </div>
-                                <div>${item.startAt}</div>
-                                <div>${item.seatDetail}</div</li>`;
-        });
-        $("#list-cart").html(lis);
-        $("#countCart").text(dataCart.length);
+        $(".list-cart").html(lis);
+        $(".countCart").text(dataCart.length);
     };
     $(".sit-available").click(function () {
         let schedule = $(this).data("schedule");
@@ -78,8 +79,29 @@ $(document).ready(function () {
         $(this).parent().toggleClass("et-sit-avaiable");
         $(this).parent().toggleClass("et-sit-buying");
     });
+    $(".clearCart").click(function () {
+        $.ajax({
+            type: "GET",
+            url: window.location.origin + "/api/RailwayAjax/clearCart",
+            success: function (data) {
+                console.log(data);
+                listItemCart(null);
+                $(".sit-available").forEach(element => {
+                    if (element.parent().hasClass("et-sit-buying")) {
+                        element.parent().removeClass("et-sit-buying");
+                        element.parent().addClass("et-sit-avaiable");
+                    }
+                })
+            },
+            dataType: 'json'
+        }).fail(function () {
+            console.log("error");
+        }).always(function () {
+            console.log("complete");
+        });;
+    })
     $(".train-coach").click(function () {
         $(this).siblings().removeClass("active");
-        $(this).addClass("active");
+        $(this).toggleClass("active");
     })
 });

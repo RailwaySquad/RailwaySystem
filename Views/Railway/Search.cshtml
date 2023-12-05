@@ -309,11 +309,11 @@
                                     {
                                         @foreach (var coach in schedule.Train!.Coaches!)
                                         {
-                                            <a role="button" class="text-decoration-none text-black train-coach" data-bs-toggle="collapse" href="#@schedule.TrainCode-@detail.Id" aria-expanded="false" aria-controls="@schedule.TrainCode-@detail.Id">
+                                            <a role="button" class="text-decoration-none text-black train-coach" data-bs-toggle="collapse" href="#@schedule.TrainCode-@coach.Id" aria-expanded="false" aria-controls="@schedule.TrainCode-@coach.Id">
                                                 <div class="card" style="width:180px">
                                                     <div class="card-body d-flex flex-column  p-2">
-                                                        <div class="fs-6 text-center" style="color: #EC5B24;">Coach @Html.DisplayFor(x=>detail.CoachNo)</div>
-                                                        <div>Last: @Html.DisplayFor(x=>detail.NoOfSeats)</div>
+                                                        <div class="fs-6 text-center" style="color: #EC5B24;">Coach @Html.DisplayFor(x=>coach.CoachNo)</div>
+                                                        <div>Last: @Html.DisplayFor(x=>coach.NoOfSeats)</div>
                                                         <div>
                                                             Cost: ??? VND
                                                         </div>
@@ -435,32 +435,6 @@
             }
         </div>
         <div class="col-lg-3 position-relative mt-3 mb-5">
-
-            <div class="card position-fixed shadow" style="width: 280px;" id="ticket-info">
-                <div class="card-header text-center">
-                    <h5 style="color: #EC5B24;">Your Tickets </h5>
-                </div>
-                <div class="card-body pt-1">
-                    <p class="text-primary mb-2" style="text-align: end;">Total: <span id="countCart">0</span></p>
-                    <ul class="list-group " id="list-cart">
-                        <li class="list-group-item ms-1 text-center text-secondary-emphasis">Emty Cart</li>
-                        @* <li class="list-group-item ms-1 d-flex flex-column">
-                        <div>
-                        <span class="tenGa me-2">A01</span>
-                        <span class="chuyenTau">Sai Gon - Ha Noi</span>
-                        <a class="text-danger" href="">
-                        <img src="~/images/svg/trash3.svg" class="ms-4" />
-                        </a>
-                        </div>
-                        <div>18/11/2023 10:00:00</div>
-                        <div>Coarch A - Seat A10</div>
-                        </li> *@
-                    </ul>
-                </div>
-                <div class="card-footer text-center">
-                    <button class="btn btn-outline-primary my-2">Buy Tickets</button>
-                </div>
-            </div>
         </div>
     </div>
 </div>

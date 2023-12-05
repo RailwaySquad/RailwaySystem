@@ -106,7 +106,7 @@
                                         </line>
                                     </svg>
                                     <span class="position-absolute start-100 translate-middle badge rounded-pill bg-orange">
-                                        <span class="fw-bold countOrder">1</span>
+                                        <span class="fw-bold countCart">0</span>
                                     </span>
                                 </a>
                             </li>
@@ -125,8 +125,9 @@
             </div>
             <div class="offcanvas-body">
                 <div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item ms-1 d-flex flex-column">
+                    <ul class="list-group list-group-flush list-cart">
+                        <li class="list-group-item ms-1 text-center text-secondary-emphasis">Emty Cart</li>
+                        @* <li class="list-group-item ms-1 d-flex flex-column">
                             <div class="row">
                                 <div class="col-10">
                                     <span class="tenGa me-2">A01</span>
@@ -140,11 +141,11 @@
                             </div>
                             <div>18/11/2023 10:00:00</div>
                             <div>Coarch A - Seat A10</div>
-                        </li>
+                        </li> *@
                     </ul>
                     <div class="d-flex justify-content-between mt-4">
-                        <a href="" class="btn btn-orange">Buy Now</a>
-                        <a href="" class="btn btn-outline-secondary">Clear Cart</a>
+                        <a asp-controller="Railway" asp-action="Booking" class="btn btn-orange">Buy Now</a>
+                        <a href="#" class="btn btn-outline-secondary clearCart">Clear Cart</a>
                     </div>
                 </div>
             </div>

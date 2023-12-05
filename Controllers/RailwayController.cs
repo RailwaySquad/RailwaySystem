@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Railway_Group01.Data;
+using Railway_Group01.Models;
 using Railway_Group01.Models.ViewModels;
 
 namespace Railway_Group01.Controllers
@@ -131,6 +133,16 @@ namespace Railway_Group01.Controllers
         public IActionResult AboutUs()
         {
             return View();
+        }
+        public IActionResult  Booking()
+        {
+            string? listCart = HttpContext.Session.GetString("listCart");
+            if (listCart != null)
+            {
+                List<CartDto>? carts = JsonConvert.DeserializeObject<List<CartDto>>(listCart);
+                return View(carts);
+            }
+            return RedirectToAction("Index");
         }
     }
 }
