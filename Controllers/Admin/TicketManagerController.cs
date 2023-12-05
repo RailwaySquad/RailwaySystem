@@ -13,8 +13,8 @@ namespace Railway_Group01.Controllers.Admin
 		}
 		public async Task<IActionResult> TicketManager()
 		{
-			var ticket = await ctx.Tickets!.Include(t=>t.Schedule).Include(t=>t.Coach).Include(t=>t.Passenger).ToListAsync();
-			return View(ticket);
+			/*var ticket = await ctx.Bookings!.Include(t=>t.User).Include(t=>t.CreatedAt).ToListAsync();*/
+			return View();
 		}
 	}
 }

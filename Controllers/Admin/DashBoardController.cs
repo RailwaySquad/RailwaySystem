@@ -20,7 +20,7 @@ namespace Railway_Group01.Controllers.Admin
 			// Chuyển đổi năm từ chuỗi sang kiểu int nếu cần
 			int selectedYear = int.Parse(year);
 
-			// Lấy dữ liệu từ database dựa trên năm
+			// Lấy dữ liệu từ database dựa trêSn năm
 			List<object> data = GetDataForYear(selectedYear);
 
 			return Json(data);
@@ -29,15 +29,15 @@ namespace Railway_Group01.Controllers.Admin
 		{
 			// Thực hiện truy vấn vào database để lấy dữ liệu cho năm cụ thể
 			// Đảm bảo chỉ lấy dữ liệu của năm được chọn
-			var groupData = ctx.BookingDetailss.Where(t=>t.Booking.BookAt.Year == year)
-				.GroupBy(p => new {Month = p.Booking.BookAt.Month})
-				.Select(group => new 
+			var groupData = ctx.Transactions!.Where(t => t.CreatedAt.Year == year)
+				.GroupBy(p => new { Month = p.CreatedAt.Month })
+				.Select(group => new
 				{
 					Month = group.Key.Month,
-					Total = group.Sum(p=>p.Price)
-				}).OrderBy(p=>p.Month).ToList();
-			List<DateTime> BookingDate = groupData.Select(p => new DateTime(year,p.Month,1)).ToList();
-			List<decimal> total = groupData.Select(p =>p.Total).ToList();
+					Total = group.Sum(p => p.Amount)
+				}).OrderBy(p => p.Month).ToList();
+			List<DateTime> BookingDate = groupData.Select(p => new DateTime(year, p.Month, 1)).ToList();
+			List<decimal> total = groupData.Select(p => p.Total).ToList();
 
 			List<object> data = new List<object>();
 			data.Add(BookingDate);

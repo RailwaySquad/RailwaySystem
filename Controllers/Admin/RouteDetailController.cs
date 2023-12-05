@@ -16,7 +16,7 @@ namespace Railway_Group01.Controllers.Admin
 		}
 		public async Task<IActionResult> RouteDetailList()
 		{
-			var route = await ctx.RouteDetailss!
+			var route = await ctx.RouteDetails!
 				.Include(r=>r.ArrivalStation)
 				.Include(r=>r.DepartureStation)
 				.Include(r=>r.Route)
@@ -32,12 +32,12 @@ namespace Railway_Group01.Controllers.Admin
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> CreateRouteDetail(RouteDetails routeDetails)
+		public async Task<IActionResult> CreateRouteDetail(RouteDetail routeDetails)
 		{
 			routeDetails.Route = await ctx.Routes!.FindAsync(routeDetails.Route.Id);
 			routeDetails.DepartureStation = await ctx.Stations!.FindAsync(routeDetails.DepartureStation.Id);
 			routeDetails.ArrivalStation = await ctx.Stations!.FindAsync(routeDetails.ArrivalStation.Id);
-			ctx.RouteDetailss!.Add(routeDetails);
+			ctx.RouteDetails!.Add(routeDetails);
 			await ctx.SaveChangesAsync();
 			TempData["SuccessMessage"] = "RouteDetail Added successfully.";
 			return RedirectToAction("RouteDetailList");
@@ -48,11 +48,11 @@ namespace Railway_Group01.Controllers.Admin
 			ViewData["liststation"] = listStation;
 			var listRoute = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
 			ViewData["listroute"] = listRoute;
-			var route = await ctx.RouteDetailss!.SingleOrDefaultAsync(r=>r.Id == id);
+			var route = await ctx.RouteDetails!.SingleOrDefaultAsync(r=>r.Id == id);
 			return View(route);
 		}
 		[HttpPost]
-		public async Task<IActionResult> EditRouteDetail(RouteDetails routeDetails,int id)
+		public async Task<IActionResult> EditRouteDetail(RouteDetail routeDetails,int id)
 		{
 			routeDetails.Route = await ctx.Routes!.FindAsync(routeDetails.Route.Id);
 			routeDetails.DepartureStation = await ctx.Stations!.FindAsync(routeDetails.DepartureStation.Id);
@@ -65,14 +65,14 @@ namespace Railway_Group01.Controllers.Admin
 		[HttpPost]
 		public async Task<IActionResult> DeleteRouteDetail(int id)
 		{
-			var route = await ctx.RouteDetailss!.SingleOrDefaultAsync(r => r.Id == id);
+			var route = await ctx.RouteDetails!.SingleOrDefaultAsync(r => r.Id == id);
 
 			if (route == null)
 			{
 				return NotFound();
 			}
 
-			ctx.RouteDetailss!.Remove(route);
+			ctx.RouteDetails!.Remove(route);
 			await ctx.SaveChangesAsync();
 			TempData["SuccessMessage"] = "RouteDetail Deleted successfully.";
 			return RedirectToAction("RouteDetailList");

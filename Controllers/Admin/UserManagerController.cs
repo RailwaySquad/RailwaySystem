@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Railway_Group01.Data;
 using Railway_Group01.Models;
+using System.Data;
 
 namespace Railway_Group01.Controllers.Admin
 {
@@ -59,15 +60,76 @@ namespace Railway_Group01.Controllers.Admin
 		}
 		public async Task<IActionResult> EditUser(string id)
 		{
-			var user = await ctx.Users!.SingleOrDefaultAsync(x => x.Id == id);
-			return View(user);
+
+			var user = await userManager.FindByIdAsync(id);
+
+			if (user == null)
+			{
+				return NotFound();
+			}
+
+			var roles = await userManager.GetRolesAsync(user);
+			var userDTO = new UserDTO
+			{
+				Id = user.Id,
+				UserName = user.UserName,
+				Email = user.Email,
+				Phone = user.PhoneNumber,
+				Role = roles.FirstOrDefault()
+			};
+
+			return View(userDTO);
 		}
 		[HttpPost]
-		public async Task<IActionResult> EditUser(User user,string id)
+		public async Task<IActionResult> EditUser(UserDTO userDTO)
 		{
-			ctx.Entry(user).State = EntityState.Modified;
-			await ctx.SaveChangesAsync();
-			TempData["SuccessMessage"] = "User Edit successfully.";
+			var user = await userManager.FindByIdAsync(userDTO.Id);
+			user.UserName = userDTO.UserName;
+			user.Email = userDTO.Email;
+			user.PhoneNumber = userDTO.Phone;
+
+			// Cập nhật các thuộc tính khác nếu cần
+
+			var result = await userManager.UpdateAsync(user);
+
+			if (result.Succeeded)
+			{
+				// Cập nhật vai trò của người dùng
+				var currentRoles = await userManager.GetRolesAsync(user);
+
+				if (currentRoles.Any())
+				{
+					// Loại bỏ các vai trò hiện tại
+					await userManager.RemoveFromRolesAsync(user, currentRoles);
+				}
+
+				// Thêm vai trò mới
+				await userManager.AddToRoleAsync(user, userDTO.Role);
+
+				TempData["SuccessMessage"] = "User Edit successfully.";
+				return RedirectToAction("UserManager");
+			}
+			return View(userDTO);
+		}
+		[HttpPost]
+		public async Task<IActionResult> DeleteUser(string id)
+		{
+			var user = await userManager.FindByIdAsync(id);
+
+			if (user == null)
+			{
+				return NotFound();
+			}
+
+			var result = await userManager.DeleteAsync(user);
+
+			if (result.Succeeded)
+			{
+				TempData["SuccessMessage"] = "User deleted successfully.";
+				return RedirectToAction("UserManager");
+			}
+
+			TempData["ErrorMessage"] = "Failed to delete user.";
 			return RedirectToAction("UserManager");
 		}
 	}

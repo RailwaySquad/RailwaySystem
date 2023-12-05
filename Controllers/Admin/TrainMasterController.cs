@@ -16,25 +16,29 @@ namespace Railway_Group01.Controllers.Admin
 			var train = await ctx.Trains!.ToListAsync();
 			return View(train);
 		}
-		public IActionResult CreateTrain()
+		public async Task<IActionResult> CreateTrain()
 		{
+			var listType = await ctx.TrainTypes!.ToListAsync();
+			ViewData["listType"] = listType;
 			return View();
 		}
 		[HttpPost]
 		public async Task<IActionResult> CreateTrain(Train train)
 		{
-			if (!ModelState.IsValid)
+			if (ModelState.IsValid)
 			{
 				ctx.Trains!.Add(train);
 				await ctx.SaveChangesAsync();
 				TempData["SuccessMessage"] = "Train Added successfully.";
 				return RedirectToAction("TrainMaster");
 			}
-			return View();
+			return View(train);
 		}
 		public async Task<IActionResult> EditTrain(string id)
 		{
-			var train = await ctx.Trains!.SingleOrDefaultAsync(t => t.TrainCode == id);
+			var train = await ctx.Trains!.SingleOrDefaultAsync(t => t.Code == id);
+			var listType = await ctx.TrainTypes!.ToListAsync();
+			ViewData["listType"] = listType;
 			return View(train);
 		}
 		[HttpPost]
@@ -48,7 +52,7 @@ namespace Railway_Group01.Controllers.Admin
 		[HttpPost]
 		public async Task<IActionResult> DeleteTrain(string id)
 		{
-			var train = await ctx.Trains!.SingleOrDefaultAsync(s => s.TrainCode == id);
+			var train = await ctx.Trains!.SingleOrDefaultAsync(s => s.Code == id);
 			if (train == null)
 			{
 				return NotFound();

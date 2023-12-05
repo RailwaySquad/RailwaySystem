@@ -1,4 +1,4 @@
-﻿@model Railway_Group01.Data.RouteDetails
+﻿@model Railway_Group01.Data.RouteDetail
 @{
 
 	Layout = null;
@@ -273,7 +273,7 @@
 					<div class="card mb-6 shadow border-0">
 						<!-- card body -->
 						<div class="card-body p-6">
-							<h4 class="mb-4 h5 mt-5">Route Information</h4>
+							<h4 class="mb-4 h5 mt-5">Route Detail Information</h4>
 							<form asp-action="CreateRouteDetail" method="post">
 								<div class="row">
 									<!-- input -->
@@ -317,16 +317,19 @@
 									<!-- input -->
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">Distance</label>
+										<span style="color:red">*</span>
 										<input asp-for="Distance" class="form-control" required />
 										<span asp-validation-for="Distance" class="text-danger"></span>
 									</div>
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">TravelTime</label>
+										<span style="color:red">*</span>
 										<input asp-for="TravelTime" class="form-control" required />
 										<span asp-validation-for="TravelTime" class="text-danger"></span>
 									</div>
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">DelayTime</label>
+										<span style="color:red">*</span>
 										<input asp-for="DelayTime" class="form-control" required />
 										<span asp-validation-for="DelayTime" class="text-danger"></span>
 									</div>

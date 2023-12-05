@@ -13,6 +13,18 @@
 		background-color: #EC5B24 !important;
 		color: white !important;
 	}
+	.delete{
+		position: relative;
+		width: 10px;
+		top: 18px;
+		right: 20%;
+	}
+	.edit{
+		position: relative;
+		width: 10px;
+		left: 40%;
+		bottom: 18px;
+	}
 </style>
 <partial name="_Header" />
 <div class="main-wrapper">
@@ -45,7 +57,7 @@
 						<a class="nav-link  active " href="../dashboard/products.html">
 							<div class="d-flex align-items-center">
 								<span class="nav-link-icon"><i class="bi bi-cart"></i></span>
-								<span class="nav-link-text">Products</span>
+								<span class="nav-link-text">Stations</span>
 							</div>
 						</a>
 					</li>
@@ -247,12 +259,12 @@
 					<!-- page header -->
 					<div class="d-md-flex justify-content-between align-items-center">
 						<div>
-							<h2>Products</h2>
+							<h2>Stations</h2>
 							<!-- breacrumb -->
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb mb-0">
 									<li class="breadcrumb-item"><a href="#" class="text-inherit">Dashboard</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Products</li>
+									<li class="breadcrumb-item active" aria-current="page">Stations</li>
 								</ol>
 							</nav>
 						</div>
@@ -273,7 +285,7 @@
 								<!-- form -->
 								<div class="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
 									<form class="d-flex" role="search">
-										<input class="form-control" type="search" placeholder="Search Products" aria-label="Search" />
+										<input class="form-control" type="search" placeholder="Search Stations" aria-label="Search" />
 									</form>
 								</div>
 								<!-- select option -->
@@ -301,7 +313,6 @@
 											<th class="colerth">NameOfDivision</th>
 											<th class="colerth">Zone</th>
 											<th class="colerth">ZipCode</th>
-											<th class="colerth">Detail</th>
 											<th class="colerth">Action</th>
 										</tr>
 									</thead>
@@ -317,9 +328,6 @@
 												<td>@item.NameOfDivision</td>
 												<td>@item.Zone</td>
 												<td>@item.ZipCode</td>
-												<td>
-													<button><a href="/StationMaster/StationDetail">Detail</a></button>
-												</td>
 
 												<td>
 													<div class="dropdown">

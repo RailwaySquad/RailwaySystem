@@ -22,7 +22,7 @@ namespace Railway_Group01.Controllers.Admin
 				.Include(s=>s.Train)
 				.Include(s=>s.Route.StartStation)
                 .Include(s=>s.Route.EndStation)
-                .OrderBy(s => s.StartAt)
+                .OrderBy(s => s.Departure)
                 .ToListAsync();
 			return View(schedule);
 		}
@@ -30,11 +30,11 @@ namespace Railway_Group01.Controllers.Admin
         public async Task<IActionResult> SearchByMonth(int month)
         {
             var schedules = await ctx.Schedules
-                .Where(s => s.StartAt.Value.Month == month)
+                .Where(s => s.Departure.Value.Month == month)
                 .Include(s => s.Train)
                 .Include(s => s.Route.StartStation)
                 .Include(s => s.Route.EndStation)
-                .OrderBy(s => s.StartAt)
+                .OrderBy(s => s.Departure)
                 .ToListAsync();
 
             return View("TrainSchedule", schedules);
@@ -43,24 +43,21 @@ namespace Railway_Group01.Controllers.Admin
         public async Task<IActionResult> SearchByYear(int year)
         {
             var schedules = await ctx.Schedules
-                .Where(s => s.StartAt.Value.Year == year)
+                .Where(s => s.Departure.Value.Year == year)
                 .Include(s => s.Train)
                 .Include(s => s.Route.StartStation)
                 .Include(s => s.Route.EndStation)
-                .OrderBy(s => s.StartAt)
+                .OrderBy(s => s.Departure)
                 .ToListAsync();
 
             return View("TrainSchedule", schedules);
         }
         public async Task<IActionResult> CreateTrainSchedule()
 {
-			var listTrain = await ctx.Trains!.ToListAsync();
-			List<SelectListItem> trainItems = listTrain
-				.Select(t => new SelectListItem { Text = t.Name, Value = t.TrainCode })
-				.ToList();
-			ViewData["ListTrain"] = trainItems;
+            var listTrain = await ctx.Trains!.ToListAsync();
+            ViewData["listTrain"] = listTrain;
 
-			var listRoute = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
+            var listRoute = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
 			ViewData["listroute"] = listRoute;
 
 			return View();
@@ -70,7 +67,7 @@ namespace Railway_Group01.Controllers.Admin
 		{
 
 				schedule.Route = await ctx.Routes!.FindAsync(schedule.Route.Id);
-				schedule.Train = await ctx.Trains!.FindAsync(schedule.Train.TrainCode);
+				schedule.Train = await ctx.Trains!.FindAsync(schedule.Train);
 				ctx.Schedules!.Add(schedule);
 				await ctx.SaveChangesAsync();
 			TempData["SuccessMessage"] = "Schedule Added successfully.";
@@ -81,7 +78,7 @@ namespace Railway_Group01.Controllers.Admin
 		{
 			var listTrain = await ctx.Trains!.ToListAsync();
 			List<SelectListItem> trainItems = listTrain
-				.Select(t => new SelectListItem { Text = t.Name, Value = t.TrainCode})
+				.Select(t => new SelectListItem { Text = t.Code, Value = t.Code})
 				.ToList();
 			ViewBag.listTrain = trainItems;
 			var listRoute = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
@@ -93,7 +90,7 @@ namespace Railway_Group01.Controllers.Admin
 		public async Task<IActionResult> EditTrainSchedule(Schedule schedule, int id)
 		{
 			schedule.Route = await ctx.Routes!.FindAsync(schedule.Route.Id);
-			schedule.Train = await ctx.Trains!.FindAsync(schedule.Train.TrainCode);
+			schedule.Train = await ctx.Trains!.FindAsync(schedule.Train.Code);
 			ctx.Entry(schedule).State = EntityState.Modified;
 			await ctx.SaveChangesAsync();
 			TempData["SuccessMessage"] = "Schedule Edit successfully.";
@@ -111,5 +108,17 @@ namespace Railway_Group01.Controllers.Admin
 			TempData["SuccessMessage"] = "Schedule Deleted successfully.";
 			return RedirectToAction("TrainSchedule");
 		}
-	}
+		[HttpGet]
+        public async Task<IActionResult> DetailDate(DateTime Departure)
+        {
+            var schedules = await ctx.Schedules!
+                .Where(s => s.Departure.HasValue && s.Departure.Value.Date == Departure.Date)
+                .Include(s => s.Train)
+                .Include(s => s.Route.StartStation)
+                .Include(s => s.Route.EndStation)
+                .ToListAsync();
+
+            return View(schedules);
+        }
+    }
 }

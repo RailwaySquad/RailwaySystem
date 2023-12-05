@@ -13,6 +13,7 @@
 		background-color: #EC5B24 !important;
 		color: white !important;
 	}
+
 </style>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -280,7 +281,7 @@
 								<!-- form -->
 								<div class="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
 									<form class="d-flex" role="search">
-										<input class="form-control" type="search" placeholder="Search Products" aria-label="Search" />
+										<input class="form-control" type="search" placeholder="Search Trains" aria-label="Search" />
 									</form>
 								</div>
 								<!-- select option -->
@@ -308,10 +309,8 @@
 									<thead class="bg-light">
 										<tr>
 											<th class="colerth">Train Code</th>
-											<th class="colerth">Train Name</th>
 											<th class="colerth">Status</th>
 											<th class="colerth">Type</th>
-											<th class="colerth">Desiption</th>
 											<th class="colerth">Action</th>
 										</tr>
 									</thead>
@@ -319,13 +318,11 @@
 										@foreach(var item in Model)
 										{										
 											<tr>
-												<td>@item.TrainCode</td>
-												<td><img src="/images/trainsiconAdmin.png" width="100px" height="100px" alt="" /><div class="name">@item.Name</div></td>
+												<td>@item.Code</td>
 												<td>
 													<span class="badge bg-light-primary text-dark-primary">@item.IsRunning</span>
 												</td>
-												<td>@item.Type</td>
-												<td>@item.Description</td>
+												<td>@item.TypeCode</td>
 												<td>
 													<div class="dropdown">
 														<a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
@@ -333,7 +330,7 @@
 														</a>
 														<ul class="dropdown-menu">
 															<li>
-																<form asp-action="DeleteTrain" asp-route-id="@item.TrainCode" onsubmit="return confirmDelete()">
+																<form asp-action="DeleteTrain" asp-route-id="@item.Code" onsubmit="return confirmDelete()">
 																	<button class="dropdown-item" type="submit">
 																		<i class="bi bi-trash me-3"></i>
 																		Delete
@@ -341,7 +338,7 @@
 																</form>
 															</li>
 															<li>
-																<a class="dropdown-item" href="@Url.Action("EditTrain", new {id = item.TrainCode})">
+																<a class="dropdown-item" href="@Url.Action("EditTrain", new {id = item.Code})">
 																	<i class="bi bi-pencil-square me-3"></i>
 																	Edit
 																</a>

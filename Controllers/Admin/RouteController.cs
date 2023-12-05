@@ -15,10 +15,13 @@ namespace Railway_Group01.Controllers.Admin
 		public async Task<IActionResult> RouteList()
 		{
             var routes = await ctx.Routes
-                .Include(r => r.StartStation)
-                .Include(r => r.EndStation)
-                .Include(r => r.RouteDetails) // Include RouteDetails
-                .ToListAsync();
+        .Include(r => r.StartStation)
+        .Include(r => r.EndStation)
+        .Include(r => r.RouteDetails)
+            .ThenInclude(rd => rd.DepartureStation) // Bao gồm DepartureStation trong RouteDetails
+        .Include(r => r.RouteDetails)
+            .ThenInclude(rd => rd.ArrivalStation)   // Bao gồm ArrivalStation trong RouteDetails
+        .ToListAsync();
 
             return View(routes);
         }
@@ -71,7 +74,7 @@ namespace Railway_Group01.Controllers.Admin
 		}
 		public async Task<IActionResult> Detail(int id)
 		{
-			var route = await ctx.RouteDetailss!.Where(r => r.Id == id).ToListAsync();
+			var route = await ctx.RouteDetails!.Where(r => r.Id == id).ToListAsync();
 			return View(route);
 		}
 	}

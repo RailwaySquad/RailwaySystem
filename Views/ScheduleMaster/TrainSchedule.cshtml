@@ -19,6 +19,7 @@
     .true{
         background-color: #f2f2f2;
         text-align:center;
+        padding-top:25px;
     }
     .borderTable{
         border: 5px solid white !important
@@ -50,7 +51,7 @@
                         </div>
                         <!-- button -->
                         <div>
-                            <a href="/TrainMaster/CreateTrain" class="btn btn-me">Add Schedule</a>
+                            <a href="/ScheduleMaster/CreateTrainSchedule" class="btn btn-me">Add Schedule</a>
                         </div>
                     </div>
                 </div>
@@ -171,24 +172,28 @@
                                                         @foreach (var dayOfWeek in Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>())
                                                         {
                                                             <td class="borderTable" style="padding: 0px; border: 0px none; vertical-align: top; height: 30px; overflow: hidden;">
-                                                                @foreach (var item in Model.Where(s => s.StartAt?.DayOfWeek == dayOfWeek))
+                                                                @{
+                                                                    var schedulesForDay = Model.Where(s => s.Departure?.DayOfWeek == dayOfWeek).ToList();
+                                                                }
+                                                                @if (schedulesForDay.Any())
                                                                 {
                                                                     <div class="calendar_default_cell" style="height: 100px; position: relative;">
-                                                                        @if(item.IsCompleted == true)
-                                                                        {
-                                                                            <div style="color:green" unselectable="on" class="calendar_default_cell_inner true">
-                                                                                <div>@item.Train?.TrainCode</div>
-                                                                                <div>@item.Route?.StartStation.Code to @item.Route?.EndStation.Code</div>
-                                                                                <div>@item.StartAt</div>
-                                                                            </div>
-                                                                        }
-                                                                        else{
-                                                                        <div style="color:red" unselectable="on" class="calendar_default_cell_inner true">
-                                                                            <div>@item.Train?.TrainCode</div>
-                                                                            <div>@item.Route?.StartStation.Code to @item.Route?.EndStation.Code</div>
-                                                                            <div>@item.StartAt</div>
+                                                                        <div unselectable="on" class="calendar_default_cell_inner true">
+                                                                            @foreach (var item in schedulesForDay)
+                                                                            {
+                                                                                <a href="@Url.Action("DetailDate", new { Departure = item.Departure })" target="_blank">
+                                                                                    <div >
+                                                                                        @if (item == schedulesForDay.First())
+                                                                                        {
+                                                                                            <div>
+                                                                                                <div>Schedule Total: @schedulesForDay.Count</div>
+                                                                                                <div>@item.Departure?.ToString("dd/MM/yyyy")</div>
+                                                                                            </div>
+                                                                                        }
+                                                                                    </div>
+                                                                                </a>
+                                                                            }
                                                                         </div>
-                                                                        }
                                                                     </div>
                                                                 }
                                                             </td>

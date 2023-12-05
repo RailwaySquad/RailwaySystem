@@ -31,7 +31,12 @@
 		background-color: rgba(0,0,0, 0.9);
 	}
 
-
+	.overflowTest {
+		
+		height:100px;
+		overflow: auto;
+		border: 1px solid #ccc;
+	}
 
 		.overlay a {
 			padding: 8px;
@@ -56,7 +61,7 @@
 	.tableSchedule {
 		text-align: center;
 		background-color: white;
-		width: 50%;
+		width: 75%;
 		position: relative;
 		top: 50%;
 		left: 25%;
@@ -342,18 +347,11 @@
 								<!-- form -->
 								<div class="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
 									<form class="d-flex" role="search">
-										<input class="form-control" type="search" placeholder="Search Products" aria-label="Search" />
+										<input class="form-control" type="search" placeholder="Search Route" aria-label="Search" />
 									</form>
 								</div>
 								<!-- select option -->
-								<div class="col-lg-2 col-md-4 col-12">
-									<select class="form-select">
-										<option selected>Status</option>
-										<option value="1">Active</option>
-										<option value="2">Deactive</option>
-										<option value="3">Draft</option>
-									</select>
-								</div>
+								
 							</div>
 						</div>
 						@if (TempData["SuccessMessage"] != null)
@@ -364,31 +362,33 @@
 						}
 						<div id="myNav" class="overlay">
 							<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-							<table class="tableSchedule">
-								<thead>
-									<tr class="borderSe">
-										<th class="borderSethead">Departure Station</th>
-										<th class="borderSethead">Arrival Station</th>
-										<th class="borderSethead">Distance</th>
-										<th class="borderSethead">TravelTime</th>
-									</tr>
-								</thead>
-								<tbody>
-									@foreach(var item in Model)
-									{
-										@foreach (var routeDetail in item.RouteDetails)
+							<div style="overflow-x: auto;overflow-y: auto;max-height: 300px;top: 25%;position: relative;width: 60%;left:15%;">
+								<table class="tableSchedule">
+									<thead style="position: sticky; top: 0;  z-index: 1;">
+										<tr class="borderSe" >
+											<th class="borderSethead" >Departure Station</th>
+											<th class="borderSethead">Arrival Station</th>
+											<th class="borderSethead">Distance</th>
+											<th class="borderSethead">TravelTime</th>
+										</tr>
+									</thead>
+									<tbody>
+										@foreach (var item in Model)
 										{
-											<tr class="borderSe" data-routeId="@item.Id">
-												<td class="borderSe">@routeDetail.DepartureStation.Code </td>
-												<td class="borderSe">@routeDetail.ArrivalStation.Code</td>
-												<td class="borderSe">@routeDetail.Distance</td>
-												<td class="borderSe">@routeDetail.TravelTime</td>
-											</tr>
+											@foreach (var routeDetail in item.RouteDetails)
+											{
+												<tr class="borderSe" data-routeId="@item.Id">
+													<td class="borderSe">@routeDetail.DepartureStation.Name</td>
+													<td class="borderSe">@routeDetail.ArrivalStation.Name</td>
+													<td class="borderSe">@routeDetail.Distance</td>
+													<td class="borderSe">@routeDetail.TravelTime</td>
+												</tr>
+											}
 										}
-									}									
-								</tbody>
-							</table>
+									</tbody>
+								</table>
+							</div>
+							
 						</div>
 						<!-- card body -->
 						<div class="card-body p-0">
