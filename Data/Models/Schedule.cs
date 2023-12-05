@@ -13,12 +13,10 @@ namespace Railway_Group01.Data
         public string? Name { get; set; }
 
         [Required(ErrorMessage = "Departure time is required.")]
-        [DataType(DataType.DateTime)]
-        public DateTime? Departure { get; set; }
+        public DateTime Departure { get; set; }
 
         [Required(ErrorMessage = "Arrival time is required.")]
-        [DataType(DataType.DateTime)]
-        public DateTime? Arrival { get; set; }
+        public DateTime Arrival { get; set; }
 
         public bool IsFinished { get; set; } = false;
 
@@ -33,5 +31,6 @@ namespace Railway_Group01.Data
         public int RouteId { get; set; }
 
         public List<Ticket>? Tickets { get; set; }
+        public List<BookingDetail>? BookingDetails { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace Railway_Group01.Data
         [Required(ErrorMessage = "User is required.")]
         public User? User { get; set; }
 
-        public DateTime? CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public List<BookingDetail>? BookingDetails { get; set; }
 

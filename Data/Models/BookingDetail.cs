@@ -9,9 +9,10 @@ namespace Railway_Group01.Data
         public int Id { get; set; }
 
         [Required]
-        public int SeatId { get; set; }
-        [Required]
         public Seat? Seat { get; set; }
+        public int SeatId { get; set; }
+
+        public Schedule? Schedule { get; set; }
 
         public Ticket? Ticket { get; set; }
 
