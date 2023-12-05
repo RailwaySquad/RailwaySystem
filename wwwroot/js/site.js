@@ -31,13 +31,25 @@ $(document).ready(function () {
         let schedule = $(this).data("schedule");
         let coach = $(this).data("coach");
         let seat = $(this).data("seat");
+        let starttime=  $(this).data("start");
+        let endtime = $(this).data("end");
+        let cabin = $(this).data("cabin");
+        let coachCount = $(this).data("coachCount");
+        let from = $(this).data("fromStation");
+        let to = $(this).data("toStation");
         let urlAdd = window.location.origin + "/api/RailwayAjax/addcart";
         let urlRemove = window.location.origin + "/api/RailwayAjax/removeitem";
         /*alert(`Schedule: ${schedule}\nCoach: ${coach}\nSeat :${seat}`);*/
         console.log({
             "ScheduleId": schedule,
             "CoachId": coach,
-            "Seat": seat
+            "Seat": seat,
+            "StartAt": starttime,
+            "EndAt": endtime,
+            "Cabin": cabin,
+            "CoachCount": coachCount,
+            "FromStation": from,
+            "ToStation": to
         });
         if ($(this).parent().hasClass("et-sit-avaiable")) {
             $.ajax({
@@ -46,7 +58,13 @@ $(document).ready(function () {
                 data: {
                     "ScheduleId": schedule,
                     "CoachId": coach,
-                    "Seat": seat
+                    "Seat": seat,
+                    "StartAt": starttime,
+                    "EndAt": endtime,
+                    "Cabin": cabin,
+                    "CoachCount": coachCount,
+                    "FromStation": from,
+                    "ToStation": to
                 },
                 success: function (data) {
                     listItemCart(data);
