@@ -28,15 +28,15 @@ namespace Railway_Group01.Controllers
         [HttpPost]
         [Route("addcart")]
         public async Task<ActionResult<List<CartDto>>> AddCart(
-            [FromForm(Name = "ScheduleId")] int scheduleId,
-            [FromForm(Name = "CoachId")] int coachId,
-            [FromForm(Name ="Seat")] int seat,
-            [FromForm(Name = "StartAt")] string startAt,
-            [FromForm(Name = "EndAt")] string endAt,
-            [FromForm(Name = "Cabin")] int cabin,
-            [FromForm(Name = "CoachCount")] int coachCount,
-            [FromForm(Name = "FromStation")] int from,
-            [FromForm(Name = "ToStation")] int to
+            [FromForm(Name = "scheduleId")] int scheduleId,
+            [FromForm(Name = "coachId")] int coachId,
+            [FromForm(Name ="seat")] int seat,
+            [FromForm(Name = "startAt")] string startAt,
+            [FromForm(Name = "endAt")] string endAt,
+            [FromForm(Name = "cabin")] int cabin,
+            [FromForm(Name = "coachCount")] int coachCount,
+            [FromForm(Name = "fromStation")] int from,
+            [FromForm(Name = "toStation")] int to
 
 
             )
@@ -87,9 +87,9 @@ namespace Railway_Group01.Controllers
         [HttpPost]
         [Route("removeitem")]
         public async Task<ActionResult<List<CartDto>?>> RemoveItem(
-            [FromForm(Name = "ScheduleId")] int ScheduleId,
-            [FromForm(Name = "CoachId")] int CoachId,
-            [FromForm(Name = "Seat")] int Seat
+            [FromForm(Name = "scheduleId")] int ScheduleId,
+            [FromForm(Name = "coachId")] int CoachId,
+            [FromForm(Name = "seat")] int Seat
             )
         {
             List<CartDto> list;

@@ -7,6 +7,7 @@ $(document).ready(function () {
         let lis = "";
         if (!dataCart) {
             lis += `<li class="list-group-item ms-1 text-center">Emty</li>`;
+            $(".countCart").text(0);
         } else {
             dataCart.forEach((item, i) => {
                 lis += `<li class="list-group-item ms-1 d-flex flex-column">
@@ -23,9 +24,9 @@ $(document).ready(function () {
                                     <div>${item.startAt}</div>
                                     <div>${item.seatDetail}</div</li>`;
             });
+            $(".countCart").text(dataCart.length);
         }
         $(".list-cart").html(lis);
-        $(".countCart").text(dataCart.length);
     };
     $(".sit-available").click(function () {
         let schedule = $(this).data("schedule");
@@ -34,37 +35,37 @@ $(document).ready(function () {
         let starttime=  $(this).data("start");
         let endtime = $(this).data("end");
         let cabin = $(this).data("cabin");
-        let coachCount = $(this).data("coachCount");
-        let from = $(this).data("fromStation");
-        let to = $(this).data("toStation");
+        let coachCount = $(this).data("coachcount");
+        let from = $(this).data("fromstation");
+        let to = $(this).data("tostation");
         let urlAdd = window.location.origin + "/api/RailwayAjax/addcart";
         let urlRemove = window.location.origin + "/api/RailwayAjax/removeitem";
         /*alert(`Schedule: ${schedule}\nCoach: ${coach}\nSeat :${seat}`);*/
         console.log({
-            "ScheduleId": schedule,
-            "CoachId": coach,
-            "Seat": seat,
-            "StartAt": starttime,
-            "EndAt": endtime,
-            "Cabin": cabin,
-            "CoachCount": coachCount,
-            "FromStation": from,
-            "ToStation": to
+            "scheduleId": schedule,
+            "coachId": coach,
+            "seat": seat,
+            "startAt": starttime,
+            "endAt": endtime,
+            "cabin": cabin,
+            "coachCount": coachCount,
+            "fromStation": from,
+            "toStation": to
         });
         if ($(this).parent().hasClass("et-sit-avaiable")) {
             $.ajax({
                 type: "POST",
                 url: urlAdd,
                 data: {
-                    "ScheduleId": schedule,
-                    "CoachId": coach,
-                    "Seat": seat,
-                    "StartAt": starttime,
-                    "EndAt": endtime,
-                    "Cabin": cabin,
-                    "CoachCount": coachCount,
-                    "FromStation": from,
-                    "ToStation": to
+                    "scheduleId": schedule,
+                    "coachId": coach,
+                    "seat": seat,
+                    "startAt": starttime,
+                    "endAt": endtime,
+                    "cabin": cabin,
+                    "coachCount": coachCount,
+                    "fromStation": from,
+                    "toStation": to
                 },
                 success: function (data) {
                     listItemCart(data);
@@ -80,9 +81,9 @@ $(document).ready(function () {
                 type: "POST",
                 url: urlRemove,
                 data: {
-                    "ScheduleId": schedule,
-                    "CoachId": coach,
-                    "Seat": seat
+                    "scheduleId": schedule,
+                    "coachId": coach,
+                    "seat": seat
                 },
                 success: function (data) {
                     listItemCart(data);
