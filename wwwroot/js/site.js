@@ -35,8 +35,8 @@ $(document).ready(function () {
         let endtime = $(this).data("end");
         let cabin = $(this).data("cabin");
         let coachCount = $(this).data("coachCount");
-        let from = $(this).data("fromStation");
-        let to = $(this).data("toStation");
+        let from = $(this).data("fromstation");
+        let to = $(this).data("tostation");
         let urlAdd = window.location.origin + "/api/RailwayAjax/addcart";
         let urlRemove = window.location.origin + "/api/RailwayAjax/removeitem";
         /*alert(`Schedule: ${schedule}\nCoach: ${coach}\nSeat :${seat}`);*/
