@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Railway_Group01.Data;
 
@@ -11,9 +12,10 @@ using Railway_Group01.Data;
 namespace Railway_Group01.Migrations
 {
     [DbContext(typeof(RailwayDbContext))]
-    partial class RailwayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231203165313_v0")]
+    partial class v0
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -210,7 +212,7 @@ namespace Railway_Group01.Migrations
                     b.ToTable("BookingDetails");
                 });
 
-            modelBuilder.Entity("Railway_Group01.Data.Coach", b =>
+            modelBuilder.Entity("Railway_Group01.Data.Cancelling", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -13504,8 +13506,6 @@ namespace Railway_Group01.Migrations
             modelBuilder.Entity("Railway_Group01.Data.Train", b =>
                 {
                     b.Navigation("Coaches");
-
-                    b.Navigation("CoachesData");
 
                     b.Navigation("Schedules");
                 });

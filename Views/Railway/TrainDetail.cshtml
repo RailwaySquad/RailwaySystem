@@ -38,20 +38,20 @@
                             <li class="breadcrumb-item">
                                 <a class="text-decoration-none text-orange" href="/trains/trains-list">Trains List</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">@Html.DisplayFor(x=>Model.Item2.TrainCode)</li>
+                            <li class="breadcrumb-item active" aria-current="page">@Html.DisplayFor(x=>Model.Item2.Code)</li>
                         </ol>
                     </nav>
                     <div class="card rounded-0 shadow my-3">
                         <div class="card-body">
                             <div class="border-bottom">
-                                <h1 style="color: #ee6d3b; font-weight:300" >Schedule @Model.Item1.Route.StartStation.StationCode @Model.Item1.Route.EndStation.StationCode @Model.Item2.TrainCode Train</h1>
+                                <h1 style="color: #ee6d3b; font-weight:300" >Schedule @Model.Item1.Route.StartStation.Code @Model.Item1.Route.EndStation.Code @Model.Item2.Code Train</h1>
                             </div>
                             <div class="d-flex flex-row justify-content-around py-5">
                                 <div class="lh-2 row">
                                     <div class="col-3 align-top pt-2" style="width: 100px;">
-                                        <div class="h6 ">@Html.DisplayFor(x=>x.Item1.Route.StartStation.StationCode)</div>
-                                        <div class="fw-600" style="font-size:17px">@Html.DisplayFor(x=>x.Item1.StartAt.TimeOfDay)</div>
-                                        <div class="text-secondary text-decoration-none">@Html.DisplayFor(x=>x.Item1.Route.StartStation.StationName)</div>
+                                        <div class="h6 ">@Html.DisplayFor(x=>x.Item1.Route.StartStation.Code)</div>
+                                        <div class="fw-600" style="font-size:17px">@Html.DisplayFor(x=>x.Item1.Departure.TimeOfDay)</div>
+                                        <div class="text-secondary text-decoration-none">@Html.DisplayFor(x=>x.Item1.Route.StartStation.Name)</div>
                                     </div>
                                     <div class="col-6 d-flex flex-column justify-content-center align-items-center" style="width: 200px;padding: 0 10px 10px;">
                                         <div class="text-center w-100">15hr</div>
@@ -65,9 +65,9 @@
                                         <div class="text-center w-100">@Model.Item3 stops</div>
                                     </div>
                                     <div class="col-3 align-top pt-2"style="width: 100px;">
-                                        <div class="h6 ">@Html.DisplayFor(x=>x.Item1.Route.EndStation.StationCode)</div>
-                                        <div class="fw-600" style="font-size:17px">@Html.DisplayFor(x=>x.Item1.EndAt.TimeOfDay)</div>
-                                        <div class="text-secondary text-decoration-none">@Html.DisplayFor(x=>x.Item1.Route.EndStation.StationName)</div>
+                                        <div class="h6 ">@Html.DisplayFor(x=>x.Item1.Route.EndStation.Code)</div>
+                                        <div class="fw-600" style="font-size:17px">@Html.DisplayFor(x=>x.Item1.Arrival.TimeOfDay)</div>
+                                        <div class="text-secondary text-decoration-none">@Html.DisplayFor(x=>x.Item1.Route.EndStation.Name)</div>
                                     </div>
                                 </div>
                                 <div class="lh-2 pt-3" >
@@ -97,8 +97,7 @@
                 <div class="data-section my-3" id="availability">
                     <div class="card">
                         <div class="card-body">
-                            <h2 style="color: #ee6d3b; margin:20px;font-weight:300">@Model.Item1.Route.StartStation.StationCode - @Model.Item1.Route.EndStation.StationCode Express @Model.Item2.Name Ticket Prices</h2>
-                            <p>@Html.DisplayFor(x=>Model.Item2.Description)</p>
+                            <h2 style="color: #ee6d3b; margin:20px;font-weight:300">@Model.Item1.Route.StartStation.Code - @Model.Item1.Route.EndStation.Code Express @Model.Item2.Coaches Ticket Prices</h2>
                             <div class="row p-3">
                                 <form class=" col-6 d-flex flex-row justify-content-around align-items-center">
                                     <div  class="form-floating border-bottom">
@@ -130,21 +129,21 @@
                     <div class="mt-4">
                         <ul class="nav-class nav-class-fare">
                             @{string str = "";}
-                            @if (Model.Item2.CoachesData.Any())
+                            @if (Model.Item2.Coaches.Any())
                             {
-                                @foreach (var item in Model.Item2.CoachesData)
+                                @foreach (var item in Model.Item2.Coaches)
                                 {
-                                    str += item.TypeCode+", ";
-                                if (item.Equals(Model.Item2.CoachesData.First()))
+                                    str += item.Train.TypeCode+", ";
+                                if (item.Equals(Model.Item2.Coaches.First()))
                                     {
                                         <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="#">@item.Name</a>
+                                            <a class="nav-link active" aria-current="page" href="#">@item.CoachNo</a>
                                         </li>
                                     }
                                     else
                                     {
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">@item.Name</a>
+                                            <a class="nav-link" href="#">@item.CoachNo</a>
                                         </li>
                                     }
                                 }
@@ -619,7 +618,7 @@
                             </tr>
                             <tr >
                                 <td class="w-50">Duration</td>
-                            <td class="w-50 fw-bold">@string.Format("{0:%h}hr {0:%m}min",Model.Item1.EndAt-Model.Item1.StartAt)</td>
+                            <td class="w-50 fw-bold">@string.Format("{0:%h}hr {0:%m}min",Model.Item1.Departure-Model.Item1.Arrival)</td>
                             </tr>
                             <tr >
                                 <td class="w-50">Type</td>
@@ -630,7 +629,7 @@
                 </div>
                 <div class="data-section my-4" id="schedule">
                     <h3 class="fw-400 my-5">Ashram Express 12916 Schedule, Routes &amp; Time Table</h3>
-                    <div class="description">@Model.Item2.Description
+                    <div class="description">
                     </div>
                     <table class="table my-3 ">
                         <thead>
@@ -651,8 +650,8 @@
                             if (item.ArrivalStationId == Model.Item1.Route.EndStationId && item.DepartureStationId == Model.Item1.Route.StartStationId)
                             {
                                 <tr>
-                                    <td class="event-timeline text-center">@item.ArrivalStation.StationCode</td>
-                                    <td class="">@item.ArrivalStation.StationName</td>
+                                    <td class="event-timeline text-center">@item.ArrivalStation.Code</td>
+                                    <td class="">@item.ArrivalStation.Name</td>
                                     <td>@string.Format("{0:%h}hr {0:%m}min",TimeSpan.FromHours(item.TravelTime))</td>
                                     <td class="">@Html.DisplayFor(x=>item.Distance) km</td>
                                     <td class="">@Html.DisplayFor(x=>item.RouteId)</td>
@@ -661,8 +660,8 @@
                                 </tr>
                             }else if(item.DepartureStationId == Model.Item1.Route.StartStationId){
                                 <tr>
-                                    <td class="event-timeline text-center">@item.DepartureStation.StationCode</td>
-                                    <td class="">@item.DepartureStation.StationName</td>
+                                    <td class="event-timeline text-center">@item.DepartureStation.Code</td>
+                                    <td class="">@item.DepartureStation.Name</td>
                                     <td>-</td>
                                     <td class="">@Html.DisplayFor(x=>item.Distance) km</td>
                                     <td class="">@Html.DisplayFor(x=>item.RouteId)</td>
@@ -673,8 +672,8 @@
                             else
                             {
                                 <tr>
-                                    <td class="event-timeline text-center">@item.DepartureStation.StationCode</td>
-                                    <td class="">@item.DepartureStation.StationName</td>
+                                    <td class="event-timeline text-center">@item.DepartureStation.Code</td>
+                                    <td class="">@item.DepartureStation.Name</td>
                                     <td class="">
                                         @string.Format("{0:%h}hr {0:%m}min",TimeSpan.FromHours(item.TravelTime))
                                     </td>

@@ -3,27 +3,32 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Railway_Group01.Data
 {
-    public class RouteDetails
+    public class RouteDetail
     {
         [Key]
         public int Id { get; set; }
+
         [Required]
-        public int DepartureStationId { get; set; }
         [ForeignKey("DepartureStationId")]
         public Station? DepartureStation { get; set; }
+        public int DepartureStationId { get; set; }
+
         [Required]
-        public int ArrivalStationId { get; set; }
         [ForeignKey("ArrivalStationId")]
         public Station? ArrivalStation { get; set; }
-        [Required]
-        public int RouteId { get; set; }
+        public int ArrivalStationId { get; set; }
+
         [ForeignKey("RouteId")]
+        [Required(ErrorMessage = "Route is required.")]
         public Route? Route { get; set; }
-        [Range(0, int.MaxValue)]
+        public int RouteId { get; set; }
+
+        [Required(ErrorMessage = "Distance is required.")]
         public int Distance { get; set; }
-        [Range(0, int.MaxValue)]
-        public double TravelTime { get; set; }
-        [Range(0, int.MaxValue)]
+
+        [Required(ErrorMessage = "Travel Time is required.")]
+        public int TravelTime { get; set; }
+
         public int DelayTime { get; set; }
     }
 }

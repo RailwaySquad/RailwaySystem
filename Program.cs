@@ -1,19 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Railway_Group01.Data;
-
-
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("AppDbContextConnection") ?? throw new InvalidOperationException("Connection string 'AppDbContextConnection' not found.");
 
-/*builder.Services.AddDbContext<RailwayDbContext>(options =>
-    options.UseSqlServer(connectionString));
-
 builder.Services.AddDbContext<RailwayDbContext>(options =>
     options.UseSqlServer(connectionString));
-*/
-/*Tuong connect SQL Server */
-builder.Services.AddDbContext<RailwayDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("TuongsDBConnection")));
+
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedEmail = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<RailwayDbContext>();
@@ -56,7 +49,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Railway}/{action=Index}/{id?}");
 
 app.MapRazorPages();
 
@@ -67,12 +60,11 @@ using (var scope = app.Services.CreateScope())
 
     var roles = new[] { "Admin", "Passenger" };
 
-    /*foreach (var role in roles)
+    foreach (var role in roles)
     {
-        
         if (!await roleManager.RoleExistsAsync(role))
             await roleManager.CreateAsync(new IdentityRole(role));
-    }*/
+    }
 }
 
 using (var scope = app.Services.CreateScope())
@@ -83,7 +75,7 @@ using (var scope = app.Services.CreateScope())
     string username = "admin";
     string password = "admin123";
 
-    /*if (await userManager.FindByNameAsync(username) == null)
+    if (await userManager.FindByNameAsync(username) == null)
     {
         var user = new User();
         user.UserName = username;
@@ -91,7 +83,7 @@ using (var scope = app.Services.CreateScope())
         var result = await userManager.CreateAsync(user, password);
         
         await userManager.AddToRoleAsync(user, "Admin");
-    }*/
+    }
 }
 
 app.Run();
