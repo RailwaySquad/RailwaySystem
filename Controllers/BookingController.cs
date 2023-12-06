@@ -33,46 +33,40 @@ namespace Railway_Group01.Controllers
 
             var cart = JsonConvert.DeserializeObject<List<CartDto>>(cartJson);
 
-
             foreach (var item in cart!)
             {
                 var schedule = await _ctx.Schedules!.FindAsync(item.ScheduleId);
                 var route = await _ctx.Routes!.FindAsync(schedule!.RouteId);
                 var train = await _ctx.Trains!.FindAsync(schedule!.TrainCode);
                 var coach = await _ctx.Coaches!.FindAsync(item.CoachId);
-                var fare = await _ctx.Fares!.FirstOrDefaultAsync(f => 
+                var fare = await _ctx.Fares!.FirstOrDefaultAsync(f =>
                     f.RouteId == schedule!.RouteId &&
                     f.ClassCode == coach!.ClassCode &&
                     f.TypeCode == train!.TypeCode
                 );
-                
-                item.Price = await CalculatePrice(route!, fare!, item.FromStation, item.ToStation);
+                var start = await _ctx.RouteDetails!.Where(rd => rd.RouteId == route!.Id).SingleOrDefaultAsync(rd => rd.ArrivalStationId == route!.StartStationId);
+                var end = await _ctx.RouteDetails!.Where(rd => rd.RouteId == route!.Id).SingleOrDefaultAsync(rd => rd.ArrivalStationId == route!.EndStationId);
+                int distance = 0;
+                if (start != null && end != null)
+                    distance = end.Distance - start.Distance;
+                item.Price = Railway_Group01.Service.Helper.CalculatePrice(distance, route!.Distance, fare!.Price);
             }
+
+            var selectPassengerType = await _ctx.PassengerTypes!.Select(t =>
+                new SelectListItem() { Text = t.Name, Value = t.Code, Selected = t.Code == "AD" }
+            ).ToListAsync();
 
             BookingIndexViewModel viewModel = new()
             {
                 User = user,
-                Cart = cart
+                Cart = cart,
+                PassengerTypes = selectPassengerType
             };
-            ViewData["PassengerTypes"] = await _ctx.PassengerTypes!.Select(t =>
-                new SelectListItem() { Text = t.Name, Value = t.Code, Selected = t.Code == "AD" }
-            ).ToListAsync();
             return View(viewModel);
         }
 
-        private async Task<decimal> CalculatePrice(Data.Route route, Fare fare, int startStationId, int endStationId)
-        {
-            var start = await _ctx.RouteDetails!.Where(rd => rd.RouteId == route.Id).SingleOrDefaultAsync(rd => rd.ArrivalStationId == startStationId);
-            var end = await _ctx.RouteDetails!.Where(rd => rd.RouteId == route.Id).SingleOrDefaultAsync(rd => rd.ArrivalStationId == endStationId);
-            decimal distance = 0;
-            if (start != null && end != null)
-                distance = end.Distance - start.Distance;
-            var price = fare.Price * distance / 2;
-            return price;
-        }
-
         [HttpPost]
-        public async Task<IActionResult> Booking(BookingInputViewModel input)
+        public async Task<IActionResult> BookTickets(BookingInputViewModel input)
         {
 
             return RedirectToAction(nameof(Confirm));

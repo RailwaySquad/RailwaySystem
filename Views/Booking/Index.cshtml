@@ -50,7 +50,7 @@
                     decimal total = 0;
                     @foreach (var item in Model.Cart)
                     {
-                        total += item.Price + 1;
+                        total += item.Price + 0.1M;
                         <tr>
                             <td class="bg-body-secondary px-2">
 
@@ -67,7 +67,7 @@
                                         <label for="Type" class="col-form-label">Type</label>
                                     </div>
                                     <div class="col-8">
-                                        <select id="Type" name="Type" class="form-select form-select-sm" asp-items="ViewBag.PassengerTypes" ></select>
+                                        <select id="Type" name="Type" class="form-select form-select-sm" asp-items="Model.PassengerTypes" ></select>
                                     </div>
                                 </div>
                                 <div class="row g-3 align-items-center">
@@ -92,7 +92,7 @@
                             </td>
                             <td class="text-center">0</td>
                             <td class="text-center">1</td>
-                            <td class="text-center">@item.Price + 1</td>
+                            <td class="text-center">@(item.Price + 0.1M)</td>
                         </tr>
                     }
                     <tr class="table-info">

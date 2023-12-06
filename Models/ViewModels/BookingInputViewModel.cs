@@ -8,5 +8,6 @@ namespace Railway_Group01.Models.ViewModels
         [Required]
         public User? User { get; set; }
         public List<Passenger>? PassengerList { get; set; }
+
     }
 }
