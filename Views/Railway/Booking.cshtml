@@ -2,16 +2,180 @@
 @{
     ViewData["Title"] = "Booking";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+
+    var paypalLogo = "/images/paypalLogo.jpg";
 }
-<div class="container-fluid">
-    <div class="row" style="padding-top:80px">
-        <ol>
-            @foreach(var item in Model)
-            {
-                <li>
-                    @item.Trip<br />@item.SeatDetail</li>
-                
-            }
-        </ol>
+
+<header class="bg-gradient-cus mb-3">
+    <div class="container bg-gradient-cus">
+        <h1 class="text-white">Booking</h1>
+        <div class="container d-flex">
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step checked"></span>
+                <p class="text-white text-center">Fill passenger information</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Confirm information</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Make payment</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Finish</p>
+            </div>
+        </div>
     </div>
-</div> 
+</header>
+
+<div class="container">
+    <section class="mb-3">
+        <h6><span class="text-orange ">BOOKING DETAILS</span></h6>
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table-primary">
+                    <th class="text-center">Full name</th>
+                    <th class="text-center">Seat</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Passenger type discount</th>
+                    <th class="text-center">Insurance</th>
+                    <th class="text-center">Sub total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="bg-body-secondary">
+                                <form class="px-2">
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-4 border-bottom">
+                                            <label for="Name" class="col-form-label">Full name</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input type="text" id="Name" class="form-control form-control-sm">
+                                        </div>
+                                    </div>
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-4 border-bottom">
+                                            <label for="Type" class="col-form-label">Type</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <select id="Type" name="Type" class="form-select form-select-sm">
+                                                <option>Adult</option>
+                                                <option>Adult</option>
+                                                <option>Adult</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-4 border-bottom">
+                                            <label for="CID" class="col-form-label">Citizen no</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input type="text" id="CID" class="form-control form-control-sm">
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
+                            <td class="small text-center">
+                                @item.Title <br />
+                                @item.StartAt<br />
+                                Toa @item.CoachId chỗ @item.Seat<br />
+                                Ngồi mềm điều hòa<br />
+                            </td>
+                            <td class="text-center">
+                                900
+                            </td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">1</td>
+                            <td class="text-center">901</td>
+                        </tr>
+                    }
+                <tr class="table-info">
+                    <td colspan="5"><p class="text-end fw-bold">Total</p></td>
+                    <td class="text-center">901</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="mb-3">
+        <h6 class="text-orange">TICKET BOOKER</h6>
+        <div class="d-flex">
+            <div class="w-50">
+                <div class="d-flex align-items-center">
+                    <div class="w-25 ps-3">
+                        <label for="Name" class="col-form-label">Full name<span class="text-danger">*</span></label>
+                    </div>
+                    <div class="w-50">
+                        <input type="text" id="Name" class="form-control form-control-sm">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-50">
+                <div class="d-flex align-items-center">
+                    <div class="w-25 ps-3">
+                        <label for="Name" class="col-form-label">Citizen no<span class="text-danger">*</span></label>
+                    </div>
+                    <div class="w-50">
+                        <input type="text" id="Name" class="form-control form-control-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="w-50">
+                <div class="d-flex align-items-center">
+                    <div class="w-25 ps-3">
+                        <label for="Email" class="col-form-label">Email<span class="text-danger">*</span></label>
+                    </div>
+                    <div class="w-50">
+                        <input type="text" id="Email" class="form-control form-control-sm">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-50">
+                <div class="d-flex align-items-center">
+                    <div class="w-25 ps-3">
+                        <label for="Phone" class="col-form-label">Phone<span class="text-danger">*</span></label>
+                    </div>
+                    <div class="w-50">
+                        <input type="text" id="Phone" class="form-control form-control-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-3">
+        <h6 class="text-orange">PAYMENT METHOD</h6>
+        <ul class="list-group">
+            <li class="list-group-item d-flex align-items-center">
+                <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox" checked>
+                <label class="form-check-label text-info fw-bold ml-2" for="firstCheckbox"><img class="me-1" src=@paypalLogo /> Online payment with PayPal</label>
+            </li>
+        </ul>
+    </section>
+
+    <section class="mb-3">
+        <div class="alert alert-info" role="alert" style="border-left:0.25rem solid #9eeaf9">
+            <h6>NOTICE:</h6>
+            - To see refund policies, for holidays, please click <a href="">here</a><br />
+            - To see refund policies, change ticket (Apply to all trains run from 30/8/2023 to the end of 31/12/2023), please click <a href="">here</a> <br />
+        </div>
+    </section>
+
+    <section>
+        <div class="d-flex justify-content-between">
+            <a class="btn btn-orange fw-bold">👈 Change My Mind 🔙</a>
+            <a class="btn btn-orange fw-bold">⏭️ Go to next step 👉</a>
+        </div>
+    </section>
+</div>
