@@ -1,15 +1,15 @@
-﻿@model List<CartDto>
+﻿@model Railway_Group01.Models.ViewModels.BookingIndexViewModel;
 @{
-    ViewData["Title"] = "Booking";
+    ViewData["Title"] = "BOOKING";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
 
     var paypalLogo = "/images/paypalLogo.jpg";
 }
 
 <header class="bg-gradient-cus mb-3">
-    <div class="container bg-gradient-cus">
-        <h1 class="text-white">Booking</h1>
-        <div class="container d-flex">
+    <div class="container">
+        <h1 class="text-white">@ViewData["Title"]</h1>
+        <div class="d-flex">
             <div class="w-25 d-flex flex-column align-items-center">
                 <span class="step checked"></span>
                 <p class="text-white text-center">Fill passenger information</p>
@@ -45,61 +45,65 @@
                 </tr>
             </thead>
             <tbody>
-                @if (Model != null)
-                    foreach (var item in Model)
+                @if (Model.Cart != null && Model.Cart.Count > 0)
+                {
+                    decimal total = 0;
+                    @foreach (var item in Model.Cart)
                     {
+                        total += item.Price + 0.1M;
                         <tr>
-                            <td class="bg-body-secondary">
-                                <form class="px-2">
-                                    <div class="row g-3 align-items-center">
-                                        <div class="col-4 border-bottom">
-                                            <label for="Name" class="col-form-label">Full name</label>
-                                        </div>
-                                        <div class="col-8">
-                                            <input type="text" id="Name" class="form-control form-control-sm">
-                                        </div>
+                            <td class="bg-body-secondary px-2">
+
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-4 border-bottom">
+                                        <label for="Name" class="col-form-label">Full name</label>
                                     </div>
-                                    <div class="row g-3 align-items-center">
-                                        <div class="col-4 border-bottom">
-                                            <label for="Type" class="col-form-label">Type</label>
-                                        </div>
-                                        <div class="col-8">
-                                            <select id="Type" name="Type" class="form-select form-select-sm">
-                                                <option>Adult</option>
-                                                <option>Adult</option>
-                                                <option>Adult</option>
-                                            </select>
-                                        </div>
+                                    <div class="col-8">
+                                        <input type="text" id="Name" class="form-control form-control-sm">
                                     </div>
-                                    <div class="row g-3 align-items-center">
-                                        <div class="col-4 border-bottom">
-                                            <label for="CID" class="col-form-label">Citizen no</label>
-                                        </div>
-                                        <div class="col-8">
-                                            <input type="text" id="CID" class="form-control form-control-sm">
-                                        </div>
+                                </div>
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-4 border-bottom">
+                                        <label for="Type" class="col-form-label">Type</label>
                                     </div>
-                                </form>
+                                    <div class="col-8">
+                                        <select id="Type" name="Type" class="form-select form-select-sm" asp-items="Model.PassengerTypes" ></select>
+                                    </div>
+                                </div>
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-4 border-bottom">
+                                        <label for="CID" class="col-form-label">Citizen no</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="text" id="CID" class="form-control form-control-sm">
+                                    </div>
+                                </div>
+
                             </td>
                             <td class="small text-center">
                                 @item.ScheduleName <br />
                                 @item.Trip <br />
                                 @item.StartAt<br />
                                 Coach: @item.CoachNo, Cabin @item.Cabin, Seat @item.Seat<br />
-                                Class: @item.CoachClass<br />
+                                Class: @item.CoachClassName<br />
                             </td>
                             <td class="text-center">
-                                900
+                                @item.Price
                             </td>
                             <td class="text-center">0</td>
                             <td class="text-center">1</td>
-                            <td class="text-center">901</td>
+                            <td class="text-center">@(item.Price + 0.1M)</td>
                         </tr>
                     }
-                <tr class="table-info">
-                    <td colspan="5"><p class="text-end fw-bold">Total</p></td>
-                    <td class="text-center">901</td>
-                </tr>
+                    <tr class="table-info">
+                        <td colspan="5"><p class="text-end fw-bold">Total</p></td>
+                        <td class="text-center">@(total)</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr><td colspan="6">No item in cart.</td></tr>
+                }
             </tbody>
         </table>
     </section>
@@ -175,8 +179,30 @@
 
     <section>
         <div class="d-flex justify-content-between">
-            <a class="btn btn-orange fw-bold">👈 Change My Mind 🔙</a>
-            <a class="btn btn-orange fw-bold">⏭️ Go to next step 👉</a>
+            <a asp-controller="Railway" asp-action="Index" class="btn btn-orange fw-bold">👈 Back</a>
+            @if (Model.Cart != null && Model.Cart.Count > 0)
+            {
+                <button id="btnSubmitBookingInfo" class="btn btn-orange fw-bold"> Submit 👉</button>
+            }
         </div>
     </section>
 </div>
+
+<script type="text/javascript">
+    $("#btnSubmitBookingInfo").click(function () {
+
+        let
+
+            $.ajax({
+                url: 'Booking/Book',
+                type: 'POST',
+                dataType: 'json',
+                data: $("#formAnswerScheme").serialize(),
+                success: function (data) {
+                    console.log(data);
+                    $("#divAnswerSchemeContainer").html(data);
+                },
+                error: function (xhr, textStatus, exceptionThrown) { alert(JSON.parse(xhr.responseText)); }
+            });
+    });
+</script>
