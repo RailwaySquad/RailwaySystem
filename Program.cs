@@ -51,6 +51,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Railway}/{action=Index}/{id?}");
 
+
 app.MapRazorPages();
 
 using (var scope = app.Services.CreateScope())
