@@ -316,25 +316,54 @@ namespace Railway_Group01.Data
 
 
             var now = DateTime.Now;
-            var oneDay = new TimeSpan(1, 0, 0, 0);
+            var hundredDaysBefore = now.Subtract(new TimeSpan(100, 0, 0, 0));
+            var twoDays = new TimeSpan(2, 0, 0, 0);
             var twoThirdDay = new TimeSpan(8, 0, 0);
-            var traveltime = new TimeSpan(9, 0, 0);
-            var depart1 = now.Add(oneDay);
+
+            var traveltime1 = new TimeSpan(31, 25, 0);
+            var traveltime2 = new TimeSpan(33, 15, 0);
+            var traveltime3 = new TimeSpan(33, 38, 0);
+
+            var depart1 = hundredDaysBefore;
             var depart2 = depart1.Add(twoThirdDay);
             var depart3 = depart2.Add(twoThirdDay);
-            var arrive1 = depart1.Add(traveltime);
-            var arrive2 = depart2.Add(traveltime);
-            var arrive3 = depart3.Add(traveltime);
 
-            builder.Entity<Schedule>().HasData(
-                new Schedule { Id = 1, Name = "SE1 HN-SG Fast Train", TrainCode = SE1.Code, RouteId = 4, Departure = depart1, Arrival = arrive1 },
-                new Schedule { Id = 2, Name = "SE2 SG-HN Fast Train", TrainCode = SE2.Code, RouteId = 3, Departure = depart1, Arrival = arrive1 },
-                new Schedule { Id = 3, Name = "SE3 HN-SG Super Fast Train", TrainCode = SE3.Code, RouteId = 6, Departure = depart2, Arrival = arrive2 },
-                new Schedule { Id = 4, Name = "SE4 SG-HN Super Fast Train", TrainCode = SE4.Code, RouteId = 5, Departure = depart2, Arrival = arrive2 },
-                new Schedule { Id = 5, Name = "SE5 HN-SG Slow Train", TrainCode = SE5.Code, RouteId = 2, Departure = depart3, Arrival = arrive3 },
-                new Schedule { Id = 6, Name = "SE6 SG-HN Slow Train", TrainCode = SE6.Code, RouteId = 1, Departure = depart3, Arrival = arrive3 }
+            var arrive1 = depart1.Add(traveltime1);
+            var arrive2 = depart2.Add(traveltime2);
+            var arrive3 = depart3.Add(traveltime3);
 
-                );
+
+            var s = 1;
+            for (var i = 0; i < 100; i++)
+            {
+                builder.Entity<Schedule>().HasData(
+                    new Schedule { Id = s++, Name = "SE1 HN-SG Fast Train", TrainCode = SE1.Code, RouteId = 4, Departure = depart1, Arrival = arrive1 },
+                    new Schedule { Id = s++, Name = "SE1 SG-HN Fast Train", TrainCode = SE1.Code, RouteId = 3, Departure = depart1.AddDays(1), Arrival = arrive1.AddDays(1) },
+
+                    new Schedule { Id = s++, Name = "SE2 SG-HN Fast Train", TrainCode = SE2.Code, RouteId = 3, Departure = depart1, Arrival = arrive1 },
+                    new Schedule { Id = s++, Name = "SE2 HN-SG Fast Train", TrainCode = SE2.Code, RouteId = 4, Departure = depart1.AddDays(1), Arrival = arrive1.AddDays(1) },
+
+                    new Schedule { Id = s++, Name = "SE3 HN-SG Super Fast Train", TrainCode = SE3.Code, RouteId = 6, Departure = depart2, Arrival = arrive2 },
+                    new Schedule { Id = s++, Name = "SE3 SG-HN Super Fast Train", TrainCode = SE3.Code, RouteId = 5, Departure = depart2.AddDays(1), Arrival = arrive2.AddDays(1) },
+
+                    new Schedule { Id = s++, Name = "SE4 SG-HN Super Fast Train", TrainCode = SE4.Code, RouteId = 5, Departure = depart2, Arrival = arrive2 },
+                    new Schedule { Id = s++, Name = "SE4 HN-SG Super Fast Train", TrainCode = SE4.Code, RouteId = 6, Departure = depart2.AddDays(1), Arrival = arrive2.AddDays(1) },
+
+                    new Schedule { Id = s++, Name = "SE5 HN-SG Slow Train", TrainCode = SE5.Code, RouteId = 2, Departure = depart3, Arrival = arrive3 },
+                    new Schedule { Id = s++, Name = "SE5 SG-HN Slow Train", TrainCode = SE5.Code, RouteId = 1, Departure = depart3.AddDays(1), Arrival = arrive3.AddDays(1) },
+
+                    new Schedule { Id = s++, Name = "SE6 SG-HN Slow Train", TrainCode = SE6.Code, RouteId = 1, Departure = depart3, Arrival = arrive3 },
+                    new Schedule { Id = s++, Name = "SE6 HN-SG Slow Train", TrainCode = SE6.Code, RouteId = 2, Departure = depart3.AddDays(1), Arrival = arrive3.AddDays(1) }
+                    );
+                hundredDaysBefore = hundredDaysBefore.Add(twoDays);
+                depart1 = hundredDaysBefore;
+                depart2 = depart1.Add(twoThirdDay);
+                depart3 = depart2.Add(twoThirdDay);
+
+                arrive1 = depart1.Add(traveltime1);
+                arrive2 = depart2.Add(traveltime2);
+                arrive3 = depart3.Add(traveltime3);
+            }
 
             var f = 1;
             for (var i = 1; i <= 6; i++)
