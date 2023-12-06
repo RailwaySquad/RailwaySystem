@@ -26,7 +26,7 @@
     }
 </style>
 
-<partial name="_Header" />
+<partial name="_AdminHeader" />
 <div class="main-wrapper">
 	<!-- navbar vertical -->
 	<!-- navbar -->
@@ -56,6 +56,8 @@
                     </div>
                 </div>
             </div>
+            <p>Select month: @ViewBag.SelectedMonth</p>
+            <p>Select Yeat: @ViewBag.SelectedYear</p>
             <!-- row -->
             <div class="row">
                 <div class="col-6">
@@ -68,10 +70,10 @@
                                 <option>select month</option>
                                 @for (int i = 1; i <= 12; i++)
                                 {
-                                    <option value="@i" >@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
+                                    <option value="@i">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
                                 }
                             </select>
-                        </div>                     
+                        </div>
                     </form>
                 </div>
 
@@ -81,15 +83,16 @@
                             <label for="yearSelect">Select Year:</label>
                         </div>
                         <div>
+
                             <select id="yearSelect" name="year" onchange="submitYearForm()">
-                               <option>select year</option>
+                                <option>select year</option>
                                 @for (int i = DateTime.Now.Year; i >= 1900; i--)
                                 {
                                     <option value="@i">@i</option>
                                 }
                             </select>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>
@@ -173,7 +176,7 @@
                                                         {
                                                             <td class="borderTable" style="padding: 0px; border: 0px none; vertical-align: top; height: 30px; overflow: hidden;">
                                                                 @{
-                                                                    var schedulesForDay = Model.Where(s => s.Departure?.DayOfWeek == dayOfWeek).ToList();
+                                                                    var schedulesForDay = Model.Where(s => s.Departure.DayOfWeek == dayOfWeek).ToList();
                                                                 }
                                                                 @if (schedulesForDay.Any())
                                                                 {
@@ -187,7 +190,7 @@
                                                                                         {
                                                                                             <div>
                                                                                                 <div>Schedule Total: @schedulesForDay.Count</div>
-                                                                                                <div>@item.Departure?.ToString("dd/MM/yyyy")</div>
+                                                                                                <div>@item.Departure.ToString("dd/MM/yyyy")</div>
                                                                                             </div>
                                                                                         }
                                                                                     </div>
@@ -261,6 +264,6 @@
         document.getElementById("monthForm").submit();
     }
 </script>
-<partial name="_Footer" />
+<partial name="_AdminFooter" />
 
 

@@ -12,7 +12,7 @@
 
 <!-- main wrapper -->
 <!-- navbar -->
-<partial name="_Header" />
+<partial name="_AdminHeader" />
 
 
 <div class="main-wrapper">
@@ -260,7 +260,7 @@
 							</nav>
 						</div>
 						<div>
-							<a href="/Admin/StationMaster" class="btn btn-me">Back to Station Master</a>
+							<a href="/StationMaster/StationMaster" class="btn btn-me">Back to Station Master</a>
 						</div>
 					</div>
 				</div>
@@ -279,30 +279,35 @@
 										<!-- input -->
 										<div class="mb-3 col-lg-6">
 											<label class="form-label">Station Code</label>
-											<span style="color:red">*</span>
-											<input asp-for="Code" class="form-control" placeholder="Code" required/>
+											
+											<input asp-for="Code" class="form-control" placeholder="Code" />
+											<span asp-validation-for="Code" style="color:red"></span>
 										</div>
 
 										<!-- input -->
 										<div class="mb-3 col-lg-6">
 											<label class="form-label">Station Name</label>
-											<span style="color:red">*</span>
-											<input asp-for="Name" class="form-control" placeholder="Name" required/>
+											
+											<input asp-for="Name" class="form-control" placeholder="Name" />
+											<span asp-validation-for="Name" style="color:red"></span>
 										</div>
 										<div class="mb-3 col-lg-6">
 											<label class="form-label">Name Of Division</label>
 											<span style="color:red">*</span>
-											<input asp-for="NameOfDivision" class="form-control" placeholder="NameOfDivision" required/>
+											<input asp-for="NameOfDivision" class="form-control" placeholder="NameOfDivision" />
+											<span asp-validation-for="NameOfDivision" style="color:red"></span>
 										</div>
 										<div class="mb-3 col-lg-6">
 											<label class="form-label">Zone</label>
 											<span style="color:red">*</span>
-											<input asp-for="Zone" class="form-control" placeholder="Zone" required/>
+											<input asp-for="Zone" class="form-control" placeholder="Zone (Must be Number)" />
+											<span asp-validation-for="Zone" style="color:red"></span>
 										</div>
 										<div class="mb-3 col-lg-6">
 											<label class="form-label">ZipCode</label>
 											<span style="color:red">*</span>
-											<input asp-for="ZipCode" class="form-control" placeholder="Zipcode" required/>
+											<input asp-for="ZipCode" class="form-control" placeholder="Zipcode" />
+											<span asp-validation-for="ZipCode" style="color:red"></span>
 										</div>
 									</div>
 
@@ -320,7 +325,7 @@
 	</main>
 </div>
 
-<partial name="_Footer" />
+<partial name="_AdminFooter" />
 
 
 

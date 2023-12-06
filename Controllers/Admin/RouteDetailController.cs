@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Railway_Group01.Data;
+using Railway_Group01.Models;
 using System.Collections.Generic;
 using System.Drawing.Printing;
 
 namespace Railway_Group01.Controllers.Admin
 {
+	[Authorize(Roles = "Admin")]
 	public class RouteDetailController : Controller
 	{
 		RailwayDbContext ctx;
@@ -19,7 +22,8 @@ namespace Railway_Group01.Controllers.Admin
 			var route = await ctx.RouteDetails!
 				.Include(r=>r.ArrivalStation)
 				.Include(r=>r.DepartureStation)
-				.Include(r=>r.Route)
+				.Include(r=>r.Route.StartStation)
+				.Include(r => r.Route.EndStation)
 				.ToListAsync();
 			return View(route);
 		}
@@ -32,15 +36,33 @@ namespace Railway_Group01.Controllers.Admin
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> CreateRouteDetail(RouteDetail routeDetails)
+		public async Task<IActionResult> CreateRouteDetail(RouteDetailDTO routeDetailDTO)
 		{
-			routeDetails.Route = await ctx.Routes!.FindAsync(routeDetails.Route.Id);
-			routeDetails.DepartureStation = await ctx.Stations!.FindAsync(routeDetails.DepartureStation.Id);
-			routeDetails.ArrivalStation = await ctx.Stations!.FindAsync(routeDetails.ArrivalStation.Id);
-			ctx.RouteDetails!.Add(routeDetails);
-			await ctx.SaveChangesAsync();
-			TempData["SuccessMessage"] = "RouteDetail Added successfully.";
-			return RedirectToAction("RouteDetailList");
+			if (ModelState.IsValid)
+			{
+
+				var routeDetail = new RouteDetail()
+				{
+					DepartureStationId= routeDetailDTO.DepartureStationId,
+					ArrivalStationId = routeDetailDTO.ArrivalStationId,
+					RouteId = routeDetailDTO.RouteId,
+					Distance = routeDetailDTO.Distance,
+					TravelTime = routeDetailDTO.TravelTime,
+					DelayTime = routeDetailDTO.DelayTime
+				};
+
+				ctx.RouteDetails.Add(routeDetail);
+				await ctx.SaveChangesAsync();
+				TempData["SuccessMessage"] = "RouteDetail Added successfully.";
+				return RedirectToAction("RouteDetailList");
+			}
+			// Đặt ViewData ở đây để giữ nguyên dữ liệu khi có lỗi
+			var listStation = await ctx.Stations!.ToListAsync();
+			ViewData["liststation"] = listStation;
+
+			var listRoute = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
+			ViewData["listroute"] = listRoute;
+			return View(routeDetailDTO);
 		}
 		public async Task<IActionResult> EditRouteDetail(int id)
 		{

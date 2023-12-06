@@ -1,4 +1,4 @@
-﻿@model Railway_Group01.Data.Schedule
+﻿@model Railway_Group01.Models.ScheduleDTO
 @{
 	Layout = null;
 	var listRoute = ViewData["listroute"] as List<Railway_Group01.Data.Route>;
@@ -13,7 +13,7 @@
 
 <!-- main wrapper -->
 <!-- navbar -->
-<partial name="_Header" />
+<partial name="_AdminHeader" />
 
 
 <div class="main-wrapper">
@@ -279,6 +279,7 @@
 										<label class="form-label">Name Trains</label>
 										<span style="color:red">*</span>
 										<input asp-for="Name" class="form-control" placeholder="Name Train" />
+										<span asp-validation-for="Name" class="text-danger"></span>
 									</div>
 									<!-- input -->
 									<div class="mb-3 col-lg-6">
@@ -296,7 +297,7 @@
 									<!-- input -->
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">Route</label>
-										<select class="form-select" asp-for="Route.Id" >
+										<select class="form-select" asp-for="RouteId" >
 											@if (listRoute != null)
 											{
 												@foreach (var route in listRoute)
@@ -310,13 +311,13 @@
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">Start At</label>
 										<span style="color:red">*</span>
-										<input asp-for="Departure" class="form-control" required />
+										<input asp-for="Departure" class="form-control"  />
 										<span asp-validation-for="Departure" class="text-danger"></span>
 									</div>
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">End At</label>
 										<span style="color:red">*</span>
-										<input asp-for="Arrival" class="form-control flatpickr"  required/>
+										<input asp-for="Arrival" class="form-control flatpickr"  />
 										<span asp-validation-for="Arrival" class="text-danger"></span>
 									</div>
 
@@ -328,12 +329,12 @@
 										<br />
 										<div class="form-check form-check-inline">
 											<input class="form-check-input" type="radio" asp-for="IsFinished" value="True" checked />
-											<label class="form-check-label" for="inlineRadio1">Active</label>
+											<label class="form-check-label" for="inlineRadio1">Finished</label>
 										</div>
 										<!-- input -->
 										<div class="form-check form-check-inline">
 											<input class="form-check-input" type="radio" asp-for="IsFinished" value="False" />
-											<label class="form-check-label" for="inlineRadio2">Disabled</label>
+											<label class="form-check-label" for="inlineRadio2">Unfinished</label>
 										</div>
 										<!-- input -->
 									</div>
@@ -352,7 +353,7 @@
 	</main>
 </div>
 
-<partial name="_Footer" />
+<partial name="_AdminFooter" />
 
 
 

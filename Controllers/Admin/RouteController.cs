@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Railway_Group01.Data;
+using Railway_Group01.Models;
 using System.Collections.Generic;
 
 namespace Railway_Group01.Controllers.Admin
 {
+	[Authorize(Roles = "Admin")]
 	public class RouteController : Controller
 	{
 		RailwayDbContext ctx;
@@ -32,15 +35,24 @@ namespace Railway_Group01.Controllers.Admin
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> CreateRoute(Data.Route route)
+		public async Task<IActionResult> CreateRoute(RouteDTO routeDTO)
 		{
-
-				route.StartStation = await ctx.Stations!.FindAsync(route.StartStation.Id);
-				route.EndStation = await ctx.Stations!.FindAsync(route.EndStation.Id);
+			if (ModelState.IsValid)
+			{
+				var route = new Data.Route()
+				{
+					StartStationId = routeDTO.StartStationId,
+					EndStationId = routeDTO.EndStationId,
+					Distance = routeDTO.Distance
+				};
 				ctx.Routes!.Add(route);
 				await ctx.SaveChangesAsync();
 				TempData["SuccessMessage"] = "Route Added successfully.";
 				return RedirectToAction("RouteList");
+			}
+			var list = await ctx.Stations!.ToListAsync();
+			ViewData["list"] = list;
+			return View(routeDTO);
 		}
 		public async Task<IActionResult> EditRoute(int id)
 		{
@@ -72,10 +84,10 @@ namespace Railway_Group01.Controllers.Admin
 			TempData["SuccessMessage"] = "Route Deleted successfully.";
 			return RedirectToAction("RouteList");
 		}
-		public async Task<IActionResult> Detail(int id)
+	/*	public async Task<IActionResult> Detail(int id)
 		{
 			var route = await ctx.RouteDetails!.Where(r => r.Id == id).ToListAsync();
 			return View(route);
-		}
+		}*/
 	}
 }

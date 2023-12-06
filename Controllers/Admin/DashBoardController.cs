@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Railway_Group01.Data;
 
 namespace Railway_Group01.Controllers.Admin
 {
+	[Authorize(Roles = "Admin")]
 	public class DashBoardController : Controller
 	{
 		RailwayDbContext ctx;

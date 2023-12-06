@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Railway_Group01.Data.Ticket>
+﻿@model IEnumerable<Railway_Group01.Data.Booking>
 @{
 	Layout = null;
 
@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta content="Codescandy" name="author">
-<title>Ticket Manager</title>
+<title>Booking Manager</title>
 <!-- Favicon icon-->
 <style>
 	.colerth {
@@ -15,7 +15,7 @@
 		color: white !important;
 	}
 </style>
-<partial name="_Header" />
+<partial name="_AdminHeader" />
 <div class="main-wrapper">
 	<!-- navbar vertical -->
 	<!-- navbar -->
@@ -248,12 +248,12 @@
 					<!-- page header -->
 					<div class="d-md-flex justify-content-between align-items-center">
 						<div>
-							<h2>Booking</h2>
+							<h2>Booking List</h2>
 							<!-- breacrumb -->
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb mb-0">
 									<li class="breadcrumb-item"><a href="#" class="text-inherit">Dashboard</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Booking</li>
+									<li class="breadcrumb-item active" aria-current="page">Booking List</li>
 								</ol>
 							</nav>
 						</div>
@@ -289,33 +289,26 @@
 											<th class="colerth">Id</th>
 											<th class="colerth">UserId</th>
 											<th class="colerth">Created At</th>
-
+											<th class="colerth">Detail</th>
 										</tr>
 									</thead>
-									@* @foreach (var item in Model)
+									@foreach (var item in Model)
 									{
 										<tbody>
 											<tr>
 												<td>
-													@item.PNRNo
+													@item.Id
 												</td>
-												<td>@item.Price</td>
-												<td>@item.</td>
-												<td>@item.SeatNo</td>											
+												<td>@item.User.Id</td>
+												<td>@item.CreatedAt</td>
 												<td>
-													<span class="badge bg-light-primary text-dark-primary">@item.Status</span>
-												</td>
-												<td>@item.Schedule.Id</td>
-												<td>@item.Coach.Id</td>
-												<td>@item.CIDNo</td>
-												<td>
-													<a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
+													<a href="@Url.Action("BookingDetail", new {id = item.Id})" class="text-reset" >
 														<i class="fa-solid fa-circle-info"></i>
 													</a>
 												</td>
 											</tr>
 										</tbody>
-									} *@
+									}
 
 								</table>
 							</div>
@@ -339,6 +332,6 @@
 	</main>
 </div>
 
-<partial name="_Footer" />
+<partial name="_AdminFooter" />
 
 

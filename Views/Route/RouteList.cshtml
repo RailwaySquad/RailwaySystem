@@ -88,7 +88,7 @@
 <title>Route</title>
 <!-- Favicon icon-->
 
-<partial name="_Header" />
+<partial name="_AdminHeader" />
 <div class="main-wrapper">
 	<!-- navbar vertical -->
 	<!-- navbar -->
@@ -412,8 +412,8 @@
 												<td>
 													@item.Id
 												</td>
-												<td>@item.StartStation.Code</td>
-												<td>@item.EndStation.Code</td>
+												<td>@item.StartStation.Name</td>
+												<td>@item.EndStation.Name</td>
 												<td>@item.Distance</td>
 												<td>
 													<span class="text-reset" onclick="openNav(@item.Id)" data-bs-toggle="dropdown" aria-expanded="false">
@@ -501,6 +501,6 @@
 	}
 
 </script>
-<partial name="_Footer" />
+<partial name="_AdminFooter" />
 
 

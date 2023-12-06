@@ -1,4 +1,4 @@
-﻿@model Railway_Group01.Data.RouteDetail
+﻿@model Railway_Group01.Models.RouteDetailDTO
 @{
 
 	Layout = null;
@@ -14,7 +14,7 @@
 
 <!-- main wrapper -->
 <!-- navbar -->
-<partial name="_Header" />
+<partial name="_AdminHeader" />
 
 
 <div class="main-wrapper">
@@ -279,7 +279,7 @@
 									<!-- input -->
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">DepartureStation</label>
-										<select class="form-select" asp-for="DepartureStation.Id">
+										<select class="form-select" asp-for="DepartureStationId">
 											@if (listStation != null)
 											{
 												@foreach (var station in listStation)
@@ -292,7 +292,7 @@
 									<!-- input -->
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">ArrivalStation</label>
-										<select class="form-select" asp-for="ArrivalStation.Id">
+										<select class="form-select" asp-for="ArrivalStationId">
 											@if (listStation != null)
 											{
 												@foreach (var station in listStation)
@@ -304,7 +304,7 @@
 									</div>
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">Route</label>
-										<select class="form-select" asp-for="Route.Id">
+										<select class="form-select" asp-for="RouteId">
 											@if (listRoute != null)
 											{
 												@foreach (var route in listRoute)
@@ -318,19 +318,19 @@
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">Distance</label>
 										<span style="color:red">*</span>
-										<input asp-for="Distance" class="form-control" required />
+										<input asp-for="Distance" class="form-control"  />
 										<span asp-validation-for="Distance" class="text-danger"></span>
 									</div>
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">TravelTime</label>
 										<span style="color:red">*</span>
-										<input asp-for="TravelTime" class="form-control" required />
+										<input asp-for="TravelTime" class="form-control"  />
 										<span asp-validation-for="TravelTime" class="text-danger"></span>
 									</div>
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">DelayTime</label>
 										<span style="color:red">*</span>
-										<input asp-for="DelayTime" class="form-control" required />
+										<input asp-for="DelayTime" class="form-control"  />
 										<span asp-validation-for="DelayTime" class="text-danger"></span>
 									</div>
 
@@ -352,7 +352,7 @@
 	</main>
 </div>
 
-<partial name="_Footer" />
+<partial name="_AdminFooter" />
 
 
 

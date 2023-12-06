@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Railway_Group01.Data;
+using Railway_Group01.Models;
 
 namespace Railway_Group01.Controllers.Admin
 {
+	[Authorize(Roles = "Admin")]
 	public class TrainMasterController : Controller
 	{
 		RailwayDbContext ctx;
@@ -23,16 +26,24 @@ namespace Railway_Group01.Controllers.Admin
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> CreateTrain(Train train)
+		public async Task<IActionResult> CreateTrain(TrainDTO trainDTO)
 		{
 			if (ModelState.IsValid)
 			{
+				var train = new Train()
+				{
+					Code = trainDTO.Code,
+					TypeCode = trainDTO.TypeCode,
+					IsRunning = trainDTO.IsRunning
+				};
 				ctx.Trains!.Add(train);
 				await ctx.SaveChangesAsync();
 				TempData["SuccessMessage"] = "Train Added successfully.";
 				return RedirectToAction("TrainMaster");
 			}
-			return View(train);
+			var listType = await ctx.TrainTypes!.ToListAsync();
+			ViewData["listType"] = listType;
+			return View(trainDTO);
 		}
 		public async Task<IActionResult> EditTrain(string id)
 		{

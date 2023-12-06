@@ -1,4 +1,4 @@
-﻿@model Railway_Group01.Data.Train
+﻿@model Railway_Group01.Models.TrainDTO
 @{
 	var listType = ViewData["listType"] as List<Railway_Group01.Data.TrainType>;
 	Layout = null;
@@ -12,7 +12,7 @@
 
 <!-- main wrapper -->
 <!-- navbar -->
-<partial name="_Header" />
+<partial name="_AdminHeader" />
 
 
 <div class="main-wrapper">
@@ -279,7 +279,8 @@
 										
 										<label class="form-label">Train Code</label>
 										<span asp-validation-for="Code" style="color:red">*</span>
-										<input asp-for="Code" class="form-control" placeholder="Train Code" required/>
+										<input asp-for="Code" class="form-control" placeholder="Train Code" />
+										<span asp-validation-for="Code" class="text-danger"></span>
 										
 									</div>
 									<!-- input -->
@@ -329,7 +330,7 @@
 	</main>
 </div>
 
-<partial name="_Footer" />
+<partial name="_AdminFooter" />
 
 
 

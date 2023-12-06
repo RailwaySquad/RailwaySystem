@@ -1,4 +1,4 @@
-﻿@model Railway_Group01.Data.Route
+﻿@model Railway_Group01.Models.RouteDTO
 @{
 
 	Layout = null;
@@ -13,7 +13,7 @@
 
 <!-- main wrapper -->
 <!-- navbar -->
-<partial name="_Header" />
+<partial name="_AdminHeader" />
 
 
 <div class="main-wrapper">
@@ -277,8 +277,8 @@
 								<div class="row">
 									<!-- input -->
 									<div class="mb-3 col-lg-6">
-										<label class="form-label">Train</label>
-										<select class="form-select" asp-for="StartStation.Id" >
+										<label class="form-label">Start Station</label>
+										<select class="form-select" asp-for="StartStationId" >
 											@if (list != null)
 											{
 												@foreach (var station in list)
@@ -290,8 +290,8 @@
 									</div>
 									<!-- input -->
 									<div class="mb-3 col-lg-6">
-										<label class="form-label">Route</label>
-										<select class="form-select" asp-for="EndStation.Id" >
+										<label class="form-label">End Station</label>
+										<select class="form-select" asp-for="EndStationId" >
 											@if (list != null)
 											{
 												@foreach (var station in list)
@@ -305,8 +305,8 @@
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">Distance</label>
 										<span style="color:red">*</span>
-										<input asp-for="Distance" class="form-control" required />
-										<span asp-validation-for="Distance" class="text-danger"></span>
+										<input asp-for="Distance" class="form-control" />
+										<span style="color:red" asp-validation-for="Distance" class="text-danger"></span>
 									</div>
 
 									<div></div>
@@ -327,7 +327,7 @@
 	</main>
 </div>
 
-<partial name="_Footer" />
+<partial name="_AdminFooter" />
 
 
 

@@ -1,20 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Railway_Group01.Data;
+using Railway_Group01.Models;
 
 namespace Railway_Group01.Controllers.Admin
 {
+	[Authorize(Roles = "Admin")]
 	public class ScheduleMasterController : Controller
 	{
 		RailwayDbContext ctx;
 		public ScheduleMasterController(RailwayDbContext ctx)
 		{
 			this.ctx = ctx;
-		}
-		public async Task<IActionResult> Index()
-		{
-			return View();
 		}
 		public async Task<IActionResult> TrainSchedule()
 		{
@@ -29,26 +28,29 @@ namespace Railway_Group01.Controllers.Admin
 		[HttpPost]
         public async Task<IActionResult> SearchByMonth(int month)
         {
+            ViewBag.SelectedMonth = month;
             var schedules = await ctx.Schedules
-                .Where(s => s.Departure.Value.Month == month)
+                .Where(s => s.Departure.Month == month)
                 .Include(s => s.Train)
                 .Include(s => s.Route.StartStation)
                 .Include(s => s.Route.EndStation)
                 .OrderBy(s => s.Departure)
                 .ToListAsync();
-
+            
             return View("TrainSchedule", schedules);
         }
 		[HttpPost]
         public async Task<IActionResult> SearchByYear(int year)
         {
+            ViewBag.SelectedYear = year;
             var schedules = await ctx.Schedules
-                .Where(s => s.Departure.Value.Year == year)
+                .Where(s => s.Departure.Year == year)
                 .Include(s => s.Train)
                 .Include(s => s.Route.StartStation)
                 .Include(s => s.Route.EndStation)
                 .OrderBy(s => s.Departure)
                 .ToListAsync();
+            
 
             return View("TrainSchedule", schedules);
         }
@@ -63,16 +65,30 @@ namespace Railway_Group01.Controllers.Admin
 			return View();
 }
 		[HttpPost]
-		public async Task<IActionResult> CreateTrainSchedule(Schedule schedule)
+		public async Task<IActionResult> CreateTrainSchedule(ScheduleDTO scheduleDTO)
 		{
-
-				schedule.Route = await ctx.Routes!.FindAsync(schedule.Route.Id);
-				schedule.Train = await ctx.Trains!.FindAsync(schedule.Train);
+			if (ModelState.IsValid)
+			{
+				var schedule = new Schedule()
+				{
+					Name = scheduleDTO.Name,
+					Departure = scheduleDTO.Departure,
+					Arrival = scheduleDTO.Arrival,
+					IsFinished = scheduleDTO.IsFinished,
+					TrainCode = scheduleDTO.TrainCode,
+					RouteId = scheduleDTO.RouteId
+				};
 				ctx.Schedules!.Add(schedule);
 				await ctx.SaveChangesAsync();
-			TempData["SuccessMessage"] = "Schedule Added successfully.";
-			return RedirectToAction("TrainSchedule");
+				TempData["SuccessMessage"] = "Schedule Added successfully.";
+				return RedirectToAction("TrainSchedule");
+			}
+			var listTrain = await ctx.Trains!.ToListAsync();
+			ViewData["listTrain"] = listTrain;
 
+			var listRoute = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
+			ViewData["listroute"] = listRoute;
+			return View(scheduleDTO);
 		}
 		public async Task<IActionResult> EditTrainSchedule(int id)
 		{
@@ -112,7 +128,7 @@ namespace Railway_Group01.Controllers.Admin
         public async Task<IActionResult> DetailDate(DateTime Departure)
         {
             var schedules = await ctx.Schedules!
-                .Where(s => s.Departure.HasValue && s.Departure.Value.Date == Departure.Date)
+                .Where(s => s.Departure.Date == Departure.Date)
                 .Include(s => s.Train)
                 .Include(s => s.Route.StartStation)
                 .Include(s => s.Route.EndStation)

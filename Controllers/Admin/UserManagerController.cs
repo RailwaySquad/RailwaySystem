@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,6 +10,7 @@ using System.Data;
 
 namespace Railway_Group01.Controllers.Admin
 {
+	[Authorize(Roles = "Admin")]
 	public class UserManagerController : Controller
 	{
 		UserManager<User> userManager;
@@ -31,8 +33,7 @@ namespace Railway_Group01.Controllers.Admin
 		[HttpPost]
 		public async Task<IActionResult> CreateUser(UserDTO userDTO)
 		{
-			if (ModelState.IsValid)
-			{
+		
 				var user = new User()
 				{
 					UserName = userDTO.UserName,
@@ -54,7 +55,7 @@ namespace Railway_Group01.Controllers.Admin
 					return RedirectToAction("UserManager");
 				}
 				
-			}
+
 
 			return View(userDTO);
 		}
