@@ -72,7 +72,7 @@ namespace Railway_Group01.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    NameOfDivision = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NameOfDivision = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Zone = table.Column<int>(type: "int", nullable: false),
                     ZipCode = table.Column<int>(type: "int", nullable: false)
                 },
@@ -832,7 +832,7 @@ namespace Railway_Group01.Migrations
                     { 21, "AC2", 110m, 2, "SF" },
                     { 22, "AC3", 80m, 2, "S" },
                     { 23, "AC3", 90m, 2, "F" },
-                    { 24, "AC3", 100m, 2, "SF" }
+                    { 24, "AC3", 120m, 2, "SF" }
                 });
 
             migrationBuilder.InsertData(
@@ -845,7 +845,74 @@ namespace Railway_Group01.Migrations
                     { 27, "SL", 90m, 2, "SF" },
                     { 28, "GE", 60m, 2, "S" },
                     { 29, "GE", 70m, 2, "F" },
-                    { 30, "GE", 80m, 2, "SF" }
+                    { 30, "GE", 80m, 2, "SF" },
+                    { 31, "AC1", 100m, 3, "S" },
+                    { 32, "AC1", 110m, 3, "F" },
+                    { 33, "AC1", 120m, 3, "SF" },
+                    { 34, "AC2", 90m, 3, "S" },
+                    { 35, "AC2", 100m, 3, "F" },
+                    { 36, "AC2", 110m, 3, "SF" },
+                    { 37, "AC3", 80m, 3, "S" },
+                    { 38, "AC3", 90m, 3, "F" },
+                    { 39, "AC3", 120m, 3, "SF" },
+                    { 40, "SL", 70m, 3, "S" },
+                    { 41, "SL", 80m, 3, "F" },
+                    { 42, "SL", 90m, 3, "SF" },
+                    { 43, "GE", 60m, 3, "S" },
+                    { 44, "GE", 70m, 3, "F" },
+                    { 45, "GE", 80m, 3, "SF" },
+                    { 46, "AC1", 100m, 4, "S" },
+                    { 47, "AC1", 110m, 4, "F" },
+                    { 48, "AC1", 120m, 4, "SF" },
+                    { 49, "AC2", 90m, 4, "S" },
+                    { 50, "AC2", 100m, 4, "F" },
+                    { 51, "AC2", 110m, 4, "SF" },
+                    { 52, "AC3", 80m, 4, "S" },
+                    { 53, "AC3", 90m, 4, "F" },
+                    { 54, "AC3", 120m, 4, "SF" },
+                    { 55, "SL", 70m, 4, "S" },
+                    { 56, "SL", 80m, 4, "F" },
+                    { 57, "SL", 90m, 4, "SF" },
+                    { 58, "GE", 60m, 4, "S" },
+                    { 59, "GE", 70m, 4, "F" },
+                    { 60, "GE", 80m, 4, "SF" },
+                    { 61, "AC1", 100m, 5, "S" },
+                    { 62, "AC1", 110m, 5, "F" },
+                    { 63, "AC1", 120m, 5, "SF" },
+                    { 64, "AC2", 90m, 5, "S" },
+                    { 65, "AC2", 100m, 5, "F" },
+                    { 66, "AC2", 110m, 5, "SF" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Fares",
+                columns: new[] { "Id", "ClassCode", "Price", "RouteId", "TypeCode" },
+                values: new object[,]
+                {
+                    { 67, "AC3", 80m, 5, "S" },
+                    { 68, "AC3", 90m, 5, "F" },
+                    { 69, "AC3", 120m, 5, "SF" },
+                    { 70, "SL", 70m, 5, "S" },
+                    { 71, "SL", 80m, 5, "F" },
+                    { 72, "SL", 90m, 5, "SF" },
+                    { 73, "GE", 60m, 5, "S" },
+                    { 74, "GE", 70m, 5, "F" },
+                    { 75, "GE", 80m, 5, "SF" },
+                    { 76, "AC1", 100m, 6, "S" },
+                    { 77, "AC1", 110m, 6, "F" },
+                    { 78, "AC1", 120m, 6, "SF" },
+                    { 79, "AC2", 90m, 6, "S" },
+                    { 80, "AC2", 100m, 6, "F" },
+                    { 81, "AC2", 110m, 6, "SF" },
+                    { 82, "AC3", 80m, 6, "S" },
+                    { 83, "AC3", 90m, 6, "F" },
+                    { 84, "AC3", 120m, 6, "SF" },
+                    { 85, "SL", 70m, 6, "S" },
+                    { 86, "SL", 80m, 6, "F" },
+                    { 87, "SL", 90m, 6, "SF" },
+                    { 88, "GE", 60m, 6, "S" },
+                    { 89, "GE", 70m, 6, "F" },
+                    { 90, "GE", 80m, 6, "SF" }
                 });
 
             migrationBuilder.InsertData(
@@ -870,7 +937,14 @@ namespace Railway_Group01.Migrations
                     { 15, 15, 5, 14, 709, 1, 96 },
                     { 16, 16, 5, 15, 758, 1, 48 },
                     { 17, 17, 5, 16, 798, 1, 56 },
-                    { 18, 18, 5, 17, 836, 1, 41 },
+                    { 18, 18, 5, 17, 836, 1, 41 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RouteDetails",
+                columns: new[] { "Id", "ArrivalStationId", "DelayTime", "DepartureStationId", "Distance", "RouteId", "TravelTime" },
+                values: new object[,]
+                {
                     { 19, 19, 5, 18, 861, 1, 27 },
                     { 20, 20, 5, 19, 884, 1, 23 },
                     { 21, 21, 5, 20, 901, 1, 15 },
@@ -888,14 +962,7 @@ namespace Railway_Group01.Migrations
                     { 33, 33, 5, 32, 1551, 1, 37 },
                     { 34, 34, 5, 33, 1585, 1, 45 },
                     { 35, 35, 5, 34, 1611, 1, 32 },
-                    { 36, 36, 5, 35, 1639, 1, 45 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "RouteDetails",
-                columns: new[] { "Id", "ArrivalStationId", "DelayTime", "DepartureStationId", "Distance", "RouteId", "TravelTime" },
-                values: new object[,]
-                {
+                    { 36, 36, 5, 35, 1639, 1, 45 },
                     { 37, 37, 5, 36, 1670, 1, 45 },
                     { 38, 38, 5, 37, 1726, 1, 67 },
                     { 39, 38, 0, 38, 0, 2, 0 },
@@ -919,7 +986,14 @@ namespace Railway_Group01.Migrations
                     { 57, 20, 5, 21, 842, 2, 15 },
                     { 58, 19, 5, 20, 865, 2, 23 },
                     { 59, 18, 5, 19, 890, 2, 27 },
-                    { 60, 17, 5, 18, 928, 2, 41 },
+                    { 60, 17, 5, 18, 928, 2, 41 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RouteDetails",
+                columns: new[] { "Id", "ArrivalStationId", "DelayTime", "DepartureStationId", "Distance", "RouteId", "TravelTime" },
+                values: new object[,]
+                {
                     { 61, 16, 5, 17, 968, 2, 56 },
                     { 62, 15, 5, 16, 1017, 2, 48 },
                     { 63, 14, 5, 15, 1096, 2, 96 },
@@ -937,14 +1011,7 @@ namespace Railway_Group01.Migrations
                     { 75, 2, 5, 3, 1697, 2, 76 },
                     { 76, 1, 5, 2, 1726, 2, 40 },
                     { 77, 1, 0, 1, 0, 3, 0 },
-                    { 78, 2, 5, 1, 29, 3, 38 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "RouteDetails",
-                columns: new[] { "Id", "ArrivalStationId", "DelayTime", "DepartureStationId", "Distance", "RouteId", "TravelTime" },
-                values: new object[,]
-                {
+                    { 78, 2, 5, 1, 29, 3, 38 },
                     { 79, 5, 5, 2, 175, 3, 147 },
                     { 80, 8, 5, 5, 318, 3, 126 },
                     { 81, 10, 5, 8, 411, 3, 88 },
@@ -968,7 +1035,14 @@ namespace Railway_Group01.Migrations
                     { 99, 37, 5, 38, 56, 4, 62 },
                     { 100, 36, 5, 37, 87, 4, 76 },
                     { 101, 33, 5, 36, 175, 4, 76 },
-                    { 102, 30, 5, 33, 319, 4, 132 },
+                    { 102, 30, 5, 33, 319, 4, 132 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RouteDetails",
+                columns: new[] { "Id", "ArrivalStationId", "DelayTime", "DepartureStationId", "Distance", "RouteId", "TravelTime" },
+                values: new object[,]
+                {
                     { 103, 29, 5, 30, 340, 4, 25 },
                     { 104, 28, 5, 29, 387, 4, 54 },
                     { 105, 26, 5, 28, 522, 4, 153 },
@@ -986,14 +1060,7 @@ namespace Railway_Group01.Migrations
                     { 117, 1, 0, 1, 0, 5, 0 },
                     { 118, 2, 5, 1, 29, 5, 38 },
                     { 119, 3, 5, 2, 77, 5, 60 },
-                    { 120, 5, 5, 3, 175, 5, 101 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "RouteDetails",
-                columns: new[] { "Id", "ArrivalStationId", "DelayTime", "DepartureStationId", "Distance", "RouteId", "TravelTime" },
-                values: new object[,]
-                {
+                    { 120, 5, 5, 3, 175, 5, 101 },
                     { 121, 10, 5, 5, 411, 5, 246 },
                     { 122, 13, 5, 10, 528, 5, 110 },
                     { 123, 14, 5, 13, 630, 5, 95 },
@@ -1017,7 +1084,14 @@ namespace Railway_Group01.Migrations
                     { 141, 36, 5, 37, 87, 6, 76 },
                     { 142, 33, 5, 36, 175, 6, 96 },
                     { 143, 30, 5, 33, 319, 6, 132 },
-                    { 144, 29, 5, 30, 340, 6, 42 },
+                    { 144, 29, 5, 30, 340, 6, 42 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RouteDetails",
+                columns: new[] { "Id", "ArrivalStationId", "DelayTime", "DepartureStationId", "Distance", "RouteId", "TravelTime" },
+                values: new object[,]
+                {
                     { 145, 28, 5, 29, 387, 6, 31 },
                     { 146, 26, 5, 28, 522, 6, 153 },
                     { 147, 25, 5, 26, 622, 6, 95 },
@@ -1038,17 +1112,13 @@ namespace Railway_Group01.Migrations
                 columns: new[] { "Id", "Arrival", "Departure", "IsFinished", "Name", "RouteId", "TrainCode" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 12, 5, 8, 53, 13, 155, DateTimeKind.Local).AddTicks(7707), new DateTime(2023, 12, 4, 23, 53, 13, 155, DateTimeKind.Local).AddTicks(7707), false, "SE1 HN-SG Fast Train", 4, "SE1" },
-                    { 2, new DateTime(2023, 12, 5, 8, 53, 13, 155, DateTimeKind.Local).AddTicks(7707), new DateTime(2023, 12, 4, 23, 53, 13, 155, DateTimeKind.Local).AddTicks(7707), false, "SE2 SG-HN Fast Train", 3, "SE2" },
-                    { 3, new DateTime(2023, 12, 5, 16, 53, 13, 155, DateTimeKind.Local).AddTicks(7707), new DateTime(2023, 12, 5, 7, 53, 13, 155, DateTimeKind.Local).AddTicks(7707), false, "SE3 HN-SG Super Fast Train", 6, "SE3" },
-                    { 4, new DateTime(2023, 12, 5, 16, 53, 13, 155, DateTimeKind.Local).AddTicks(7707), new DateTime(2023, 12, 5, 7, 53, 13, 155, DateTimeKind.Local).AddTicks(7707), false, "SE4 SG-HN Super Fast Train", 5, "SE4" },
-                    { 5, new DateTime(2023, 12, 6, 0, 53, 13, 155, DateTimeKind.Local).AddTicks(7707), new DateTime(2023, 12, 5, 15, 53, 13, 155, DateTimeKind.Local).AddTicks(7707), false, "SE5 HN-SG Slow Train", 2, "SE5" }
+                    { 1, new DateTime(2023, 12, 8, 9, 47, 1, 784, DateTimeKind.Local).AddTicks(9217), new DateTime(2023, 12, 8, 0, 47, 1, 784, DateTimeKind.Local).AddTicks(9217), false, "SE1 HN-SG Fast Train", 4, "SE1" },
+                    { 2, new DateTime(2023, 12, 8, 9, 47, 1, 784, DateTimeKind.Local).AddTicks(9217), new DateTime(2023, 12, 8, 0, 47, 1, 784, DateTimeKind.Local).AddTicks(9217), false, "SE2 SG-HN Fast Train", 3, "SE2" },
+                    { 3, new DateTime(2023, 12, 8, 17, 47, 1, 784, DateTimeKind.Local).AddTicks(9217), new DateTime(2023, 12, 8, 8, 47, 1, 784, DateTimeKind.Local).AddTicks(9217), false, "SE3 HN-SG Super Fast Train", 6, "SE3" },
+                    { 4, new DateTime(2023, 12, 8, 17, 47, 1, 784, DateTimeKind.Local).AddTicks(9217), new DateTime(2023, 12, 8, 8, 47, 1, 784, DateTimeKind.Local).AddTicks(9217), false, "SE4 SG-HN Super Fast Train", 5, "SE4" },
+                    { 5, new DateTime(2023, 12, 9, 1, 47, 1, 784, DateTimeKind.Local).AddTicks(9217), new DateTime(2023, 12, 8, 16, 47, 1, 784, DateTimeKind.Local).AddTicks(9217), false, "SE5 HN-SG Slow Train", 2, "SE5" },
+                    { 6, new DateTime(2023, 12, 9, 1, 47, 1, 784, DateTimeKind.Local).AddTicks(9217), new DateTime(2023, 12, 8, 16, 47, 1, 784, DateTimeKind.Local).AddTicks(9217), false, "SE6 SG-HN Slow Train", 1, "SE6" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "Schedules",
-                columns: new[] { "Id", "Arrival", "Departure", "IsFinished", "Name", "RouteId", "TrainCode" },
-                values: new object[] { 6, new DateTime(2023, 12, 6, 0, 53, 13, 155, DateTimeKind.Local).AddTicks(7707), new DateTime(2023, 12, 5, 15, 53, 13, 155, DateTimeKind.Local).AddTicks(7707), false, "SE6 SG-HN Slow Train", 1, "SE6" });
 
             migrationBuilder.InsertData(
                 table: "Seats",

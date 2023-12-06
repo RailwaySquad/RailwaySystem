@@ -207,10 +207,10 @@ namespace Railway_Group01.Migrations
                     b.HasIndex("SeatId")
                         .IsUnique();
 
-                    b.ToTable("BookingDetailss");
+                    b.ToTable("BookingDetails");
                 });
 
-            modelBuilder.Entity("Railway_Group01.Data.Coach", b =>
+            modelBuilder.Entity("Railway_Group01.Data.Cancelling", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -283,7 +283,549 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("TrainCode");
 
-                    b.ToTable("Coach");
+                    b.ToTable("Coaches");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClassCode = "AC1",
+                            CoachNo = 1,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ClassCode = "AC1",
+                            CoachNo = 2,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE1"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ClassCode = "AC2",
+                            CoachNo = 3,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE1"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ClassCode = "AC2",
+                            CoachNo = 4,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE1"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClassCode = "AC3",
+                            CoachNo = 5,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 42,
+                            TrainCode = "SE1"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ClassCode = "AC3",
+                            CoachNo = 6,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 42,
+                            TrainCode = "SE1"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ClassCode = "SL",
+                            CoachNo = 7,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 32,
+                            TrainCode = "SE1"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ClassCode = "SL",
+                            CoachNo = 8,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 32,
+                            TrainCode = "SE1"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ClassCode = "GE",
+                            CoachNo = 9,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 62,
+                            TrainCode = "SE1"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ClassCode = "GE",
+                            CoachNo = 10,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 62,
+                            TrainCode = "SE1"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ClassCode = "AC1",
+                            CoachNo = 1,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE2"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ClassCode = "AC1",
+                            CoachNo = 2,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE2"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ClassCode = "AC2",
+                            CoachNo = 3,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE2"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ClassCode = "AC2",
+                            CoachNo = 4,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE2"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ClassCode = "AC3",
+                            CoachNo = 5,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 42,
+                            TrainCode = "SE2"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ClassCode = "AC3",
+                            CoachNo = 6,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 42,
+                            TrainCode = "SE2"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ClassCode = "SL",
+                            CoachNo = 7,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 32,
+                            TrainCode = "SE2"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ClassCode = "SL",
+                            CoachNo = 8,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 32,
+                            TrainCode = "SE2"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ClassCode = "GE",
+                            CoachNo = 9,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 62,
+                            TrainCode = "SE2"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            ClassCode = "GE",
+                            CoachNo = 10,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 62,
+                            TrainCode = "SE2"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            ClassCode = "AC1",
+                            CoachNo = 1,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE3"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            ClassCode = "AC1",
+                            CoachNo = 2,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE3"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            ClassCode = "AC2",
+                            CoachNo = 3,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE3"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            ClassCode = "AC2",
+                            CoachNo = 4,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE3"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            ClassCode = "AC3",
+                            CoachNo = 5,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 42,
+                            TrainCode = "SE3"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            ClassCode = "AC3",
+                            CoachNo = 6,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 42,
+                            TrainCode = "SE3"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            ClassCode = "SL",
+                            CoachNo = 7,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 32,
+                            TrainCode = "SE3"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            ClassCode = "SL",
+                            CoachNo = 8,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 32,
+                            TrainCode = "SE3"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            ClassCode = "GE",
+                            CoachNo = 9,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 62,
+                            TrainCode = "SE3"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            ClassCode = "GE",
+                            CoachNo = 10,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 62,
+                            TrainCode = "SE3"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            ClassCode = "AC1",
+                            CoachNo = 1,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE4"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            ClassCode = "AC1",
+                            CoachNo = 2,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE4"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            ClassCode = "AC2",
+                            CoachNo = 3,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE4"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            ClassCode = "AC2",
+                            CoachNo = 4,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE4"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            ClassCode = "AC3",
+                            CoachNo = 5,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 42,
+                            TrainCode = "SE4"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            ClassCode = "AC3",
+                            CoachNo = 6,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 42,
+                            TrainCode = "SE4"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            ClassCode = "SL",
+                            CoachNo = 7,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 32,
+                            TrainCode = "SE4"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            ClassCode = "SL",
+                            CoachNo = 8,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 32,
+                            TrainCode = "SE4"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            ClassCode = "GE",
+                            CoachNo = 9,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 62,
+                            TrainCode = "SE4"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            ClassCode = "GE",
+                            CoachNo = 10,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 62,
+                            TrainCode = "SE4"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            ClassCode = "AC1",
+                            CoachNo = 1,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE5"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            ClassCode = "AC1",
+                            CoachNo = 2,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE5"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            ClassCode = "AC2",
+                            CoachNo = 3,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE5"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            ClassCode = "AC2",
+                            CoachNo = 4,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE5"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            ClassCode = "AC3",
+                            CoachNo = 5,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 42,
+                            TrainCode = "SE5"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            ClassCode = "AC3",
+                            CoachNo = 6,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 42,
+                            TrainCode = "SE5"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            ClassCode = "SL",
+                            CoachNo = 7,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 32,
+                            TrainCode = "SE5"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            ClassCode = "SL",
+                            CoachNo = 8,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 32,
+                            TrainCode = "SE5"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            ClassCode = "GE",
+                            CoachNo = 9,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 62,
+                            TrainCode = "SE5"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            ClassCode = "GE",
+                            CoachNo = 10,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 62,
+                            TrainCode = "SE5"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            ClassCode = "AC1",
+                            CoachNo = 1,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE6"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            ClassCode = "AC1",
+                            CoachNo = 2,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE6"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            ClassCode = "AC2",
+                            CoachNo = 3,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE6"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            ClassCode = "AC2",
+                            CoachNo = 4,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 28,
+                            TrainCode = "SE6"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            ClassCode = "AC3",
+                            CoachNo = 5,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 42,
+                            TrainCode = "SE6"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            ClassCode = "AC3",
+                            CoachNo = 6,
+                            NoOfCompartments = 7,
+                            NoOfSeats = 42,
+                            TrainCode = "SE6"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            ClassCode = "SL",
+                            CoachNo = 7,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 32,
+                            TrainCode = "SE6"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            ClassCode = "SL",
+                            CoachNo = 8,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 32,
+                            TrainCode = "SE6"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            ClassCode = "GE",
+                            CoachNo = 9,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 62,
+                            TrainCode = "SE6"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            ClassCode = "GE",
+                            CoachNo = 10,
+                            NoOfCompartments = 0,
+                            NoOfSeats = 62,
+                            TrainCode = "SE6"
+                        });
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.CoachClass", b =>
@@ -355,7 +897,731 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("RouteId");
 
-                    b.ToTable("Fare");
+                    b.HasIndex("TypeCode");
+
+                    b.ToTable("Fares");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClassCode = "AC1",
+                            Price = 100m,
+                            RouteId = 1,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ClassCode = "AC1",
+                            Price = 110m,
+                            RouteId = 1,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ClassCode = "AC1",
+                            Price = 120m,
+                            RouteId = 1,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ClassCode = "AC2",
+                            Price = 90m,
+                            RouteId = 1,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClassCode = "AC2",
+                            Price = 100m,
+                            RouteId = 1,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ClassCode = "AC2",
+                            Price = 110m,
+                            RouteId = 1,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ClassCode = "AC3",
+                            Price = 80m,
+                            RouteId = 1,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ClassCode = "AC3",
+                            Price = 90m,
+                            RouteId = 1,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ClassCode = "AC3",
+                            Price = 120m,
+                            RouteId = 1,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ClassCode = "SL",
+                            Price = 70m,
+                            RouteId = 1,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ClassCode = "SL",
+                            Price = 80m,
+                            RouteId = 1,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ClassCode = "SL",
+                            Price = 90m,
+                            RouteId = 1,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ClassCode = "GE",
+                            Price = 60m,
+                            RouteId = 1,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ClassCode = "GE",
+                            Price = 70m,
+                            RouteId = 1,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ClassCode = "GE",
+                            Price = 80m,
+                            RouteId = 1,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ClassCode = "AC1",
+                            Price = 100m,
+                            RouteId = 2,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ClassCode = "AC1",
+                            Price = 110m,
+                            RouteId = 2,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ClassCode = "AC1",
+                            Price = 120m,
+                            RouteId = 2,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ClassCode = "AC2",
+                            Price = 90m,
+                            RouteId = 2,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            ClassCode = "AC2",
+                            Price = 100m,
+                            RouteId = 2,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            ClassCode = "AC2",
+                            Price = 110m,
+                            RouteId = 2,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            ClassCode = "AC3",
+                            Price = 80m,
+                            RouteId = 2,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            ClassCode = "AC3",
+                            Price = 90m,
+                            RouteId = 2,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            ClassCode = "AC3",
+                            Price = 120m,
+                            RouteId = 2,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            ClassCode = "SL",
+                            Price = 70m,
+                            RouteId = 2,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            ClassCode = "SL",
+                            Price = 80m,
+                            RouteId = 2,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            ClassCode = "SL",
+                            Price = 90m,
+                            RouteId = 2,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            ClassCode = "GE",
+                            Price = 60m,
+                            RouteId = 2,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            ClassCode = "GE",
+                            Price = 70m,
+                            RouteId = 2,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            ClassCode = "GE",
+                            Price = 80m,
+                            RouteId = 2,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            ClassCode = "AC1",
+                            Price = 100m,
+                            RouteId = 3,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            ClassCode = "AC1",
+                            Price = 110m,
+                            RouteId = 3,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            ClassCode = "AC1",
+                            Price = 120m,
+                            RouteId = 3,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            ClassCode = "AC2",
+                            Price = 90m,
+                            RouteId = 3,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            ClassCode = "AC2",
+                            Price = 100m,
+                            RouteId = 3,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            ClassCode = "AC2",
+                            Price = 110m,
+                            RouteId = 3,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            ClassCode = "AC3",
+                            Price = 80m,
+                            RouteId = 3,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            ClassCode = "AC3",
+                            Price = 90m,
+                            RouteId = 3,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            ClassCode = "AC3",
+                            Price = 120m,
+                            RouteId = 3,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            ClassCode = "SL",
+                            Price = 70m,
+                            RouteId = 3,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            ClassCode = "SL",
+                            Price = 80m,
+                            RouteId = 3,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            ClassCode = "SL",
+                            Price = 90m,
+                            RouteId = 3,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            ClassCode = "GE",
+                            Price = 60m,
+                            RouteId = 3,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            ClassCode = "GE",
+                            Price = 70m,
+                            RouteId = 3,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            ClassCode = "GE",
+                            Price = 80m,
+                            RouteId = 3,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            ClassCode = "AC1",
+                            Price = 100m,
+                            RouteId = 4,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            ClassCode = "AC1",
+                            Price = 110m,
+                            RouteId = 4,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            ClassCode = "AC1",
+                            Price = 120m,
+                            RouteId = 4,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            ClassCode = "AC2",
+                            Price = 90m,
+                            RouteId = 4,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            ClassCode = "AC2",
+                            Price = 100m,
+                            RouteId = 4,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            ClassCode = "AC2",
+                            Price = 110m,
+                            RouteId = 4,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            ClassCode = "AC3",
+                            Price = 80m,
+                            RouteId = 4,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            ClassCode = "AC3",
+                            Price = 90m,
+                            RouteId = 4,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            ClassCode = "AC3",
+                            Price = 120m,
+                            RouteId = 4,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            ClassCode = "SL",
+                            Price = 70m,
+                            RouteId = 4,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            ClassCode = "SL",
+                            Price = 80m,
+                            RouteId = 4,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            ClassCode = "SL",
+                            Price = 90m,
+                            RouteId = 4,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            ClassCode = "GE",
+                            Price = 60m,
+                            RouteId = 4,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            ClassCode = "GE",
+                            Price = 70m,
+                            RouteId = 4,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            ClassCode = "GE",
+                            Price = 80m,
+                            RouteId = 4,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            ClassCode = "AC1",
+                            Price = 100m,
+                            RouteId = 5,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            ClassCode = "AC1",
+                            Price = 110m,
+                            RouteId = 5,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            ClassCode = "AC1",
+                            Price = 120m,
+                            RouteId = 5,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            ClassCode = "AC2",
+                            Price = 90m,
+                            RouteId = 5,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 65,
+                            ClassCode = "AC2",
+                            Price = 100m,
+                            RouteId = 5,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 66,
+                            ClassCode = "AC2",
+                            Price = 110m,
+                            RouteId = 5,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 67,
+                            ClassCode = "AC3",
+                            Price = 80m,
+                            RouteId = 5,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            ClassCode = "AC3",
+                            Price = 90m,
+                            RouteId = 5,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 69,
+                            ClassCode = "AC3",
+                            Price = 120m,
+                            RouteId = 5,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            ClassCode = "SL",
+                            Price = 70m,
+                            RouteId = 5,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 71,
+                            ClassCode = "SL",
+                            Price = 80m,
+                            RouteId = 5,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 72,
+                            ClassCode = "SL",
+                            Price = 90m,
+                            RouteId = 5,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 73,
+                            ClassCode = "GE",
+                            Price = 60m,
+                            RouteId = 5,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 74,
+                            ClassCode = "GE",
+                            Price = 70m,
+                            RouteId = 5,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 75,
+                            ClassCode = "GE",
+                            Price = 80m,
+                            RouteId = 5,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 76,
+                            ClassCode = "AC1",
+                            Price = 100m,
+                            RouteId = 6,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 77,
+                            ClassCode = "AC1",
+                            Price = 110m,
+                            RouteId = 6,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 78,
+                            ClassCode = "AC1",
+                            Price = 120m,
+                            RouteId = 6,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 79,
+                            ClassCode = "AC2",
+                            Price = 90m,
+                            RouteId = 6,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 80,
+                            ClassCode = "AC2",
+                            Price = 100m,
+                            RouteId = 6,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 81,
+                            ClassCode = "AC2",
+                            Price = 110m,
+                            RouteId = 6,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 82,
+                            ClassCode = "AC3",
+                            Price = 80m,
+                            RouteId = 6,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            ClassCode = "AC3",
+                            Price = 90m,
+                            RouteId = 6,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 84,
+                            ClassCode = "AC3",
+                            Price = 120m,
+                            RouteId = 6,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 85,
+                            ClassCode = "SL",
+                            Price = 70m,
+                            RouteId = 6,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 86,
+                            ClassCode = "SL",
+                            Price = 80m,
+                            RouteId = 6,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 87,
+                            ClassCode = "SL",
+                            Price = 90m,
+                            RouteId = 6,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 88,
+                            ClassCode = "GE",
+                            Price = 60m,
+                            RouteId = 6,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 89,
+                            ClassCode = "GE",
+                            Price = 70m,
+                            RouteId = 6,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 90,
+                            ClassCode = "GE",
+                            Price = 80m,
+                            RouteId = 6,
+                            TypeCode = "SF"
+                        });
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Feedback", b =>
@@ -431,7 +1697,31 @@ namespace Railway_Group01.Migrations
 
                     b.ToTable("PassengerTypes");
 
-                    b.ToTable("Refund");
+                    b.HasData(
+                        new
+                        {
+                            Code = "CH",
+                            Discount = 50,
+                            Name = "Child"
+                        },
+                        new
+                        {
+                            Code = "ST",
+                            Discount = 10,
+                            Name = "Student"
+                        },
+                        new
+                        {
+                            Code = "AD",
+                            Discount = 0,
+                            Name = "Adult"
+                        },
+                        new
+                        {
+                            Code = "ED",
+                            Discount = 10,
+                            Name = "Elderly "
+                        });
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.RefundRule", b =>
@@ -456,7 +1746,33 @@ namespace Railway_Group01.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RefundRule");
+                    b.ToTable("RefundRules");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            RefundAmount = 100,
+                            RefundFee = 1m,
+                            ValidFrom = 0,
+                            ValidTo = 24
+                        },
+                        new
+                        {
+                            Id = 2,
+                            RefundAmount = 90,
+                            RefundFee = 0m,
+                            ValidFrom = 24,
+                            ValidTo = 4
+                        },
+                        new
+                        {
+                            Id = 3,
+                            RefundAmount = 0,
+                            RefundFee = 0m,
+                            ValidFrom = 4,
+                            ValidTo = 0
+                        });
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Route", b =>
@@ -482,7 +1798,51 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("StartStationId");
 
-                    b.ToTable("Route");
+                    b.ToTable("Routes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Distance = 1726,
+                            EndStationId = 38,
+                            StartStationId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Distance = 1726,
+                            EndStationId = 1,
+                            StartStationId = 38
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Distance = 1726,
+                            EndStationId = 38,
+                            StartStationId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Distance = 1726,
+                            EndStationId = 1,
+                            StartStationId = 38
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Distance = 1726,
+                            EndStationId = 38,
+                            StartStationId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Distance = 1726,
+                            EndStationId = 1,
+                            StartStationId = 38
+                        });
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.RouteDetail", b =>
@@ -520,6 +1880,1578 @@ namespace Railway_Group01.Migrations
                     b.HasIndex("RouteId");
 
                     b.ToTable("RouteDetails");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ArrivalStationId = 1,
+                            DelayTime = 0,
+                            DepartureStationId = 1,
+                            Distance = 0,
+                            RouteId = 1,
+                            TravelTime = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ArrivalStationId = 2,
+                            DelayTime = 5,
+                            DepartureStationId = 1,
+                            Distance = 29,
+                            RouteId = 1,
+                            TravelTime = 40
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ArrivalStationId = 3,
+                            DelayTime = 5,
+                            DepartureStationId = 2,
+                            Distance = 77,
+                            RouteId = 1,
+                            TravelTime = 76
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ArrivalStationId = 4,
+                            DelayTime = 5,
+                            DepartureStationId = 3,
+                            Distance = 123,
+                            RouteId = 1,
+                            TravelTime = 46
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ArrivalStationId = 5,
+                            DelayTime = 5,
+                            DepartureStationId = 4,
+                            Distance = 175,
+                            RouteId = 1,
+                            TravelTime = 67
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ArrivalStationId = 6,
+                            DelayTime = 5,
+                            DepartureStationId = 5,
+                            Distance = 193,
+                            RouteId = 1,
+                            TravelTime = 23
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ArrivalStationId = 7,
+                            DelayTime = 5,
+                            DepartureStationId = 6,
+                            Distance = 242,
+                            RouteId = 1,
+                            TravelTime = 46
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ArrivalStationId = 8,
+                            DelayTime = 5,
+                            DepartureStationId = 7,
+                            Distance = 318,
+                            RouteId = 1,
+                            TravelTime = 78
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ArrivalStationId = 9,
+                            DelayTime = 5,
+                            DepartureStationId = 8,
+                            Distance = 362,
+                            RouteId = 1,
+                            TravelTime = 56
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ArrivalStationId = 10,
+                            DelayTime = 5,
+                            DepartureStationId = 9,
+                            Distance = 411,
+                            RouteId = 1,
+                            TravelTime = 45
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ArrivalStationId = 11,
+                            DelayTime = 5,
+                            DepartureStationId = 10,
+                            Distance = 445,
+                            RouteId = 1,
+                            TravelTime = 59
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ArrivalStationId = 12,
+                            DelayTime = 5,
+                            DepartureStationId = 11,
+                            Distance = 472,
+                            RouteId = 1,
+                            TravelTime = 29
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ArrivalStationId = 13,
+                            DelayTime = 5,
+                            DepartureStationId = 12,
+                            Distance = 528,
+                            RouteId = 1,
+                            TravelTime = 62
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ArrivalStationId = 14,
+                            DelayTime = 5,
+                            DepartureStationId = 13,
+                            Distance = 630,
+                            RouteId = 1,
+                            TravelTime = 98
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ArrivalStationId = 15,
+                            DelayTime = 5,
+                            DepartureStationId = 14,
+                            Distance = 709,
+                            RouteId = 1,
+                            TravelTime = 96
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ArrivalStationId = 16,
+                            DelayTime = 5,
+                            DepartureStationId = 15,
+                            Distance = 758,
+                            RouteId = 1,
+                            TravelTime = 48
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ArrivalStationId = 17,
+                            DelayTime = 5,
+                            DepartureStationId = 16,
+                            Distance = 798,
+                            RouteId = 1,
+                            TravelTime = 56
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ArrivalStationId = 18,
+                            DelayTime = 5,
+                            DepartureStationId = 17,
+                            Distance = 836,
+                            RouteId = 1,
+                            TravelTime = 41
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ArrivalStationId = 19,
+                            DelayTime = 5,
+                            DepartureStationId = 18,
+                            Distance = 861,
+                            RouteId = 1,
+                            TravelTime = 27
+                        },
+                        new
+                        {
+                            Id = 20,
+                            ArrivalStationId = 20,
+                            DelayTime = 5,
+                            DepartureStationId = 19,
+                            Distance = 884,
+                            RouteId = 1,
+                            TravelTime = 23
+                        },
+                        new
+                        {
+                            Id = 21,
+                            ArrivalStationId = 21,
+                            DelayTime = 5,
+                            DepartureStationId = 20,
+                            Distance = 901,
+                            RouteId = 1,
+                            TravelTime = 15
+                        },
+                        new
+                        {
+                            Id = 22,
+                            ArrivalStationId = 22,
+                            DelayTime = 5,
+                            DepartureStationId = 21,
+                            Distance = 935,
+                            RouteId = 1,
+                            TravelTime = 54
+                        },
+                        new
+                        {
+                            Id = 23,
+                            ArrivalStationId = 23,
+                            DelayTime = 5,
+                            DepartureStationId = 22,
+                            Distance = 971,
+                            RouteId = 1,
+                            TravelTime = 89
+                        },
+                        new
+                        {
+                            Id = 24,
+                            ArrivalStationId = 24,
+                            DelayTime = 5,
+                            DepartureStationId = 23,
+                            Distance = 1038,
+                            RouteId = 1,
+                            TravelTime = 110
+                        },
+                        new
+                        {
+                            Id = 25,
+                            ArrivalStationId = 25,
+                            DelayTime = 5,
+                            DepartureStationId = 24,
+                            Distance = 1104,
+                            RouteId = 1,
+                            TravelTime = 103
+                        },
+                        new
+                        {
+                            Id = 26,
+                            ArrivalStationId = 26,
+                            DelayTime = 5,
+                            DepartureStationId = 25,
+                            Distance = 1204,
+                            RouteId = 1,
+                            TravelTime = 114
+                        },
+                        new
+                        {
+                            Id = 27,
+                            ArrivalStationId = 27,
+                            DelayTime = 5,
+                            DepartureStationId = 26,
+                            Distance = 1290,
+                            RouteId = 1,
+                            TravelTime = 73
+                        },
+                        new
+                        {
+                            Id = 28,
+                            ArrivalStationId = 28,
+                            DelayTime = 5,
+                            DepartureStationId = 27,
+                            Distance = 1339,
+                            RouteId = 1,
+                            TravelTime = 55
+                        },
+                        new
+                        {
+                            Id = 29,
+                            ArrivalStationId = 29,
+                            DelayTime = 5,
+                            DepartureStationId = 28,
+                            Distance = 1386,
+                            RouteId = 1,
+                            TravelTime = 31
+                        },
+                        new
+                        {
+                            Id = 30,
+                            ArrivalStationId = 30,
+                            DelayTime = 5,
+                            DepartureStationId = 29,
+                            Distance = 1407,
+                            RouteId = 1,
+                            TravelTime = 42
+                        },
+                        new
+                        {
+                            Id = 31,
+                            ArrivalStationId = 31,
+                            DelayTime = 5,
+                            DepartureStationId = 30,
+                            Distance = 1447,
+                            RouteId = 1,
+                            TravelTime = 79
+                        },
+                        new
+                        {
+                            Id = 32,
+                            ArrivalStationId = 32,
+                            DelayTime = 5,
+                            DepartureStationId = 31,
+                            Distance = 1529,
+                            RouteId = 1,
+                            TravelTime = 50
+                        },
+                        new
+                        {
+                            Id = 33,
+                            ArrivalStationId = 33,
+                            DelayTime = 5,
+                            DepartureStationId = 32,
+                            Distance = 1551,
+                            RouteId = 1,
+                            TravelTime = 37
+                        },
+                        new
+                        {
+                            Id = 34,
+                            ArrivalStationId = 34,
+                            DelayTime = 5,
+                            DepartureStationId = 33,
+                            Distance = 1585,
+                            RouteId = 1,
+                            TravelTime = 45
+                        },
+                        new
+                        {
+                            Id = 35,
+                            ArrivalStationId = 35,
+                            DelayTime = 5,
+                            DepartureStationId = 34,
+                            Distance = 1611,
+                            RouteId = 1,
+                            TravelTime = 32
+                        },
+                        new
+                        {
+                            Id = 36,
+                            ArrivalStationId = 36,
+                            DelayTime = 5,
+                            DepartureStationId = 35,
+                            Distance = 1639,
+                            RouteId = 1,
+                            TravelTime = 45
+                        },
+                        new
+                        {
+                            Id = 37,
+                            ArrivalStationId = 37,
+                            DelayTime = 5,
+                            DepartureStationId = 36,
+                            Distance = 1670,
+                            RouteId = 1,
+                            TravelTime = 45
+                        },
+                        new
+                        {
+                            Id = 38,
+                            ArrivalStationId = 38,
+                            DelayTime = 5,
+                            DepartureStationId = 37,
+                            Distance = 1726,
+                            RouteId = 1,
+                            TravelTime = 67
+                        },
+                        new
+                        {
+                            Id = 39,
+                            ArrivalStationId = 38,
+                            DelayTime = 0,
+                            DepartureStationId = 38,
+                            Distance = 0,
+                            RouteId = 2,
+                            TravelTime = 0
+                        },
+                        new
+                        {
+                            Id = 40,
+                            ArrivalStationId = 37,
+                            DelayTime = 5,
+                            DepartureStationId = 38,
+                            Distance = 56,
+                            RouteId = 2,
+                            TravelTime = 67
+                        },
+                        new
+                        {
+                            Id = 41,
+                            ArrivalStationId = 36,
+                            DelayTime = 5,
+                            DepartureStationId = 37,
+                            Distance = 87,
+                            RouteId = 2,
+                            TravelTime = 45
+                        },
+                        new
+                        {
+                            Id = 42,
+                            ArrivalStationId = 35,
+                            DelayTime = 5,
+                            DepartureStationId = 36,
+                            Distance = 115,
+                            RouteId = 2,
+                            TravelTime = 42
+                        },
+                        new
+                        {
+                            Id = 43,
+                            ArrivalStationId = 34,
+                            DelayTime = 5,
+                            DepartureStationId = 35,
+                            Distance = 141,
+                            RouteId = 2,
+                            TravelTime = 32
+                        },
+                        new
+                        {
+                            Id = 44,
+                            ArrivalStationId = 33,
+                            DelayTime = 5,
+                            DepartureStationId = 34,
+                            Distance = 175,
+                            RouteId = 2,
+                            TravelTime = 45
+                        },
+                        new
+                        {
+                            Id = 45,
+                            ArrivalStationId = 32,
+                            DelayTime = 5,
+                            DepartureStationId = 33,
+                            Distance = 197,
+                            RouteId = 2,
+                            TravelTime = 37
+                        },
+                        new
+                        {
+                            Id = 46,
+                            ArrivalStationId = 31,
+                            DelayTime = 5,
+                            DepartureStationId = 32,
+                            Distance = 279,
+                            RouteId = 2,
+                            TravelTime = 50
+                        },
+                        new
+                        {
+                            Id = 47,
+                            ArrivalStationId = 30,
+                            DelayTime = 5,
+                            DepartureStationId = 31,
+                            Distance = 319,
+                            RouteId = 2,
+                            TravelTime = 79
+                        },
+                        new
+                        {
+                            Id = 48,
+                            ArrivalStationId = 29,
+                            DelayTime = 5,
+                            DepartureStationId = 30,
+                            Distance = 340,
+                            RouteId = 2,
+                            TravelTime = 42
+                        },
+                        new
+                        {
+                            Id = 49,
+                            ArrivalStationId = 28,
+                            DelayTime = 5,
+                            DepartureStationId = 29,
+                            Distance = 387,
+                            RouteId = 2,
+                            TravelTime = 31
+                        },
+                        new
+                        {
+                            Id = 50,
+                            ArrivalStationId = 27,
+                            DelayTime = 5,
+                            DepartureStationId = 28,
+                            Distance = 436,
+                            RouteId = 2,
+                            TravelTime = 55
+                        },
+                        new
+                        {
+                            Id = 51,
+                            ArrivalStationId = 26,
+                            DelayTime = 5,
+                            DepartureStationId = 27,
+                            Distance = 522,
+                            RouteId = 2,
+                            TravelTime = 73
+                        },
+                        new
+                        {
+                            Id = 52,
+                            ArrivalStationId = 25,
+                            DelayTime = 5,
+                            DepartureStationId = 26,
+                            Distance = 622,
+                            RouteId = 2,
+                            TravelTime = 114
+                        },
+                        new
+                        {
+                            Id = 53,
+                            ArrivalStationId = 24,
+                            DelayTime = 5,
+                            DepartureStationId = 25,
+                            Distance = 688,
+                            RouteId = 2,
+                            TravelTime = 103
+                        },
+                        new
+                        {
+                            Id = 54,
+                            ArrivalStationId = 23,
+                            DelayTime = 5,
+                            DepartureStationId = 24,
+                            Distance = 755,
+                            RouteId = 2,
+                            TravelTime = 110
+                        },
+                        new
+                        {
+                            Id = 55,
+                            ArrivalStationId = 22,
+                            DelayTime = 5,
+                            DepartureStationId = 23,
+                            Distance = 791,
+                            RouteId = 2,
+                            TravelTime = 89
+                        },
+                        new
+                        {
+                            Id = 56,
+                            ArrivalStationId = 21,
+                            DelayTime = 5,
+                            DepartureStationId = 22,
+                            Distance = 825,
+                            RouteId = 2,
+                            TravelTime = 54
+                        },
+                        new
+                        {
+                            Id = 57,
+                            ArrivalStationId = 20,
+                            DelayTime = 5,
+                            DepartureStationId = 21,
+                            Distance = 842,
+                            RouteId = 2,
+                            TravelTime = 15
+                        },
+                        new
+                        {
+                            Id = 58,
+                            ArrivalStationId = 19,
+                            DelayTime = 5,
+                            DepartureStationId = 20,
+                            Distance = 865,
+                            RouteId = 2,
+                            TravelTime = 23
+                        },
+                        new
+                        {
+                            Id = 59,
+                            ArrivalStationId = 18,
+                            DelayTime = 5,
+                            DepartureStationId = 19,
+                            Distance = 890,
+                            RouteId = 2,
+                            TravelTime = 27
+                        },
+                        new
+                        {
+                            Id = 60,
+                            ArrivalStationId = 17,
+                            DelayTime = 5,
+                            DepartureStationId = 18,
+                            Distance = 928,
+                            RouteId = 2,
+                            TravelTime = 41
+                        },
+                        new
+                        {
+                            Id = 61,
+                            ArrivalStationId = 16,
+                            DelayTime = 5,
+                            DepartureStationId = 17,
+                            Distance = 968,
+                            RouteId = 2,
+                            TravelTime = 56
+                        },
+                        new
+                        {
+                            Id = 62,
+                            ArrivalStationId = 15,
+                            DelayTime = 5,
+                            DepartureStationId = 16,
+                            Distance = 1017,
+                            RouteId = 2,
+                            TravelTime = 48
+                        },
+                        new
+                        {
+                            Id = 63,
+                            ArrivalStationId = 14,
+                            DelayTime = 5,
+                            DepartureStationId = 15,
+                            Distance = 1096,
+                            RouteId = 2,
+                            TravelTime = 96
+                        },
+                        new
+                        {
+                            Id = 64,
+                            ArrivalStationId = 13,
+                            DelayTime = 5,
+                            DepartureStationId = 14,
+                            Distance = 1198,
+                            RouteId = 2,
+                            TravelTime = 98
+                        },
+                        new
+                        {
+                            Id = 65,
+                            ArrivalStationId = 12,
+                            DelayTime = 5,
+                            DepartureStationId = 13,
+                            Distance = 1254,
+                            RouteId = 2,
+                            TravelTime = 62
+                        },
+                        new
+                        {
+                            Id = 66,
+                            ArrivalStationId = 11,
+                            DelayTime = 5,
+                            DepartureStationId = 12,
+                            Distance = 1281,
+                            RouteId = 2,
+                            TravelTime = 29
+                        },
+                        new
+                        {
+                            Id = 67,
+                            ArrivalStationId = 10,
+                            DelayTime = 5,
+                            DepartureStationId = 11,
+                            Distance = 1315,
+                            RouteId = 2,
+                            TravelTime = 59
+                        },
+                        new
+                        {
+                            Id = 68,
+                            ArrivalStationId = 9,
+                            DelayTime = 5,
+                            DepartureStationId = 10,
+                            Distance = 1364,
+                            RouteId = 2,
+                            TravelTime = 45
+                        },
+                        new
+                        {
+                            Id = 69,
+                            ArrivalStationId = 8,
+                            DelayTime = 5,
+                            DepartureStationId = 9,
+                            Distance = 1408,
+                            RouteId = 2,
+                            TravelTime = 56
+                        },
+                        new
+                        {
+                            Id = 70,
+                            ArrivalStationId = 7,
+                            DelayTime = 5,
+                            DepartureStationId = 8,
+                            Distance = 1484,
+                            RouteId = 2,
+                            TravelTime = 78
+                        },
+                        new
+                        {
+                            Id = 71,
+                            ArrivalStationId = 6,
+                            DelayTime = 5,
+                            DepartureStationId = 7,
+                            Distance = 1533,
+                            RouteId = 2,
+                            TravelTime = 46
+                        },
+                        new
+                        {
+                            Id = 72,
+                            ArrivalStationId = 5,
+                            DelayTime = 5,
+                            DepartureStationId = 6,
+                            Distance = 1551,
+                            RouteId = 2,
+                            TravelTime = 23
+                        },
+                        new
+                        {
+                            Id = 73,
+                            ArrivalStationId = 4,
+                            DelayTime = 5,
+                            DepartureStationId = 5,
+                            Distance = 1603,
+                            RouteId = 2,
+                            TravelTime = 67
+                        },
+                        new
+                        {
+                            Id = 74,
+                            ArrivalStationId = 3,
+                            DelayTime = 5,
+                            DepartureStationId = 4,
+                            Distance = 1649,
+                            RouteId = 2,
+                            TravelTime = 46
+                        },
+                        new
+                        {
+                            Id = 75,
+                            ArrivalStationId = 2,
+                            DelayTime = 5,
+                            DepartureStationId = 3,
+                            Distance = 1697,
+                            RouteId = 2,
+                            TravelTime = 76
+                        },
+                        new
+                        {
+                            Id = 76,
+                            ArrivalStationId = 1,
+                            DelayTime = 5,
+                            DepartureStationId = 2,
+                            Distance = 1726,
+                            RouteId = 2,
+                            TravelTime = 40
+                        },
+                        new
+                        {
+                            Id = 77,
+                            ArrivalStationId = 1,
+                            DelayTime = 0,
+                            DepartureStationId = 1,
+                            Distance = 0,
+                            RouteId = 3,
+                            TravelTime = 0
+                        },
+                        new
+                        {
+                            Id = 78,
+                            ArrivalStationId = 2,
+                            DelayTime = 5,
+                            DepartureStationId = 1,
+                            Distance = 29,
+                            RouteId = 3,
+                            TravelTime = 38
+                        },
+                        new
+                        {
+                            Id = 79,
+                            ArrivalStationId = 5,
+                            DelayTime = 5,
+                            DepartureStationId = 2,
+                            Distance = 175,
+                            RouteId = 3,
+                            TravelTime = 147
+                        },
+                        new
+                        {
+                            Id = 80,
+                            ArrivalStationId = 8,
+                            DelayTime = 5,
+                            DepartureStationId = 5,
+                            Distance = 318,
+                            RouteId = 3,
+                            TravelTime = 126
+                        },
+                        new
+                        {
+                            Id = 81,
+                            ArrivalStationId = 10,
+                            DelayTime = 5,
+                            DepartureStationId = 8,
+                            Distance = 411,
+                            RouteId = 3,
+                            TravelTime = 88
+                        },
+                        new
+                        {
+                            Id = 82,
+                            ArrivalStationId = 13,
+                            DelayTime = 5,
+                            DepartureStationId = 10,
+                            Distance = 528,
+                            RouteId = 3,
+                            TravelTime = 110
+                        },
+                        new
+                        {
+                            Id = 83,
+                            ArrivalStationId = 14,
+                            DelayTime = 5,
+                            DepartureStationId = 13,
+                            Distance = 630,
+                            RouteId = 3,
+                            TravelTime = 95
+                        },
+                        new
+                        {
+                            Id = 84,
+                            ArrivalStationId = 17,
+                            DelayTime = 5,
+                            DepartureStationId = 14,
+                            Distance = 798,
+                            RouteId = 3,
+                            TravelTime = 95
+                        },
+                        new
+                        {
+                            Id = 85,
+                            ArrivalStationId = 19,
+                            DelayTime = 5,
+                            DepartureStationId = 17,
+                            Distance = 861,
+                            RouteId = 3,
+                            TravelTime = 60
+                        },
+                        new
+                        {
+                            Id = 86,
+                            ArrivalStationId = 22,
+                            DelayTime = 5,
+                            DepartureStationId = 19,
+                            Distance = 935,
+                            RouteId = 3,
+                            TravelTime = 68
+                        },
+                        new
+                        {
+                            Id = 87,
+                            ArrivalStationId = 24,
+                            DelayTime = 5,
+                            DepartureStationId = 22,
+                            Distance = 1038,
+                            RouteId = 3,
+                            TravelTime = 145
+                        },
+                        new
+                        {
+                            Id = 88,
+                            ArrivalStationId = 25,
+                            DelayTime = 5,
+                            DepartureStationId = 24,
+                            Distance = 1104,
+                            RouteId = 3,
+                            TravelTime = 70
+                        },
+                        new
+                        {
+                            Id = 89,
+                            ArrivalStationId = 26,
+                            DelayTime = 5,
+                            DepartureStationId = 25,
+                            Distance = 1204,
+                            RouteId = 3,
+                            TravelTime = 95
+                        },
+                        new
+                        {
+                            Id = 90,
+                            ArrivalStationId = 27,
+                            DelayTime = 5,
+                            DepartureStationId = 26,
+                            Distance = 1290,
+                            RouteId = 3,
+                            TravelTime = 153
+                        },
+                        new
+                        {
+                            Id = 91,
+                            ArrivalStationId = 28,
+                            DelayTime = 5,
+                            DepartureStationId = 27,
+                            Distance = 1339,
+                            RouteId = 3,
+                            TravelTime = 54
+                        },
+                        new
+                        {
+                            Id = 92,
+                            ArrivalStationId = 30,
+                            DelayTime = 5,
+                            DepartureStationId = 28,
+                            Distance = 1407,
+                            RouteId = 3,
+                            TravelTime = 25
+                        },
+                        new
+                        {
+                            Id = 93,
+                            ArrivalStationId = 33,
+                            DelayTime = 5,
+                            DepartureStationId = 30,
+                            Distance = 1551,
+                            RouteId = 3,
+                            TravelTime = 132
+                        },
+                        new
+                        {
+                            Id = 94,
+                            ArrivalStationId = 35,
+                            DelayTime = 5,
+                            DepartureStationId = 33,
+                            Distance = 1611,
+                            RouteId = 3,
+                            TravelTime = 60
+                        },
+                        new
+                        {
+                            Id = 95,
+                            ArrivalStationId = 36,
+                            DelayTime = 5,
+                            DepartureStationId = 35,
+                            Distance = 1639,
+                            RouteId = 3,
+                            TravelTime = 29
+                        },
+                        new
+                        {
+                            Id = 96,
+                            ArrivalStationId = 37,
+                            DelayTime = 5,
+                            DepartureStationId = 36,
+                            Distance = 1670,
+                            RouteId = 3,
+                            TravelTime = 31
+                        },
+                        new
+                        {
+                            Id = 97,
+                            ArrivalStationId = 38,
+                            DelayTime = 5,
+                            DepartureStationId = 37,
+                            Distance = 1726,
+                            RouteId = 3,
+                            TravelTime = 62
+                        },
+                        new
+                        {
+                            Id = 98,
+                            ArrivalStationId = 38,
+                            DelayTime = 0,
+                            DepartureStationId = 38,
+                            Distance = 0,
+                            RouteId = 4,
+                            TravelTime = 0
+                        },
+                        new
+                        {
+                            Id = 99,
+                            ArrivalStationId = 37,
+                            DelayTime = 5,
+                            DepartureStationId = 38,
+                            Distance = 56,
+                            RouteId = 4,
+                            TravelTime = 62
+                        },
+                        new
+                        {
+                            Id = 100,
+                            ArrivalStationId = 36,
+                            DelayTime = 5,
+                            DepartureStationId = 37,
+                            Distance = 87,
+                            RouteId = 4,
+                            TravelTime = 76
+                        },
+                        new
+                        {
+                            Id = 101,
+                            ArrivalStationId = 33,
+                            DelayTime = 5,
+                            DepartureStationId = 36,
+                            Distance = 175,
+                            RouteId = 4,
+                            TravelTime = 76
+                        },
+                        new
+                        {
+                            Id = 102,
+                            ArrivalStationId = 30,
+                            DelayTime = 5,
+                            DepartureStationId = 33,
+                            Distance = 319,
+                            RouteId = 4,
+                            TravelTime = 132
+                        },
+                        new
+                        {
+                            Id = 103,
+                            ArrivalStationId = 29,
+                            DelayTime = 5,
+                            DepartureStationId = 30,
+                            Distance = 340,
+                            RouteId = 4,
+                            TravelTime = 25
+                        },
+                        new
+                        {
+                            Id = 104,
+                            ArrivalStationId = 28,
+                            DelayTime = 5,
+                            DepartureStationId = 29,
+                            Distance = 387,
+                            RouteId = 4,
+                            TravelTime = 54
+                        },
+                        new
+                        {
+                            Id = 105,
+                            ArrivalStationId = 26,
+                            DelayTime = 5,
+                            DepartureStationId = 28,
+                            Distance = 522,
+                            RouteId = 4,
+                            TravelTime = 153
+                        },
+                        new
+                        {
+                            Id = 106,
+                            ArrivalStationId = 25,
+                            DelayTime = 5,
+                            DepartureStationId = 26,
+                            Distance = 622,
+                            RouteId = 4,
+                            TravelTime = 95
+                        },
+                        new
+                        {
+                            Id = 107,
+                            ArrivalStationId = 24,
+                            DelayTime = 5,
+                            DepartureStationId = 25,
+                            Distance = 688,
+                            RouteId = 4,
+                            TravelTime = 70
+                        },
+                        new
+                        {
+                            Id = 108,
+                            ArrivalStationId = 22,
+                            DelayTime = 5,
+                            DepartureStationId = 24,
+                            Distance = 791,
+                            RouteId = 4,
+                            TravelTime = 145
+                        },
+                        new
+                        {
+                            Id = 109,
+                            ArrivalStationId = 19,
+                            DelayTime = 5,
+                            DepartureStationId = 22,
+                            Distance = 865,
+                            RouteId = 4,
+                            TravelTime = 68
+                        },
+                        new
+                        {
+                            Id = 110,
+                            ArrivalStationId = 17,
+                            DelayTime = 5,
+                            DepartureStationId = 19,
+                            Distance = 928,
+                            RouteId = 4,
+                            TravelTime = 60
+                        },
+                        new
+                        {
+                            Id = 111,
+                            ArrivalStationId = 14,
+                            DelayTime = 5,
+                            DepartureStationId = 17,
+                            Distance = 1096,
+                            RouteId = 4,
+                            TravelTime = 95
+                        },
+                        new
+                        {
+                            Id = 112,
+                            ArrivalStationId = 13,
+                            DelayTime = 5,
+                            DepartureStationId = 14,
+                            Distance = 1198,
+                            RouteId = 4,
+                            TravelTime = 95
+                        },
+                        new
+                        {
+                            Id = 113,
+                            ArrivalStationId = 10,
+                            DelayTime = 5,
+                            DepartureStationId = 13,
+                            Distance = 1315,
+                            RouteId = 4,
+                            TravelTime = 110
+                        },
+                        new
+                        {
+                            Id = 114,
+                            ArrivalStationId = 5,
+                            DelayTime = 5,
+                            DepartureStationId = 10,
+                            Distance = 1551,
+                            RouteId = 4,
+                            TravelTime = 246
+                        },
+                        new
+                        {
+                            Id = 115,
+                            ArrivalStationId = 2,
+                            DelayTime = 5,
+                            DepartureStationId = 5,
+                            Distance = 1697,
+                            RouteId = 4,
+                            TravelTime = 147
+                        },
+                        new
+                        {
+                            Id = 116,
+                            ArrivalStationId = 1,
+                            DelayTime = 5,
+                            DepartureStationId = 2,
+                            Distance = 1726,
+                            RouteId = 4,
+                            TravelTime = 38
+                        },
+                        new
+                        {
+                            Id = 117,
+                            ArrivalStationId = 1,
+                            DelayTime = 0,
+                            DepartureStationId = 1,
+                            Distance = 0,
+                            RouteId = 5,
+                            TravelTime = 0
+                        },
+                        new
+                        {
+                            Id = 118,
+                            ArrivalStationId = 2,
+                            DelayTime = 5,
+                            DepartureStationId = 1,
+                            Distance = 29,
+                            RouteId = 5,
+                            TravelTime = 38
+                        },
+                        new
+                        {
+                            Id = 119,
+                            ArrivalStationId = 3,
+                            DelayTime = 5,
+                            DepartureStationId = 2,
+                            Distance = 77,
+                            RouteId = 5,
+                            TravelTime = 60
+                        },
+                        new
+                        {
+                            Id = 120,
+                            ArrivalStationId = 5,
+                            DelayTime = 5,
+                            DepartureStationId = 3,
+                            Distance = 175,
+                            RouteId = 5,
+                            TravelTime = 101
+                        },
+                        new
+                        {
+                            Id = 121,
+                            ArrivalStationId = 10,
+                            DelayTime = 5,
+                            DepartureStationId = 5,
+                            Distance = 411,
+                            RouteId = 5,
+                            TravelTime = 246
+                        },
+                        new
+                        {
+                            Id = 122,
+                            ArrivalStationId = 13,
+                            DelayTime = 5,
+                            DepartureStationId = 10,
+                            Distance = 528,
+                            RouteId = 5,
+                            TravelTime = 110
+                        },
+                        new
+                        {
+                            Id = 123,
+                            ArrivalStationId = 14,
+                            DelayTime = 5,
+                            DepartureStationId = 13,
+                            Distance = 630,
+                            RouteId = 5,
+                            TravelTime = 95
+                        },
+                        new
+                        {
+                            Id = 124,
+                            ArrivalStationId = 15,
+                            DelayTime = 5,
+                            DepartureStationId = 14,
+                            Distance = 709,
+                            RouteId = 5,
+                            TravelTime = 96
+                        },
+                        new
+                        {
+                            Id = 125,
+                            ArrivalStationId = 17,
+                            DelayTime = 5,
+                            DepartureStationId = 15,
+                            Distance = 798,
+                            RouteId = 5,
+                            TravelTime = 88
+                        },
+                        new
+                        {
+                            Id = 126,
+                            ArrivalStationId = 19,
+                            DelayTime = 5,
+                            DepartureStationId = 17,
+                            Distance = 861,
+                            RouteId = 5,
+                            TravelTime = 60
+                        },
+                        new
+                        {
+                            Id = 127,
+                            ArrivalStationId = 22,
+                            DelayTime = 5,
+                            DepartureStationId = 19,
+                            Distance = 935,
+                            RouteId = 5,
+                            TravelTime = 68
+                        },
+                        new
+                        {
+                            Id = 128,
+                            ArrivalStationId = 24,
+                            DelayTime = 5,
+                            DepartureStationId = 22,
+                            Distance = 1038,
+                            RouteId = 5,
+                            TravelTime = 145
+                        },
+                        new
+                        {
+                            Id = 129,
+                            ArrivalStationId = 25,
+                            DelayTime = 5,
+                            DepartureStationId = 24,
+                            Distance = 1104,
+                            RouteId = 5,
+                            TravelTime = 70
+                        },
+                        new
+                        {
+                            Id = 130,
+                            ArrivalStationId = 26,
+                            DelayTime = 5,
+                            DepartureStationId = 25,
+                            Distance = 1204,
+                            RouteId = 5,
+                            TravelTime = 95
+                        },
+                        new
+                        {
+                            Id = 131,
+                            ArrivalStationId = 27,
+                            DelayTime = 5,
+                            DepartureStationId = 26,
+                            Distance = 1290,
+                            RouteId = 5,
+                            TravelTime = 153
+                        },
+                        new
+                        {
+                            Id = 132,
+                            ArrivalStationId = 28,
+                            DelayTime = 5,
+                            DepartureStationId = 27,
+                            Distance = 1339,
+                            RouteId = 5,
+                            TravelTime = 54
+                        },
+                        new
+                        {
+                            Id = 133,
+                            ArrivalStationId = 29,
+                            DelayTime = 5,
+                            DepartureStationId = 28,
+                            Distance = 1386,
+                            RouteId = 5,
+                            TravelTime = 31
+                        },
+                        new
+                        {
+                            Id = 134,
+                            ArrivalStationId = 30,
+                            DelayTime = 5,
+                            DepartureStationId = 29,
+                            Distance = 1407,
+                            RouteId = 5,
+                            TravelTime = 42
+                        },
+                        new
+                        {
+                            Id = 135,
+                            ArrivalStationId = 33,
+                            DelayTime = 5,
+                            DepartureStationId = 30,
+                            Distance = 1551,
+                            RouteId = 5,
+                            TravelTime = 132
+                        },
+                        new
+                        {
+                            Id = 136,
+                            ArrivalStationId = 36,
+                            DelayTime = 5,
+                            DepartureStationId = 33,
+                            Distance = 1639,
+                            RouteId = 5,
+                            TravelTime = 96
+                        },
+                        new
+                        {
+                            Id = 137,
+                            ArrivalStationId = 37,
+                            DelayTime = 5,
+                            DepartureStationId = 36,
+                            Distance = 1670,
+                            RouteId = 5,
+                            TravelTime = 76
+                        },
+                        new
+                        {
+                            Id = 138,
+                            ArrivalStationId = 38,
+                            DelayTime = 5,
+                            DepartureStationId = 37,
+                            Distance = 1726,
+                            RouteId = 5,
+                            TravelTime = 62
+                        },
+                        new
+                        {
+                            Id = 139,
+                            ArrivalStationId = 38,
+                            DelayTime = 0,
+                            DepartureStationId = 38,
+                            Distance = 0,
+                            RouteId = 6,
+                            TravelTime = 0
+                        },
+                        new
+                        {
+                            Id = 140,
+                            ArrivalStationId = 37,
+                            DelayTime = 5,
+                            DepartureStationId = 38,
+                            Distance = 56,
+                            RouteId = 6,
+                            TravelTime = 62
+                        },
+                        new
+                        {
+                            Id = 141,
+                            ArrivalStationId = 36,
+                            DelayTime = 5,
+                            DepartureStationId = 37,
+                            Distance = 87,
+                            RouteId = 6,
+                            TravelTime = 76
+                        },
+                        new
+                        {
+                            Id = 142,
+                            ArrivalStationId = 33,
+                            DelayTime = 5,
+                            DepartureStationId = 36,
+                            Distance = 175,
+                            RouteId = 6,
+                            TravelTime = 96
+                        },
+                        new
+                        {
+                            Id = 143,
+                            ArrivalStationId = 30,
+                            DelayTime = 5,
+                            DepartureStationId = 33,
+                            Distance = 319,
+                            RouteId = 6,
+                            TravelTime = 132
+                        },
+                        new
+                        {
+                            Id = 144,
+                            ArrivalStationId = 29,
+                            DelayTime = 5,
+                            DepartureStationId = 30,
+                            Distance = 340,
+                            RouteId = 6,
+                            TravelTime = 42
+                        },
+                        new
+                        {
+                            Id = 145,
+                            ArrivalStationId = 28,
+                            DelayTime = 5,
+                            DepartureStationId = 29,
+                            Distance = 387,
+                            RouteId = 6,
+                            TravelTime = 31
+                        },
+                        new
+                        {
+                            Id = 146,
+                            ArrivalStationId = 26,
+                            DelayTime = 5,
+                            DepartureStationId = 28,
+                            Distance = 522,
+                            RouteId = 6,
+                            TravelTime = 153
+                        },
+                        new
+                        {
+                            Id = 147,
+                            ArrivalStationId = 25,
+                            DelayTime = 5,
+                            DepartureStationId = 26,
+                            Distance = 622,
+                            RouteId = 6,
+                            TravelTime = 95
+                        },
+                        new
+                        {
+                            Id = 148,
+                            ArrivalStationId = 24,
+                            DelayTime = 5,
+                            DepartureStationId = 25,
+                            Distance = 688,
+                            RouteId = 6,
+                            TravelTime = 70
+                        },
+                        new
+                        {
+                            Id = 149,
+                            ArrivalStationId = 22,
+                            DelayTime = 5,
+                            DepartureStationId = 24,
+                            Distance = 791,
+                            RouteId = 6,
+                            TravelTime = 145
+                        },
+                        new
+                        {
+                            Id = 150,
+                            ArrivalStationId = 19,
+                            DelayTime = 5,
+                            DepartureStationId = 22,
+                            Distance = 865,
+                            RouteId = 6,
+                            TravelTime = 68
+                        },
+                        new
+                        {
+                            Id = 151,
+                            ArrivalStationId = 17,
+                            DelayTime = 5,
+                            DepartureStationId = 19,
+                            Distance = 928,
+                            RouteId = 6,
+                            TravelTime = 60
+                        },
+                        new
+                        {
+                            Id = 152,
+                            ArrivalStationId = 14,
+                            DelayTime = 5,
+                            DepartureStationId = 17,
+                            Distance = 1096,
+                            RouteId = 6,
+                            TravelTime = 95
+                        },
+                        new
+                        {
+                            Id = 153,
+                            ArrivalStationId = 13,
+                            DelayTime = 5,
+                            DepartureStationId = 14,
+                            Distance = 1198,
+                            RouteId = 6,
+                            TravelTime = 95
+                        },
+                        new
+                        {
+                            Id = 154,
+                            ArrivalStationId = 10,
+                            DelayTime = 5,
+                            DepartureStationId = 13,
+                            Distance = 1315,
+                            RouteId = 6,
+                            TravelTime = 110
+                        },
+                        new
+                        {
+                            Id = 155,
+                            ArrivalStationId = 5,
+                            DelayTime = 5,
+                            DepartureStationId = 10,
+                            Distance = 1551,
+                            RouteId = 6,
+                            TravelTime = 246
+                        },
+                        new
+                        {
+                            Id = 156,
+                            ArrivalStationId = 2,
+                            DelayTime = 5,
+                            DepartureStationId = 5,
+                            Distance = 1697,
+                            RouteId = 6,
+                            TravelTime = 147
+                        },
+                        new
+                        {
+                            Id = 157,
+                            ArrivalStationId = 1,
+                            DelayTime = 5,
+                            DepartureStationId = 2,
+                            Distance = 1726,
+                            RouteId = 6,
+                            TravelTime = 38
+                        });
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Schedule", b =>
@@ -563,8 +3495,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1,
-                            Arrival = new DateTime(2023, 12, 5, 8, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
-                            Departure = new DateTime(2023, 12, 4, 23, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Arrival = new DateTime(2023, 12, 8, 9, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
+                            Departure = new DateTime(2023, 12, 8, 0, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -573,8 +3505,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 2,
-                            Arrival = new DateTime(2023, 12, 5, 8, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
-                            Departure = new DateTime(2023, 12, 4, 23, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Arrival = new DateTime(2023, 12, 8, 9, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
+                            Departure = new DateTime(2023, 12, 8, 0, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -583,8 +3515,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 3,
-                            Arrival = new DateTime(2023, 12, 5, 16, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
-                            Departure = new DateTime(2023, 12, 5, 7, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Arrival = new DateTime(2023, 12, 8, 17, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
+                            Departure = new DateTime(2023, 12, 8, 8, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -593,8 +3525,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 4,
-                            Arrival = new DateTime(2023, 12, 5, 16, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
-                            Departure = new DateTime(2023, 12, 5, 7, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Arrival = new DateTime(2023, 12, 8, 17, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
+                            Departure = new DateTime(2023, 12, 8, 8, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -603,8 +3535,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 5,
-                            Arrival = new DateTime(2023, 12, 6, 0, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
-                            Departure = new DateTime(2023, 12, 5, 15, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Arrival = new DateTime(2023, 12, 9, 1, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
+                            Departure = new DateTime(2023, 12, 8, 16, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -613,8 +3545,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 6,
-                            Arrival = new DateTime(2023, 12, 6, 0, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
-                            Departure = new DateTime(2023, 12, 5, 15, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Arrival = new DateTime(2023, 12, 9, 1, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
+                            Departure = new DateTime(2023, 12, 8, 16, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -10078,6 +13010,7 @@ namespace Railway_Group01.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("NameOfDivision")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ZipCode")
@@ -10088,7 +13021,351 @@ namespace Railway_Group01.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Station");
+                    b.ToTable("Stations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "SGO",
+                            Name = "Sai Gon",
+                            NameOfDivision = "Ho Chi Minh City",
+                            ZipCode = 0,
+                            Zone = 4
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "BHO",
+                            Name = "Bien Hoa",
+                            NameOfDivision = "Dong Nai Province",
+                            ZipCode = 0,
+                            Zone = 4
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "LKA",
+                            Name = "Long Khanh",
+                            NameOfDivision = "Dong Nai Province",
+                            ZipCode = 0,
+                            Zone = 4
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "SKI",
+                            Name = "Suoi Kiet",
+                            NameOfDivision = "Nam Binh Thuan Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "SKI",
+                            Name = "Binh Thuan",
+                            NameOfDivision = "Binh Thuan Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "MLA",
+                            Name = "Ma Lam",
+                            NameOfDivision = "Bac Binh Thuan Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "SMA",
+                            Name = "Song Mao",
+                            NameOfDivision = "Bac Binh Thuan Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "TCH",
+                            Name = "Thap Cham",
+                            NameOfDivision = "Cam Ranh Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "NBA",
+                            Name = "Nga Ba",
+                            NameOfDivision = "Binh Thuan Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Code = "NTR",
+                            Name = "Nha Trang",
+                            NameOfDivision = "Khanh Hoa Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Code = "NHO",
+                            Name = "Ninh Hoa",
+                            NameOfDivision = "Khanh Hoa Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Code = "VGI",
+                            Name = "Van Gia",
+                            NameOfDivision = "Khanh Hoa Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Code = "TYH",
+                            Name = "Tuy Hoa",
+                            NameOfDivision = "Phu Yen Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Code = "DTR",
+                            Name = "Dieu Tri",
+                            NameOfDivision = "Binh Dinh Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Code = "BSO",
+                            Name = "Bong Son",
+                            NameOfDivision = "Binh Dinh Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Code = "DPH",
+                            Name = "Duc Pho",
+                            NameOfDivision = "Quang Ngai Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Code = "QNG",
+                            Name = "Quang Ngai",
+                            NameOfDivision = "Quang Ngai Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Code = "NTH",
+                            Name = "Nui Thanh",
+                            NameOfDivision = "Quang Nam Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Code = "TKY",
+                            Name = "Tam Ky",
+                            NameOfDivision = "Quang Nam Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Code = "PCA",
+                            Name = "Phu Cang",
+                            NameOfDivision = "Quang Nam Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Code = "TKI",
+                            Name = "Tra Kieu",
+                            NameOfDivision = "Quang Nam Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Code = "DNA",
+                            Name = "Da Nang",
+                            NameOfDivision = "Quang Nam Province",
+                            ZipCode = 0,
+                            Zone = 3
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Code = "LCO",
+                            Name = "Lang Co",
+                            NameOfDivision = "Thua Thien Hue Province",
+                            ZipCode = 0,
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Code = "HUE",
+                            Name = "Hue",
+                            NameOfDivision = "Thua Thien Hue Province",
+                            ZipCode = 0,
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Code = "DHA",
+                            Name = "Dong Ha",
+                            NameOfDivision = "Quang Tri Province",
+                            ZipCode = 0,
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Code = "DHO",
+                            Name = "Dong Hoi",
+                            NameOfDivision = "Quang Binh Province",
+                            ZipCode = 0,
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Code = "DLE",
+                            Name = "Dong Le",
+                            NameOfDivision = "Quang Binh Province",
+                            ZipCode = 0,
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Code = "HPH",
+                            Name = "Huong Pho",
+                            NameOfDivision = "Ha Tinh Province",
+                            ZipCode = 0,
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Code = "YTR",
+                            Name = "Yen Trung",
+                            NameOfDivision = "Ha Tinh Province",
+                            ZipCode = 0,
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Code = "VIN",
+                            Name = "Vinh",
+                            NameOfDivision = "Nghe An Province",
+                            ZipCode = 0,
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Code = "CSY",
+                            Name = "Cho Sy",
+                            NameOfDivision = "Nghe An Province",
+                            ZipCode = 0,
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Code = "MKO",
+                            Name = "Minh Khoi",
+                            NameOfDivision = "Nghe An Province",
+                            ZipCode = 0,
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Code = "THO",
+                            Name = "Thanh Hoa",
+                            NameOfDivision = "Thanh Hoa Province",
+                            ZipCode = 0,
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Code = "BIS",
+                            Name = "Bim Son",
+                            NameOfDivision = "Thanh Hoa Province",
+                            ZipCode = 0,
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Code = "NBI",
+                            Name = "Ninh Binh",
+                            NameOfDivision = "Ninh Binh Province",
+                            ZipCode = 0,
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Code = "NDI",
+                            Name = "Nam Dinh",
+                            NameOfDivision = "Nam Dinh Province",
+                            ZipCode = 0,
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Code = "PLY",
+                            Name = "Phu Ly",
+                            NameOfDivision = "Ha Nam Province",
+                            ZipCode = 0,
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Code = "HNO",
+                            Name = "Ha Noi",
+                            NameOfDivision = "Hanoi Capital",
+                            ZipCode = 0,
+                            Zone = 1
+                        });
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Ticket", b =>
@@ -10201,7 +13478,22 @@ namespace Railway_Group01.Migrations
 
                     b.ToTable("TrainTypes");
 
-                    b.ToTable("Train");
+                    b.HasData(
+                        new
+                        {
+                            Code = "F",
+                            Name = "Fast Train"
+                        },
+                        new
+                        {
+                            Code = "S",
+                            Name = "Slow Train"
+                        },
+                        new
+                        {
+                            Code = "SF",
+                            Name = "Super Fast Train"
+                        });
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Transaction", b =>
@@ -10240,7 +13532,9 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("BookingId");
 
-                    b.ToTable("Transaction");
+                    b.HasIndex("CancellingId");
+
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.User", b =>
@@ -10537,6 +13831,19 @@ namespace Railway_Group01.Migrations
                         .IsRequired();
 
                     b.Navigation("Route");
+
+                    b.Navigation("Train");
+                });
+
+            modelBuilder.Entity("Railway_Group01.Data.Seat", b =>
+                {
+                    b.HasOne("Railway_Group01.Data.Coach", "Coach")
+                        .WithMany("Seats")
+                        .HasForeignKey("CoachId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Coach");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Ticket", b =>
@@ -10678,8 +13985,6 @@ namespace Railway_Group01.Migrations
             modelBuilder.Entity("Railway_Group01.Data.Train", b =>
                 {
                     b.Navigation("Coaches");
-
-                    b.Navigation("CoachesData");
 
                     b.Navigation("Schedules");
                 });

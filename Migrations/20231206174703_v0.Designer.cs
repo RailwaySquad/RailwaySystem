@@ -12,7 +12,7 @@ using Railway_Group01.Data;
 namespace Railway_Group01.Migrations
 {
     [DbContext(typeof(RailwayDbContext))]
-    [Migration("20231203165313_v0")]
+    [Migration("20231206174703_v0")]
     partial class v0
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1092,7 +1092,7 @@ namespace Railway_Group01.Migrations
                         {
                             Id = 24,
                             ClassCode = "AC3",
-                            Price = 100m,
+                            Price = 120m,
                             RouteId = 2,
                             TypeCode = "SF"
                         },
@@ -1142,6 +1142,486 @@ namespace Railway_Group01.Migrations
                             ClassCode = "GE",
                             Price = 80m,
                             RouteId = 2,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            ClassCode = "AC1",
+                            Price = 100m,
+                            RouteId = 3,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            ClassCode = "AC1",
+                            Price = 110m,
+                            RouteId = 3,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            ClassCode = "AC1",
+                            Price = 120m,
+                            RouteId = 3,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            ClassCode = "AC2",
+                            Price = 90m,
+                            RouteId = 3,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            ClassCode = "AC2",
+                            Price = 100m,
+                            RouteId = 3,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            ClassCode = "AC2",
+                            Price = 110m,
+                            RouteId = 3,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            ClassCode = "AC3",
+                            Price = 80m,
+                            RouteId = 3,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            ClassCode = "AC3",
+                            Price = 90m,
+                            RouteId = 3,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            ClassCode = "AC3",
+                            Price = 120m,
+                            RouteId = 3,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            ClassCode = "SL",
+                            Price = 70m,
+                            RouteId = 3,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            ClassCode = "SL",
+                            Price = 80m,
+                            RouteId = 3,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            ClassCode = "SL",
+                            Price = 90m,
+                            RouteId = 3,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            ClassCode = "GE",
+                            Price = 60m,
+                            RouteId = 3,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            ClassCode = "GE",
+                            Price = 70m,
+                            RouteId = 3,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            ClassCode = "GE",
+                            Price = 80m,
+                            RouteId = 3,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            ClassCode = "AC1",
+                            Price = 100m,
+                            RouteId = 4,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            ClassCode = "AC1",
+                            Price = 110m,
+                            RouteId = 4,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            ClassCode = "AC1",
+                            Price = 120m,
+                            RouteId = 4,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            ClassCode = "AC2",
+                            Price = 90m,
+                            RouteId = 4,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            ClassCode = "AC2",
+                            Price = 100m,
+                            RouteId = 4,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            ClassCode = "AC2",
+                            Price = 110m,
+                            RouteId = 4,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            ClassCode = "AC3",
+                            Price = 80m,
+                            RouteId = 4,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            ClassCode = "AC3",
+                            Price = 90m,
+                            RouteId = 4,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            ClassCode = "AC3",
+                            Price = 120m,
+                            RouteId = 4,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            ClassCode = "SL",
+                            Price = 70m,
+                            RouteId = 4,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            ClassCode = "SL",
+                            Price = 80m,
+                            RouteId = 4,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            ClassCode = "SL",
+                            Price = 90m,
+                            RouteId = 4,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            ClassCode = "GE",
+                            Price = 60m,
+                            RouteId = 4,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            ClassCode = "GE",
+                            Price = 70m,
+                            RouteId = 4,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            ClassCode = "GE",
+                            Price = 80m,
+                            RouteId = 4,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            ClassCode = "AC1",
+                            Price = 100m,
+                            RouteId = 5,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            ClassCode = "AC1",
+                            Price = 110m,
+                            RouteId = 5,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            ClassCode = "AC1",
+                            Price = 120m,
+                            RouteId = 5,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            ClassCode = "AC2",
+                            Price = 90m,
+                            RouteId = 5,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 65,
+                            ClassCode = "AC2",
+                            Price = 100m,
+                            RouteId = 5,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 66,
+                            ClassCode = "AC2",
+                            Price = 110m,
+                            RouteId = 5,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 67,
+                            ClassCode = "AC3",
+                            Price = 80m,
+                            RouteId = 5,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            ClassCode = "AC3",
+                            Price = 90m,
+                            RouteId = 5,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 69,
+                            ClassCode = "AC3",
+                            Price = 120m,
+                            RouteId = 5,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            ClassCode = "SL",
+                            Price = 70m,
+                            RouteId = 5,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 71,
+                            ClassCode = "SL",
+                            Price = 80m,
+                            RouteId = 5,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 72,
+                            ClassCode = "SL",
+                            Price = 90m,
+                            RouteId = 5,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 73,
+                            ClassCode = "GE",
+                            Price = 60m,
+                            RouteId = 5,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 74,
+                            ClassCode = "GE",
+                            Price = 70m,
+                            RouteId = 5,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 75,
+                            ClassCode = "GE",
+                            Price = 80m,
+                            RouteId = 5,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 76,
+                            ClassCode = "AC1",
+                            Price = 100m,
+                            RouteId = 6,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 77,
+                            ClassCode = "AC1",
+                            Price = 110m,
+                            RouteId = 6,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 78,
+                            ClassCode = "AC1",
+                            Price = 120m,
+                            RouteId = 6,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 79,
+                            ClassCode = "AC2",
+                            Price = 90m,
+                            RouteId = 6,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 80,
+                            ClassCode = "AC2",
+                            Price = 100m,
+                            RouteId = 6,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 81,
+                            ClassCode = "AC2",
+                            Price = 110m,
+                            RouteId = 6,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 82,
+                            ClassCode = "AC3",
+                            Price = 80m,
+                            RouteId = 6,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            ClassCode = "AC3",
+                            Price = 90m,
+                            RouteId = 6,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 84,
+                            ClassCode = "AC3",
+                            Price = 120m,
+                            RouteId = 6,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 85,
+                            ClassCode = "SL",
+                            Price = 70m,
+                            RouteId = 6,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 86,
+                            ClassCode = "SL",
+                            Price = 80m,
+                            RouteId = 6,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 87,
+                            ClassCode = "SL",
+                            Price = 90m,
+                            RouteId = 6,
+                            TypeCode = "SF"
+                        },
+                        new
+                        {
+                            Id = 88,
+                            ClassCode = "GE",
+                            Price = 60m,
+                            RouteId = 6,
+                            TypeCode = "S"
+                        },
+                        new
+                        {
+                            Id = 89,
+                            ClassCode = "GE",
+                            Price = 70m,
+                            RouteId = 6,
+                            TypeCode = "F"
+                        },
+                        new
+                        {
+                            Id = 90,
+                            ClassCode = "GE",
+                            Price = 80m,
+                            RouteId = 6,
                             TypeCode = "SF"
                         });
                 });
@@ -3017,8 +3497,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1,
-                            Arrival = new DateTime(2023, 12, 5, 8, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
-                            Departure = new DateTime(2023, 12, 4, 23, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Arrival = new DateTime(2023, 12, 8, 9, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
+                            Departure = new DateTime(2023, 12, 8, 0, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -3027,8 +3507,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 2,
-                            Arrival = new DateTime(2023, 12, 5, 8, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
-                            Departure = new DateTime(2023, 12, 4, 23, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Arrival = new DateTime(2023, 12, 8, 9, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
+                            Departure = new DateTime(2023, 12, 8, 0, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -3037,8 +3517,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 3,
-                            Arrival = new DateTime(2023, 12, 5, 16, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
-                            Departure = new DateTime(2023, 12, 5, 7, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Arrival = new DateTime(2023, 12, 8, 17, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
+                            Departure = new DateTime(2023, 12, 8, 8, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -3047,8 +3527,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 4,
-                            Arrival = new DateTime(2023, 12, 5, 16, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
-                            Departure = new DateTime(2023, 12, 5, 7, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Arrival = new DateTime(2023, 12, 8, 17, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
+                            Departure = new DateTime(2023, 12, 8, 8, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -3057,8 +3537,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 5,
-                            Arrival = new DateTime(2023, 12, 6, 0, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
-                            Departure = new DateTime(2023, 12, 5, 15, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Arrival = new DateTime(2023, 12, 9, 1, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
+                            Departure = new DateTime(2023, 12, 8, 16, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -3067,8 +3547,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 6,
-                            Arrival = new DateTime(2023, 12, 6, 0, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
-                            Departure = new DateTime(2023, 12, 5, 15, 53, 13, 155, DateTimeKind.Local).AddTicks(7707),
+                            Arrival = new DateTime(2023, 12, 9, 1, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
+                            Departure = new DateTime(2023, 12, 8, 16, 47, 1, 784, DateTimeKind.Local).AddTicks(9217),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -12532,6 +13012,7 @@ namespace Railway_Group01.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("NameOfDivision")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ZipCode")

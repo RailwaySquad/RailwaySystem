@@ -337,39 +337,26 @@ namespace Railway_Group01.Data
                 );
 
             var f = 1;
-            builder.Entity<Fare>().HasData(
-                new Fare { Id = f++, RouteId = 1, ClassCode = "AC1", TypeCode = "S", Price = 100 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "AC1", TypeCode = "F", Price = 110 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "AC1", TypeCode = "SF", Price = 120 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "AC2", TypeCode = "S", Price = 90 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "AC2", TypeCode = "F", Price = 100 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "AC2", TypeCode = "SF", Price = 110 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "AC3", TypeCode = "S", Price = 80 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "AC3", TypeCode = "F", Price = 90 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "AC3", TypeCode = "SF", Price = 120 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "SL", TypeCode = "S", Price = 70 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "SL", TypeCode = "F", Price = 80 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "SL", TypeCode = "SF", Price = 90 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "GE", TypeCode = "S", Price = 60 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "GE", TypeCode = "F", Price = 70 },
-                new Fare { Id = f++, RouteId = 1, ClassCode = "GE", TypeCode = "SF", Price = 80 },
-
-                new Fare { Id = f++, RouteId = 2, ClassCode = "AC1", TypeCode = "S", Price = 100 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "AC1", TypeCode = "F", Price = 110 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "AC1", TypeCode = "SF", Price = 120 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "AC2", TypeCode = "S", Price = 90 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "AC2", TypeCode = "F", Price = 100 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "AC2", TypeCode = "SF", Price = 110 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "AC3", TypeCode = "S", Price = 80 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "AC3", TypeCode = "F", Price = 90 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "AC3", TypeCode = "SF", Price = 100 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "SL", TypeCode = "S", Price = 70 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "SL", TypeCode = "F", Price = 80 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "SL", TypeCode = "SF", Price = 90 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "GE", TypeCode = "S", Price = 60 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "GE", TypeCode = "F", Price = 70 },
-                new Fare { Id = f++, RouteId = 2, ClassCode = "GE", TypeCode = "SF", Price = 80 }
-                );
+            for (var i = 1; i <= 6; i++)
+            {
+                builder.Entity<Fare>().HasData(
+                    new Fare { Id = f++, RouteId = i, ClassCode = "AC1", TypeCode = "S", Price = 100 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "AC1", TypeCode = "F", Price = 110 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "AC1", TypeCode = "SF", Price = 120 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "AC2", TypeCode = "S", Price = 90 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "AC2", TypeCode = "F", Price = 100 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "AC2", TypeCode = "SF", Price = 110 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "AC3", TypeCode = "S", Price = 80 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "AC3", TypeCode = "F", Price = 90 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "AC3", TypeCode = "SF", Price = 120 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "SL", TypeCode = "S", Price = 70 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "SL", TypeCode = "F", Price = 80 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "SL", TypeCode = "SF", Price = 90 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "GE", TypeCode = "S", Price = 60 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "GE", TypeCode = "F", Price = 70 },
+                    new Fare { Id = f++, RouteId = i, ClassCode = "GE", TypeCode = "SF", Price = 80 }
+                    );
+            }
 
             builder.Entity<RefundRule>().HasData(
                 new RefundRule { Id = 1, ValidTo = 24, RefundAmount = 100, RefundFee = 1 }, // above 24 hours till depart, refund 100%, fee 1$

@@ -23,6 +23,7 @@ namespace Railway_Group01.Models
         public string? CoachClassName { get; set; }
         public int FromStation {  get; set; }
         public int ToStation { get; set; }
+        public decimal Price { get; set; }
 
     }
 }
