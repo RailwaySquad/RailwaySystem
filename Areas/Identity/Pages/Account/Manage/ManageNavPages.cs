@@ -11,18 +11,16 @@ namespace  Railway_Group01.Areas.Identity.Pages.Account.Manage
     {
         public static string Index => "Index";
 
-        public static string Email => "Email";
-
         public static string ChangePassword => "ChangePassword";
 
         public static string BookingHistory => "BookingHistory";
 
-        public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
 
-        public static string EmailNavClass(ViewContext viewContext) => PageNavClass(viewContext, Email);
+        public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
 
         public static string ChangePasswordNavClass(ViewContext viewContext) => PageNavClass(viewContext, ChangePassword);
 
+        
         public static string BookingHistoryNavClass(ViewContext viewContext) => PageNavClass(viewContext, BookingHistory);
 
         public static string PageNavClass(ViewContext viewContext, string page)

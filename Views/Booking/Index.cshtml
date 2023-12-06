@@ -7,9 +7,9 @@
 }
 
 <header class="bg-gradient-cus mb-3">
-    <div class="container bg-gradient-cus">
+    <div class="container">
         <h1 class="text-white">@ViewData["Title"]</h1>
-        <div class="container d-flex">
+        <div class="d-flex">
             <div class="w-25 d-flex flex-column align-items-center">
                 <span class="step checked"></span>
                 <p class="text-white text-center">Fill passenger information</p>
@@ -174,8 +174,8 @@
 
     <section>
         <div class="d-flex justify-content-between">
-            <a class="btn btn-orange fw-bold">👈 Change My Mind 🔙</a>
-            <a class="btn btn-orange fw-bold">⏭️ Go to next step 👉</a>
+            <a asp-controller="Railway" asp-action="Index" class="btn btn-orange fw-bold">👈 Change My Mind 🔙</a>
+            <a asp-action="Confirm" class="btn btn-orange fw-bold">⏭️ Go to next step 👉</a>
         </div>
     </section>
 </div>
