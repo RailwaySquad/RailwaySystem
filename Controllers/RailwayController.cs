@@ -87,7 +87,7 @@ namespace Railway_Group01.Controllers
                     DateTime end = schedule.Departure.Add(TimeSpan.FromMinutes(travel2));
                     schedule.Departure = start;
                     schedule.Arrival = end;
-                    if (schedule.Route!.RouteDetails.Last().ArrivalStationId != to || schedule.Route!.RouteDetails.First().DepartureStationId!=from || schedule.Departure.Date != startTime.Date)
+                    if (schedule.Route!.RouteDetails.LastOrDefault().ArrivalStationId != to || schedule.Route!.RouteDetails.FirstOrDefault().DepartureStationId!=from || schedule.Departure.Date != startTime.Date)
                     {
                         filter.Add(schedule);
                     }
