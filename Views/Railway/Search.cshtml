@@ -263,16 +263,15 @@
                                     <div class="p-3 w-25">
                                         <div class="">
                                             <a href="" class="h5" style="color: rgb(236, 88, 36); text-decoration: none;">
-                                                <span class="">@schedule.Train?.Code</span>
-                                                <span class="train-name"></span>
+                                                <span class="">@schedule.Name</span>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="w-75">
                                         <div class="row w-md-50">
-                                            <div class="col-3 col-lg-2">
+                                            <div class="col-3 col-lg-2 mx-auto me-0">
                                                 <div class="">
-                                                    <a class="text-decoration-none fw-bold" style="color: rgb(236, 88, 36);" href="">@schedule.Route?.StartStation?.Name</a>
+                                                    <a class="text-decoration-none fw-bold" style="color: rgb(236, 88, 36);" href="">@schedule.Route.RouteDetails.First().DepartureStation.Name</a>
                                                     <div class="c-tooltip bottom">
                                                         <div class="tip"></div>
                                                     </div>
@@ -280,20 +279,18 @@
                                                 <div class="time">@schedule.Departure.ToString("hh:mm tt")</div>
                                                 <div class="date">@schedule.Departure.ToString("ddd, dd MMM")</div>
                                             </div>
-                                            <div class="col-3">
-                                                <div class="mt-4 d-flex flex-column align-items-center">
-                                                    <p class="text-center">
+                                            <div class="col-3 d-flex flex-column align-items-center ">
+                                                <div class="text-center">
                                                         @{
                                                             var time = schedule.Arrival - schedule.Departure;
-                                                            Html.DisplayFor(x => time.Hours);
                                                         }
-                                                    </p>
-                                                    <img src="~/images/svg/Icon_train.svg.png" width="50px" />
-                                                </div>
+                                                        @time.Hours h @time.Minutes mins
+                                                 </div>
+                                                 <img src="~/images/svg/Icon_train.svg.png" width="50px" />
                                             </div>
-                                            <div class="col-3 col-lg-2">
+                                            <div class="col-3 col-lg-2 mx-auto ms-0">
                                                 <div class="">
-                                                    <a class="text-decoration-none fw-bold" style="color: rgb(236, 88, 36);" href="">@schedule.Route.EndStation.Name</a>
+                                                    <a class="text-decoration-none fw-bold" style="color: rgb(236, 88, 36);" href="">@schedule.Route.RouteDetails.Last().ArrivalStation.Name</a>
                                                     <div class="c-tooltip bottom">
                                                         <div class="tip"></div>
                                                     </div>
@@ -307,25 +304,26 @@
                                 <div class=" d-flex flex-row justify-content-around align-items-center my-4 multiple-class">
                                     @if (schedule.Train!.Coaches!.Any())
                                     {
+                                        int classCount = 1;
                                         @foreach (var coach in schedule.Train!.Coaches!)
                                         {
-                                            <a role="button" class="text-decoration-none text-black train-coach" data-bs-toggle="collapse" href="#@schedule.TrainCode-@coach.Id" aria-expanded="false" aria-controls="@schedule.TrainCode-@coach.Id">
+                                            <a role="button" class="text-decoration-none text-black train-coach" data-bs-toggle="collapse" href="#@schedule.TrainCode-@coach.Id" aria-expanded="false" aria-controls="@schedule.TrainCode-@coach.Id" >
                                                 <div class="card" style="width:180px">
                                                     <div class="card-body d-flex flex-column  p-2">
-                                                        <div class="fs-6 text-center" style="color: #EC5B24;">Coach @Html.DisplayFor(x=>coach.CoachNo)</div>
+                                                        <div class="fs-6 text-center" style="color: #EC5B24;">Coach @classCount</div>
                                                         <div>Last: @Html.DisplayFor(x=>coach.NoOfSeats)</div>
-                                                        <div>
-                                                            Cost: ??? VND
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </a>
+                                            classCount++;
                                         }
                                     }
                                 </div>
+                                @{
+                                    int coachCount = 1;
+                                }
                                 @foreach (var coach in schedule.Train.Coaches)
                                 {
-
                                     <div class="collapse " id="@schedule.TrainCode-@coach.Id">
                                         <div class="d-flex flex-row align-items-center justify-content-center pt-3">
                                             @if (coach.NoOfCompartments == 0)
@@ -340,7 +338,16 @@
                                                                     <div class="et-col-16 et-sit-side"></div>
                                                                     <div class="et-col-84 et-sit-sur-outer">
                                                                         <div class="et-sit-sur text-center et-sit-avaiable">
-                                                                            <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available" data-schedule="@schedule.Id" data-coach="@coach.Id" data-seat="@count">
+                                                                            <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available" 
+                                                                                data-schedule="@schedule.Id" 
+                                                                                data-coach="@coach.Id" 
+                                                                                data-seat="@count" 
+                                                                                data-start="@schedule.Departure" 
+                                                                                data-end="@schedule.Arrival" 
+                                                                                data-cabin="0" 
+                                                                                data-coachCount="@coachCount"
+                                                                                 data-fromStation="@schedule.Route.RouteDetails.First().DepartureStationId"
+                                                                                 data-toStation="@schedule.Route.RouteDetails.Last().ArrivalStationId">
                                                                                 <span>@count</span>
                                                                             </div>
                                                                         </div>
@@ -355,6 +362,7 @@
                                             else
                                             {
                                                 int count = 1;
+                                                int cabinNum = 1;
                                                 <div class="row et-car-floor w-100">
                                                     <div class="et-col-1-18 et-car-floor-full-height"></div>
                                                     <div class="et-col-8-9">
@@ -387,6 +395,7 @@
                                                                     </div>
                                                                 </div>
                                                                 brek = coach.NoOfCompartments * 2;
+                                                                cabinNum = 0;
                                                             }
                                                             if (count % 2 == 0)
                                                             {
@@ -394,7 +403,16 @@
                                                                     <div class="et-bed-right">
                                                                         <div class="et-bed-outer">
                                                                             <div class="et-bed text-center et-sit-avaiable">
-                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available" data-schedule="@schedule.Id" data-coach="@coach.Id" data-seat="@count">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available" 
+                                                                                    data-schedule="@schedule.Id" 
+                                                                                    data-cabin="@cabinNum" 
+                                                                                    data-coach="@coach.Id" 
+                                                                                    data-seat="@count" 
+                                                                                    data-start="@schedule.Departure" 
+                                                                                    data-end="@schedule.Arrival" 
+                                                                                    data-coachCount="@coachCount"
+                                                                                     data-fromStation="@schedule.Route.RouteDetails.First().DepartureStationId"
+                                                                                     data-toStation="@schedule.Route.RouteDetails.Last().ArrivalStationId">
                                                                                     <span>@count</span>
                                                                                 </div>
                                                                             </div>
@@ -409,7 +427,16 @@
                                                                     <div class="et-bed-left ">
                                                                         <div class="et-bed-outer">
                                                                             <div class="et-bed text-center et-sit-avaiable">
-                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available" data-schedule="@schedule.Id" data-coach="@coach.Id" data-seat="@count">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available" 
+                                                                                    data-schedule="@schedule.Id" 
+                                                                                    data-cabin="@cabinNum" 
+                                                                                    data-coach="@coach.Id" 
+                                                                                    data-seat="@count" 
+                                                                                    data-start="@schedule.Departure" 
+                                                                                    data-end="@schedule.Arrival" 
+                                                                                    data-coachCount="@coachCount"
+                                                                                     data-fromStation="@schedule.Route.RouteDetails.First().DepartureStationId"
+                                                                                     data-toStation="@schedule.Route.RouteDetails.Last().ArrivalStationId">
                                                                                     <span>@count</span>
                                                                                 </div>
                                                                             </div>
@@ -418,6 +445,7 @@
                                                                     </div>
                                                                 </div>
                                                             }
+                                                            cabinNum++;
                                                             brek--;
                                                             count++;
                                                         }
@@ -427,6 +455,7 @@
                                             }
                                         </div>
                                     </div>
+                                    coachCount++;
                                 }
                             </div>
                         </div>

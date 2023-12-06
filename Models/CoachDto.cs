@@ -22,5 +22,6 @@ namespace Railway_Group01.Models
         public string? Description { get; set; }
         [AllowNull]
         public double? CoachFare { get; set; }
+       
     }
 }

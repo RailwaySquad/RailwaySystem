@@ -28,24 +28,37 @@ namespace Railway_Group01.Controllers
         [HttpPost]
         [Route("addcart")]
         public async Task<ActionResult<List<CartDto>>> AddCart(
-            [FromForm(Name = "ScheduleId")] int ScheduleId,
-            [FromForm(Name = "CoachId")] int CoachId,
-            [FromForm(Name ="Seat")] int Seat
+            [FromForm(Name = "scheduleId")] int scheduleId,
+            [FromForm(Name = "coachId")] int coachId,
+            [FromForm(Name ="seat")] int seat,
+            [FromForm(Name = "startAt")] string startAt,
+            [FromForm(Name = "endAt")] string endAt,
+            [FromForm(Name = "cabin")] int cabin,
+            [FromForm(Name = "coachCount")] int coachCount,
+            [FromForm(Name = "fromStation")] int from,
+            [FromForm(Name = "toStation")] int to
+
+
             )
         {
-            CartDto cart = new CartDto { ScheduleId = ScheduleId, CoachId = CoachId, Seat = Seat };
-            Schedule? sche = await ctx.Schedules!.Include(x => x.Route).Include(x => x.Train).FirstOrDefaultAsync(x => x.Id == cart.ScheduleId);
-            Coach? coa = await ctx.Coaches!.FirstOrDefaultAsync(x => x.Id == cart.CoachId);
-            if (sche == null ||coa ==null)
-            {
-                return BadRequest();
-            }
-            sche.Route.StartStation = await ctx.Stations.FirstOrDefaultAsync(x => x.Id == sche.Route.StartStationId);
-            sche.Route.EndStation = await ctx.Stations.FirstOrDefaultAsync(x => x.Id == sche.Route.EndStationId);
-            string title = sche.Name + " " + sche.Route.StartStation.Code+ " - " + sche.Route.EndStation.Code;
-            string seatDetail = coa.ClassCode + " - Seat: " + cart.Seat;
+            CartDto cart = new CartDto { 
+                ScheduleId = scheduleId, 
+                CoachId = coachId, 
+                Seat = seat,
+                StartTime = DateTime.Parse(startAt), 
+                EndTime = DateTime.Parse(endAt) ,
+                Cabin = cabin,
+                CoachCount = coachCount,
+                FromStation = from,
+                ToStation = to
+            };
+            Station startStation = await ctx.Stations.FindAsync(from);
+            Station endStation = await ctx.Stations.FindAsync(to);
+            Schedule sche = await ctx.Schedules.FindAsync(scheduleId);
+            string title = sche.Name + "  " + startStation.Code+ " - " + endStation.Code;
+            string seatDetail = cart.Cabin==0? "Coach " + cart.CoachCount + " Seat: "+cart.Seat: "Coach " + cart.CoachCount + " Cabin: "+cart.Cabin+"/ Seat: " + cart.Seat;
             cart.Title = title;
-            cart.StartAt = sche.Departure.ToString("HH:mm dd/MM");
+            cart.StartAt = cart.StartTime.ToString("HH:mm dd/MM");
             cart.SeatDetail = seatDetail;
             Console.WriteLine(HttpContext.Session.GetString("listCart"));
             List<CartDto> list;
@@ -74,9 +87,9 @@ namespace Railway_Group01.Controllers
         [HttpPost]
         [Route("removeitem")]
         public async Task<ActionResult<List<CartDto>?>> RemoveItem(
-            [FromForm(Name = "ScheduleId")] int ScheduleId,
-            [FromForm(Name = "CoachId")] int CoachId,
-            [FromForm(Name = "Seat")] int Seat
+            [FromForm(Name = "scheduleId")] int ScheduleId,
+            [FromForm(Name = "coachId")] int CoachId,
+            [FromForm(Name = "seat")] int Seat
             )
         {
             List<CartDto> list;
