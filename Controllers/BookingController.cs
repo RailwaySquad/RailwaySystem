@@ -44,8 +44,8 @@ namespace Railway_Group01.Controllers
                     f.ClassCode == coach!.ClassCode &&
                     f.TypeCode == train!.TypeCode
                 );
-                var start = await _ctx.RouteDetails!.Where(rd => rd.RouteId == route!.Id).SingleOrDefaultAsync(rd => rd.ArrivalStationId == route!.StartStationId);
-                var end = await _ctx.RouteDetails!.Where(rd => rd.RouteId == route!.Id).SingleOrDefaultAsync(rd => rd.ArrivalStationId == route!.EndStationId);
+                var start = await _ctx.RouteDetails!.Where(rd => rd.RouteId == route!.Id).SingleOrDefaultAsync(rd => rd.ArrivalStationId == item.FromStation);
+                var end = await _ctx.RouteDetails!.Where(rd => rd.RouteId == route!.Id).SingleOrDefaultAsync(rd => rd.ArrivalStationId == item.ToStation);
                 int distance = 0;
                 if (start != null && end != null)
                     distance = end.Distance - start.Distance;
@@ -62,13 +62,31 @@ namespace Railway_Group01.Controllers
                 Cart = cart,
                 PassengerTypes = selectPassengerType
             };
+            ViewBag.returnUrl = Request.Headers["Referer"].ToString();
             return View(viewModel);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> BookTickets(BookingInputViewModel input)
+        public async Task<JsonResult> UpdateDiscountPrice(string code)
         {
+            if (code == null) return Json(new { Success = "False", responseText = "code not null" });
+            var discount = await _ctx.PassengerTypes!.FindAsync(code);
+            return Json(new { Success = "True", response = discount!.Discount });
+        }
 
+        public async Task<JsonResult> UpdateUser(User updatedUser)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            user.Email = updatedUser.Email;
+            user.PhoneNumber = updatedUser.PhoneNumber;
+            _ctx.Users.Update(user);
+            var result = await _ctx.SaveChangesAsync() > 0;
+            return Json(new { Success = result, response = user });
+        }
+
+        [HttpPost]
+        public IActionResult FillInformation(List<PassengerDTO> Passengers)
+        {
+            HttpContext.Session.SetString("Passengers", JsonConvert.SerializeObject(Passengers));
             return RedirectToAction(nameof(Confirm));
         }
 

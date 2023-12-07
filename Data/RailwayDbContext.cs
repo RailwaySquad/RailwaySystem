@@ -89,6 +89,7 @@ public class RailwayDbContext : IdentityDbContext<User>
         builder.Entity<Route>().HasMany(p => p.RouteDetails).WithOne(p => p.Route);
         builder.Entity<Route>().HasMany(p => p.Schedules).WithOne(p => p.Route);
         builder.Entity<Route>().HasMany(p => p.Fares).WithOne(p => p.Route);
+        builder.Entity<PassengerType>().HasMany(p => p.Passengers).WithOne(p => p.PassengerType);
 
         ModelBuilderExtension.Seed(builder);
     }
