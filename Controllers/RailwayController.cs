@@ -56,7 +56,11 @@ namespace Railway_Group01.Controllers
                     s.Departure.Date == railwayModel.StartDate.Date
                 ).ToListAsync();*/
             railwayModel.Schedules = await GetScheduleRelationships(schedulesMatchRoute, railwayModel.From,railwayModel.To, railwayModel.StartDate);
-            
+            string? jsonSession = HttpContext.Session.GetString("listCart");
+            if(jsonSession != null)
+            {
+                ViewData["CartList"] = JsonConvert.DeserializeObject<List<CartDto>>(jsonSession);
+            }
             ViewData["FromStationSelectList"] = GetStationSelectList(railwayModel.From);
             ViewData["ToStationSelectList"] = GetStationSelectList(railwayModel.To);
             ViewData["ClassList"] = ctx.CoachClasses!.ToList();
@@ -107,9 +111,12 @@ namespace Railway_Group01.Controllers
                     DateTime end = schedule.Departure.Add(TimeSpan.FromMinutes(travel2));
                     schedule.Departure = start;
                     schedule.Arrival = end;
-                    
-                    if ( schedule.Route!.RouteDetails.Count >2 && 
-                        (schedule.Route!.RouteDetails.Last().ArrivalStationId != to || schedule.Route!.RouteDetails.First().DepartureStationId!=from) || schedule.Departure.Date != startTime.Date || schedule.Route.RouteDetails.Count ==0)
+                    if ( schedule.Route!.RouteDetails.Count >1 && 
+                        (schedule.Route!.RouteDetails.Last().ArrivalStationId != to || 
+                        schedule.Route!.RouteDetails.First().DepartureStationId!=from) || 
+                        schedule.Route!.RouteDetails.Count ==1 && (schedule.Route!.RouteDetails.FirstOrDefault().ArrivalStationId!=to || schedule.Route!.RouteDetails.FirstOrDefault().DepartureStationId!=from) ||
+                        schedule.Departure.Date != startTime.Date || 
+                        schedule.Route.RouteDetails.Count ==0)
                     {
                         filter.Add(schedule);
                     }

@@ -13,7 +13,7 @@ $(document).ready(function () {
                 lis += `<li class="list-group-item ms-1 d-flex flex-column">
                                     <div class="row w-100">
                                         <div class="col-10 ">
-                                        <p>Train: ${item.scheduleName}<br/>Trip: ${item.trip}<br/>Departure: ${item.startAt}<br/>${item.seatDetail}<br/>${item.coachClass}</p>
+                                        <p>Train: ${item.scheduleName}<br/>Trip: <span class='fw-bold'>${item.trip}</span><br/>Departure: ${item.startAt}<br/><span class='fw-bold'>${item.seatDetail}</span><br/>${item.coachClass}</p>
                                         </div>
                                         <div class="col-2">
                                         <a class="text-danger" href="">
@@ -28,6 +28,14 @@ $(document).ready(function () {
     };
     $.get(window.location.origin + "/api/RailwayAjax/listcart", function (data) {
         listItemCart(data);
+        if (data != null) {
+            let selectSeat
+            data.forEach(ele => {
+                selectSeat = `[data-schedule="${ele.scheduleId}"][data-coach="${ele.coachId}"][data-seat="${ele.seat}"][data-cabin="${ele.cabin}"]`;
+                $(selectSeat).parent().removeClass("et-sit-avaiable");
+                $(selectSeat).parent().addClass("et-sit-buying");
+            })
+        }
     })
     $(".sit-available").click(function () {
         let schedule = $(this).data("schedule");
@@ -43,20 +51,7 @@ $(document).ready(function () {
         let classCode = $(this).data("class");
         let urlAdd = window.location.origin + "/api/RailwayAjax/addcart";
         let urlRemove = window.location.origin + "/api/RailwayAjax/removeitem";
-        /*alert(`Schedule: ${schedule}\nCoach: ${coach}\nSeat :${seat}`);*/
-        console.log({
-            "scheduleId": schedule,
-            "coachId": coach,
-            "seat": seat,
-            "startAt": starttime,
-            "endAt": endtime,
-            "cabin": cabin,
-            "coachNo": coachNo,
-            "fromStation": from,
-            "toStation": to,
-            "coachClass": classCode,
-            "coachClassName": className 
-        });
+        
         if ($(this).parent().hasClass("et-sit-avaiable")) {
             $.ajax({
                 type: "POST",
