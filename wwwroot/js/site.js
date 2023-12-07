@@ -3,6 +3,10 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
+    const toastLive1 = document.getElementById("alertBsAdd");
+    const toastLive2 = document.getElementById("alertBsRm");
+    const toastBootstrapAdd = bootstrap.Toast.getOrCreateInstance(toastLive1);
+    const toastBootstrapRm = bootstrap.Toast.getOrCreateInstance(toastLive2);
     const listItemCart = (dataCart) => {
         let lis = "";
         if (!dataCart) {
@@ -10,17 +14,14 @@ $(document).ready(function () {
             $(".countCart").text(0);
         } else {
             dataCart.forEach((item, i) => {
-                lis += `<li class="list-group-item ms-1 d-flex flex-column">
-                                    <div class="row w-100">
-                                        <div class="col-10 ">
-                                        <p>Train: ${item.scheduleName}<br/>Trip: <span class='fw-bold'>${item.trip}</span><br/>Departure: ${item.startAt}<br/><span class='fw-bold'>${item.seatDetail}</span><br/>${item.coachClass}</p>
-                                        </div>
-                                        <div class="col-2">
-                                        <a class="text-danger" href="">
-                                            <i class="bi bi-trash3"></i>
-                                        </a>
-                                        </div>
-                                    </div></li>`;
+                lis += `<li class="list-group-item ms-1">
+                                    <table class="table table-borderless mb-0">
+                                        <tr><td>Train:</td><td>${item.scheduleName}</td></tr>
+                                        <tr><td>Trip:</td> <td class='fw-bold'>${item.trip}</td></tr>
+                                        <tr><td>Departure:</td><td>${item.startAt}</td></tr>
+                                        <tr><td colspan='2' class='fw-bold'>${item.seatDetail}</td></tr>
+                                        <tr><td colspan='2'>${item.coachClass}</td></tr>
+                                    </table></li>`;
             });
             $(".countCart").text(dataCart.length);
         }
@@ -77,7 +78,8 @@ $(document).ready(function () {
                 console.log("error");
             }).always(function () {
                 console.log("complete");
-            });;
+            });
+            toastBootstrapAdd.show()
         } else {
             $.ajax({
                 type: "POST",
@@ -96,6 +98,7 @@ $(document).ready(function () {
             }).always(function () {
                 console.log("complete");
             });;
+            toastBootstrapRm.show();
         }
         $(this).parent().toggleClass("et-sit-avaiable");
         $(this).parent().toggleClass("et-sit-buying");

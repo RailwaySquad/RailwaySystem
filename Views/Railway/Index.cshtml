@@ -76,10 +76,10 @@
                         </div>
                     </div>
                     <div class="col-7">
-                        <form class="row gx-3 gy-2">
+                        <form class="row gx-3 gy-2" asp-action="SearchTrain" method="get">
                             <div class="col-md-9">
-                                <label for="name" class="form-label">TRAIN NAME/NUMBER</label>
-                                <input type="text" class="form-control" name="name" placeholder="Enter the train name or number" />
+                                <label for="traincode" class="form-label">TRAIN NAME/NUMBER</label>
+                                <input type="text" class="form-control" name="traincode" placeholder="Enter the train name or number" />
                             </div>
                             <div class="col-3 align-self-end">
                                 <button class="btn btn-orange " type="submit">

@@ -46,7 +46,9 @@ namespace Railway_Group01.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Search([FromQuery] RailwaySearchModel railwayModel)
+        public async Task<IActionResult> Search([FromQuery] RailwaySearchModel railwayModel,
+                                                [FromQuery(Name = "coachTypes[]")] string[]? coachTypes,
+                                                [FromQuery(Name = "time")] int? time )
         {
             
             var schedulesMatchRoute = await ctx.SearchScheduleByRoute(railwayModel.From, railwayModel.To);
@@ -55,19 +57,22 @@ namespace Railway_Group01.Controllers
                     s => schedulesMatchRoute.Contains(s) &&
                     s.Departure.Date == railwayModel.StartDate.Date
                 ).ToListAsync();*/
-            railwayModel.Schedules = await GetScheduleRelationships(schedulesMatchRoute, railwayModel.From,railwayModel.To, railwayModel.StartDate);
+            railwayModel.Schedules = await GetScheduleRelationships(schedulesMatchRoute, railwayModel.From,railwayModel.To, railwayModel.StartDate,time,coachTypes);
+            
             string? jsonSession = HttpContext.Session.GetString("listCart");
             if(jsonSession != null)
             {
                 ViewData["CartList"] = JsonConvert.DeserializeObject<List<CartDto>>(jsonSession);
             }
+            ViewData["CoachTypeSelect"] = coachTypes.ToList();
+            ViewData["TimeSelect"] = time;
             ViewData["FromStationSelectList"] = GetStationSelectList(railwayModel.From);
             ViewData["ToStationSelectList"] = GetStationSelectList(railwayModel.To);
             ViewData["ClassList"] = ctx.CoachClasses!.ToList();
+
             return View(railwayModel);
         }
-
-        private async Task<List<Schedule>> GetScheduleRelationships(List<Schedule> schedules,int from, int to, DateTime startTime)
+        private async Task<List<Schedule>> GetScheduleRelationships(List<Schedule> schedules,int from, int to, DateTime startTime, int? time = 0, string[]? coachTypes = null)
         {
             List<Schedule> filter = new List<Schedule>();
             int travel1 = 0;
@@ -116,9 +121,40 @@ namespace Railway_Group01.Controllers
                         schedule.Route!.RouteDetails.First().DepartureStationId!=from) || 
                         schedule.Route!.RouteDetails.Count ==1 && (schedule.Route!.RouteDetails.FirstOrDefault().ArrivalStationId!=to || schedule.Route!.RouteDetails.FirstOrDefault().DepartureStationId!=from) ||
                         schedule.Departure.Date != startTime.Date || 
-                        schedule.Route.RouteDetails.Count ==0)
+                        schedule.Route.RouteDetails.Count ==0 )
                     {
                         filter.Add(schedule);
+                    }
+                    if (time != 0)
+                    {
+                        switch (time)
+                        {
+                            case 1:
+                                if( schedule.Departure.Hour > startTime.AddHours(6).Hour){
+                                    filter.Add(schedule);
+                                }
+                                break;
+                            case 2:
+                                if(schedule.Departure.Hour <= startTime.AddHours(6).Hour || schedule.Departure.Hour > startTime.AddHours(12).Hour)
+                                {
+                                    filter.Add(schedule);
+                                }
+                                break;
+                            case 3:
+                                if(schedule.Departure.Hour <= startTime.AddHours(12).Hour || schedule.Departure.Hour >startTime.AddHours(18).Hour)
+                                {
+                                    filter.Add(schedule);
+                                }
+                                break;
+                            case 4:
+                                if(schedule.Departure.Hour <= startTime.AddHours(18).Hour || schedule.Departure.Hour >startTime.AddHours(24).Hour)
+                                {
+                                    filter.Add(schedule);
+                                };
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
 
@@ -128,7 +164,14 @@ namespace Railway_Group01.Controllers
 
                     if (schedule.Train!.Coaches == null)
                     {
-                        schedule.Train.Coaches = await ctx.Coaches!.Where(c => c.TrainCode == schedule.TrainCode).Include(x=>x.Class).ToListAsync();
+                        if (coachTypes != null && coachTypes.Length>0)
+                        {
+                            schedule.Train.Coaches = await ctx.Coaches!.Where(x=>x.TrainCode == schedule.TrainCode && coachTypes.Contains(x.ClassCode)).Include(x => x.Class).ToListAsync();
+                        }
+                        else
+                        {
+                            schedule.Train.Coaches = await ctx.Coaches!.Where(c => c.TrainCode == schedule.TrainCode).Include(x=>x.Class).ToListAsync();
+                        }
 
                         foreach (var coach in schedule.Train.Coaches)
                         {
@@ -157,7 +200,7 @@ namespace Railway_Group01.Controllers
             }
             return stationSelectList;
         }
-
+        
         public async Task<IActionResult> TrainDetail(
             [FromQuery(Name = "traincode")] string? trainCode,
             [FromQuery(Name = "departure")] string? departure,
@@ -247,6 +290,15 @@ namespace Railway_Group01.Controllers
                 return View(carts);
             }
             return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> SearchTrain([FromQuery(Name = "traincode")] string? trainCode) {
+            IEnumerable<Schedule> schedule = await ctx.Schedules!.Include(x => x.Train).Include(train=>train.Train.Coaches).Include(x=>x.Route).Include(x=>x.Route.RouteDetails).Where(x=>x.Name.Contains(trainCode)).ToListAsync();
+            foreach (var item in schedule)
+            {
+                Console.WriteLine(item);
+            }
+            ViewData["Name"] = trainCode;
+            return View(schedule);
         }
     }
 }
