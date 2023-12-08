@@ -14,12 +14,12 @@ namespace Railway_Group01.Data
         [Required(ErrorMessage = "Name is required.")]
         [StringLength(50, ErrorMessage = "Name must not exceed 50 characters.")]
         public string? Name { get; set; }
-
+        [Required]
         public string? NameOfDivision { get; set; }
-
+        [Required(ErrorMessage = "Name is required .")]
         public int Zone { get; set; }
-
-        public int ZipCode { get; set; }
+		[Required(ErrorMessage = "Zipcode is required.")]
+		public int ZipCode { get; set; }
 
         public ICollection<Route>? StartRoutes { get; set; }
         public ICollection<Route>? EndRoutes { get; set; }

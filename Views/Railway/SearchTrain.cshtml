@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "SearchTrain";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
-    var now = DateTime.Parse("2023-12-05");
+    var now = DateTime.Now;
     var tenMoreDays = now.AddDays(10);
     var nowString = now.ToString("yyyy-MM-dd");
     var tenMoreDaysString = tenMoreDays.ToString("yyyy-MM-dd");
@@ -67,7 +67,7 @@
                     {
                         <div class="card mx-2">
                             <div class="card-body">
-                                @if (ViewBag.OtherSchedules != null && ViewBag.OtherSchedules.Contains(day))
+                                @if (ViewBag.OtherSchedules != null && ViewBag.OtherSchedules.Contains(day.Date))
                                 {
                                     <a class="text-decoration-none text-black"
                                         asp-action="SearchTrain"

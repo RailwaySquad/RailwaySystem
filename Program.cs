@@ -51,7 +51,12 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Railway}/{action=Index}/{id?}");
 
-
+app.MapControllerRoute(
+     name: "TrainScheduleByMonth",
+     pattern: "{controller=ScheduleMaster}/{action=TrainScheduleByMonth}/{month?}");
+app.MapControllerRoute(
+    name: "TrainScheduleByYear",
+    pattern: "{controller=ScheduleMaster}/{action=TrainScheduleByYear}/{year?}");
 app.MapRazorPages();
 
 using (var scope = app.Services.CreateScope())
