@@ -97,7 +97,7 @@
                         <form class="row" asp-action="SearchStation" method="get">
                             <div class="col-md-9">
                                 <label for="station" class="form-label">STATION NAME/CODE</label>
-                                <input type="text" class="form-control" name="station" placeholder="Enter the station name or code" />
+                                <select class="form-select" name="Station" asp-items="@Model.SelectListItems" placeholder="Enter the station name"></select>
                             </div>
                             <div class="col-3 align-self-end">
                                 <button class="btn btn-orange " type="submit">

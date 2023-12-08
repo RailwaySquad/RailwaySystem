@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Search";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
-    var now = DateTime.Parse("2023-12-05");
+    var now = DateTime.Now;
     var tenMoreDays = now.AddDays(10);
     var nowString = now.ToString("yyyy-MM-dd");
     var tenMoreDaysString = tenMoreDays.ToString("yyyy-MM-dd");

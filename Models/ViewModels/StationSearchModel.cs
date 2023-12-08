@@ -2,6 +2,6 @@
 {
     public class StationSearchModel
     {
-        public string? StationCode {  get; set; }
+        public int? Station {  get; set; }
     }
 }
