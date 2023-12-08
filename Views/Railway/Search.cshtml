@@ -160,6 +160,7 @@
                                                asp-controller="Railway"
                                                asp-action="TrainDetail"
                                                asp-route-traincode="@schedule.TrainCode"
+                                               asp-route-schedule="@schedule.Id"
                                                asp-route-departure="@schedule.Route.RouteDetails.FirstOrDefault().DepartureStationId"
                                                asp-route-arrival="@schedule.Route.RouteDetails.LastOrDefault().ArrivalStationId"
                                                asp-route-time="@Model.StartDate">
@@ -210,6 +211,7 @@
                                                 <div class="card" style="width:180px">
                                                     <div class="card-body d-flex flex-column  p-2">
                                                         <div class="fs-6 text-center" style="color: #EC5B24;">Coach @coach.CoachNo</div>
+                                                        <div class="fs-6">Class: @coach.Class.Name</div>
                                                         <div>Last: @Html.DisplayFor(x=>coach.NoOfSeats)</div>
                                                     </div>
                                                 </div>
@@ -226,6 +228,7 @@
                                                 <div class="card" style="width:180px">
                                                     <div class="card-body d-flex flex-column  p-2">
                                                         <div class="fs-6 text-center" style="color: #EC5B24;">Coach @coach.CoachNo</div>
+                                                        <div class="fs-6">Class: @coach.Class.Name</div>
                                                         <div>Last: @Html.DisplayFor(x=>coach.NoOfSeats)</div>
                                                     </div>
                                                 </div>

@@ -22,18 +22,13 @@
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link tb-link rounded-0" data-bs-toggle="tab" data-bs-target="#pnrStatusForm" type="button" role="tab" aria-controls="pnrStatusForm" aria-selected="false">
-                    <span class="text-uppercase fw-700">Running Status</span>
+                <button class="nav-link tb-link rounded-0" data-bs-toggle="tab" data-bs-target="#trainNameNumberSearchForm" type="button" role="tab" aria-controls="trainNameNumberSearchForm" aria-selected="false">
+                    <span class="text-uppercase fw-700">Search Train</span>
                 </button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link tb-link rounded-0" data-bs-toggle="tab" data-bs-target="#stationSearchForm" type="button" role="tab" aria-controls="stationSearchForm" aria-selected="false">
                     <span class="text-uppercase fw-700">Search Station</span>
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link tb-link rounded-0" data-bs-toggle="tab" data-bs-target="#trainNameNumberSearchForm" type="button" role="tab" aria-controls="trainNameNumberSearchForm" aria-selected="false">
-                    <span class="text-uppercase fw-700">Search Train</span>
                 </button>
             </li>
         </ul>
@@ -63,23 +58,20 @@
                 </div>
             </div>
 
-            <div id="pnrStatusForm" class="tab-pane fade w-100 " role="tabpanel" tabindex="0">
+            <div id="trainNameNumberSearchForm" class="tab-pane fade w-100 " role="tabpanel" tabindex="0">
                 <div class="row">
                     <div class="col-5">
                         <img src="https://images.ixigo.com/rt-train/pc/img/trainsHome/pnr.png" />
                         <div class="">
                             <div class="">Search by Train name and number</div>
-                            <small class="text-secondary">
-                                Get seat availability, running status, route,
-                                fare, coach position and seat map.
-                            </small>
+                            <small class="text-secondary">Get running status</small>
                         </div>
                     </div>
                     <div class="col-7">
                         <form class="row gx-3 gy-2" asp-action="SearchTrain" method="get">
                             <div class="col-md-9">
                                 <label for="traincode" class="form-label">TRAIN NAME/NUMBER</label>
-                                <input type="text" class="form-control" name="traincode" placeholder="Enter the train name or number" />
+                                <select class="form-select" name="TrainCode" asp-items="@Model.SelectListTrains" required></select>
                             </div>
                             <div class="col-3 align-self-end">
                                 <button class="btn btn-orange " type="submit">
@@ -98,39 +90,14 @@
                             <div class="">Search by Station</div>
                             <small class="text-secondary">
                                 Get list of all trains passing from a station.
-                                Check Station’s rating on Cleanliness, Safety and food.
                             </small>
                         </div>
                     </div>
                     <div class="col-7">
-                        <form class="row ">
+                        <form class="row" asp-action="SearchStation" method="get">
                             <div class="col-md-9">
                                 <label for="station" class="form-label">STATION NAME/CODE</label>
                                 <input type="text" class="form-control" name="station" placeholder="Enter the station name or code" />
-                            </div>
-                            <div class="col-3 align-self-end">
-                                <button class="btn btn-orange " type="submit">
-                                    Search
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div id="trainNameNumberSearchForm" class="tab-pane fade w-100" role="tabpanel" tabindex="0">
-                <div class="row">
-                    <div class="col-5">
-                        <img src="https://images.ixigo.com/rt-train/pc/img/trainsHome/pnr.png" />
-                        <div class="">
-                            <div class="">Search by Train name and number</div>
-                            <small class="text-secondary">Get running status</small>
-                        </div>
-                    </div>
-                    <div class="col-7">
-                        <form class="row gx-3 gy-2">
-                            <div class="col-md-9">
-                                <label for="train" class="form-label">TRAIN NAME/NUMBER</label>
-                                <input type="text" class="form-control" name="train" placeholder="Enter the train name or number" />
                             </div>
                             <div class="col-3 align-self-end">
                                 <button class="btn btn-orange " type="submit">

@@ -19,9 +19,11 @@ namespace Railway_Group01.Controllers
         }
         public IActionResult Index()
         {
+            
             RailwayIndexModel railwayIndexModel = new()
             {
-                SelectListItems = GetStationSelectList()
+                SelectListItems = GetStationSelectList(),
+                SelectListTrains = GetTrainSelectList()
             };
             return View(railwayIndexModel);
         }
@@ -69,7 +71,6 @@ namespace Railway_Group01.Controllers
             ViewData["FromStationSelectList"] = GetStationSelectList(railwayModel.From);
             ViewData["ToStationSelectList"] = GetStationSelectList(railwayModel.To);
             ViewData["ClassList"] = ctx.CoachClasses!.ToList();
-
             return View(railwayModel);
         }
         private async Task<List<Schedule>> GetScheduleRelationships(List<Schedule> schedules,int from, int to, DateTime startTime, int? time = 0, string[]? coachTypes = null)
@@ -200,47 +201,48 @@ namespace Railway_Group01.Controllers
             }
             return stationSelectList;
         }
-        
+        private List<SelectListItem> GetTrainSelectList (string? code = "")
+        {
+            var trains = ctx.Trains!.Include(x=>x.Type).ToList();
+            var trainsSelectList = new List<SelectListItem> { new SelectListItem() { Text = " Train", Value = "", Disabled = true, Selected = true } };
+            foreach (var s in trains)
+            {
+                trainsSelectList.Add(new SelectListItem() { Text = s.Code, Value = s.Code.ToString(), Selected = code == s.Code });
+            }
+            return trainsSelectList;
+        }
+
         public async Task<IActionResult> TrainDetail(
             [FromQuery(Name = "traincode")] string? trainCode,
             [FromQuery(Name = "departure")] string? departure,
-            [FromQuery(Name = "arrival")] string? arrival, 
-            [FromQuery(Name = "time")] DateTime? time
+            [FromQuery(Name = "arrival")] string? arrival,
+            [FromQuery(Name = "time")] DateTime? time,
+            [FromQuery(Name = "schedule")] int? scheduleId
             )
         {
-            if(String.IsNullOrEmpty(trainCode)) //|| String.IsNullOrEmpty(departure) || String.IsNullOrEmpty(arrival) || String.IsNullOrEmpty(time)
+            if (String.IsNullOrEmpty(trainCode)) //|| String.IsNullOrEmpty(departure) || String.IsNullOrEmpty(arrival) || String.IsNullOrEmpty(time)
             {
                 return RedirectToAction("Error404", new { type = "train" });
             }
-            Train? train = await ctx.Trains!.Include(x=>x.Coaches).Include(x=>x.Type).FirstOrDefaultAsync(x=>x.Code == trainCode.ToUpper());
+            Train? train = await ctx.Trains!.Include(x => x.Coaches).Include(x => x.Type).FirstOrDefaultAsync(x => x.Code == trainCode.ToUpper());
             if (train == null)
             {
                 return RedirectToAction("Error404", new { type = "train" });
             }
             foreach (var item in train.Coaches)
             {
-                item.Class = await ctx.CoachClasses!.FirstOrDefaultAsync(x=>x.Code == item.ClassCode);
+                item.Class = await ctx.CoachClasses!.FirstOrDefaultAsync(x => x.Code == item.ClassCode);
             }
             int departureId = !String.IsNullOrEmpty(departure) || int.TryParse(departure, out _) ? Int32.Parse(departure) : 1;
             int arrivalId = !String.IsNullOrEmpty(arrival) || int.TryParse(arrival, out _) ? Int32.Parse(arrival) : 38;
-            int count = ((arrivalId - departureId) ==1|| (departureId - arrivalId)==1)? 0 : 1;
-            List<int> routeIds = await ctx.RouteDetails!.Where(x=>
-                                    x.DepartureStationId == departureId || 
-                                    x.ArrivalStationId == arrivalId && 
-                                    (departureId < arrivalId ? x.DepartureStationId < x.ArrivalStationId: x.DepartureStationId> x.ArrivalStationId))
-                                    .GroupBy(x => x.RouteId)
-                                    .Where(grp => grp.Count() > count)
-                                    .Select(grp => grp.Key).ToListAsync();
-            if (routeIds.Count == 0)
+           
+            DateTime startTime = time.GetValueOrDefault();
+            Console.WriteLine(startTime.Date);
+            if (scheduleId == null )
             {
                 return RedirectToAction("Error404", new { type = "schedule" });
             }
-            time.GetValueOrDefault();
-            Schedule? sche = await ctx.Schedules!.Where(x => 
-                                    routeIds.Contains(x.RouteId) &&
-                                    x.Departure.Date <= time.Value.Date &&
-                                    x.TrainCode == trainCode 
-                                    ).Include(x=>x.Route).FirstOrDefaultAsync();
+            Schedule? sche = await ctx.Schedules!.Include(x=>x.Route).Include(x=>x.Train).Include(x=>x.Train!.Coaches).FirstOrDefaultAsync(x=>x.Id==scheduleId);
             int travel1 = 0;
             int travel2 = 0;
             Station startStation;
@@ -248,7 +250,7 @@ namespace Railway_Group01.Controllers
             int duration = 0;
             if (sche != null)
             {
-                sche.Route.RouteDetails = await ctx.RouteDetails!.Where(x => x.RouteId == sche.RouteId).ToListAsync();
+                /*sche.Route!.RouteDetails = await ctx.RouteDetails!.Where(x => x.RouteId == sche.RouteId).ToListAsync();*/
                 startStation = await ctx.Stations!.FirstOrDefaultAsync(x=>x.Id == departureId);
                 endStation = await ctx.Stations!.FirstOrDefaultAsync(x=>x.Id == arrivalId);
                 sche.Route.RouteDetails = await ctx.RouteDetails!.Where(x => x.RouteId == sche.Route.Id).Include(x=>x.ArrivalStation).Include(x=>x.DepartureStation).ToListAsync();
@@ -291,14 +293,79 @@ namespace Railway_Group01.Controllers
             }
             return RedirectToAction("Index");
         }
-        public async Task<IActionResult> SearchTrain([FromQuery(Name = "traincode")] string? trainCode) {
-            IEnumerable<Schedule> schedule = await ctx.Schedules!.Include(x => x.Train).Include(train=>train.Train.Coaches).Include(x=>x.Route).Include(x=>x.Route.RouteDetails).Where(x=>x.Name.Contains(trainCode)).ToListAsync();
-            foreach (var item in schedule)
+        public async Task<IActionResult> SearchTrain(TrainSearchModel searchTrain) {
+            IEnumerable<Schedule> schedu = await ctx.Schedules!.Where(x => x.TrainCode == searchTrain.TrainCode)
+                                                                .Include(x => x.Route)
+                                                                .Include(x => x.Route.RouteDetails)
+                                                                .Include(x => x.Train)
+                                                                .Include(train => train.Train.Coaches)
+                                                                .ToListAsync();
+            if(schedu == null)
             {
-                Console.WriteLine(item);
+                return RedirectToAction("Error404", new { type = "train" });
             }
-            ViewData["Name"] = trainCode;
-            return View(schedule);
+            if (searchTrain.StartDate != null)
+            {
+                searchTrain.TrainSchedule = await ctx.Schedules!.Include(x => x.Train)
+                                                                .Include(x=> x.Route)
+                                                                .Include(x=> x.Train.Coaches)
+                                                                .Include(x=> x.Route.RouteDetails)
+                                                                .Where(x=> x.TrainCode==searchTrain.TrainCode && x.Departure.Date <= searchTrain.StartDate.Date)
+                                                                .FirstOrDefaultAsync();
+            }
+            else
+            {
+                searchTrain.TrainSchedule = await ctx.Schedules!.Include(x => x.Train)
+                                                                .Include(train => train.Train.Coaches)
+                                                                .Include(x => x.Route)
+                                                                .Include(x => x.Route.RouteDetails)
+                                                                .Where(x => x.Name.Contains(searchTrain.TrainCode))
+                                                                .FirstOrDefaultAsync();
+                searchTrain.StartDate = searchTrain.TrainSchedule.Departure.Date; 
+            }
+            List<DateTime> time = new List<DateTime>();
+            foreach (var item in schedu)
+            {
+                int travel = 0;
+                foreach (var routeDt in item.Route.RouteDetails)
+                {
+                    DateTime time2 = item.Departure.AddMinutes(travel).Date;
+                    travel += routeDt.TravelTime + routeDt.DelayTime;
+                    if (!time.Contains(time2))
+                    {
+                        time.Add(time2);
+                    }
+                }
+            }
+            if (searchTrain.TrainSchedule != null && searchTrain.TrainSchedule.Train !=null && searchTrain.TrainSchedule.Route !=null) {
+                int travelT = 0;
+                foreach (var routedt in searchTrain.TrainSchedule.Route.RouteDetails)
+                {
+                    DateTime departureTime = searchTrain.TrainSchedule.Departure.AddMinutes(travelT);
+                    travelT += routedt.TravelTime + routedt.DelayTime;
+                    if(departureTime.Date != searchTrain.StartDate.Date)
+                    {
+                        searchTrain.RouteDetails.Add(routedt);
+                    }
+                }
+                foreach (var item in searchTrain.TrainSchedule.Train.Coaches)
+                {
+                    item.Class = await ctx.CoachClasses!.Where(x => x.Code == item.ClassCode).FirstOrDefaultAsync();                      
+                }
+                foreach (var item in searchTrain.TrainSchedule.Route.RouteDetails)
+                {
+                    item.DepartureStation = await ctx.Stations!.FirstOrDefaultAsync(x=>x.Id == item.DepartureStationId);
+                    item.ArrivalStation = await ctx.Stations!.FirstOrDefaultAsync(x => x.Id == item.ArrivalStationId);
+                }
+            }
+            
+            ViewData["OtherSchedules"] = time;
+            ViewData["SelectTrain"] = GetTrainSelectList(searchTrain.TrainCode);
+            return View(searchTrain);
+        }
+        public IActionResult SearchStation(StationSearchModel searchStation) {
+            return View();
         }
     }
 }
+
