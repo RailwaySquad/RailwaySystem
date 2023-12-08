@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Railway_Group01.Data;
 using Railway_Group01.Models;
+using System.Globalization;
 
 namespace Railway_Group01.Controllers.Admin
 {
@@ -51,6 +52,22 @@ namespace Railway_Group01.Controllers.Admin
                 .OrderBy(s => s.Departure)
                 .ToListAsync();
             
+
+            return View("TrainSchedule", schedules);
+        }
+        [HttpPost]
+        public async Task<IActionResult> SearchByDatetime(string date)
+        {
+            // Chuyển đổi string thành DateTime bằng cách thêm ngày 1
+            DateTime selectedDate = DateTime.ParseExact(date + "-01", "yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+            var schedules = await ctx.Schedules
+                .Where(s => s.Departure.Year == selectedDate.Year && s.Departure.Month == selectedDate.Month)
+                .Include(s => s.Train)
+                .Include(s => s.Route.StartStation)
+                .Include(s => s.Route.EndStation)
+                .OrderBy(s => s.Departure)
+                .ToListAsync();
 
             return View("TrainSchedule", schedules);
         }
