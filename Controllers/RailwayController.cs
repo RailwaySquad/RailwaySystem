@@ -275,8 +275,12 @@ namespace Railway_Group01.Controllers
             Schedule? sche = await ctx.Schedules!.Include(x=>x.Route).Include(x=>x.Train).Include(x=>x.Train!.Coaches).FirstOrDefaultAsync(x=>x.Id==scheduleId);
             int travel1 = 0;
             int travel2 = 0;
+            int deplay1 = 0;
+            int deplay2 = 0;
             Station startStation;
             Station endStation;
+            DateTime start;
+            DateTime end;
             int duration = 0;
             if (sche != null)
             {
@@ -287,24 +291,28 @@ namespace Railway_Group01.Controllers
                 if (departureId > arrivalId)
                 {
                     travel1 = await ctx.RouteDetails!.Where(x => x.DepartureStationId > departureId && x.RouteId == sche.RouteId).Select(x => x.TravelTime).SumAsync();
+                    deplay1 = await ctx.RouteDetails!.Where(x => x.DepartureStationId > departureId && x.RouteId == sche.RouteId).Select(x => x.DelayTime).SumAsync();
                     travel2 = await ctx.RouteDetails!.Where(x => x.ArrivalStationId >= arrivalId && x.RouteId == sche.RouteId).Select(x => x.TravelTime).SumAsync();
+                    deplay2 = await ctx.RouteDetails!.Where(x => x.ArrivalStationId >= arrivalId && x.RouteId == sche.RouteId).Select(x => x.DelayTime).SumAsync();
                 }
                 else
                 {
                     travel1 = await ctx.RouteDetails!.Where(x => x.DepartureStationId < departureId && x.RouteId == sche.RouteId).Select(x => x.TravelTime).SumAsync();
+                    deplay1 = await ctx.RouteDetails!.Where(x => x.DepartureStationId < departureId && x.RouteId == sche.RouteId).Select(x => x.DelayTime).SumAsync();
                     travel2 = await ctx.RouteDetails!.Where(x => x.ArrivalStationId <= arrivalId && x.RouteId == sche.RouteId).Select(x => x.TravelTime).SumAsync();
+                    deplay2 = await ctx.RouteDetails!.Where(x => x.ArrivalStationId <= arrivalId && x.RouteId == sche.RouteId).Select(x => x.DelayTime).SumAsync();
                 }
-                DateTime start = sche.Departure.Add(TimeSpan.FromMinutes(travel1));
-                DateTime end = sche.Departure.Add(TimeSpan.FromMinutes(travel2));
+                start = sche.Departure.Add(TimeSpan.FromMinutes(travel1+deplay1));
+                end = sche.Departure.Add(TimeSpan.FromMinutes(travel2+deplay2));
                 duration = travel2 - travel1;
-                sche.Departure = start;
-                sche.Arrival = end;
             }
             else
             {
                 return RedirectToAction("Error404",new { type = "schedule" });
             }
-            int stop = await ctx.RouteDetails!.Where(x => x.RouteId == sche.RouteId && (departureId > arrivalId ? (x.DepartureStationId <=departureId && x.ArrivalStationId >= arrivalId): (x.DepartureStationId >= departureId && x.ArrivalStationId <= arrivalId))).CountAsync();            
+            int stop = await ctx.RouteDetails!.Where(x => x.RouteId == sche.RouteId && (departureId > arrivalId ? (x.DepartureStationId <=departureId && x.ArrivalStationId >= arrivalId): (x.DepartureStationId >= departureId && x.ArrivalStationId <= arrivalId))).CountAsync();
+            ViewData["Start"] = start;
+            ViewData["End"] = end;
             var tuple = new Tuple<Schedule, Train,Station,Station,int,int>(sche, train,startStation,endStation,stop,duration);
             return View(tuple);
         }
