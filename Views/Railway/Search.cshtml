@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Search";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
-    var now = DateTime.Parse("2023-12-05");
+    var now = DateTime.Now;
     var tenMoreDays = now.AddDays(10);
     var nowString = now.ToString("yyyy-MM-dd");
     var tenMoreDaysString = tenMoreDays.ToString("yyyy-MM-dd");
@@ -139,7 +139,10 @@
                                             asp-route-To="@Model.To"
                                             asp-route-StartDate="@day">@day.ToString("ddd"), @day.ToString("dd MMMM")</a>
                                 }else{
-                                    <a class="text-decoration-none text-black" href="javascript:void(0);">@day.ToString("ddd"), @day.ToString("dd MMMM")</a>
+                                    <a class="text-decoration-none text-black" asp-action="Search"
+                                       asp-route-From="@Model.From"
+                                       asp-route-To="@Model.To"
+                                       asp-route-StartDate="@day">@day.ToString("ddd"), @day.ToString("dd MMMM")</a>
                                 }
                             </div>
                         </div>

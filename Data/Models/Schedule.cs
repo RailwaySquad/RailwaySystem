@@ -35,7 +35,8 @@ namespace Railway_Group01.Data
         public override string ToString()
         {
             string st =  $"Schedule {this.Id}:\n{this.Name}\n";
-            if (this.Route!.RouteDetails == null)
+            st += $"Departure: {this.Departure} Arrival: {this.Arrival}\nRouteId : {this.RouteId}";
+            /*if (this.Route == null && this.Route!.RouteDetails == null )
             {
                 st += "RouteDetail = null";
             }
@@ -48,7 +49,7 @@ namespace Railway_Group01.Data
                     st += $"Route Dt {cc}: {item.DepartureStationId} - {item.ArrivalStationId}\n";
                     cc++;
                 }
-            }
+            }*/
             return st;
         }
     }

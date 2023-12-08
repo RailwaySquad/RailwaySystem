@@ -53,12 +53,19 @@ namespace Railway_Group01.Controllers
                                                 [FromQuery(Name = "time")] int? time )
         {
             
-            var schedulesMatchRoute = await ctx.SearchScheduleByRoute(railwayModel.From, railwayModel.To);
-            /*var result = await ctx.Schedules!
-                .Where(
-                    s => schedulesMatchRoute.Contains(s) &&
-                    s.Departure.Date == railwayModel.StartDate.Date
-                ).ToListAsync();*/
+            /*var schedulesMatchRoute = await ctx.SearchScheduleByRoute(railwayModel.From, railwayModel.To);*/
+            List<Data.Route> route = new List<Data.Route>();
+            List<int> listroute;
+            if (railwayModel.From > railwayModel.To)
+            {
+                listroute = await ctx.RouteDetails!.Where(x => x.DepartureStationId > x.ArrivalStationId &&  (x.DepartureStationId == railwayModel.From || x.ArrivalStationId == railwayModel.To)).Select(x => x.RouteId).ToListAsync();
+            }
+            else
+            {
+                listroute = await ctx.RouteDetails!.Where(x => x.DepartureStationId < x.ArrivalStationId && (x.DepartureStationId == railwayModel.From || x.ArrivalStationId == railwayModel.To)).Select(x => x.RouteId).ToListAsync();
+            }
+            List<Schedule> schedulesMatchRoute = await ctx.Schedules!.Where(x => listroute.Contains(x.RouteId) && x.Departure <= railwayModel.StartDate && x.Arrival >= railwayModel.StartDate).ToListAsync();
+            
             railwayModel.Schedules = await GetScheduleRelationships(schedulesMatchRoute, railwayModel.From,railwayModel.To, railwayModel.StartDate,time,coachTypes);
             
             string? jsonSession = HttpContext.Session.GetString("listCart");
@@ -78,51 +85,74 @@ namespace Railway_Group01.Controllers
             List<Schedule> filter = new List<Schedule>();
             int travel1 = 0;
             int travel2 = 0;
+            int deplay1 = 0;
+            int deplay2 = 0;
             foreach (var schedule in schedules)
             {
                 if (schedule.Route == null)
                 {
                     schedule.Route = await ctx.Routes!.FindAsync(schedule.RouteId);
+
                     if(from > to)
                     {
-                        schedule.Route!.RouteDetails = await ctx.RouteDetails!.Where(x => x.DepartureStationId <= from && x.ArrivalStationId >= to && x.RouteId == schedule.RouteId).Include(x => x.DepartureStation).Include(x => x.ArrivalStation).ToListAsync();
+                        schedule.Route!.RouteDetails = await ctx.RouteDetails!.Where(x => x.DepartureStationId <= from && x.ArrivalStationId >= to && x.RouteId == schedule.RouteId)
+                                                                                .Include(x => x.DepartureStation).Include(x => x.ArrivalStation).ToListAsync();
                         
                         travel1 = await ctx.RouteDetails!.Where(x => 
                                         x.DepartureStationId <= schedule.Route.StartStationId && 
                                         x.ArrivalStationId >= schedule.Route.EndStationId &&
                                         x.DepartureStationId > from && 
                                         x.RouteId == schedule.RouteId ).Select(x => x.TravelTime).SumAsync();
+                        deplay1 = await ctx.RouteDetails!.Where(x =>
+                                        x.DepartureStationId <= schedule.Route.StartStationId &&
+                                        x.ArrivalStationId >= schedule.Route.EndStationId &&
+                                        x.DepartureStationId > from &&
+                                        x.RouteId == schedule.RouteId).Select(x => x.DelayTime).SumAsync();
                         travel2 = await ctx.RouteDetails!.Where(x =>
                                         x.DepartureStationId <= schedule.Route.StartStationId &&
                                         x.ArrivalStationId >= schedule.Route.EndStationId && 
                                         x.ArrivalStationId >= to && 
                                         x.RouteId == schedule.RouteId).Select(x => x.TravelTime).SumAsync();
+                        deplay2 = await ctx.RouteDetails!.Where(x =>
+                                        x.DepartureStationId <= schedule.Route.StartStationId &&
+                                        x.ArrivalStationId >= schedule.Route.EndStationId &&
+                                        x.ArrivalStationId >= to &&
+                                        x.RouteId == schedule.RouteId).Select(x => x.DelayTime).SumAsync();
 
                     }
                     else
                     {
-                        schedule.Route!.RouteDetails = await ctx.RouteDetails!.Where(x=>x.DepartureStationId >= from && x.ArrivalStationId<=to && x.RouteId ==schedule.RouteId).Include(x=>x.DepartureStation).Include(x=>x.ArrivalStation).ToListAsync();
+                        schedule.Route!.RouteDetails = await ctx.RouteDetails!.Where(x=>x.DepartureStationId >= from && x.ArrivalStationId<=to && x.RouteId ==schedule.RouteId)
+                                                                                .Include(x=>x.DepartureStation).Include(x=>x.ArrivalStation).ToListAsync();
                         travel1 = await ctx.RouteDetails!.Where(x => 
                                         x.DepartureStationId >= schedule.Route.StartStationId  && 
                                         x.ArrivalStationId <= schedule.Route.EndStationId &&
                                         x.DepartureStationId < from && 
                                         x.RouteId == schedule.RouteId).Select(x => x.TravelTime).SumAsync();
+                        deplay1 = await ctx.RouteDetails!.Where(x =>
+                                        x.DepartureStationId >= schedule.Route.StartStationId &&
+                                        x.ArrivalStationId <= schedule.Route.EndStationId &&
+                                        x.DepartureStationId < from &&
+                                        x.RouteId == schedule.RouteId).Select(x => x.DelayTime).SumAsync();
                         travel2 = await ctx.RouteDetails!.Where(x => 
                                         x.DepartureStationId >= schedule.Route.StartStationId && 
                                         x.ArrivalStationId <=schedule.Route.EndStationId &&
                                         x.ArrivalStationId <= to && 
                                         x.RouteId == schedule.RouteId).Select(x => x.TravelTime).SumAsync();
+                        deplay2 = await ctx.RouteDetails!.Where(x =>
+                                        x.DepartureStationId >= schedule.Route.StartStationId &&
+                                        x.ArrivalStationId <= schedule.Route.EndStationId &&
+                                        x.ArrivalStationId <= to &&
+                                        x.RouteId == schedule.RouteId).Select(x => x.DelayTime).SumAsync();
                     }
-                    DateTime start = schedule.Departure.Add(TimeSpan.FromMinutes(travel1));
-                    DateTime end = schedule.Departure.Add(TimeSpan.FromMinutes(travel2));
+                    DateTime start = schedule.Departure.Add(TimeSpan.FromMinutes(travel1 + deplay1));
+                    DateTime end = schedule.Departure.Add(TimeSpan.FromMinutes(travel2 + deplay2));
                     schedule.Departure = start;
                     schedule.Arrival = end;
-                    if ( schedule.Route!.RouteDetails.Count >1 && 
-                        (schedule.Route!.RouteDetails.Last().ArrivalStationId != to || 
-                        schedule.Route!.RouteDetails.First().DepartureStationId!=from) || 
-                        schedule.Route!.RouteDetails.Count ==1 && (schedule.Route!.RouteDetails.FirstOrDefault().ArrivalStationId!=to || schedule.Route!.RouteDetails.FirstOrDefault().DepartureStationId!=from) ||
-                        schedule.Departure.Date != startTime.Date || 
-                        schedule.Route.RouteDetails.Count ==0 )
+                    bool checkRoute1 = schedule.Route!.RouteDetails.Count > 1 && (schedule.Route!.RouteDetails.Last().ArrivalStationId != to || schedule.Route!.RouteDetails.First().DepartureStationId != from);
+                    bool checkRoute2 = schedule.Route!.RouteDetails.Count == 1 && (schedule.Route!.RouteDetails!.FirstOrDefault().ArrivalStationId != to || schedule.Route!.RouteDetails!.FirstOrDefault().DepartureStationId != from);
+                    if (checkRoute1 || checkRoute2||
+                        schedule.Route.RouteDetails.Count ==0 || schedule.Departure.Date < startTime.Date)
                     {
                         filter.Add(schedule);
                     }
