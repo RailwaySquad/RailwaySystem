@@ -2,6 +2,7 @@
 @using System.Globalization;
 @{
     Layout = null;
+
 }
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -55,45 +56,20 @@
                     </div>
                 </div>
             </div>
-            <p>Select month: @ViewBag.SelectedMonth</p>
-            <p>Select Yeat: @ViewBag.SelectedYear</p>
             <!-- row -->
             <div class="row">
-                <div class="col-6">
-                    <form asp-controller="ScheduleMaster" asp-action="SearchByDatetime" method="post" >
+                <div class="col-3">
+                    <form asp-controller="ScheduleMaster" asp-action="SearchByDatetime" method="post" id="DateTimeForm">
                         <div>
                             <label for="monthSelect">Select </label>
                         </div>
-                        <div>
-                            <input class="form-select" type="month" name="date">
-                            <input type="submit">
+                        <div>                           
+                            <input class="form-select" id="monthInput" type="month" name="date"  onchange="submitDateTimeForm()">
                         </div>
                     </form>
                 </div>
 
-                <div class="col-6">
-                    <form asp-controller="ScheduleMaster" asp-action="SearchByYear" method="post" id="yearForm">
-                        <div>
-                            <label for="yearSelect">Select Year:</label>
-                        </div>
-                        <div>
 
-                            <select class="form-select" id="yearSelect" name="year" onchange="submitYearForm()">
-                                <option>select year</option>
-                                @for (int i = DateTime.Now.Year; i >= 2012; i--)
-                                {
-                                    if(i == DateTime.Now.Year)
-                                    {
-                                        <option value="@i" style="display:none;" selected>@i</option>
-                                    }
-
-                                        <option value="@i">@i</option>                                 
-                                }
-                            </select>
-                        </div>
-
-                    </form>
-                </div>
             </div>
 
 
@@ -107,8 +83,8 @@
                 </script>
             }
             
-            <div class="calendar_default_main" style="position: relative; width: 100%; visibility: visible; cursor: auto;">
-                <div style="overflow: auto;">
+            <div class="calendar_default_main" style="position: relative; width: 100%; visibility: visible; cursor: auto;border-radius: 5px;">
+                <div >
                     <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; border-collapse: separate; border: 0px none;">
                         <tbody>
                             <tr>
@@ -156,11 +132,7 @@
                                         </tbody>
                                     </table>
                                 </td>
-                                <td>
-                                    <div class="calendar_default_cornerright" style="position: relative; width: 17px; height: 30px;">
-                                        <div class="calendar_default_cornerright_inner"></div>
-                                    </div>
-                                </td>
+                                
                             </tr>
                         </tbody>
                     </table>
@@ -175,31 +147,28 @@
                                         <div style="position: relative;">
                                             <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; border: 0px none; table-layout: fixed;">
                                                 <tbody>
+                                                    
                                                     <tr class="borderTable">
                                                         @foreach (var dayOfWeek in Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>())
                                                         {
                                                             <td class="borderTable" style="padding: 0px; border: 0px none; vertical-align: top; height: 30px; overflow: hidden;">
                                                                 @{
-                                                                    var schedulesForDay = Model.Where(s => s.Departure.DayOfWeek == dayOfWeek).ToList();
+                                                                    var dailySchedules = Model
+                                                                    .Where(s => s.Departure.DayOfWeek == dayOfWeek)
+                                                                    .GroupBy(s => s.Departure.Date)
+                                                                    .Select(group => new { Departure = group.Key, Count = group.Count() })
+                                                                    .ToList();
                                                                 }
-                                                                @if (schedulesForDay.Any())
+
+                                                                @foreach (var item in dailySchedules)
                                                                 {
                                                                     <div class="calendar_default_cell" style="height: 100px; position: relative;">
-                                                                        <div unselectable="on" class="calendar_default_cell_inner true">
-                                                                            @foreach (var item in schedulesForDay)
-                                                                            {
-                                                                                <a href="@Url.Action("DetailDate", new { Departure = item.Departure })" target="_blank">
-                                                                                    <div >
-                                                                                        @if (item == schedulesForDay.First())
-                                                                                        {
-                                                                                            <div>
-                                                                                                <div>Schedule Total: @schedulesForDay.Count</div>
-                                                                                                <div>@item.Departure.ToString("dd/MM/yyyy")</div>
-                                                                                            </div>
-                                                                                        }
-                                                                                    </div>
-                                                                                </a>
-                                                                            }
+                                                                        <div style="color:green" unselectable="on" class="calendar_default_cell_inner true">
+                                                                            <a href="@Url.Action("DetailDate", new { Departure = item.Departure })">
+                                                                                <div>Total Schedule: @item.Count</div>
+                                                                                <div>@item.Departure.ToShortDateString()</div>
+                                                                            </a>
+                                                                            
                                                                         </div>
                                                                     </div>
                                                                 }
@@ -257,6 +226,22 @@
 
 </div>
 <script>
+    // Lấy phần tử input month
+    const monthInput = document.getElementById('monthInput');
+
+    // Kiểm tra xem local storage có giá trị hay không
+    const savedMonth = localStorage.getItem('selectedMonth');
+
+    // Nếu có giá trị, đặt giá trị cho input month
+    if (savedMonth) {
+        monthInput.value = savedMonth;
+    }
+
+    // Lắng nghe sự kiện khi giá trị thay đổi
+    monthInput.addEventListener('change', function () {
+        // Lưu giá trị vào local storage khi giá trị thay đổi
+        localStorage.setItem('selectedMonth', this.value);
+    });
 	function confirmDelete() {
 		var result = confirm("Do you want to delete?");
 		return result;
@@ -264,9 +249,10 @@
     function submitYearForm() {
         document.getElementById("yearForm").submit();
     }
-    function submitMonthForm() {
-        document.getElementById("monthForm").submit();
+    function submitDateTimeForm() {
+        document.getElementById("DateTimeForm").submit();
     }
+    
 </script>
 <partial name="_AdminFooter" />
 

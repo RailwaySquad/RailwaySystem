@@ -20,10 +20,17 @@ namespace Railway_Group01.Controllers.Admin
 			this.ctx = ctx;
 			this.userManager = userManager;
 		}
-		public async Task<IActionResult> UserManager()
+		public async Task<IActionResult> UserManager(int page = 1, int pageSize = 10)
 		{
-			var user = await ctx.Users!.ToListAsync();
-			return View(user);
+			var totalItemCount = await ctx.Users.CountAsync(); // Đếm tổng số mục
+			var users = await ctx.Users!.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+			ViewBag.Users = users;
+			ViewBag.Page = page;
+			ViewBag.PageSize = pageSize;
+			ViewBag.TotalItemCount = totalItemCount;
+
+			return View(users);
 		}
 		public async Task<IActionResult> CreateUser()
 		{

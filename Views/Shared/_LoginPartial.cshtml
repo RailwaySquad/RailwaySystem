@@ -10,7 +10,7 @@
     {
         
         <li class="nav-item">
-            <a id="manage" class="nav-link header-nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">
+            <a id="manage" class="nav-link header-nav-link" asp-area="" asp-controller="DashBoard" asp-action="DashBoard">
                 <span>
                     <img src="/images/Admin.jpg" alt="" width="30px" height="auto" />
                     @UserManager.GetUserName(User)

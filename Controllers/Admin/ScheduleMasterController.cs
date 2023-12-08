@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Railway_Group01.Data;
 using Railway_Group01.Models;
+using Railway_Group01.Models.ViewModels;
 using System.Globalization;
 
 namespace Railway_Group01.Controllers.Admin
@@ -18,50 +19,25 @@ namespace Railway_Group01.Controllers.Admin
 		}
 		public async Task<IActionResult> TrainSchedule()
 		{
+
 			var schedule = await ctx.Schedules!
+				.Where(s=>s.Departure.Month == DateTime.Now.Month
+				&& s.Departure.Year == DateTime.Now.Year)
 				.Include(s=>s.Train)
 				.Include(s=>s.Route.StartStation)
                 .Include(s=>s.Route.EndStation)
                 .OrderBy(s => s.Departure)
                 .ToListAsync();
-			return View(schedule);
+            
+            return View(schedule);
 		}
-		[HttpPost]
-        public async Task<IActionResult> SearchByMonth(int month)
-        {
-            ViewBag.SelectedMonth = month;
-            var schedules = await ctx.Schedules
-                .Where(s => s.Departure.Month == month)
-                .Include(s => s.Train)
-                .Include(s => s.Route.StartStation)
-                .Include(s => s.Route.EndStation)
-                .OrderBy(s => s.Departure)
-                .ToListAsync();
-            
-            return View("TrainSchedule", schedules);
-        }
-		[HttpPost]
-        public async Task<IActionResult> SearchByYear(int year)
-        {
-            ViewBag.SelectedYear = year;
-            var schedules = await ctx.Schedules
-                .Where(s => s.Departure.Year == year)
-                .Include(s => s.Train)
-                .Include(s => s.Route.StartStation)
-                .Include(s => s.Route.EndStation)
-                .OrderBy(s => s.Departure)
-                .ToListAsync();
-            
-
-            return View("TrainSchedule", schedules);
-        }
         [HttpPost]
         public async Task<IActionResult> SearchByDatetime(string date)
         {
             // Chuyển đổi string thành DateTime bằng cách thêm ngày 1
             DateTime selectedDate = DateTime.ParseExact(date + "-01", "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
-            var schedules = await ctx.Schedules
+            var schedule = await ctx.Schedules
                 .Where(s => s.Departure.Year == selectedDate.Year && s.Departure.Month == selectedDate.Month)
                 .Include(s => s.Train)
                 .Include(s => s.Route.StartStation)
@@ -69,8 +45,9 @@ namespace Railway_Group01.Controllers.Admin
                 .OrderBy(s => s.Departure)
                 .ToListAsync();
 
-            return View("TrainSchedule", schedules);
+            return View("TrainSchedule", schedule);
         }
+
         public async Task<IActionResult> CreateTrainSchedule()
 {
             var listTrain = await ctx.Trains!.ToListAsync();
@@ -129,6 +106,29 @@ namespace Railway_Group01.Controllers.Admin
 			TempData["SuccessMessage"] = "Schedule Edit successfully.";
 			return RedirectToAction("TrainSchedule");
 		}
+		[HttpPost]
+		public async Task<IActionResult> EditStatusSchedule(int id, bool isfinished)
+		{
+			var schedule = await ctx.Schedules!
+				.Include(s=>s.Train)
+				.ThenInclude(c=>c.Coaches)
+				.ThenInclude(s=>s.Seats)
+				.SingleOrDefaultAsync(s=>s.Id==id);
+			schedule.IsFinished = isfinished;
+            if (isfinished)
+            {
+                foreach (var coach in schedule.Train.Coaches)
+                {
+                    foreach (var seat in coach.Seats)
+                    {
+                        seat.Available = false;
+                    }
+                }
+            }
+            ctx.Entry(schedule).State= EntityState.Modified;
+			await ctx.SaveChangesAsync();
+			return RedirectToAction("DetailDate",schedule);
+		}
 		public async Task<IActionResult> DeleteTrainSchedule(int id)
 		{
 			var schedule = await ctx.Schedules!.SingleOrDefaultAsync(s=>s.Id==id);
@@ -149,8 +149,7 @@ namespace Railway_Group01.Controllers.Admin
                 .Include(s => s.Train)
                 .Include(s => s.Route.StartStation)
                 .Include(s => s.Route.EndStation)
-                .ToListAsync();
-
+				.ToListAsync();
             return View(schedules);
         }
     }

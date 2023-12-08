@@ -32,5 +32,6 @@ namespace Railway_Group01.Data
 
         public List<Ticket>? Tickets { get; set; }
         public List<BookingDetail>? BookingDetails { get; set; }
+
     }
 }
