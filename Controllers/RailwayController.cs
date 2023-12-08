@@ -324,52 +324,41 @@ namespace Railway_Group01.Controllers
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> SearchTrain(TrainSearchModel searchTrain) {
-            IEnumerable<Schedule> schedu = await ctx.Schedules!.Where(x => x.TrainCode == searchTrain.TrainCode)
+            searchTrain.StartDate = searchTrain.StartDate == null ? DateTime.Now : searchTrain.StartDate;
+            Console.WriteLine(searchTrain.StartDate.Month+" "+searchTrain.StartDate.Year);
+            IEnumerable<Schedule> schedu = await ctx.Schedules!.Where(x => x.TrainCode == searchTrain.TrainCode && x.Departure.Month == searchTrain.StartDate.Month && x.Departure.Year == searchTrain.StartDate.Year)
                                                                 .Include(x => x.Route)
                                                                 .Include(x => x.Route.RouteDetails)
                                                                 .Include(x => x.Train)
                                                                 .Include(train => train.Train.Coaches)
                                                                 .ToListAsync();
-            if(schedu == null)
-            {
-                return RedirectToAction("Error404", new { type = "train" });
-            }
-            if (searchTrain.StartDate != null)
-            {
-                searchTrain.TrainSchedule = await ctx.Schedules!.Include(x => x.Train)
-                                                                .Include(x=> x.Route)
-                                                                .Include(x=> x.Train.Coaches)
-                                                                .Include(x=> x.Route.RouteDetails)
-                                                                .Where(x=> x.TrainCode==searchTrain.TrainCode && x.Departure.Date <= searchTrain.StartDate.Date)
-                                                                .FirstOrDefaultAsync();
-            }
-            else
-            {
-                searchTrain.TrainSchedule = await ctx.Schedules!.Include(x => x.Train)
-                                                                .Include(train => train.Train.Coaches)
-                                                                .Include(x => x.Route)
-                                                                .Include(x => x.Route.RouteDetails)
-                                                                .Where(x => x.Name.Contains(searchTrain.TrainCode))
-                                                                .FirstOrDefaultAsync();
-                searchTrain.StartDate = searchTrain.TrainSchedule.Departure.Date; 
-            }
+
+            searchTrain.TrainSchedule = await ctx.Schedules!.Include(x => x.Train)
+                                                            .Include(x=> x.Route)
+                                                            .Include(x=> x.Train.Coaches)
+                                                            .Include(x=> x.Route.RouteDetails)
+                                                            .Where(x=> x.TrainCode==searchTrain.TrainCode && x.Departure.Date <= searchTrain.StartDate.Date && x.Arrival>=searchTrain.StartDate.Date)
+                                                            .FirstOrDefaultAsync();
             List<DateTime> time = new List<DateTime>();
-            foreach (var item in schedu)
+            if(schedu !=null && schedu.Count() >= 1)
             {
-                int travel = 0;
-                foreach (var routeDt in item.Route.RouteDetails)
+                foreach (var item in schedu)
                 {
-                    DateTime time2 = item.Departure.AddMinutes(travel).Date;
-                    travel += routeDt.TravelTime + routeDt.DelayTime;
-                    if (!time.Contains(time2))
+                    int travel = 0;
+                    foreach (var routeDt in item.Route!.RouteDetails!)
                     {
-                        time.Add(time2);
+                        DateTime time2 = item.Departure.AddMinutes(travel).Date;
+                        travel += routeDt.TravelTime + routeDt.DelayTime;
+                        if (!time.Contains(time2))
+                        {
+                            time.Add(time2);
+                        }
                     }
                 }
             }
             if (searchTrain.TrainSchedule != null && searchTrain.TrainSchedule.Train !=null && searchTrain.TrainSchedule.Route !=null) {
                 int travelT = 0;
-                foreach (var routedt in searchTrain.TrainSchedule.Route.RouteDetails)
+                foreach (var routedt in searchTrain.TrainSchedule!.Route!.RouteDetails)
                 {
                     DateTime departureTime = searchTrain.TrainSchedule.Departure.AddMinutes(travelT);
                     travelT += routedt.TravelTime + routedt.DelayTime;
