@@ -34,11 +34,15 @@ namespace Railway_Group01.Controllers
             {
                 case "schedule":
                     ViewData["message_title"] = "Not Found Schedule";
-                    ViewData["message_detail"] = "Sorry we can not found any schedule you want. Back to Home Page and try again";
+                    ViewData["message_detail"] = "Sorry we can not see any schedule you want. Back to Home Page and try again";
                     break;
                 case "train":
                     ViewData["message_title"] = "Not Found Train";
-                    ViewData["message_detail"] = "Sorry we can not found any train you searching. Back to Home Page and try again";
+                    ViewData["message_detail"] = "Sorry we can not see any train you want. Back to Home Page and try again";
+                    break;
+                case "station":
+                    ViewData["message_title"]= "Not Found Station";
+                    ViewData["message_detail"] = "Sorry we can not see any station you want. Back to Home Page and try agan";
                     break;
                 default:
                     ViewData["message_title"] = "Error 404 Not Found ";
@@ -313,6 +317,7 @@ namespace Railway_Group01.Controllers
             int stop = await ctx.RouteDetails!.Where(x => x.RouteId == sche.RouteId && (departureId > arrivalId ? (x.DepartureStationId <=departureId && x.ArrivalStationId >= arrivalId): (x.DepartureStationId >= departureId && x.ArrivalStationId <= arrivalId))).CountAsync();
             ViewData["Start"] = start;
             ViewData["End"] = end;
+            
             var tuple = new Tuple<Schedule, Train,Station,Station,int,int>(sche, train,startStation,endStation,stop,duration);
             return View(tuple);
         }
@@ -333,7 +338,6 @@ namespace Railway_Group01.Controllers
         }
         public async Task<IActionResult> SearchTrain(TrainSearchModel searchTrain) {
             searchTrain.StartDate = searchTrain.StartDate == null ? DateTime.Now : searchTrain.StartDate;
-            Console.WriteLine(searchTrain.StartDate.Month+" "+searchTrain.StartDate.Year);
             IEnumerable<Schedule> schedu = await ctx.Schedules!.Where(x => x.TrainCode == searchTrain.TrainCode && x.Departure.Month == searchTrain.StartDate.Month && x.Departure.Year == searchTrain.StartDate.Year)
                                                                 .Include(x => x.Route)
                                                                 .Include(x => x.Route.RouteDetails)
@@ -364,35 +368,124 @@ namespace Railway_Group01.Controllers
                     }
                 }
             }
-            if (searchTrain.TrainSchedule != null && searchTrain.TrainSchedule.Train !=null && searchTrain.TrainSchedule.Route !=null) {
+            else
+            {
+                return RedirectToAction("Error404", new { type = "train" });
+            }
+            if (searchTrain.TrainSchedule != null && searchTrain.TrainSchedule.Train != null && searchTrain.TrainSchedule.Route != null)
+            {
                 int travelT = 0;
                 foreach (var routedt in searchTrain.TrainSchedule!.Route!.RouteDetails)
                 {
                     DateTime departureTime = searchTrain.TrainSchedule.Departure.AddMinutes(travelT);
                     travelT += routedt.TravelTime + routedt.DelayTime;
-                    if(departureTime.Date != searchTrain.StartDate.Date)
+                    if (departureTime.Date != searchTrain.StartDate.Date)
                     {
                         searchTrain.RouteDetails.Add(routedt);
                     }
                 }
                 foreach (var item in searchTrain.TrainSchedule.Train.Coaches)
                 {
-                    item.Class = await ctx.CoachClasses!.Where(x => x.Code == item.ClassCode).FirstOrDefaultAsync();                      
+                    item.Class = await ctx.CoachClasses!.Where(x => x.Code == item.ClassCode).FirstOrDefaultAsync();
                 }
                 foreach (var item in searchTrain.TrainSchedule.Route.RouteDetails)
                 {
-                    item.DepartureStation = await ctx.Stations!.FirstOrDefaultAsync(x=>x.Id == item.DepartureStationId);
+                    item.DepartureStation = await ctx.Stations!.FirstOrDefaultAsync(x => x.Id == item.DepartureStationId);
                     item.ArrivalStation = await ctx.Stations!.FirstOrDefaultAsync(x => x.Id == item.ArrivalStationId);
                 }
+            }
+            else
+            {
+                return RedirectToAction("Error404", new { type = "train" });
             }
             
             ViewData["OtherSchedules"] = time;
             ViewData["SelectTrain"] = GetTrainSelectList(searchTrain.TrainCode);
             return View(searchTrain);
         }
-        public IActionResult SearchStation(StationSearchModel searchStation) {
-            return View();
+        public async Task<IActionResult> SearchStation(StationSearchModel searchStation) {
+            if(searchStation.Station==null)
+            {
+                return RedirectToAction("Error404", new { type = "station" }); 
+            }
+            List<int> routeIdPassSt = await ctx.RouteDetails!.Where(x => x.DepartureStationId == searchStation.Station).Select(x => x.RouteId).ToListAsync();
+            List<Schedule>? schedules = await ctx.Schedules!.Include(x => x.Route).Include(x=>x.Route.RouteDetails).Where(x => x.Departure <= searchStation.StartDate && x.Arrival >= searchStation.StartDate && routeIdPassSt.Contains(x.RouteId)).ToListAsync();
+            searchStation.Schedules = new List<Schedule>();
+            int start = 0;
+            int delay1 = 0;
+            int end = 0;
+            int delay2 = 0;
+            if (schedules != null)
+            {
+                foreach (var sc in schedules)
+                {
+                    Schedule newschedule = new Schedule { 
+                        Id=sc.Id,
+                        Name=sc.Name,
+                        TrainCode = sc.TrainCode,
+                        IsFinished = sc.IsFinished,
+                        RouteId = sc.RouteId,
+                    }; 
+                    newschedule.Train = await ctx.Trains!.Include(x => x.Coaches).Include(x => x.Type).FirstOrDefaultAsync(x => x.Code == sc.TrainCode);
+                    if (newschedule.Train != null && newschedule.Train.Coaches != null)
+                    {
+                        foreach (var coach in newschedule.Train.Coaches)
+                        {
+                            coach.Class = await ctx.CoachClasses!.Where(x => x.Code == coach.ClassCode).FirstOrDefaultAsync();
+                        }
+                    }
+                    newschedule.Route = await ctx.Routes!.Include(x => x.StartStation).Include(x => x.EndStation).FirstOrDefaultAsync(x => x.Id == sc.RouteId);
+                    newschedule.Route.RouteDetails = await ctx.RouteDetails!.Include(x=>x.DepartureStation).Include(x=>x.ArrivalStation)
+                                                                            .Where(x=>x.DepartureStationId == searchStation.Station && x.RouteId==sc.RouteId &&x.Distance>0).ToListAsync();
+                    if(newschedule.Route!=null&& newschedule.Route.RouteDetails !=null )
+                    {
+                        if(newschedule.Route!.RouteDetails!.FirstOrDefault().DepartureStationId < newschedule.Route.RouteDetails.LastOrDefault().ArrivalStationId)
+                        {
+                            start = await ctx.RouteDetails!.Where(x => x.DepartureStationId < newschedule.Route.RouteDetails.FirstOrDefault().DepartureStationId && x.RouteId == newschedule.RouteId)
+                                                                        .Select(x => x.TravelTime).SumAsync();
+                            delay1 = await ctx.RouteDetails!.Where(x => x.DepartureStationId < newschedule.Route.RouteDetails.FirstOrDefault().DepartureStationId && x.RouteId == newschedule.RouteId)
+                                                                        .Select(x => x.DelayTime).SumAsync();
+
+                            end = await ctx.RouteDetails!.Where(x => x.ArrivalStationId <= newschedule.Route.RouteDetails.LastOrDefault().ArrivalStationId && x.RouteId == newschedule.RouteId)
+                                                                        .Select(x => x.TravelTime).SumAsync();
+                            delay2 = await ctx.RouteDetails!.Where(x => x.ArrivalStationId <= newschedule.Route.RouteDetails.LastOrDefault().ArrivalStationId && x.RouteId == newschedule.RouteId)
+                                                                        .Select(x => x.DelayTime).SumAsync();
+                        }
+                        else
+                        {
+                            start = await ctx.RouteDetails!.Where(x => x.DepartureStationId > newschedule.Route.RouteDetails.FirstOrDefault().DepartureStationId && x.RouteId == newschedule.RouteId)
+                                                                       .Select(x => x.TravelTime).SumAsync();
+                            delay1 = await ctx.RouteDetails!.Where(x => x.DepartureStationId < newschedule.Route.RouteDetails.FirstOrDefault().DepartureStationId && x.RouteId == newschedule.RouteId)
+                                                                        .Select(x => x.DelayTime).SumAsync();
+
+                            end = await ctx.RouteDetails!.Where(x => x.ArrivalStationId >= newschedule.Route.RouteDetails.LastOrDefault().ArrivalStationId && x.RouteId == newschedule.RouteId)
+                                                                        .Select(x => x.TravelTime).SumAsync();
+                            delay2 = await ctx.RouteDetails!.Where(x => x.ArrivalStationId <= newschedule.Route.RouteDetails.LastOrDefault().ArrivalStationId && x.RouteId == newschedule.RouteId)
+                                                                        .Select(x => x.DelayTime).SumAsync();
+                        }
+                        newschedule.Departure = sc.Departure.AddMinutes(start+delay1);
+                        newschedule.Arrival = sc.Departure.AddMinutes(end+delay2);
+                        if(newschedule.Departure.Date == searchStation.StartDate.Date)
+                        {
+                            searchStation.Schedules.Add(newschedule);
+                        }
+                    }
+                }
+            }
+            ViewData["SelectStation"] = GetStationSelectList((int) searchStation.Station);
+            return View(searchStation);
         }
+        public IActionResult TrainSeatAvailability()
+        {
+            RailwayIndexModel railwayIndexModel = new()
+            {
+                SelectListItems = GetStationSelectList(),
+                SelectListTrains = GetTrainSelectList()
+            };
+            return View(railwayIndexModel);
+        }
+
+
     }
 }
 
