@@ -34,7 +34,7 @@ namespace Railway_Group01.Data
 
         public List<BookingDetail>? BookingDetails { get; set; }
 
-        public List<int>? ListOfBookedSeatId { get; set; }
+        public List<Seat>? ListOfBookedSeatId { get; set; }
 
         public override string ToString()
         {
