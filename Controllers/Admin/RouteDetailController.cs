@@ -17,15 +17,21 @@ namespace Railway_Group01.Controllers.Admin
 		{
 			this.ctx = ctx;
 		}
-		public async Task<IActionResult> RouteDetailList()
+		public async Task<IActionResult> RouteDetailList(int page = 1, int pageSize = 10)
 		{
-			var route = await ctx.RouteDetails!
+            var totalItemCount = await ctx.RouteDetails.CountAsync();
+            var route = await ctx.RouteDetails!
 				.Include(r=>r.ArrivalStation)
 				.Include(r=>r.DepartureStation)
 				.Include(r=>r.Route.StartStation)
 				.Include(r => r.Route.EndStation)
+				.Skip((page - 1) * pageSize).Take(pageSize)
 				.ToListAsync();
-			return View(route);
+            ViewBag.RouteDetails = route;
+            ViewBag.Page = page;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalItemCount = totalItemCount;
+            return View(route);
 		}
 		public async Task<IActionResult> CreateRouteDetail()
 		{
