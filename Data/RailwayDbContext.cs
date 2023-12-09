@@ -69,6 +69,7 @@ public class RailwayDbContext : IdentityDbContext<User>
         .HasOne(e => e.Ticket)
         .WithOne(e => e.Passenger)
         .HasForeignKey<Ticket>(e => e.PassengerID)
+        .OnDelete(DeleteBehavior.NoAction)
         .IsRequired();
 
         // Booking Detail 1:1 Passenger
