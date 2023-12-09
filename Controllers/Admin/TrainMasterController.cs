@@ -14,10 +14,17 @@ namespace Railway_Group01.Controllers.Admin
 		{
 			this.ctx = ctx;
 		}
-		public async Task<IActionResult> TrainMaster()
+		public async Task<IActionResult> TrainMaster(int page = 1, int pageSize = 10)
 		{
-			var train = await ctx.Trains!.ToListAsync();
-			return View(train);
+			var totalItemCount = await ctx.Trains.CountAsync(); // Đếm tổng số mục
+			var trains = await ctx.Trains!.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+			ViewBag.Trains = trains;
+			ViewBag.Page = page;
+			ViewBag.PageSize = pageSize;
+			ViewBag.TotalItemCount = totalItemCount;
+
+			return View(trains);
 		}
 		public async Task<IActionResult> CreateTrain()
 		{
