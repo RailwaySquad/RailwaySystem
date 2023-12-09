@@ -50,23 +50,22 @@
             <thead>
                 <tr>
                     <th class="text-center">No</th>
+                    <th class="text-center">Passenger detail</th>
                     <th class="text-center">Ticket detail</th>
                     <th class="text-center">Price <br /> ($)</th>
-                    <th class="text-center">Discount <br /> ($)</th>
-                    <th class="text-center">Sub total<br />($)</th>
                 </tr>
             </thead>
             <tbody>
-                @if (Model != null && Model.TicketList != null && Model.TicketList.Count > 0)
-                    foreach (var item in Model.TicketList)
+                @if (Model != null && Model.InfoList != null && Model.InfoList.Count > 0)
+                    foreach (var item in Model.InfoList)
                     {
                         <tr>
-                            <td>@cnt++</td>
+                            <td class="text-center">@(cnt++)</td>
                             <td>
-                                <p>Full name: Vo minh tu</p>
-                                <p>Age: Adult</p>
-                                <p>Citizen number: 056098002987</p>
-                                <p>Trip:</p>
+                                <p>Full name: @item.Name</p>
+                                <p>Age: @item.PassengerType</p>
+                                <p>Citizen Number: @item.ID</p>
+                                <p>Bithday: @item.Birthday</p>
                             </td>
                             <td class="small text-center">
                                 @item.ScheduleName <br />
@@ -76,19 +75,13 @@
                                 Class: @item.CoachClassName<br />
                             </td>
                             <td class="text-center">
-                                @item.Price.ToString("0.00");
-                            </td>
-                            <td class="text-center">
-                                @((item.DiscountPercent * item.Price).ToString("0.00")) ;
-                            </td>
-                            <td class="text-center">
-                                @((item.Price - item.Price * item.DiscountPercent / 100).ToString("0.00"))
+                                @item.Price.ToString("0.00")
                             </td>
                         </tr>
                     }
                 <tr class="table-info">
-                    <td colspan="2"><p class="text-end fw-bold">Total</p></td>
-                    <td class="text-center">???</td>
+                    <td colspan="3"><p class="text-end fw-bold">Total</p></td>
+                    <td class="text-center">@(Model.GrandTotal.ToString("0.00"))</td>
                 </tr>
             </tbody>
         </table>
@@ -97,7 +90,7 @@
     <section>
         <div class="d-flex justify-content-between">
             <a asp-action="Index" class="btn btn-orange fw-bold">👈 Fill again</a>
-            <a asp-action="MakePayment" class="btn btn-orange fw-bold">Make Payment 👉</a>
+            <a asp-action="MakePayment" asp-route-id="@Model.BookingId" class="btn btn-orange fw-bold">Make Payment 👉</a>
         </div>
     </section>
 </div>

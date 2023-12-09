@@ -11,9 +11,11 @@ namespace Railway_Group01.Models.ViewModels
 
         public User? User { get; set; }
 
-        public decimal Total { get; set; }
+        public decimal GrandTotal { get; set; }
 
-        public List<CartJoinPassenger>? TicketList { get; set; }
+        public List<CartJoinPassenger>? InfoList { get; set; }
+
+        public int BookingId { get; set; }
     }
 
     public class CartJoinPassenger
@@ -26,9 +28,8 @@ namespace Railway_Group01.Models.ViewModels
 
         public string? PassengerType { get; set; }
 
-        public int DiscountPercent { get; set; }
         public int SeatId { get; set; }
-
+        public int ScheduleId { get; set; }
         public string? ScheduleName { get; set; }
         public string? Trip { get; set; }
         public string? StartAt { get; set; }

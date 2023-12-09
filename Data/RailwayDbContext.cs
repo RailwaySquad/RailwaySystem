@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.CodeAnalysis.Emit;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using System.Reflection.Emit;
 
 namespace Railway_Group01.Data;
@@ -68,6 +69,13 @@ public class RailwayDbContext : IdentityDbContext<User>
         .HasOne(e => e.Ticket)
         .WithOne(e => e.Passenger)
         .HasForeignKey<Ticket>(e => e.PassengerID)
+        .IsRequired();
+
+        // Booking Detail 1:1 Passenger
+        builder.Entity<BookingDetail>()
+        .HasOne(e => e.Passenger)
+        .WithOne(e => e.BookingDetail)
+        .HasForeignKey<Passenger>(e => e.BookingDetailId)
         .IsRequired();
 
         // Station 1:m Route

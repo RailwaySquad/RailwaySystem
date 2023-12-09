@@ -227,7 +227,7 @@
                     for (let i = 0; i < subTotals.length; i++) {
                         total += +subTotals[i].textContent
                     }
-                    totalElement.textContent = total;
+                    totalElement.textContent = parseFloat(total).toFixed(2);
                 },
                 error: function (e) {
                     console.error(e);
