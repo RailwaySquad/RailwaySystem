@@ -11,6 +11,8 @@ namespace Railway_Group01.Data
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
 
+        public string? Trip { get; set; }
+
         [Required]
         public Seat? Seat { get; set; }
         public int SeatId { get; set; }

@@ -33,7 +33,7 @@
 
     <section>
         <div class="d-flex justify-content-between">
-            <a asp-controller="Booking" asp-action="ConfirmInformation" class="btn btn-orange fw-bold">👈 Back 🔙</a>
+            <a href="@ViewBag.returnUrl" class="btn btn-orange fw-bold">👈 Back</a>
             <a asp-action="Pay" class="btn btn-orange fw-bold">⏭️ Pay 👉</a>
         </div>
     </section>

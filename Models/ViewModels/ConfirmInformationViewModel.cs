@@ -26,7 +26,7 @@ namespace Railway_Group01.Models.ViewModels
 
         public DateTime Birthday { get; set; }
 
-        public string? PassengerType { get; set; }
+        public PassengerType? PassengerType { get; set; }
 
         public int SeatId { get; set; }
         public int ScheduleId { get; set; }
