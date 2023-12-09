@@ -31,7 +31,11 @@ namespace Railway_Group01.Data
         public int RouteId { get; set; }
 
         public List<Ticket>? Tickets { get; set; }
+
         public List<BookingDetail>? BookingDetails { get; set; }
+
+        public List<Seat>? ListOfBookedSeatId { get; set; }
+
         public override string ToString()
         {
             string st =  $"Schedule {this.Id}:\n{this.Name}\n";

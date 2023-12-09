@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Railway_Group01.Data.Train>
+﻿@model IEnumerable<Railway_Group01.Data.Seat>
 @{
 	Layout = null;
 }
@@ -19,7 +19,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta content="Codescandy" name="author">
-<title>Train Master</title>
+<title>Seat List</title>
 <!-- Favicon icon-->
 
 <partial name="_AdminHeader" />
@@ -255,12 +255,12 @@
 					<!-- page header -->
 					<div class="d-md-flex justify-content-between align-items-center">
 						<div>
-							<h2>Trains</h2>
+							<h2>Seat</h2>
 							<!-- breacrumb -->
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb mb-0">
 									<li class="breadcrumb-item"><a href="/Admin/Index" class="text-inherit">Dashboard</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Trains</li>
+									<li class="breadcrumb-item active" aria-current="page">Seat List</li>
 								</ol>
 							</nav>
 						</div>
@@ -308,21 +308,25 @@
 								<table class="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
 									<thead class="bg-light">
 										<tr>
-											<th class="colerth">Train Code</th>
-											<th class="colerth">Status</th>
-											<th class="colerth">Type</th>
+											<th class="colerth">Id</th>
+											<th class="colerth">Seat No</th>
+											<th class="colerth">Availabe</th>
+											<th class="colerth">CompartmentNo</th>
+											<th class="colerth">Coach Id</th>
 											<th class="colerth">Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										@foreach(var item in Model)
-										{										
+										@foreach (var item in Model)
+										{
 											<tr>
-												<td>@item.Code</td>
+												<td>@item.Id</td>
+												<td>@item.SeatNo</td>
 												<td>
-													<span class="badge bg-light-primary text-dark-primary">@item.IsRunning</span>
+													<span class="badge bg-light-primary text-dark-primary">@item.Available</span>
 												</td>
-												<td>@item.TypeCode</td>
+												<td>@item.CompartmentNo</td>
+												<td>@item.CoachId</td>
 												<td>
 													<div class="dropdown">
 														<a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
@@ -330,7 +334,7 @@
 														</a>
 														<ul class="dropdown-menu">
 															<li>
-																<form asp-action="DeleteTrain" asp-route-id="@item.Code" onsubmit="return confirmDelete()">
+																<form asp-action="DeleteTrain" asp-route-id="@item.Id" onsubmit="return confirmDelete()">
 																	<button class="dropdown-item" type="submit">
 																		<i class="bi bi-trash me-3"></i>
 																		Delete
@@ -338,7 +342,7 @@
 																</form>
 															</li>
 															<li>
-																<a class="dropdown-item" href="@Url.Action("EditTrain", new {id = item.Code})">
+																<a class="dropdown-item" href="@Url.Action("EditTrain", new {id = item.Id})">
 																	<i class="bi bi-pencil-square me-3"></i>
 																	Edit
 																</a>
@@ -346,7 +350,7 @@
 														</ul>
 													</div>
 												</td>
-											</tr>									
+											</tr>
 										}
 									</tbody>
 								</table>
@@ -357,7 +361,7 @@
 							<nav class="mt-2 mt-md-0">
 								<ul class="pagination mb-0">
 									@{
-										var trains = ViewBag.Trains as IEnumerable<Railway_Group01.Data.Train>;
+										var seat = ViewBag.Seats as IEnumerable<Railway_Group01.Data.Seat>;
 										var page = ViewBag.Page;
 										var pageSize = ViewBag.PageSize;
 										var totalItemCount = ViewBag.TotalItemCount;
@@ -378,7 +382,7 @@
 											@if (hasPreviousPage)
 											{
 												<li class="page-item">
-													<a class="page-link" href="@Url.Action("TrainMaster", new { page = page - 1, pageSize = pageSize })" aria-label="Previous">
+													<a class="page-link" href="@Url.Action("SeatList", new { page = page - 1, pageSize = pageSize })" aria-label="Previous">
 														<span aria-hidden="true">&laquo;</span>
 													</a>
 												</li>
@@ -387,14 +391,14 @@
 											@for (int i = startPage; i <= endPage; i++)
 											{
 												<li class="page-item @(i == page ? "active" : "")">
-													<a class="page-link" href="@Url.Action("TrainMaster", new { page = i, pageSize = pageSize })">@i</a>
+													<a class="page-link" href="@Url.Action("SeatList", new { page = i, pageSize = pageSize })">@i</a>
 												</li>
 											}
 
 											@if (hasNextPage)
 											{
 												<li class="page-item">
-													<a class="page-link" href="@Url.Action("TrainMaster", new { page = page + 1, pageSize = pageSize })" aria-label="Next">
+													<a class="page-link" href="@Url.Action("SeatList", new { page = page + 1, pageSize = pageSize })" aria-label="Next">
 														<span aria-hidden="true">&raquo;</span>
 													</a>
 												</li>
