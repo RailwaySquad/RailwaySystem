@@ -1,0 +1,99 @@
+﻿<style>
+	.adminNavbar{
+		background-color: #f17e52 !important;
+	}
+	.iconAdminNavbar{
+		color:white;
+	}
+	.iconDashBoard{
+		background-color:black !important;
+	}
+</style>
+<nav class="navbar-vertical-nav d-none d-xl-block">
+	<div class="navbar-vertical adminNavbar">
+		<div class="px-4 py-5">
+			<a href="/Railway/Index" class="navbar-brand">
+				<img src="/images/Logo.png" alt="" width="150px" height="auto"/>
+			</a>
+		</div>
+		<div class="navbar-vertical-content flex-grow-1" data-simplebar="">
+			<ul class="navbar-nav flex-column" id="sideNavbar">
+				<li class="nav-item">
+					<a class="nav-link iconDashBoard  active " href="/DashBoard/DashBoard">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon"><i class="bi bi-house"></i></span>
+							<span class="nav-link-text">Dashboard</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item mt-6 mb-3 ">
+					<span class="nav-label ">Railway Managements</span>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " href="/StationMaster/StationMaster">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon iconAdminNavbar"><i class="bi bi-train-lightrail-front"></i></span>
+							<span class="nav-link-text iconAdminNavbar">Station Master</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " href="/TrainMaster/TrainMaster">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon iconAdminNavbar"><i class="bi bi-train-front"></i></span>
+							<span class="nav-link-text iconAdminNavbar">Trains Master</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " href="/ScheduleMaster/TrainSchedule">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon iconAdminNavbar"><i class="bi bi-calendar"></i></span>
+							<span class="nav-link-text iconAdminNavbar">Trains Schedule</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " href="/UserManager/UserManager">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon iconAdminNavbar"><i class="bi bi-people"></i></span>
+							<span class="nav-link-text iconAdminNavbar">User</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " href="/BookingManager/BookingManager">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon iconAdminNavbar"><i class="bi bi-ticket"></i></span>
+							<span class="nav-link-text iconAdminNavbar">Booking</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " href="/Route/RouteList">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon iconAdminNavbar"><i class='fas fa-route'></i></span>
+							<span class="nav-link-text iconAdminNavbar">Route</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " href="/RouteDetail/RouteDetailList">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon iconAdminNavbar"><i class="fa-sharp fa-solid fa-route"></i></span>
+							<span class="nav-link-text iconAdminNavbar">Route Detail</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " href="/SeatManager/SeatList">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon iconAdminNavbar"><i class="fa-solid fa-seat-airline"></i></span>
+							<span class="nav-link-text iconAdminNavbar">Seat</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

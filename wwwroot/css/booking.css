@@ -1,0 +1,36 @@
+﻿span.step {
+    display: inline-block;
+    width: 100%;
+}
+
+    span.step::before {
+        content: '';
+        position: relative;
+        left: calc(50% - .5rem);
+        display: inherit;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        border: 1px solid #ee6d3b;
+        background-color: #fff;
+        z-index: 1;
+    }
+
+    span.step.checked::before {
+        background-color: #ee6d3b;
+    }
+
+    span.step::after {
+        content: '';
+        position: relative;
+        display: inherit;
+        bottom: 0.5rem;
+        width: 100%;
+        height: 1px;
+        background-color: #ee6d3b;
+    }
+
+.user-dashboard .nav-link.active, .user-dashboard .nav-pills .show > .nav-link {
+    color: #fff !important;
+    background-color: #ee6d3b !important;
+}

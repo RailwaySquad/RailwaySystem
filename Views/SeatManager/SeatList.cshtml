@@ -1,0 +1,425 @@
+﻿@model IEnumerable<Railway_Group01.Data.Seat>
+@{
+	Layout = null;
+}
+<style>
+	.name {
+		position: relative;
+		bottom: 15px;
+		left: 20px;
+	}
+
+	.colerth {
+		background-color: #EC5B24 !important;
+		color: white !important;
+	}
+
+</style>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="Codescandy" name="author">
+<title>Seat List</title>
+<!-- Favicon icon-->
+
+<partial name="_AdminHeader" />
+<div class="main-wrapper">
+	<!-- navbar vertical -->
+	<!-- navbar -->
+	<partial name="_AdminNavbar" />
+
+	<nav class="navbar-vertical-nav offcanvas offcanvas-start navbar-offcanvac" tabindex="-1" id="offcanvasExample">
+		<div class="navbar-vertical">
+			<div class="px-4 py-5 d-flex justify-content-between align-items-center">
+				<a href="../index.html" class="navbar-brand">
+					<img src="/images/ixigo.jpg" alt="" />
+				</a>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+			<div class="navbar-vertical-content flex-grow-1" data-simplebar="">
+				<ul class="navbar-nav flex-column">
+					<li class="nav-item">
+						<a class="nav-link " href="/Admin/index.html">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-house"></i></span>
+								<span>Dashboard</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item mt-6 mb-3">
+						<span class="nav-label">Store Managements</span>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link  active " href="../dashboard/products.html">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-cart"></i></span>
+								<span class="nav-link-text">Trains</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link " href="../dashboard/categories.html">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-list-task"></i></span>
+								<span class="nav-link-text">Categories</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link  collapsed " href="#" data-bs-toggle="collapse" data-bs-target="#navOrders" aria-expanded="false" aria-controls="navOrders">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-bag"></i></span>
+								<span class="nav-link-text">Orders</span>
+							</div>
+						</a>
+						<div id="navOrders" class="collapse " data-bs-parent="#sideNavbar">
+							<ul class="nav flex-column">
+								<li class="nav-item">
+									<a class="nav-link " href="../dashboard/order-list.html">List</a>
+								</li>
+								<!-- Nav item -->
+								<li class="nav-item">
+									<a class="nav-link " href="../dashboard/order-single.html">Single</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link " href="../dashboard/vendor-grid.html">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-shop"></i></span>
+								<span class="nav-link-text">Sellers / Vendors</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link " href="../dashboard/customers.html">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-people"></i></span>
+								<span class="nav-link-text">Customers</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link " href="../dashboard/reviews.html">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-star"></i></span>
+								<span class="nav-link-text">Reviews</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item mt-6 mb-3">
+						<span class="nav-label">Site Settings</span>
+						<span class="badge bg-light-info text-dark-info">Coming Soon</span>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#!">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-newspaper"></i></span>
+								<span class="nav-link-text">Blog</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-images"></i></span>
+								<span class="nav-link-text">Media</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#!">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-gear"></i></span>
+								<span class="nav-link-text">Store Settings</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item mt-6 mb-3">
+						<span class="nav-label">Support</span>
+						<span class="badge bg-light-info text-dark-info">Coming Soon</span>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#!">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-headphones"></i></span>
+								<span class="nav-link-text">Support Ticket</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-question-circle"></i></span>
+								<span class="nav-link-text">Help Center</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#!">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-infinity"></i></span>
+								<span class="nav-link-text">How FreshCart Works</span>
+							</div>
+						</a>
+					</li>
+
+					<li class="nav-item mt-6 mb-3">
+						<span class="nav-label">Our Apps</span>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#!">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-apple"></i></span>
+								<span class="nav-link-text">Apple Store</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#!">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><i class="bi bi-google-play"></i></span>
+								<span class="nav-link-text">Google Play Store</span>
+							</div>
+						</a>
+					</li>
+					<li id="navMenuLevel" class="collapse " data-bs-parent="#sideNavbar">
+						<ul class="nav flex-column">
+							<li class="nav-item">
+								<a class="nav-link "
+								   href="#"
+								   data-bs-toggle="collapse"
+								   data-bs-target="#navMenuLevelSecond2"
+								   aria-expanded="false"
+								   aria-controls="navMenuLevelSecond2">
+									Two Level
+								</a>
+								<div id="navMenuLevelSecond2" class="collapse" data-bs-parent="#navMenuLevel">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a class="nav-link " href="#">NavItem 1</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link " href="#">NavItem 2</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link  collapsed "
+								   href="#"
+								   data-bs-toggle="collapse"
+								   data-bs-target="#navMenuLevelThree2"
+								   aria-expanded="false"
+								   aria-controls="navMenuLevelThree2">
+									Three Level
+								</a>
+								<div id="navMenuLevelThree2" class="collapse " data-bs-parent="#navMenuLevel">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a class="nav-link  collapsed "
+											   href="#"
+											   data-bs-toggle="collapse"
+											   data-bs-target="#navMenuLevelThree3"
+											   aria-expanded="false"
+											   aria-controls="navMenuLevelThree3">
+												NavItem 1
+											</a>
+											<div id="navMenuLevelThree3" class="collapse collapse " data-bs-parent="#navMenuLevelThree">
+												<ul class="nav flex-column">
+													<li class="nav-item">
+														<a class="nav-link " href="#">NavChild Item 1</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link " href="#">Nav Item 2</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- main -->
+	<main class="main-content-wrapper">
+		<div class="container">
+			<div class="row mb-8">
+				<div class="col-md-12">
+					<!-- page header -->
+					<div class="d-md-flex justify-content-between align-items-center">
+						<div>
+							<h2>Seat</h2>
+							<!-- breacrumb -->
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb mb-0">
+									<li class="breadcrumb-item"><a href="/Admin/Index" class="text-inherit">Dashboard</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Seat List</li>
+								</ol>
+							</nav>
+						</div>
+						<!-- button -->
+						<div>
+							<a href="/TrainMaster/CreateTrain" class="btn btn-me">Add Trains</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- row -->
+			<div class="row">
+				<div class="col-xl-12 col-12 mb-5">
+					<!-- card -->
+					<div class="card h-100 card-lg">
+						<div class="px-6 py-6">
+							<div class="row justify-content-between">
+								<!-- form -->
+								<div class="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
+									<form class="d-flex" role="search">
+										<input class="form-control" type="search" placeholder="Search Trains" aria-label="Search" />
+									</form>
+								</div>
+								<!-- select option -->
+								<div class="col-lg-2 col-md-4 col-12">
+									<select class="form-select">
+										<option selected>Status</option>
+										<option value="1">Active</option>
+										<option value="2">Deactive</option>
+										<option value="3">Draft</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						@if (TempData["SuccessMessage"] != null)
+						{
+							<script>
+								alert('@TempData["SuccessMessage"]');
+							</script>
+						}
+						<!-- card body -->
+						<div class="card-body p-0">
+							<!-- table -->
+							<div class="table-responsive">
+								<table class="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
+									<thead class="bg-light">
+										<tr>
+											<th class="colerth">Id</th>
+											<th class="colerth">Seat No</th>
+											<th class="colerth">Availabe</th>
+											<th class="colerth">CompartmentNo</th>
+											<th class="colerth">Coach Id</th>
+											<th class="colerth">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										@foreach (var item in Model)
+										{
+											<tr>
+												<td>@item.Id</td>
+												<td>@item.SeatNo</td>
+												<td>
+													<span class="badge bg-light-primary text-dark-primary">@item.Available</span>
+												</td>
+												<td>@item.CompartmentNo</td>
+												<td>@item.CoachId</td>
+												<td>
+													<div class="dropdown">
+														<a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
+															<i class="bi bi-three-dots-vertical"></i>
+														</a>
+														<ul class="dropdown-menu">
+															<li>
+																<form asp-action="DeleteTrain" asp-route-id="@item.Id" onsubmit="return confirmDelete()">
+																	<button class="dropdown-item" type="submit">
+																		<i class="bi bi-trash me-3"></i>
+																		Delete
+																	</button>
+																</form>
+															</li>
+															<li>
+																<a class="dropdown-item" href="@Url.Action("EditTrain", new {id = item.Id})">
+																	<i class="bi bi-pencil-square me-3"></i>
+																	Edit
+																</a>
+															</li>
+														</ul>
+													</div>
+												</td>
+											</tr>
+										}
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="border-top d-md-flex justify-content-between align-items-center px-6 py-6">
+							<span> @Model.Count() Items</span>
+							<nav class="mt-2 mt-md-0">
+								<ul class="pagination mb-0">
+									@{
+										var seat = ViewBag.Seats as IEnumerable<Railway_Group01.Data.Seat>;
+										var page = ViewBag.Page;
+										var pageSize = ViewBag.PageSize;
+										var totalItemCount = ViewBag.TotalItemCount;
+
+										var pageCount = (int)Math.Ceiling(totalItemCount / (double)pageSize);
+										var visiblePages = 6;
+										var halfVisiblePages = visiblePages / 2;
+
+										var startPage = Math.Max(1, page - halfVisiblePages);
+										var endPage = Math.Min(startPage + visiblePages - 1, pageCount);
+
+										var hasPreviousPage = page > 1;
+										var hasNextPage = page < pageCount;
+									}
+
+									<nav aria-label="Page navigation">
+										<ul class="pagination">
+											@if (hasPreviousPage)
+											{
+												<li class="page-item">
+													<a class="page-link" href="@Url.Action("SeatList", new { page = page - 1, pageSize = pageSize })" aria-label="Previous">
+														<span aria-hidden="true">&laquo;</span>
+													</a>
+												</li>
+											}
+
+											@for (int i = startPage; i <= endPage; i++)
+											{
+												<li class="page-item @(i == page ? "active" : "")">
+													<a class="page-link" href="@Url.Action("SeatList", new { page = i, pageSize = pageSize })">@i</a>
+												</li>
+											}
+
+											@if (hasNextPage)
+											{
+												<li class="page-item">
+													<a class="page-link" href="@Url.Action("SeatList", new { page = page + 1, pageSize = pageSize })" aria-label="Next">
+														<span aria-hidden="true">&raquo;</span>
+													</a>
+												</li>
+											}
+										</ul>
+									</nav>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</div>
+<script>
+	function confirmDelete() {
+		var result = confirm("Do you want to delete?");
+		return result;
+	}
+</script>
+<partial name="_AdminFooter" />
+
+

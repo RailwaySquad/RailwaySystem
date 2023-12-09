@@ -520,3 +520,7 @@ html {
     border-color: #EC5B24 !important;
     background-color: #FEEFEA !important;
 }
+.card.slick-slide.active {
+    border-color: #EC5B24 !important;
+    background-color: #FEEFEA !important;
+}

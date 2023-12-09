@@ -304,7 +304,7 @@
                                     </div>
                                 </div>
                                 <div class=" d-flex flex-row justify-content-around align-items-center my-4 multiple-class">
-                                    @if(item.Train.Coaches.Any()){
+                                    @if(item.Train.Coaches !=null){
                                         @foreach(var detail in item.Train.Coaches){
                                             <a role="button" class="text-decoration-none text-black train-coach" data-bs-toggle="collapse" href="#@item.TrainCode-@detail.Id" aria-expanded="false" aria-controls="@item.TrainCode-@detail.Id">
                                                 <div class="card" style="width:180px">
