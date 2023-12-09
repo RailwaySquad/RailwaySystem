@@ -1,0 +1,357 @@
+﻿@using System.Globalization;
+@model Railway_Group01.Models.ViewModels.TrainSearchModel
+@{
+    ViewData["Title"] = "SearchTrain";
+    Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+    var now = DateTime.Parse("2023-12-05");
+    var tenMoreDays = now.AddDays(10);
+    var nowString = now.ToString("yyyy-MM-dd");
+    var tenMoreDaysString = tenMoreDays.ToString("yyyy-MM-dd");
+    List<DateTime> week1 = new List<DateTime> { now };
+    for (int i = 1; i <= (int)now.DayOfWeek - 1; i++)
+    {
+        week1.Add(now.AddDays(-i));
+    }
+    for (int j = 14 - (int)now.DayOfWeek; j > 0; j--)
+    {
+        week1.Add(now.AddDays(j));
+    }
+    week1.Sort();
+}
+
+<div class="bg-gradient-cus">
+    <div class="form-fields pt-2">
+        <form class="row g-1 ui form w-lg-50  w-md-100 mx-auto" asp-action="SearchTrain"  method="get">
+            <div class="col-sm-4 col-5  mx-auto me-0 row">
+                <label for="traincode" class="col-form-label col-4 text-white-50 fw-500" style="font-size:13px">Search Train</label>
+                <div class="col-8">
+                    <select id="traincode" class="form-select" name="TrainCode" asp-items="ViewBag.SelectTrain"></select>
+                </div>
+            </div>
+            <div class="col-sm-2 col-2 mx-auto ms-0 d-flex flex-column justify-content-center align-items-center">
+                <button type="submit" class=" text-uppercase btn btn-orange" style="width:120px">
+                    Search
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8 col-md-12 mx-auto mt-4">
+            <div class="d-flex flex-row justify-content-center align-items-center list-date">
+                @foreach (var day in week1)
+                {
+                    if (day.Date == Model.StartDate.Date)
+                    {
+                        <div class="card mx-2 active">
+                            <div class="card-body">
+                                <a class="text-orange text-decoration-none fw-700" href="javascript:void(0);">@day.ToString("ddd"), @day.ToString("dd MMMM")</a>
+                                @if (Model.TrainSchedule != null)
+                                {
+                                    <div class="text-center text-orange" style=" font-size:13px">
+                                        Running
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="text-secondary text-center" style=" font-size:12px">
+                                        No Schedule
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card mx-2">
+                            <div class="card-body">
+                                @if (ViewBag.OtherSchedules != null && ViewBag.OtherSchedules.Contains(day))
+                                {
+                                    <a class="text-decoration-none text-black"
+                                        asp-action="SearchTrain"
+                                        asp-route-TrainCode="@Model.TrainCode"
+                                        asp-route-StartDate="@day">@day.ToString("ddd"), @day.ToString("dd MMMM")</a>
+                                    <div class="text-center text-success " style=" font-size:13px">
+                                        Running
+                                    </div>
+                                }
+                                else
+                                {
+                                    <a class="text-decoration-none text-black" href="javascript:void(0);">@day.ToString("ddd"), @day.ToString("dd MMMM")</a>
+                                    <div class="text-secondary  text-center" style=" font-size:12px">
+                                        No Schedule
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            @if (Model.TrainSchedule != null && Model.TrainSchedule.Route !=null )
+            {
+                int travelT = 0; 
+                @foreach (var route in Model.TrainSchedule!.Route!.RouteDetails!)
+                {
+                    DateTime departureTime = Model.TrainSchedule.Departure.AddMinutes(travelT);
+                    DateTime arrivalTime = departureTime.AddMinutes(route.TravelTime);
+                    travelT += route.TravelTime+route.DelayTime;
+                    if(route.TravelTime != 0 && !Model.RouteDetails.Contains(route)){
+                        <div class="mt-4">
+                        <div class="card p-2">
+                            <div class="card-body">
+                                <div class="d-inline-flex w-100">
+                                    <div class="p-3 w-25">
+                                        <div class="">
+                                            <a class="h4 text-orange text-decoration-none"
+                                               asp-controller="Railway"
+                                               asp-action="TrainDetail"
+                                               asp-route-schedule="@Model.TrainSchedule.Id"
+                                               asp-route-traincode="@Model.TrainCode"
+                                               asp-route-departure="@route.DepartureStationId"
+                                               asp-route-arrival="@route.ArrivalStationId"
+                                               asp-route-time="@departureTime">
+                                                @Model.TrainSchedule.Name
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="w-75">
+                                        <div class="row w-md-50">
+                                            <div class="col-3 col-lg-2 mx-auto me-0">
+                                                <div class="">
+                                                    <a class="text-decoration-none fw-bold" style="color: rgb(236, 88, 36);" href="">@route.DepartureStation.Name</a>
+                                                    <div class="c-tooltip bottom">
+                                                        <div class="tip"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="time">@departureTime.ToString("HH:mm")</div>
+                                                <div class="date">@departureTime.ToString("ddd, dd MMM")</div>
+                                            </div>
+                                            <div class="col-3 d-flex flex-column align-items-center ">
+                                                <div class="text-center">
+                                                    @{
+                                                        var time = TimeSpan.FromMinutes(route.TravelTime);
+                                                    }
+                                                    @time.Hours h @time.Minutes mins
+                                                </div>
+                                                <img src="~/images/svg/Icon_train.svg.png" width="50px" />
+                                            </div>
+                                            <div class="col-3 col-lg-2 mx-auto ms-0">
+                                                <div class="">
+                                                    <a class="text-decoration-none fw-bold" style="color: rgb(236, 88, 36);" href="">@route.ArrivalStation.Name</a>
+                                                    <div class="c-tooltip bottom">
+                                                        <div class="tip"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="time">@arrivalTime.ToString("HH:mm")</div>
+                                                <div class="date">@arrivalTime.ToString("ddd, dd MMM")</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @if (Model.TrainSchedule.Train!.Coaches != null && Model.TrainSchedule.Train!.Coaches.Count() > 4)
+                                {
+                                    <div class=" d-flex flex-row justify-content-around align-items-center my-4 multiple-class">
+                                        @foreach (var coach in Model.TrainSchedule.Train!.Coaches!)
+                                        {
+                                            <a role="button" class="text-decoration-none text-black train-coach" data-bs-toggle="collapse" href="#@Model.TrainCode-@coach.Id-@route.Id" aria-expanded="false" aria-controls="@Model.TrainCode-@coach.Id-@route.Id">
+                                                <div class="card" style="width:180px">
+                                                    <div class="card-body d-flex flex-column  p-2">
+                                                        <div class="fs-6 text-center" style="color: #EC5B24;">Coach @coach.CoachNo</div>
+                                                            <div class="fs-6">Class: @coach.Class.Name</div>
+                                                        <div>Last: @Html.DisplayFor(x=>coach.NoOfSeats)</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        }
+                                    </div>
+                                }
+                                else if (Model.TrainSchedule.Train!.Coaches != null)
+                                {
+                                    <div class=" d-flex flex-row justify-content-around align-items-center my-4 ">
+                                        @foreach (var coach in Model.TrainSchedule.Train!.Coaches!)
+                                        {
+                                            <a role="button" class="text-decoration-none text-black train-coach" data-bs-toggle="collapse" href="#@Model.TrainCode-@coach.Id-@route.Id" aria-expanded="false" aria-controls="@Model.TrainCode-@coach.Id-@route.Id">
+                                                <div class="card" style="width:180px">
+                                                    <div class="card-body d-flex flex-column  p-2">
+                                                        <div class="fs-6 text-center" style="color: #EC5B24;">Coach @coach.CoachNo</div>
+                                                            <div class="fs-6">Class: @coach.Class.Name</div>
+                                                        <div>Last: @Html.DisplayFor(x=>coach.NoOfSeats)</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        }
+                                    </div>
+                                }
+
+                                @foreach (var coach in Model.TrainSchedule!.Train!.Coaches!)
+                                {
+                                    <div class="collapse " id="@Model.TrainCode-@coach.Id-@route.Id">
+                                        <div class="d-flex flex-row align-items-center justify-content-center pt-3">
+                                            @if (coach.NoOfCompartments == 0)
+                                            {
+                                                int count = 1;
+                                                <div class="row et-car-floor ">
+                                                    <div class="et-full-width">
+                                                        @while (count <= coach.NoOfSeats)
+                                                        {
+                                                            <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                                <div class="et-car-seat-left et-seat-h-35">
+                                                                    <div class="et-col-16 et-sit-side"></div>
+                                                                    <div class="et-col-84 et-sit-sur-outer">
+                                                                        <div class="et-sit-sur text-center et-sit-avaiable">
+                                                                            <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available"
+                                                                                 data-schedule="@Model.TrainSchedule.Id"
+                                                                                 data-coach="@coach.Id"
+                                                                                 data-seat="@count"
+                                                                                 data-start="@departureTime"
+                                                                                 data-end="@arrivalTime"
+                                                                                 data-cabin="0"
+                                                                                 data-coachNo="@coach.CoachNo"
+                                                                                 data-fromStation="@route.DepartureStationId"
+                                                                                 data-toStation="@route.ArrivalStationId"
+                                                                                 data-class="@coach.ClassCode"
+                                                                                 data-className="@coach.Class.Name">
+                                                                                <span>@count</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            count++;
+                                                        }
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                int count = 1;
+                                                int cabinNum = 1;
+                                                <div class="row et-car-floor w-100">
+                                                    <div class="et-col-1-18 et-car-floor-full-height"></div>
+                                                    <div class="et-col-8-9">
+                                                        <div class="et-bed-way et-full-width et-text-sm">
+                                                            @for (int i = 1; i <= 8; i++)
+                                                            {
+                                                                @if (coach.NoOfCompartments < i)
+                                                                {
+                                                                    <div class="et-col-1-8 text-center ng-binding et-hidden">Cabin @i</div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="et-col-1-8 text-center ng-binding">Cabin @i</div>
+                                                                }
+                                                            }
+                                                        </div>
+                                                        @{
+                                                            int brek = coach.NoOfCompartments * 2;
+                                                        }
+                                                        @while (count <= coach.NoOfSeats)
+                                                        {
+                                                            if (brek == 0)
+                                                            {
+                                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                    <div class="et-bed-right invisible">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                    <div class="et-bed-left invisible">
+                                                                    </div>
+                                                                </div>
+                                                                brek = coach.NoOfCompartments * 2;
+                                                                cabinNum = 1;
+                                                            }
+                                                            if (count % 2 == 0)
+                                                            {
+                                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                    <div class="et-bed-right">
+                                                                        <div class="et-bed-outer">
+                                                                            <div class="et-bed text-center et-sit-avaiable">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available"
+                                                                                     data-schedule="@Model.TrainSchedule.Id"
+                                                                                     data-cabin="@cabinNum"
+                                                                                     data-coach="@coach.Id"
+                                                                                     data-seat="@count"
+                                                                                     data-start="@departureTime"
+                                                                                     data-end="@arrivalTime"
+                                                                                     data-coachNo="@coach.CoachNo"
+                                                                                     data-fromStation="@route.DepartureStationId"
+                                                                                     data-toStation="@route.ArrivalStationId"
+                                                                                     data-class="@coach.ClassCode"
+                                                                                     data-className="@coach.Class.Name">
+                                                                                    <span>@count</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="et-bed-illu"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                cabinNum++;
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                    <div class="et-bed-left ">
+                                                                        <div class="et-bed-outer">
+                                                                            <div class="et-bed text-center et-sit-avaiable">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available"
+                                                                                     data-schedule="@Model.TrainSchedule.Id"
+                                                                                     data-cabin="@cabinNum"
+                                                                                     data-coach="@coach.Id"
+                                                                                     data-seat="@count"
+                                                                                     data-start="@departureTime"
+                                                                                     data-end="@arrivalTime"
+                                                                                     data-coachNo="@coach.CoachNo"
+                                                                                     data-fromStation="@route.DepartureStationId"
+                                                                                     data-toStation="@route.ArrivalStationId"
+                                                                                     data-class="@coach.ClassCode"
+                                                                                     data-className="@coach.Class.Name">
+                                                                                    <span>@count</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="et-bed-illu"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+                                                            brek--;
+                                                            count++;
+                                                        }
+                                                    </div>
+                                                    <div class="et-col-1-18 et-car-floor-full-height"></div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>  
+                    }
+                }
+            }
+        </div>
+        <div class="col-lg-3 position-relative mt-3 mb-5">
+            <div class="toast-container position-fixed end-0 p-3" style="z-index:4;top:100px;">
+                <div class="toast align-items-center text-bg-success border-0" role="alert" id="alertBsAdd" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            Add Ticket To Cart Successfully!
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="toast align-items-center text-bg-danger border-0" role="alert" id="alertBsRm" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            Remove 1 Ticket
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

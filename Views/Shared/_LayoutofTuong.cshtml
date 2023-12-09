@@ -84,6 +84,9 @@
                                     </a>
                                 </li>
                             </ul>
+                            <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row">
+                                <partial name="_LoginPartial"></partial>
+                            </ul>
                         }
                         else
                         {
@@ -105,9 +108,7 @@
                                         Trains
                                     </a>
                                 </li>
-                            </ul>
-                        }
-                        
+                            </ul>                                           
                         <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row">
                             <li class="nav-item">
                                 <a class="nav-link header-nav-link" data="5" href="">
@@ -147,11 +148,12 @@
                                 </a>
                             </li>
                         </ul>
+                        }
                     </div>
                 </div>
             </div>
         </header>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="overflow:scroll;">
             <div class="offcanvas-header border-bottom">
                 <div class="text-start">
                     <h5 id="offcanvasRightLabel" class="mb-0 fs-4" style="color: #EC5B24;">Your Tickets</h5>
@@ -180,7 +182,7 @@
                         </li> *@
                     </ul>
                     <div class="d-flex justify-content-between mt-4">
-                        <a asp-controller="Railway" asp-action="Booking" class="btn btn-orange">Buy Now</a>
+                        <a asp-controller="Booking" asp-action="Index" class="btn btn-orange">Buy Now</a>
                         <a href="#" class="btn btn-outline-secondary clearCart">Clear Cart</a>
                     </div>
                 </div>
@@ -221,6 +223,13 @@
             slidesToScroll: 4,
             prevArrow: "<button type='button' class='slick-prev pull-left' style='margin-right:20px'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
             nextArrow: "<button type='button' class='slick-next pull-right'style='margin-left:20px'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
+        });
+        $(".list-date").slick({
+            infinite: true,
+            slidesToShow: 7,
+            slidesToScroll: 7,
+            prevArrow: "<button type='button' class='slick-prev pull-left' style='margin-right:20px'><img src='/images/svg/chevron-compact-left.svg' /></button>",
+            nextArrow: "<button type='button' class='slick-next pull-right'style='margin-left:20px'><img src='/images/svg/chevron-compact-right.svg' /></button>"
         });
     </script>
 </body>

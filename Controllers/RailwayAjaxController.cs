@@ -19,11 +19,28 @@ namespace Railway_Group01.Controllers
             this.ctx = ctx;
         }
         [HttpGet]
-        [Route("listtrain")]
+        [Route("listcart")]
         public async Task<ActionResult<IEnumerable<Train>?>> GetListTrain()
         {
-            IEnumerable<Train> train = await ctx.Trains.ToListAsync();
-            return Ok(train);
+            List<CartDto> list;
+            try
+            {
+                string? jsonListcart = HttpContext.Session.GetString("listCart");
+                if (jsonListcart != null)
+                {
+                    list = JsonConvert.DeserializeObject<List<CartDto>>(jsonListcart);
+                }
+                else
+                {
+                    return Ok(null);
+                }
+                return Ok(list);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return BadRequest();
+            }
         }
         [HttpPost]
         [Route("addcart")]
@@ -34,9 +51,11 @@ namespace Railway_Group01.Controllers
             [FromForm(Name = "startAt")] string startAt,
             [FromForm(Name = "endAt")] string endAt,
             [FromForm(Name = "cabin")] int cabin,
-            [FromForm(Name = "coachCount")] int coachCount,
+            [FromForm(Name = "coachNo")] int coachNo,
             [FromForm(Name = "fromStation")] int from,
-            [FromForm(Name = "toStation")] int to
+            [FromForm(Name = "toStation")] int to,
+            [FromForm(Name = "coachClass")] string coachClass,
+            [FromForm(Name = "coachClassName")] string coachClassName
 
 
             )
@@ -48,17 +67,20 @@ namespace Railway_Group01.Controllers
                 StartTime = DateTime.Parse(startAt), 
                 EndTime = DateTime.Parse(endAt) ,
                 Cabin = cabin,
-                CoachCount = coachCount,
+                CoachNo = coachNo,
                 FromStation = from,
-                ToStation = to
+                ToStation = to,
+                CoachClass = coachClass,
+                CoachClassName = coachClassName
             };
-            Station startStation = await ctx.Stations.FindAsync(from);
-            Station endStation = await ctx.Stations.FindAsync(to);
-            Schedule sche = await ctx.Schedules.FindAsync(scheduleId);
-            string title = sche.Name + "  " + startStation.Code+ " - " + endStation.Code;
-            string seatDetail = cart.Cabin==0? "Coach " + cart.CoachCount + " Seat: "+cart.Seat: "Coach " + cart.CoachCount + " Cabin: "+cart.Cabin+"/ Seat: " + cart.Seat;
-            cart.Title = title;
-            cart.StartAt = cart.StartTime.ToString("HH:mm dd/MM");
+            Station? startStation = await ctx.Stations!.FindAsync(from);
+            Station? endStation = await ctx.Stations!.FindAsync(to);
+            Schedule? sche = await ctx.Schedules!.FindAsync(scheduleId);
+            string trip = startStation.Name+ " - " + endStation.Name;
+            string seatDetail = cart.Cabin == 0 ? "Coach " + cart.CoachNo + ", Seat: " + cart.Seat : "Coach " + cart.CoachNo + " Cabin: " + cart.Cabin + ", Seat: " + cart.Seat;
+            cart.ScheduleName = sche.Name;
+            cart.Trip = trip;
+            cart.StartAt = cart.StartTime.ToString("HH:mm dd/MM/yyyy");
             cart.SeatDetail = seatDetail;
             Console.WriteLine(HttpContext.Session.GetString("listCart"));
             List<CartDto> list;
