@@ -1,8 +1,10 @@
-﻿@{
+﻿@model Railway_Group01.Models.ViewModels.ConfirmInformationViewModel;
+@{
     ViewData["Title"] = "CONFIRM BOOKING INFORMATION";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
 
     var paypalLogo = "/images/paypalLogo.jpg";
+    var cnt = 1;
 }
 
 <section class="bg-gradient-cus mb-3">
@@ -34,11 +36,10 @@
     <section class="mb-3">
         <h6 class="text-orange">TICKET BOOKER INFORMATION</h6>
         <div>
-            <p> - Full name: <span class="fw-bold">Tu</span></p>
-            <p> - Citizen number: <span class="fw-bold">056098002987</span></p>
-            <p> - Phone number: <span class="fw-bold">0878399145</span></p>
-            <p> - Email: <span>tuminhvo98@gmail.com</span></p>
-            <p> - Payment method: Online payment with PayPal</p>
+            <p> - Full name: <span class="fw-bold">@Model.User!.UserName</span></p>
+            <p> - Phone number: <span class="fw-bold">@Model.User.PhoneNumber</span></p>
+            <p> - Email: <span class="fw-bold">@Model.User.Email</span></p>
+            <p> - Payment method: <span class="fw-bold">Online payment with PayPal</span></p>
         </div>
     </section>
 
@@ -49,31 +50,38 @@
             <thead>
                 <tr>
                     <th class="text-center">No</th>
+                    <th class="text-center">Passenger detail</th>
                     <th class="text-center">Ticket detail</th>
                     <th class="text-center">Price <br /> ($)</th>
-                    <th class="text-center">Sub total<br />($)</th>
                 </tr>
             </thead>
             <tbody>
-                @if (Model != null)
-                    foreach (var item in Model)
+                @if (Model != null && Model.InfoList != null && Model.InfoList.Count > 0)
+                    foreach (var item in Model.InfoList)
                     {
                         <tr>
+                            <td class="text-center">@(cnt++)</td>
                             <td>
-                                <p>Full name: Vo minh tu</p>
-                                <p>Age: Adult</p>
-                                <p>Citizen number: 056098002987</p>
-                                <p>Trip:</p>
+                                <p>Full name: @item.Name</p>
+                                <p>Age: @item.PassengerType</p>
+                                <p>Citizen Number: @item.ID</p>
+                                <p>Bithday: @item.Birthday</p>
+                            </td>
+                            <td class="small text-center">
+                                @item.ScheduleName <br />
+                                @item.Trip <br />
+                                @item.StartAt<br />
+                                Coach: @item.CoachNo, Cabin @item.Cabin, Seat @item.SeatNo<br />
+                                Class: @item.CoachClassName<br />
                             </td>
                             <td class="text-center">
-                                900
+                                @item.Price.ToString("0.00")
                             </td>
-                            <td class="text-center">901</td>
                         </tr>
                     }
                 <tr class="table-info">
-                    <td colspan="2"><p class="text-end fw-bold">Total</p></td>
-                    <td class="text-center">901</td>
+                    <td colspan="3"><p class="text-end fw-bold">Total</p></td>
+                    <td class="text-center">@(Model.GrandTotal.ToString("0.00"))</td>
                 </tr>
             </tbody>
         </table>
@@ -81,8 +89,8 @@
 
     <section>
         <div class="d-flex justify-content-between">
-            <a asp-action="Index" class="btn btn-orange fw-bold">👈 Fill again 🔙</a>
-            <a asp-action="MakePayment" class="btn btn-orange fw-bold">⏭️ Confirm Information 👉</a>
+            <a asp-action="Index" class="btn btn-orange fw-bold">👈 Fill again</a>
+            <a asp-action="MakePayment" asp-route-id="@Model.BookingId" class="btn btn-orange fw-bold">Make Payment 👉</a>
         </div>
     </section>
 </div>

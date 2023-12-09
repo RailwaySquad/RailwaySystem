@@ -8,11 +8,16 @@ namespace Railway_Group01.Data
         [Key]
         public int Id { get; set; }
 
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal Price { get; set; }
+
         [Required]
         public Seat? Seat { get; set; }
         public int SeatId { get; set; }
 
         public Schedule? Schedule { get; set; }
+
+        public Passenger? Passenger { get; set; }
 
         public Ticket? Ticket { get; set; }
 

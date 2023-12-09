@@ -22,5 +22,7 @@ namespace Railway_Group01.Data
 
         public Ticket? Ticket { get; set; }
 
+        public BookingDetail? BookingDetail { get; set; }
+        public int BookingDetailId { get; set; }
     }
 }
