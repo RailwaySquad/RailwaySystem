@@ -25,5 +25,6 @@ namespace Railway_Group01.Models
         public int ToStation { get; set; }
         public decimal Price { get; set; }
 
+        public int SeatId { get; set; }
     }
 }

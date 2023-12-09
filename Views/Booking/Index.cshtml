@@ -34,6 +34,7 @@
 <div class="container">
     <section class="mb-3">
         <h6><span class="text-orange ">BOOKING DETAILS</span></h6>
+        <p>@TempData["error"]</p>
         <table class="table table-bordered">
             <thead>
                 <tr class="table-primary">
@@ -61,7 +62,8 @@
                                         <label for="Passengers[@i].Name" class="col-form-label">Full name</label><i class="text-danger">*</i>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" id="Passengers[@i].Name" name="Passengers[@i].Name" class="form-control form-control-sm" required>
+                                        <input type="hidden" name="Passengers[@i].SeatId" asp-for="@Model.Cart[i].SeatId" />
+                                        <input type="text" id="Passengers[@i].Name" name="Passengers[@i].Name" class="form-control form-control-sm" required autofocus>
                                     </div>
                                 </div>
                                 <div class="row g-3 align-items-center">
@@ -74,11 +76,10 @@
                                 </div>
                                 <div class="row g-3 align-items-center">
                                     <div class="col-4 border-bottom">
-                                        <label for="Passengers[@i].ID" class="col-form-label" id="inputLabelToBeChange">Citizen ID</label><i class="text-danger">*</i>
+                                        <label for="Passengers[@i].ID" class="col-form-label" id="inputLabelToBeChange[@i]">Citizen ID</label><i class="text-danger">*</i>
                                     </div>
                                     <div class="col-8">
                                         <input type="text" id="Passengers[@i].ID" name="Passengers[@i].ID" class="form-control form-control-sm" required>
-                                        <input type="hidden" id="Passengers[@i].Birthday" name="Passengers[@i].ID" class="form-control form-control-sm" required>
                                     </div>
                                 </div>
 
@@ -159,7 +160,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </form>
     </section>
 
@@ -184,7 +185,7 @@
     <section>
         <div class="d-flex justify-content-between">
             <a href="@ViewBag.returnUrl" class="btn btn-orange fw-bold">👈 Back</a>
-      
+
             @if (Model.Cart != null && Model.Cart.Count > 0)
             {
                 <button id="btnSubmitBookingInfo" class="btn btn-orange fw-bold"> Submit 👉</button>
@@ -205,17 +206,14 @@
             var subTotal = document.getElementById("Cart[" + id + "].SubTotal");
             var insurance = document.getElementById("Cart[" + id + "].Insurance");
             var inputId = document.getElementById("Passengers[" + id + "].ID");
-            var inputBirthday = document.getElementById("Passengers[" + id + "].Birthday");
-            var label = document.getElementById("inputLabelToBeChange");
+            var label = document.getElementById("inputLabelToBeChange[" + id + "]");
 
             if (selectValue == "CH") {
-                inputBirthday.type = "date";
-                inputId.type = "hidden";
+                inputId.type = "date";
                 label.innerText = "Birthday";
             } else {
-                inputBirthday.type = "hidden";
                 inputId.type = "text";
-                label.innerText = "Citizen ID";
+                label.innerText = "Citizen number";
             }
 
             $.ajax({
@@ -237,7 +235,7 @@
             })
         }
 
-        $("#btnUpdateUser").click(function(e) {
+        $("#btnUpdateUser").click(function (e) {
             e.preventDefault();
             var message = document.getElementById("updateSuccessMessage");
             $.ajax({
@@ -248,7 +246,7 @@
                 success: function (data) {
                     if (data.success) {
                         message.innerText = "Updated"
-                    } 
+                    }
                 }
             })
         })
