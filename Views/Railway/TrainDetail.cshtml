@@ -1,10 +1,12 @@
-﻿@model Tuple<Railway_Group01.Data.Schedule,Railway_Group01.Data.Train,int>
+﻿@model Tuple<Railway_Group01.Data.Schedule,Railway_Group01.Data.Train,Railway_Group01.Data.Station,Railway_Group01.Data.Station,int,int>
+
 @{
     ViewData["Title"] = "TrainDetail";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+    TimeSpan duration = TimeSpan.FromMinutes(Model.Item6);
+    string str = "";
 }
-
-<div class="row position-relative " style=" padding-top: 65px; ">
+<div class="row position-relative " style=" padding-top: 65px; "> 
     <div class="col-12 bg-white shadow position-fixed start-0 w-100 px-4 py-0" style="z-index:3">
         <nav id="navbar-example2" class="navbar px-5 pb-0" >
             <ul class="nav nav-underline">
@@ -44,17 +46,20 @@
                     <div class="card rounded-0 shadow my-3">
                         <div class="card-body">
                             <div class="border-bottom">
-                                <h1 style="color: #ee6d3b; font-weight:300" >Schedule @Model.Item1.Route.StartStation.Code @Model.Item1.Route.EndStation.Code @Model.Item2.Code Train</h1>
+                            <h3 style="color: #ee6d3b; font-weight:300">Schedule @Model.Item3.Code @Model.Item4.Code Train @Model.Item2.Code </h3>
                             </div>
                             <div class="d-flex flex-row justify-content-around py-5">
-                                <div class="lh-2 row">
-                                    <div class="col-3 align-top pt-2" style="width: 100px;">
-                                        <div class="h6 ">@Html.DisplayFor(x=>x.Item1.Route.StartStation.Code)</div>
-                                        <div class="fw-600" style="font-size:17px">@Html.DisplayFor(x=>x.Item1.Departure.TimeOfDay)</div>
-                                        <div class="text-secondary text-decoration-none">@Html.DisplayFor(x=>x.Item1.Route.StartStation.Name)</div>
+                                <div class="lh-2 row w-75">
+                                    <div class="col-3 align-top pt-2 mx-auto me-0" style="width: 130px;">
+                                        <div class="h6 ">@Html.DisplayFor(x=>x.Item3.Code)</div>
+                                        <div class="fw-500" style="font-size:15px">@Model.Item1.Departure.ToString("HH:mm")</div>
+                                        <div class="fw-500" style="font-size:15px">@Model.Item1.Departure.ToString("ddd, dd MMM")</div>
+                                        <div class="text-orange fw-600 text-decoration-none">@Html.DisplayFor(x=>x.Item3.Name)</div>
                                     </div>
-                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center" style="width: 200px;padding: 0 10px 10px;">
-                                        <div class="text-center w-100">15hr</div>
+                                    <div class="col-4 d-flex flex-column justify-content-center align-items-center" style="width: 200px;padding: 0 10px 10px;">
+                                        <div class="text-center w-100">
+                                            @String.Format("{0:%h} hours {0:%m} minutes",duration)
+                                        </div>
                                         <div class="position-relative w-100">
                                             <div class="progress" role="progressbar" aria-label="Progress" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="height: 1px;">
                                                 <div class="progress-bar" style="width: 100%"></div>
@@ -62,15 +67,16 @@
                                             <a class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 0.5rem; height:1rem;"></a>
                                             <a class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 0.5rem; height:1rem;"></a>
                                         </div>
-                                        <div class="text-center w-100">@Model.Item3 stops</div>
+                                        <div class="text-center w-100">@Model.Item5 stops</div>
                                     </div>
-                                    <div class="col-3 align-top pt-2"style="width: 100px;">
-                                        <div class="h6 ">@Html.DisplayFor(x=>x.Item1.Route.EndStation.Code)</div>
-                                        <div class="fw-600" style="font-size:17px">@Html.DisplayFor(x=>x.Item1.Arrival.TimeOfDay)</div>
-                                        <div class="text-secondary text-decoration-none">@Html.DisplayFor(x=>x.Item1.Route.EndStation.Name)</div>
+                                    <div class="col-3 align-top pt-2 mx-auto ms-0"style="width: 130px;">
+                                        <div class="h6 ">@Html.DisplayFor(x=>x.Item4.Code)</div>
+                                        <div class="fw-500" style="font-size:15px">@Model.Item1.Arrival.ToString("HH:mm")</div>
+                                        <div class="fw-500" style="font-size:15px">@Model.Item1.Arrival.ToString("ddd, dd MMM")</div>
+                                    <div class="text-orange fw-600 text-decoration-none">@Html.DisplayFor(x=>x.Item4.Name)</div>
                                     </div>
                                 </div>
-                                <div class="lh-2 pt-3" >
+                                <div class="lh-2 pt-3 w-25" >
                                     <table class="table table-borderless">
                                         <tr>
                                             <td>
@@ -97,505 +103,309 @@
                 <div class="data-section my-3" id="availability">
                     <div class="card">
                         <div class="card-body">
-                            <h2 style="color: #ee6d3b; margin:20px;font-weight:300">@Model.Item1.Route.StartStation.Code - @Model.Item1.Route.EndStation.Code Express @Model.Item2.Coaches Ticket Prices</h2>
-                            <div class="row p-3">
-                                <form class=" col-6 d-flex flex-row justify-content-around align-items-center">
-                                    <div  class="form-floating border-bottom">
-                                        <select class="form-select  border-0" id="fromStation" name="fromStation"style=" width: 170px;" >
-                                            <option></option>
-                                        </select>
-                                        <label for="fromStation">From</label>
-                                    </div>
-                                    <div class="d-block" style="width:100px">
-                                        <i class="fa-solid fa-arrow-right-long fa-lg"></i>
-                                    </div>
-                                    <div  class="form-floating border-bottom">
-                                        <select class="form-select  border-0" id="toStation" name="toStation" style=" width: 170px;" >
-                                            <option></option>
-                                        </select>
-                                        <label for="toStation">To</label>
-                                    </div>
-                                    <div class="form-floating border-bottom" id="quota"  name="quota">
-                                        <select class="form-select  border-0" style=" width: 150px;" >
-                                            <option>General</option>
-                                            <option>Luxury</option>
-                                        </select>
-                                        <label for="quota">Quota</label>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <ul class="nav-class nav-class-fare">
-                            @{string str = "";}
-                            @if (Model.Item2.Coaches.Any())
-                            {
-                                @foreach (var item in Model.Item2.Coaches)
+                            <h2 style="color: #ee6d3b; margin:20px;font-weight:300">@Model.Item3.Name - @Model.Item4.Name Express Ticket Prices</h2>
+                            
+                            <div class="mt-4">
+                            <ul class="nav-class nav-class-fare my-4 multiple-class  d-flex flex-row flex-nowrap">
+                                    @if (Model.Item2!.Coaches!.Any())
+                                    {   
+                                        @foreach (var coach in Model.Item2.Coaches)
+                                        {
+                                            str += coach.ClassCode + ", ";
+                                            if (coach.CoachNo==1)
+                                            {
+                                            <li class="nav-item">
+                                                <a role="button" class="nav-link  train-coach2 active" data-bs-toggle="collapse" href="#@Model.Item1.TrainCode-@coach.Id" aria-expanded="true" aria-controls="@Model.Item1.TrainCode-@coach.Id">
+                                                    Coach @coach.CoachNo
+                                                </a>
+                                            </li>
+                                            }
+                                            else
+                                            {
+                                            <li class="nav-item">
+                                                <a role="button" class=" nav-link  train-coach2" data-bs-toggle="collapse" href="#@Model.Item1.TrainCode-@coach.Id" aria-expanded="false" aria-controls="@Model.Item1.TrainCode-@coach.Id">
+                                                    Coach @coach.CoachNo
+                                                </a>
+                                            </li>
+                                            }
+                                        }
+                                    }
+                                </ul>
+                                @foreach (var coach in Model.Item2.Coaches)
                                 {
-                                    str += item.Train.TypeCode+", ";
-                                if (item.Equals(Model.Item2.Coaches.First()))
+                                    if(coach.CoachNo == 1)
                                     {
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="#">@item.CoachNo</a>
-                                        </li>
+                                    <div class="collapse show" id="@Model.Item1.TrainCode-@coach.Id">
+                                        <div class="d-flex flex-row align-items-center justify-content-center pt-3">
+                                            @if (coach.NoOfCompartments == 0)
+                                            {
+                                                int count = 1;
+                                                <div class="row et-car-floor ">
+                                                    <div class="et-full-width">
+                                                        @while (count <= coach.NoOfSeats)
+                                                        {
+                                                            <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                                <div class="et-car-seat-left et-seat-h-35">
+                                                                    <div class="et-col-16 et-sit-side"></div>
+                                                                    <div class="et-col-84 et-sit-sur-outer">
+                                                                        <div class="et-sit-sur text-center et-sit-avaiable">
+                                                                            <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available"
+                                                                                 data-schedule="@Model.Item1.Id"
+                                                                                 data-coach="@coach.Id"
+                                                                                 data-seat="@count"
+                                                                                 data-start="@Model.Item1.Departure"
+                                                                                 data-end="@Model.Item1.Arrival"
+                                                                                 data-cabin="0"
+                                                                                 data-coachNo="@coach.CoachNo"
+                                                                                 data-fromStation="@Model.Item3.Id"
+                                                                                 data-toStation="@Model.Item4.Id"
+                                                                                 data-class="@coach.ClassCode"
+                                                                                 data-className="@coach.Class.Name">
+                                                                                <span>@count</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            count++;
+                                                        }
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                int count = 1;
+                                                int cabinNum = 1;
+                                                <div class="row et-car-floor w-100">
+                                                    <div class="et-col-1-18 et-car-floor-full-height"></div>
+                                                    <div class="et-col-8-9">
+                                                        <div class="et-bed-way et-full-width et-text-sm">
+                                                            @for (int i = 1; i <= 8; i++)
+                                                            {
+                                                                @if (coach.NoOfCompartments < i)
+                                                                {
+                                                                    <div class="et-col-1-8 text-center ng-binding et-hidden">Cabin @i</div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="et-col-1-8 text-center ng-binding">Cabin @i</div>
+                                                                }
+                                                            }
+                                                        </div>
+                                                        @{
+                                                            int brek = coach.NoOfCompartments * 2;
+                                                        }
+                                                        @while (count <= coach.NoOfSeats)
+                                                        {
+                                                            if (brek == 0)
+                                                            {
+                                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                    <div class="et-bed-right invisible">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                    <div class="et-bed-left invisible">
+                                                                    </div>
+                                                                </div>
+                                                                brek = coach.NoOfCompartments * 2;
+                                                                cabinNum = 1;
+                                                            }
+                                                            if (count % 2 == 0)
+                                                            {
+                                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                    <div class="et-bed-right">
+                                                                        <div class="et-bed-outer">
+                                                                            <div class="et-bed text-center et-sit-avaiable">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available"
+                                                                                     data-schedule="@Model.Item1.Id"
+                                                                                     data-cabin="@cabinNum"
+                                                                                     data-coach="@coach.Id"
+                                                                                     data-seat="@count"
+                                                                                     data-start="@Model.Item1.Departure"
+                                                                                     data-end="@Model.Item1.Arrival"
+                                                                                     data-coachNo="@coach.CoachNo"
+                                                                                     data-fromStation="@Model.Item3.Id"
+                                                                                     data-toStation="@Model.Item4.Id">
+                                                                                    <span>@count</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="et-bed-illu"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                cabinNum++;
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                    <div class="et-bed-left ">
+                                                                        <div class="et-bed-outer">
+                                                                            <div class="et-bed text-center et-sit-avaiable">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available"
+                                                                                     data-schedule="@Model.Item1.Id"
+                                                                                     data-cabin="@cabinNum"
+                                                                                     data-coach="@coach.Id"
+                                                                                     data-seat="@count"
+                                                                                     data-start="@Model.Item1.Departure"
+                                                                                     data-end="@Model.Item1.Arrival"
+                                                                                     data-coachNo="@coach.CoachNo"
+                                                                                     data-fromStation="@Model.Item3.Id"
+                                                                                     data-toStation="@Model.Item4.Id">
+                                                                                    <span>@count</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="et-bed-illu"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+                                                            brek--;
+                                                            count++;
+                                                        }
+                                                    </div>
+                                                    <div class="et-col-1-18 et-car-floor-full-height"></div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
                                     }
                                     else
                                     {
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">@item.CoachNo</a>
-                                        </li>
+                                    <div class="collapse" id="@Model.Item1.TrainCode-@coach.Id">
+                                            <div class="d-flex flex-row align-items-center justify-content-center pt-3">
+                                                @if (coach.NoOfCompartments == 0)
+                                                {
+                                                    int count = 1;
+                                                    <div class="row et-car-floor ">
+                                                        <div class="et-full-width">
+                                                            @while (count <= coach.NoOfSeats)
+                                                            {
+                                                                <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                                    <div class="et-car-seat-left et-seat-h-35">
+                                                                        <div class="et-col-16 et-sit-side"></div>
+                                                                        <div class="et-col-84 et-sit-sur-outer">
+                                                                            <div class="et-sit-sur text-center et-sit-avaiable">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available"
+                                                                                        data-schedule="@Model.Item1.Id"
+                                                                                        data-coach="@coach.Id"
+                                                                                        data-seat="@count"
+                                                                                        data-start="@Model.Item1.Departure"
+                                                                                        data-end="@Model.Item1.Arrival"
+                                                                                        data-cabin="0"
+                                                                                        data-coachNo="@coach.CoachNo"
+                                                                                        data-fromStation="@Model.Item3.Id"
+                                                                                        data-toStation="@Model.Item4.Id">
+                                                                                    <span>@count</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                count++;
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    int count = 1;
+                                                    int cabinNum = 1;
+                                                    <div class="row et-car-floor w-100">
+                                                        <div class="et-col-1-18 et-car-floor-full-height"></div>
+                                                        <div class="et-col-8-9">
+                                                            <div class="et-bed-way et-full-width et-text-sm">
+                                                                @for (int i = 1; i <= 8; i++)
+                                                                {
+                                                                    @if (coach.NoOfCompartments < i)
+                                                                    {
+                                                                        <div class="et-col-1-8 text-center ng-binding et-hidden">Cabin @i</div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <div class="et-col-1-8 text-center ng-binding">Cabin @i</div>
+                                                                    }
+                                                                }
+                                                            </div>
+                                                            @{
+                                                                int brek = coach.NoOfCompartments * 2;
+                                                            }
+                                                            @while (count <= coach.NoOfSeats)
+                                                            {
+                                                                if (brek == 0)
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                        <div class="et-bed-right invisible">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                        <div class="et-bed-left invisible">
+                                                                        </div>
+                                                                    </div>
+                                                                    brek = coach.NoOfCompartments * 2;
+                                                                    cabinNum = 1;
+                                                                }
+                                                                if (count % 2 == 0)
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                        <div class="et-bed-right">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available"
+                                                                                            data-schedule="@Model.Item1.Id"
+                                                                                            data-cabin="@cabinNum"
+                                                                                            data-coach="@coach.Id"
+                                                                                            data-seat="@count"
+                                                                                            data-start="@Model.Item1.Departure"
+                                                                                            data-end="@Model.Item1.Arrival"
+                                                                                            data-coachNo="@coach.CoachNo"
+                                                                                            data-fromStation="@Model.Item3.Id"
+                                                                                            data-toStation="@Model.Item4.Id">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="et-bed-illu"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    cabinNum++;
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                        <div class="et-bed-left ">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available"
+                                                                                            data-schedule="@Model.Item1.Id"
+                                                                                            data-cabin="@cabinNum"
+                                                                                            data-coach="@coach.Id"
+                                                                                            data-seat="@count"
+                                                                                            data-start="@Model.Item1.Departure"
+                                                                                            data-end="@Model.Item1.Arrival"
+                                                                                            data-coachNo="@coach.CoachNo"
+                                                                                            data-fromStation="@Model.Item3.Id"
+                                                                                            data-toStation="@Model.Item4.Id">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="et-bed-illu"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
+
+                                                                brek--;
+                                                                count++;
+                                                            }
+                                                        </div>
+                                                        <div class="et-col-1-18 et-car-floor-full-height"></div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
                                     }
                                 }
-                            }
-                        </ul>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-center"> December 2023 </div>
-                                <div class="d-block mt-3 ">
-                                    <div class="row et-car-floor">
-                                        <div class="et-col-1-18 et-car-floor-full-height">
-                                            <div class="et-bed-way et-full-width"></div>
-                                            <div class="et-bed-way et-full-width"></div>
-                                            <div class="et-bed-way et-full-width text-center small ">T2</div>
-                                            <div class="et-bed-way et-full-width text-center small ">T1</div>
-                                        </div>
-                                        <div class="et-col-8-9">
-                                            <div class="et-bed-way et-full-width"></div>
-                                            <div class="et-bed-way et-full-width et-text-sm">
-                                                <div class="et-col-1-8 text-center ">Cabin 1</div>
-                                                <div class="et-col-1-8 text-center ">Cabin 2</div>
-                                                <div class="et-col-1-8 text-center ">Cabin 3</div>
-                                                <div class="et-col-1-8 text-center ">Cabin 4</div>
-                                                <div class="et-col-1-8 text-center ">Cabin 5</div>
-                                                <div class="et-col-1-8 text-center ">Cabin 6</div>
-                                                <div class="et-col-1-8 text-center ">Cabin 7</div>
-                                                <div class="et-col-1-8 text-center  et-hidden">
-                                                    Cabin
-                                                    8
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">3</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">4</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[6]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">7</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-avaiable">
-                                                            <div data-popover="Price: 928,000 VND" data-popover-title="Available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top"
-                                                                 class="et-sit-no ng-scope">
-                                                                <span class="">8</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[10]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">11</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">12</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[14]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">15</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">16</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[18]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">19</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">20</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[22]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">23</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">24</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[26]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">27</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">28</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[30]">
-                                            <div class="et-bed-left invisible">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class=""></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                            <div class="et-bed-right invisible">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class=""></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[0]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">1</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">2</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[4]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">5</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">6</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[8]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">9</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">10</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[12]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">13</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">14</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[16]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">17</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">18</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[20]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">21</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">22</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[24]">
-                                                <div class="et-bed-left">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">25</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                <div class="et-bed-right">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center et-sit-bought">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class="">26</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[28]">
-                                            <div class="et-bed-left invisible">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class=""></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                            <div class="et-bed-right invisible">
-                                                    <div class="et-bed-outer">
-                                                        <div class="et-bed text-center">
-                                                            <div data-popover="Ticket sold" data-popover-title="Not available seat"
-                                                                 data-popover-trigger="mouseenter" data-popover-placement="top" class="et-sit-no ng-scope">
-                                                                <span class=""></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="et-bed-illu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="et-col-1-18 et-car-floor-full-height"></div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -607,6 +417,18 @@
                     <table class="table w-100  table-bordered">
                         <tbody>
                             <tr>
+                                <td class="w-50">From</td>
+                                <td class="w-50 fw-bold">
+                                    @Model.Item3.NameOfDivision
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-50">To</td>
+                                <td class="w-50 fw-bold">
+                                    @Model.Item4.NameOfDivision
+                                </td>
+                            </tr>
+                            <tr>
                                 <td class="w-50">Classes</td>
                                 <td class="w-50 fw-bold">
                                     @Html.DisplayFor(x=>str)
@@ -614,15 +436,15 @@
                             </tr>
                             <tr >
                                 <td class="w-50">Stops</td>
-                                <td class="w-50 fw-bold">@Model.Item3</td>
+                                <td class="w-50 fw-bold">@Model.Item5</td>
                             </tr>
                             <tr >
                                 <td class="w-50">Duration</td>
-                            <td class="w-50 fw-bold">@string.Format("{0:%h}hr {0:%m}min",Model.Item1.Departure-Model.Item1.Arrival)</td>
+                            <td class="w-50 fw-bold">@String.Format("{0:%d} days {0:%h} hours {0:%m} minutes",duration)</td>
                             </tr>
                             <tr >
                                 <td class="w-50">Type</td>
-                                <td class="w-50 fw-bold">@Model.Item2.TypeCode</td>
+                                <td class="w-50 fw-bold">@Model.Item2.Type.Name</td>
                             </tr>
                         </tbody>
                     </table>
@@ -631,7 +453,7 @@
                     <h3 class="fw-400 my-5">Ashram Express 12916 Schedule, Routes &amp; Time Table</h3>
                     <div class="description">
                     </div>
-                    <table class="table my-3 ">
+                    <table class="table my-3 " >
                         <thead>
                             <tr class="p-2">
                                 <th class="h6">Stn Code</th>
@@ -644,25 +466,30 @@
                                 <th class="h6">Avg delay</th>
                             </tr>
                         </thead>
-                    <tbody class="timeline">
+                        <tbody class="timeline" style="height:400px; overflow:scroll">
                         @foreach(var item in Model.Item1.Route.RouteDetails)
                         {
-                            if (item.ArrivalStationId == Model.Item1.Route.EndStationId && item.DepartureStationId == Model.Item1.Route.StartStationId)
+                            if (item.Equals(Model.Item1.Route.RouteDetails.FirstOrDefault()))
                             {
                                 <tr>
-                                    <td class="event-timeline text-center">@item.ArrivalStation.Code</td>
-                                    <td class="">@item.ArrivalStation.Name</td>
-                                    <td>@string.Format("{0:%h}hr {0:%m}min",TimeSpan.FromHours(item.TravelTime))</td>
-                                    <td class="">@Html.DisplayFor(x=>item.Distance) km</td>
-                                    <td class="">@Html.DisplayFor(x=>item.RouteId)</td>
-                                    <td class="">@Html.DisplayFor(x=>TimeSpan.FromHours(item.TravelTime).Days)</td>
-                                    <td class="">@Html.DisplayFor(x=>TimeSpan.FromMinutes(item.DelayTime).TotalMinutes) min</td>
-                                </tr>
-                            }else if(item.DepartureStationId == Model.Item1.Route.StartStationId){
-                                <tr>
-                                    <td class="event-timeline text-center">@item.DepartureStation.Code</td>
-                                    <td class="">@item.DepartureStation.Name</td>
-                                    <td>-</td>
+                                    @if(item.DepartureStationId == Model.Item3.Id )
+                                    {
+                                        <td class="event-timeline text-center"><span class="text-primary fw-bold">@item.DepartureStation.Code</span></td>
+                                        <td class="text-primary fw-bold">@item.DepartureStation.Name</td>
+                                    }else if (item.DepartureStationId == Model.Item4.Id)
+                                    {
+                                        <td class="event-timeline text-center"><span class="text-success fw-bold">@item.DepartureStation.Code</span></td>
+                                        <td class="text-success fw-bold">@item.DepartureStation.Name</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="event-timeline text-center"><span>@item.DepartureStation.Code</span></td>
+                                        <td class="">@item.DepartureStation.Name</td>
+                                    }
+                                    
+                                    <td class="">
+                                        @string.Format("{0:%h}hr {0:%m}min",TimeSpan.FromHours(item.TravelTime))
+                                    </td>
                                     <td class="">@Html.DisplayFor(x=>item.Distance) km</td>
                                     <td class="">@Html.DisplayFor(x=>item.RouteId)</td>
                                     <td class="">@Html.DisplayFor(x=>TimeSpan.FromHours(item.TravelTime).Days)</td>
@@ -672,8 +499,18 @@
                             else
                             {
                                 <tr>
-                                    <td class="event-timeline text-center">@item.DepartureStation.Code</td>
-                                    <td class="">@item.DepartureStation.Name</td>
+                                    @if(item.ArrivalStationId == Model.Item3.Id){
+                                        <td class="event-timeline text-center"><span class="text-primary fw-bold">@item.ArrivalStation.Code</span></td>
+                                        <td class="text-primary fw-bold">@item.ArrivalStation.Name</td>
+                                    }
+                                    else if(item.ArrivalStationId == Model.Item4.Id){
+                                        <td class="event-timeline text-center"><span class="text-success fw-bold">@item.ArrivalStation.Code</span></td>
+                                        <td class="text-success fw-bold">@item.ArrivalStation.Name</td>
+                                    }else{
+                                        <td class="event-timeline text-center">@item.ArrivalStation.Code</td>
+                                        <td class="">@item.ArrivalStation.Name</td>
+                                    }
+                                    <td class="">@item.ArrivalStation.Name</td>
                                     <td class="">
                                         @string.Format("{0:%h}hr {0:%m}min",TimeSpan.FromHours(item.TravelTime))
                                     </td>
@@ -692,4 +529,3 @@
             </div>
         </div>
 </div>
-

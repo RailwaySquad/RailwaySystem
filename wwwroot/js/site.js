@@ -13,21 +13,22 @@ $(document).ready(function () {
                 lis += `<li class="list-group-item ms-1 d-flex flex-column">
                                     <div class="row w-100">
                                         <div class="col-10 ">
-                                        ${item.title}
+                                        <p>Train: ${item.scheduleName}<br/>Trip: ${item.trip}<br/>Departure: ${item.startAt}<br/>${item.seatDetail}<br/>${item.coachClass}</p>
                                         </div>
                                         <div class="col-2">
                                         <a class="text-danger" href="">
                                             <i class="bi bi-trash3"></i>
                                         </a>
                                         </div>
-                                    </div>
-                                    <div>${item.startAt}</div>
-                                    <div>${item.seatDetail}</div</li>`;
+                                    </div></li>`;
             });
             $(".countCart").text(dataCart.length);
         }
         $(".list-cart").html(lis);
     };
+    $.get(window.location.origin + "/api/RailwayAjax/listcart", function (data) {
+        listItemCart(data);
+    })
     $(".sit-available").click(function () {
         let schedule = $(this).data("schedule");
         let coach = $(this).data("coach");
@@ -35,9 +36,11 @@ $(document).ready(function () {
         let starttime=  $(this).data("start");
         let endtime = $(this).data("end");
         let cabin = $(this).data("cabin");
-        let coachCount = $(this).data("coachcount");
+        let coachNo = $(this).data("coachno");
         let from = $(this).data("fromstation");
         let to = $(this).data("tostation");
+        let className = $(this).data("classname"); 
+        let classCode = $(this).data("class");
         let urlAdd = window.location.origin + "/api/RailwayAjax/addcart";
         let urlRemove = window.location.origin + "/api/RailwayAjax/removeitem";
         /*alert(`Schedule: ${schedule}\nCoach: ${coach}\nSeat :${seat}`);*/
@@ -48,9 +51,11 @@ $(document).ready(function () {
             "startAt": starttime,
             "endAt": endtime,
             "cabin": cabin,
-            "coachCount": coachCount,
+            "coachNo": coachNo,
             "fromStation": from,
-            "toStation": to
+            "toStation": to,
+            "coachClass": classCode,
+            "coachClassName": className 
         });
         if ($(this).parent().hasClass("et-sit-avaiable")) {
             $.ajax({
@@ -63,9 +68,11 @@ $(document).ready(function () {
                     "startAt": starttime,
                     "endAt": endtime,
                     "cabin": cabin,
-                    "coachCount": coachCount,
+                    "coachNo": coachNo,
                     "fromStation": from,
-                    "toStation": to
+                    "toStation": to,
+                    "coachClass": classCode,
+                    "coachClassName": className 
                 },
                 success: function (data) {
                     listItemCart(data);
@@ -122,5 +129,12 @@ $(document).ready(function () {
     $(".train-coach").click(function () {
         $(this).siblings().removeClass("active");
         $(this).toggleClass("active");
+    });
+    $(".train-coach2").click(function () {
+        $(this).parent().siblings().find(".train-coach2").removeClass("active");
+        $(this).toggleClass("active");
     })
+    jQuery('.train-coach, .train-coach2').click(function (e) {
+        jQuery('.collapse').collapse('hide');
+    });
 });
