@@ -30,4 +30,7 @@
         background-color: #ee6d3b;
     }
 
-    
+.user-dashboard .nav-link.active, .user-dashboard .nav-pills .show > .nav-link {
+    color: #fff !important;
+    background-color: #ee6d3b !important;
+}
