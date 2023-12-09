@@ -36,7 +36,7 @@ namespace Railway_Group01.Data
         {
             string st =  $"Schedule {this.Id}:\n{this.Name}\n";
             st += $"Departure: {this.Departure} Arrival: {this.Arrival}\nRouteId : {this.RouteId}";
-            /*if (this.Route == null && this.Route!.RouteDetails == null )
+            if (this.Route == null && this.Route!.RouteDetails == null)
             {
                 st += "RouteDetail = null";
             }
@@ -49,7 +49,7 @@ namespace Railway_Group01.Data
                     st += $"Route Dt {cc}: {item.DepartureStationId} - {item.ArrivalStationId}\n";
                     cc++;
                 }
-            }*/
+            }
             return st;
         }
     }
