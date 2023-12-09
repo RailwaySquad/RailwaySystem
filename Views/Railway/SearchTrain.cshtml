@@ -1,44 +1,34 @@
 ﻿@using System.Globalization;
-@model Railway_Group01.Models.ViewModels.RailwaySearchModel;
+@model Railway_Group01.Models.ViewModels.TrainSearchModel
 @{
-    ViewData["Title"] = "Search";
+    ViewData["Title"] = "SearchTrain";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
     var now = DateTime.Parse("2023-12-05");
     var tenMoreDays = now.AddDays(10);
     var nowString = now.ToString("yyyy-MM-dd");
     var tenMoreDaysString = tenMoreDays.ToString("yyyy-MM-dd");
-    List<DateTime> week1 = new List<DateTime>{now};
-    for(int i = 1; i<=(int) now.DayOfWeek -1 ;i++)
+    List<DateTime> week1 = new List<DateTime> { now };
+    for (int i = 1; i <= (int)now.DayOfWeek - 1; i++)
     {
         week1.Add(now.AddDays(-i));
     }
-    for(int j = 14- (int) now.DayOfWeek ; j > 0;j--)
+    for (int j = 14 - (int)now.DayOfWeek; j > 0; j--)
     {
         week1.Add(now.AddDays(j));
     }
     week1.Sort();
-    
 }
 
 <div class="bg-gradient-cus">
-    <div class="form-fields">
-        <form class="row g-1 ui form w-lg-50  w-md-100 mx-auto" method="get">
-            <div class="col-sm-2 col-4  field">
-                <label for="gaDi" class="form-label text-white-50 fw-500" style="font-size:12px">From</label>
-                <select id="gaDi" class="form-select" name="From" asp-items="ViewBag.FromStationSelectList"
-                        style="border-bottom:solid 1px white; border-top:0; border-left:0; border-right:0;"></select>
+    <div class="form-fields pt-2">
+        <form class="row g-1 ui form w-lg-50  w-md-100 mx-auto" asp-action="SearchTrain"  method="get">
+            <div class="col-sm-4 col-5  mx-auto me-0 row">
+                <label for="traincode" class="col-form-label col-4 text-white-50 fw-500" style="font-size:13px">Search Train</label>
+                <div class="col-8">
+                    <select id="traincode" class="form-select" name="TrainCode" asp-items="ViewBag.SelectTrain"></select>
+                </div>
             </div>
-            <div class="col-sm-2 col-4">
-                <label for="gaDen" class="form-label text-white-50 fw-500" style="font-size:12px">To</label>
-                <select id="gaDen" class="form-select" name="To" asp-items="ViewBag.ToStationSelectList"
-                        style="border-bottom:solid 1px white; border-top:0; border-left:0; border-right:0"></select>
-            </div>
-            <div class="col-sm-2">
-                <label for="ngayXP" class="form-label text-white-50 fw-500" style="font-size:12px">Date</label>
-                <input type="date" class="form-control" id="ngayXP" asp-for="@Model.StartDate" min="@nowString" max="@tenMoreDaysString"
-                    style="border-bottom:solid 1px white; border-top:0; border-left:0; border-right:0;" />
-            </div>
-            <div class="d-flex flex-row justify-content-center align-items-center col-sm-2">
+            <div class="col-sm-2 col-2 mx-auto ms-0 d-flex flex-column justify-content-center align-items-center">
                 <button type="submit" class=" text-uppercase btn btn-orange" style="width:120px">
                     Search
                 </button>
@@ -47,84 +37,29 @@
     </div>
 </div>
 
-<div class="container-fluid pt-4 pb-3 mb-3 shadow">
-    <div class="row">
-            <form method="get" asp-action="Search" class="d-flex flex-row col-10 mx-auto">
-                <div class="w-25">
-                    <input type="hidden" asp-for="From" />
-                    <input type="hidden" asp-for="To" />
-                    <input type="hidden" asp-for="StartDate" />
-                </div>
-                <div class="w-25" style="border-right:1px dashed rgba(0,0,0,.12)">
-                    <div class="mb-2">Class Coaches</div>
-                    <div class="d-inline-flex p-2">
-                        <div class="d-flex flex-row flex-wrap">
-                            @foreach (var c in ViewBag.ClassList)
-                            {
-                                <div class="form-check form-check-inline ">
-                                    @if(ViewBag.CoachTypeSelect!=null&& ViewBag.CoachTypeSelect.Contains(c.Code)){
-                                        <input type="checkbox" class="form-check-input" id="@c.Code" name="CoachTypes[]" value="@c.Code" checked />
-                                    }else{
-                                        <input type="checkbox" class="form-check-input" id="@c.Code" name="CoachTypes[]" value="@c.Code" />
-                                    }
-                                    <label class="form-check-label" for="@c.Code">@c.Name</label>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-                <div class="w-25 ps-4">
-                    <div class="mb-2">Departure from</div>
-                    <div class=" d-flex flex-row flex-wrap">
-                        @if (ViewBag.TimeSelect != null && ViewBag.TimeSelect == 1){
-                            <input type="radio" class="btn-check" id="btn-check-1" name="Time" value="1" autocomplete="off" checked/>
-                        }else{
-                            <input type="radio" class="btn-check" id="btn-check-1" name="Time" value="1" autocomplete="off" />
-                        }
-                        <label class="btn btn-outline-primary mb-2 me-2" for="btn-check-1">00:00 - 06:00</label>
-                        @if(ViewBag.TimeSelect != null && ViewBag.TimeSelect == 2)
-                        {
-                            <input type="radio" class="btn-check" id="btn-check-2" name="Time" value="2" autocomplete="off" checked/>
-                        }else{
-                            <input type="radio" class="btn-check" id="btn-check-2" name="Time" value="2" autocomplete="off" />
-
-                        }
-                        <label class="btn btn-outline-primary mb-2 me-2" for="btn-check-2">06:00 - 12:00</label>
-                        @if(ViewBag.TimeSelect !=null && ViewBag.TimeSelect ==3){
-                            <input type="radio" class="btn-check" id="btn-check-3" name="Time" value="3" autocomplete="off" checked/>
-                        }else{
-                            <input type="radio" class="btn-check" id="btn-check-3" name="Time" value="3" autocomplete="off" />
-                        }
-                        <label class="btn btn-outline-primary mb-2 me-2" for="btn-check-3">12:00 - 18:00</label>
-                        @if(ViewBag.TimeSelect !=null && ViewBag.TimeSelect ==4){
-                            <input type="radio" class="btn-check" id="btn-check-4" name="Time" value="4" autocomplete="off" checked/>
-                        }
-                        else
-                        {
-                            <input type="radio" class="btn-check" id="btn-check-4" name="Time" value="4" autocomplete="off"/>
-                        }
-                        <label class="btn btn-outline-primary mb-2 me-2" for="btn-check-4">18:00 - 00:00</label>
-                    </div>
-                </div>
-                <div class="w-25 ps-4">
-                    <button class="btn btn-orange px-5 fw-800 rounded-0" type="submit">Filter</button>
-                </div>
-            </form>
-    </div>
-</div>
-
-
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-8 col-md-12 mx-auto">
+        <div class="col-lg-8 col-md-12 mx-auto mt-4">
             <div class="d-flex flex-row justify-content-center align-items-center list-date">
-                @foreach(var day in week1)
+                @foreach (var day in week1)
                 {
                     if (day.Date == Model.StartDate.Date)
                     {
                         <div class="card mx-2 active">
                             <div class="card-body">
                                 <a class="text-orange text-decoration-none fw-700" href="javascript:void(0);">@day.ToString("ddd"), @day.ToString("dd MMMM")</a>
+                                @if (Model.TrainSchedule != null)
+                                {
+                                    <div class="text-center text-orange" style=" font-size:13px">
+                                        Running
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="text-secondary text-center" style=" font-size:12px">
+                                        No Schedule
+                                    </div>
+                                }
                             </div>
                         </div>
                     }
@@ -132,39 +67,52 @@
                     {
                         <div class="card mx-2">
                             <div class="card-body">
-                                @if(Model.Schedules !=null){
-                                    <a class="text-decoration-none text-black" 
-                                            asp-action="Search" 
-                                            asp-route-From="@Model.From" 
-                                            asp-route-To="@Model.To"
-                                            asp-route-StartDate="@day">@day.ToString("ddd"), @day.ToString("dd MMMM")</a>
-                                }else{
+                                @if (ViewBag.OtherSchedules != null && ViewBag.OtherSchedules.Contains(day))
+                                {
+                                    <a class="text-decoration-none text-black"
+                                        asp-action="SearchTrain"
+                                        asp-route-TrainCode="@Model.TrainCode"
+                                        asp-route-StartDate="@day">@day.ToString("ddd"), @day.ToString("dd MMMM")</a>
+                                    <div class="text-center text-success " style=" font-size:13px">
+                                        Running
+                                    </div>
+                                }
+                                else
+                                {
                                     <a class="text-decoration-none text-black" href="javascript:void(0);">@day.ToString("ddd"), @day.ToString("dd MMMM")</a>
+                                    <div class="text-secondary  text-center" style=" font-size:12px">
+                                        No Schedule
+                                    </div>
                                 }
                             </div>
                         </div>
                     }
                 }
             </div>
-            @if (Model.Schedules != null && Model.Schedules.Any() )
+            @if (Model.TrainSchedule != null && Model.TrainSchedule.Route !=null )
             {
-                @foreach (var schedule in Model.Schedules)
+                int travelT = 0; 
+                @foreach (var route in Model.TrainSchedule!.Route!.RouteDetails!)
                 {
-                    <div class="mt-4">
+                    DateTime departureTime = Model.TrainSchedule.Departure.AddMinutes(travelT);
+                    DateTime arrivalTime = departureTime.AddMinutes(route.TravelTime);
+                    travelT += route.TravelTime+route.DelayTime;
+                    if(route.TravelTime != 0 && !Model.RouteDetails.Contains(route)){
+                        <div class="mt-4">
                         <div class="card p-2">
                             <div class="card-body">
                                 <div class="d-inline-flex w-100">
                                     <div class="p-3 w-25">
                                         <div class="">
-                                            <a class="h4 text-orange text-decoration-none" 
+                                            <a class="h4 text-orange text-decoration-none"
                                                asp-controller="Railway"
                                                asp-action="TrainDetail"
-                                               asp-route-traincode="@schedule.TrainCode"
-                                               asp-route-schedule="@schedule.Id"
-                                               asp-route-departure="@schedule.Route.RouteDetails.FirstOrDefault().DepartureStationId"
-                                               asp-route-arrival="@schedule.Route.RouteDetails.LastOrDefault().ArrivalStationId"
-                                               asp-route-time="@Model.StartDate">
-                                                @schedule.Name
+                                               asp-route-schedule="@Model.TrainSchedule.Id"
+                                               asp-route-traincode="@Model.TrainCode"
+                                               asp-route-departure="@route.DepartureStationId"
+                                               asp-route-arrival="@route.ArrivalStationId"
+                                               asp-route-time="@departureTime">
+                                                @Model.TrainSchedule.Name
                                             </a>
                                         </div>
                                     </div>
@@ -172,46 +120,46 @@
                                         <div class="row w-md-50">
                                             <div class="col-3 col-lg-2 mx-auto me-0">
                                                 <div class="">
-                                                    <a class="text-decoration-none fw-bold" style="color: rgb(236, 88, 36);" href="">@schedule.Route.RouteDetails.FirstOrDefault().DepartureStation.Name</a>
+                                                    <a class="text-decoration-none fw-bold" style="color: rgb(236, 88, 36);" href="">@route.DepartureStation.Name</a>
                                                     <div class="c-tooltip bottom">
                                                         <div class="tip"></div>
                                                     </div>
                                                 </div>
-                                                <div class="time">@schedule.Departure.ToString("HH:mm")</div>
-                                                <div class="date">@schedule.Departure.ToString("ddd, dd MMM")</div>
+                                                <div class="time">@departureTime.ToString("HH:mm")</div>
+                                                <div class="date">@departureTime.ToString("ddd, dd MMM")</div>
                                             </div>
                                             <div class="col-3 d-flex flex-column align-items-center ">
                                                 <div class="text-center">
-                                                        @{
-                                                            var time = schedule.Arrival - schedule.Departure;
-                                                        }
-                                                        @time.Hours h @time.Minutes mins
-                                                 </div>
-                                                 <img src="~/images/svg/Icon_train.svg.png" width="50px" />
+                                                    @{
+                                                        var time = TimeSpan.FromMinutes(route.TravelTime);
+                                                    }
+                                                    @time.Hours h @time.Minutes mins
+                                                </div>
+                                                <img src="~/images/svg/Icon_train.svg.png" width="50px" />
                                             </div>
                                             <div class="col-3 col-lg-2 mx-auto ms-0">
                                                 <div class="">
-                                                    <a class="text-decoration-none fw-bold" style="color: rgb(236, 88, 36);" href="">@schedule.Route.RouteDetails.LastOrDefault().ArrivalStation.Name</a>
+                                                    <a class="text-decoration-none fw-bold" style="color: rgb(236, 88, 36);" href="">@route.ArrivalStation.Name</a>
                                                     <div class="c-tooltip bottom">
                                                         <div class="tip"></div>
                                                     </div>
                                                 </div>
-                                                <div class="time">@schedule.Arrival.ToString("HH:mm")</div>
-                                                <div class="date">@schedule.Arrival.ToString("ddd, dd MMM")</div>
+                                                <div class="time">@arrivalTime.ToString("HH:mm")</div>
+                                                <div class="date">@arrivalTime.ToString("ddd, dd MMM")</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                @if (schedule.Train!.Coaches != null && schedule.Train!.Coaches.Count() >4 )
+                                @if (Model.TrainSchedule.Train!.Coaches != null && Model.TrainSchedule.Train!.Coaches.Count() > 4)
                                 {
                                     <div class=" d-flex flex-row justify-content-around align-items-center my-4 multiple-class">
-                                        @foreach (var coach in schedule.Train!.Coaches!)
+                                        @foreach (var coach in Model.TrainSchedule.Train!.Coaches!)
                                         {
-                                            <a role="button" class="text-decoration-none text-black train-coach" data-bs-toggle="collapse" href="#@schedule.TrainCode-@coach.Id" aria-expanded="false" aria-controls="@schedule.TrainCode-@coach.Id" >
+                                            <a role="button" class="text-decoration-none text-black train-coach" data-bs-toggle="collapse" href="#@Model.TrainCode-@coach.Id-@route.Id" aria-expanded="false" aria-controls="@Model.TrainCode-@coach.Id-@route.Id">
                                                 <div class="card" style="width:180px">
                                                     <div class="card-body d-flex flex-column  p-2">
                                                         <div class="fs-6 text-center" style="color: #EC5B24;">Coach @coach.CoachNo</div>
-                                                        <div class="fs-6">Class: @coach.Class.Name</div>
+                                                            <div class="fs-6">Class: @coach.Class.Name</div>
                                                         <div>Last: @Html.DisplayFor(x=>coach.NoOfSeats)</div>
                                                     </div>
                                                 </div>
@@ -219,16 +167,16 @@
                                         }
                                     </div>
                                 }
-                                else if (schedule.Train!.Coaches != null)
+                                else if (Model.TrainSchedule.Train!.Coaches != null)
                                 {
                                     <div class=" d-flex flex-row justify-content-around align-items-center my-4 ">
-                                        @foreach (var coach in schedule.Train!.Coaches!)
+                                        @foreach (var coach in Model.TrainSchedule.Train!.Coaches!)
                                         {
-                                            <a role="button" class="text-decoration-none text-black train-coach" data-bs-toggle="collapse" href="#@schedule.TrainCode-@coach.Id" aria-expanded="false" aria-controls="@schedule.TrainCode-@coach.Id">
+                                            <a role="button" class="text-decoration-none text-black train-coach" data-bs-toggle="collapse" href="#@Model.TrainCode-@coach.Id-@route.Id" aria-expanded="false" aria-controls="@Model.TrainCode-@coach.Id-@route.Id">
                                                 <div class="card" style="width:180px">
                                                     <div class="card-body d-flex flex-column  p-2">
                                                         <div class="fs-6 text-center" style="color: #EC5B24;">Coach @coach.CoachNo</div>
-                                                        <div class="fs-6">Class: @coach.Class.Name</div>
+                                                            <div class="fs-6">Class: @coach.Class.Name</div>
                                                         <div>Last: @Html.DisplayFor(x=>coach.NoOfSeats)</div>
                                                     </div>
                                                 </div>
@@ -237,9 +185,9 @@
                                     </div>
                                 }
 
-                                @foreach (var coach in schedule.Train.Coaches)
+                                @foreach (var coach in Model.TrainSchedule!.Train!.Coaches!)
                                 {
-                                    <div class="collapse " id="@schedule.TrainCode-@coach.Id">
+                                    <div class="collapse " id="@Model.TrainCode-@coach.Id-@route.Id">
                                         <div class="d-flex flex-row align-items-center justify-content-center pt-3">
                                             @if (coach.NoOfCompartments == 0)
                                             {
@@ -253,16 +201,16 @@
                                                                     <div class="et-col-16 et-sit-side"></div>
                                                                     <div class="et-col-84 et-sit-sur-outer">
                                                                         <div class="et-sit-sur text-center et-sit-avaiable">
-                                                                            <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available" 
-                                                                                data-schedule="@schedule.Id" 
-                                                                                data-coach="@coach.Id" 
-                                                                                data-seat="@count" 
-                                                                                data-start="@schedule.Departure" 
-                                                                                data-end="@schedule.Arrival" 
-                                                                                data-cabin="0" 
-                                                                                data-coachNo="@coach.CoachNo"
-                                                                                 data-fromStation="@schedule.Route.RouteDetails.FirstOrDefault().DepartureStationId"
-                                                                                 data-toStation="@schedule.Route.RouteDetails.LastOrDefault().ArrivalStationId"
+                                                                            <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available"
+                                                                                 data-schedule="@Model.TrainSchedule.Id"
+                                                                                 data-coach="@coach.Id"
+                                                                                 data-seat="@count"
+                                                                                 data-start="@departureTime"
+                                                                                 data-end="@arrivalTime"
+                                                                                 data-cabin="0"
+                                                                                 data-coachNo="@coach.CoachNo"
+                                                                                 data-fromStation="@route.DepartureStationId"
+                                                                                 data-toStation="@route.ArrivalStationId"
                                                                                  data-class="@coach.ClassCode"
                                                                                  data-className="@coach.Class.Name">
                                                                                 <span>@count</span>
@@ -320,16 +268,16 @@
                                                                     <div class="et-bed-right">
                                                                         <div class="et-bed-outer">
                                                                             <div class="et-bed text-center et-sit-avaiable">
-                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available" 
-                                                                                    data-schedule="@schedule.Id" 
-                                                                                    data-cabin="@cabinNum" 
-                                                                                    data-coach="@coach.Id" 
-                                                                                    data-seat="@count" 
-                                                                                    data-start="@schedule.Departure" 
-                                                                                    data-end="@schedule.Arrival"
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available"
+                                                                                     data-schedule="@Model.TrainSchedule.Id"
+                                                                                     data-cabin="@cabinNum"
+                                                                                     data-coach="@coach.Id"
+                                                                                     data-seat="@count"
+                                                                                     data-start="@departureTime"
+                                                                                     data-end="@arrivalTime"
                                                                                      data-coachNo="@coach.CoachNo"
-                                                                                     data-fromStation="@schedule.Route.RouteDetails.FirstOrDefault().DepartureStationId"
-                                                                                     data-toStation="@schedule.Route.RouteDetails.LastOrDefault().ArrivalStationId"
+                                                                                     data-fromStation="@route.DepartureStationId"
+                                                                                     data-toStation="@route.ArrivalStationId"
                                                                                      data-class="@coach.ClassCode"
                                                                                      data-className="@coach.Class.Name">
                                                                                     <span>@count</span>
@@ -347,16 +295,16 @@
                                                                     <div class="et-bed-left ">
                                                                         <div class="et-bed-outer">
                                                                             <div class="et-bed text-center et-sit-avaiable">
-                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available" 
-                                                                                    data-schedule="@schedule.Id" 
-                                                                                    data-cabin="@cabinNum" 
-                                                                                    data-coach="@coach.Id" 
-                                                                                    data-seat="@count" 
-                                                                                    data-start="@schedule.Departure" 
-                                                                                    data-end="@schedule.Arrival"
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available"
+                                                                                     data-schedule="@Model.TrainSchedule.Id"
+                                                                                     data-cabin="@cabinNum"
+                                                                                     data-coach="@coach.Id"
+                                                                                     data-seat="@count"
+                                                                                     data-start="@departureTime"
+                                                                                     data-end="@arrivalTime"
                                                                                      data-coachNo="@coach.CoachNo"
-                                                                                     data-fromStation="@schedule.Route.RouteDetails.FirstOrDefault().DepartureStationId"
-                                                                                     data-toStation="@schedule.Route.RouteDetails.LastOrDefault().ArrivalStationId"
+                                                                                     data-fromStation="@route.DepartureStationId"
+                                                                                     data-toStation="@route.ArrivalStationId"
                                                                                      data-class="@coach.ClassCode"
                                                                                      data-className="@coach.Class.Name">
                                                                                     <span>@count</span>
@@ -367,7 +315,7 @@
                                                                     </div>
                                                                 </div>
                                                             }
-                                                            
+
                                                             brek--;
                                                             count++;
                                                         }
@@ -380,7 +328,8 @@
                                 }
                             </div>
                         </div>
-                    </div>
+                    </div>  
+                    }
                 }
             }
         </div>
@@ -397,7 +346,7 @@
                 <div class="toast align-items-center text-bg-danger border-0" role="alert" id="alertBsRm" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
                         <div class="toast-body">
-                            Remove 1 Ticket 
+                            Remove 1 Ticket
                         </div>
                         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>

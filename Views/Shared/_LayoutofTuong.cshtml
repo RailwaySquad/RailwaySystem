@@ -153,7 +153,7 @@
                 </div>
             </div>
         </header>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="overflow:scroll;">
             <div class="offcanvas-header border-bottom">
                 <div class="text-start">
                     <h5 id="offcanvasRightLabel" class="mb-0 fs-4" style="color: #EC5B24;">Your Tickets</h5>
@@ -224,7 +224,13 @@
             prevArrow: "<button type='button' class='slick-prev pull-left' style='margin-right:20px'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
             nextArrow: "<button type='button' class='slick-next pull-right'style='margin-left:20px'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
         });
-
+        $(".list-date").slick({
+            infinite: true,
+            slidesToShow: 7,
+            slidesToScroll: 7,
+            prevArrow: "<button type='button' class='slick-prev pull-left' style='margin-right:20px'><img src='/images/svg/chevron-compact-left.svg' /></button>",
+            nextArrow: "<button type='button' class='slick-next pull-right'style='margin-left:20px'><img src='/images/svg/chevron-compact-right.svg' /></button>"
+        });
     </script>
 </body>
 </html>

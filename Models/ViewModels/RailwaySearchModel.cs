@@ -12,5 +12,6 @@ namespace Railway_Group01.Models.ViewModels
         public DateTime StartDate { get; set; } = DateTime.Now;
         [AllowNull]
         public List<Schedule>? Schedules { get; set; }
+        
     }
 }
