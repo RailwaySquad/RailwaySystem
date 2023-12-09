@@ -4,9 +4,7 @@
     ViewData["Title"] = "SearchTrain";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
     var now = DateTime.Now;
-    var tenMoreDays = now.AddDays(10);
-    var nowString = now.ToString("yyyy-MM-dd");
-    var tenMoreDaysString = tenMoreDays.ToString("yyyy-MM-dd");
+
     List<DateTime> week1 = new List<DateTime> { now };
     for (int i = 1; i <= (int)now.DayOfWeek - 1; i++)
     {
