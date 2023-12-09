@@ -31,6 +31,29 @@ namespace Railway_Group01.Data
         public int RouteId { get; set; }
 
         public List<Ticket>? Tickets { get; set; }
+
         public List<BookingDetail>? BookingDetails { get; set; }
+
+        public List<int>? ListOfBookedSeatId { get; set; }
+
+        public override string ToString()
+        {
+            string st =  $"Schedule {this.Id}:\n{this.Name}\n";
+            if (this.Route!.RouteDetails == null)
+            {
+                st += "RouteDetail = null";
+            }
+            else
+            {
+                int cc = 1;
+                st += $"Count: {this.Route.RouteDetails.Count}\n";
+                foreach (var item in this.Route!.RouteDetails!)
+                {
+                    st += $"Route Dt {cc}: {item.DepartureStationId} - {item.ArrivalStationId}\n";
+                    cc++;
+                }
+            }
+            return st;
+        }
     }
 }
