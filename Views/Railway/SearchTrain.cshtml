@@ -37,6 +37,11 @@
 
 <div class="container-fluid">
     <div class="row">
+        <div class="spinner-wrapper d-flex flex-column justify-content-center align-items-center ">
+            <div class="spinner-border text-warning" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
         <div class="col-lg-8 col-md-12 mx-auto mt-4">
             <div class="d-flex flex-row justify-content-center align-items-center list-date">
                 @foreach (var day in week1)
@@ -421,3 +426,11 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    <script>
+        const load = document.querySelector(".spinner-wrapper");
+        setTimeout(() => {
+            $(".spinner-wrapper").addClass("d-none");
+        },2600)
+    </script>
+}

@@ -47,15 +47,34 @@
 <div class="container-fluid pt-4 pb-3 mb-3 shadow">
     <div class="row">
             <form method="get" asp-action="Search" class="d-flex flex-row col-10 mx-auto">
-                <div class="w-25">
+                <div class="w-25" style="border-right:1px dashed rgba(0,0,0,.12)">
                     <input type="hidden" asp-for="From" />
                     <input type="hidden" asp-for="To" />
                     <input type="hidden" asp-for="StartDate" />
-                </div>
-                <div class="w-25" style="border-right:1px dashed rgba(0,0,0,.12)">
-                <div class="mb-2">Coach Classes</div>
+                    <div class="mb-2">Train Type</div>
                     <div class="d-inline-flex p-2">
                         <div class="d-flex flex-row flex-wrap">
+                            @foreach (var t in ViewBag.SelectTypeTrain)
+                            {
+                                <div class="form-check form-check-inline ">
+                                    @if (ViewBag.SelectType != null && ViewBag.SelectType == t.Code)
+                                    {
+                                        <input type="radio" class="form-check-input" name="typetrain" value="@t.Code" checked />
+                                    }
+                                    else
+                                    {
+                                        <input type="radio" class="form-check-input" name="typetrain" value="@t.Code" />
+                                    }
+                                    <label class="form-check-label" for="typetrain">@t.Name</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="w-25" style="border-right:1px dashed rgba(0,0,0,.12)">
+                    <div class="mb-2">Coach Classes</div>
+                    <div class="d-inline-flex p-2">
+                            <div class="d-flex flex-row flex-wrap">
                             @foreach (var c in ViewBag.ClassList)
                             {
                                 <div class="form-check form-check-inline ">
@@ -103,8 +122,9 @@
                         <label class="btn btn-outline-primary mb-2 me-2" for="btn-check-4">18:00 - 00:00</label>
                     </div>
                 </div>
-                <div class="w-25 ps-4">
-                    <button class="btn btn-orange px-5 fw-800 rounded-0" type="submit">Filter</button>
+                <div class="w-25 ps-4 d-flex flex-column justify-content-around ">
+                    <button class="btn btn-orange px-5 fw-800 w-75 rounded-0" type="submit">Filter</button>
+                    <button type="reset" class="btn btn-secondary w-75 px-5 fw-800 rounded-0">Reset</button>
                 </div>
             </form>
     </div>
@@ -113,6 +133,11 @@
 
 <div class="container-fluid">
     <div class="row">
+        <div class="spinner-wrapper d-flex flex-column justify-content-center align-items-center ">
+            <div class="spinner-border text-warning" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
         <div class="col-lg-8 col-md-12 mx-auto">
             <div class="d-flex flex-row justify-content-center align-items-center list-date">
                 @foreach(var day in week1)
@@ -474,3 +499,11 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    <script>
+        const load = document.querySelector(".spinner-wrapper");
+        setTimeout(() => {
+            $(".spinner-wrapper").addClass("d-none");
+        }, 2600)
+    </script>
+}

@@ -54,7 +54,8 @@ namespace Railway_Group01.Controllers
 
         public async Task<IActionResult> Search([FromQuery] RailwaySearchModel railwayModel,
                                                 [FromQuery(Name = "coachTypes[]")] string[]? coachTypes,
-                                                [FromQuery(Name = "time")] int? time )
+                                                [FromQuery(Name = "time")] int? time,
+                                                [FromQuery(Name = "typetrain")] string? selectType)
         {
             
             /*var schedulesMatchRoute = await ctx.SearchScheduleByRoute(railwayModel.From, railwayModel.To);*/
@@ -68,15 +69,17 @@ namespace Railway_Group01.Controllers
             {
                 listroute = await ctx.RouteDetails!.Where(x => x.DepartureStationId < x.ArrivalStationId && (x.DepartureStationId == railwayModel.From || x.ArrivalStationId == railwayModel.To)).Select(x => x.RouteId).ToListAsync();
             }
-            List<Schedule> schedulesMatchRoute = await ctx.Schedules!.Where(x => listroute.Contains(x.RouteId) && x.Departure.Date <= railwayModel.StartDate.Date && x.Arrival.Date >= railwayModel.StartDate.Date).ToListAsync();
+            List<Schedule> schedulesMatchRoute = await ctx.Schedules!.Include(x=>x.Train).Include(x=>x.Route).Where(x => listroute.Contains(x.RouteId) && x.Departure.Date <= railwayModel.StartDate.Date && x.Arrival.Date >= railwayModel.StartDate.Date).ToListAsync();
            
-            railwayModel.Schedules = await GetScheduleRelationships(schedulesMatchRoute, railwayModel.From,railwayModel.To, railwayModel.StartDate,time,coachTypes);
+            railwayModel.Schedules = await GetScheduleRelationships(schedulesMatchRoute, railwayModel.From,railwayModel.To, railwayModel.StartDate,time,coachTypes, selectType);
             
             string? jsonSession = HttpContext.Session.GetString("listCart");
             if(jsonSession != null)
             {
                 ViewData["CartList"] = JsonConvert.DeserializeObject<List<CartDto>>(jsonSession);
             }
+            ViewData["SelectType"] = selectType;
+            ViewData["SelectTypeTrain"] = ctx.TrainTypes!.ToList();
             ViewData["CoachTypeSelect"] = coachTypes.ToList();
             ViewData["TimeSelect"] = time;
             ViewData["FromStationSelectList"] = GetStationSelectList(railwayModel.From);
@@ -84,7 +87,7 @@ namespace Railway_Group01.Controllers
             ViewData["ClassList"] = ctx.CoachClasses!.ToList();
             return View(railwayModel);
         }
-        private async Task<List<Schedule>> GetScheduleRelationships(List<Schedule> schedules,int from, int to, DateTime startTime, int? time = 0, string[]? coachTypes = null)
+        private async Task<List<Schedule>> GetScheduleRelationships(List<Schedule> schedules,int from, int to, DateTime startTime, int? time = 0, string[]? coachTypes = null,string? selectType = "")
         {
             List<Schedule> filter = new List<Schedule>();
             int travel1 = 0;
@@ -93,10 +96,6 @@ namespace Railway_Group01.Controllers
             int deplay2 = 0;
             foreach (var schedule in schedules)
             {
-                if (schedule.Route == null)
-                {
-                    schedule.Route = await ctx.Routes!.FindAsync(schedule.RouteId);
-                }
                 if (from > to)
                     {
                         schedule.Route!.RouteDetails = await ctx.RouteDetails!.Where(x => x.DepartureStationId <= from && x.ArrivalStationId >= to && x.RouteId == schedule.RouteId)
@@ -155,7 +154,14 @@ namespace Railway_Group01.Controllers
                 schedule.Arrival = end;
                 bool checkRoute1 = schedule.Route!.RouteDetails.Count > 1 && (schedule.Route!.RouteDetails.Last().ArrivalStationId != to || schedule.Route!.RouteDetails.First().DepartureStationId != from);
                 bool checkRoute2 = schedule.Route!.RouteDetails.Count == 1 && (schedule.Route!.RouteDetails!.FirstOrDefault().ArrivalStationId != to || schedule.Route!.RouteDetails!.FirstOrDefault().DepartureStationId != from);
-
+                if(!String.IsNullOrEmpty(selectType))
+                {
+                    TrainType? type = await ctx.TrainTypes!.FindAsync(selectType);
+                    if (schedule.Train!.TypeCode != selectType)
+                    {
+                        filter.Add(schedule);
+                    }
+                }
                 if (checkRoute1 || checkRoute2||
                     schedule.Route.RouteDetails.Count ==0 || schedule.Departure.Date != startTime.Date)
                 {
@@ -193,12 +199,6 @@ namespace Railway_Group01.Controllers
                     }
                 }
 
-
-                if (schedule.Train == null)
-                {
-                    schedule.Train = await ctx.Trains!.SingleOrDefaultAsync(t => t.Code == schedule.TrainCode);
-
-                }
                 if (schedule.Train!.Coaches == null)
                 {
                     if (coachTypes != null && coachTypes.Length>0)
@@ -235,6 +235,7 @@ namespace Railway_Group01.Controllers
             }
             return schedules;
         }
+
 
         private List<SelectListItem> GetStationSelectList(int selectedStationId = -1)
         {
