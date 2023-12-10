@@ -9,7 +9,7 @@ namespace Railway_Group01.Models.ViewModels
         [AllowNull]
         public DateTime StartDate { get; set; } = DateTime.Now;
         [AllowNull]
-        public Schedule? TrainSchedule { get; set; }
+        public List<Schedule>? TrainSchedule { get; set; }
         [AllowNull]
         public List<RouteDetail>? RouteDetails { get; set; } = new List<RouteDetail>();
     }

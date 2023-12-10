@@ -265,7 +265,7 @@ namespace Railway_Group01.Controllers
             [FromQuery(Name = "schedule")] int? scheduleId
             )
         {
-            if (String.IsNullOrEmpty(trainCode)) //|| String.IsNullOrEmpty(departure) || String.IsNullOrEmpty(arrival) || String.IsNullOrEmpty(time)
+            if (String.IsNullOrEmpty(trainCode))
             {
                 return RedirectToAction("Error404", new { type = "train" });
             }
@@ -349,19 +349,35 @@ namespace Railway_Group01.Controllers
         }
         public async Task<IActionResult> SearchTrain(TrainSearchModel searchTrain) {
             searchTrain.StartDate = searchTrain.StartDate == null ? DateTime.Now : searchTrain.StartDate;
-            IEnumerable<Schedule> schedu = await ctx.Schedules!.Where(x => x.TrainCode == searchTrain.TrainCode && x.Departure.Month == searchTrain.StartDate.Month && x.Departure.Year == searchTrain.StartDate.Year)
-                                                                .Include(x => x.Route)
-                                                                .Include(x => x.Route.RouteDetails)
+            IEnumerable<Schedule> schedu = await ctx.Schedules!.Include(x => x.Route)
+                                                                .Include(x => x.Route!.RouteDetails)
                                                                 .Include(x => x.Train)
-                                                                .Include(train => train.Train.Coaches)
+                                                                .Include(train => train.Train!.Coaches)
+                                                                .Where(x => x.TrainCode == searchTrain.TrainCode && 
+                                                                            x.Departure.Month == searchTrain.StartDate.Month && 
+                                                                            x.Departure.Year == searchTrain.StartDate.Year)
                                                                 .ToListAsync();
-
-            searchTrain.TrainSchedule = await ctx.Schedules!.Include(x => x.Train)
+            DateTime nextDate = searchTrain.StartDate.AddDays(1);
+            List<Schedule>? list1 = await ctx.Schedules!.Include(x => x.Train)
                                                             .Include(x=> x.Route)
-                                                            .Include(x=> x.Train.Coaches)
-                                                            .Include(x=> x.Route.RouteDetails)
-                                                            .Where(x=> x.TrainCode==searchTrain.TrainCode && x.Departure.Date <= searchTrain.StartDate.Date && x.Arrival>=searchTrain.StartDate.Date)
-                                                            .FirstOrDefaultAsync();
+                                                            .Include(x=> x.Train!.Coaches)
+                                                            .Include(x=> x.Route!.RouteDetails)
+                                                            .Where(x=> x.TrainCode == searchTrain.TrainCode && 
+                                                                        x.Departure <= searchTrain.StartDate&& 
+                                                                        x.Arrival > searchTrain.StartDate)
+                                                            .ToListAsync();
+            List<Schedule>? list2 = await ctx.Schedules!.Include(x => x.Train)
+                                                            .Include(x => x.Route)
+                                                            .Include(x => x.Train!.Coaches)
+                                                            .Include(x => x.Route!.RouteDetails)
+                                                            .Where(x => x.TrainCode == searchTrain.TrainCode &&
+                                                                        x.Departure <= nextDate &&
+                                                                        x.Arrival > nextDate)
+                                                            .ToListAsync();
+            list1.AddRange(list2);
+            searchTrain.TrainSchedule = list1;
+            
+            
             List<DateTime> time = new List<DateTime>();
             if(schedu !=null && schedu.Count() >= 1)
             {
@@ -383,37 +399,39 @@ namespace Railway_Group01.Controllers
             {
                 return RedirectToAction("Error404", new { type = "train" });
             }
-            if (searchTrain.TrainSchedule != null && searchTrain.TrainSchedule.Train != null && searchTrain.TrainSchedule.Route != null)
+            if (searchTrain.TrainSchedule != null)
             {
-                List<BookingDetail>? bookdt = await ctx.BookingDetails!.Include(x => x.Schedule).Include(x => x.Seat).Where(x => x.Schedule.Id == searchTrain.TrainSchedule.Id).ToListAsync();
-                searchTrain.TrainSchedule.ListOfBookedSeatId = new List<Seat>();
-                if (bookdt != null && bookdt.Count > 0)
+                foreach(var schedule in searchTrain.TrainSchedule)
                 {
-                    foreach (var book in bookdt)
+                    List<BookingDetail>? bookdt = await ctx.BookingDetails!.Include(x => x.Schedule).Include(x => x.Seat).Where(x => x.Schedule.Id == schedule.Id).ToListAsync();
+                    schedule.ListOfBookedSeatId = new List<Seat>();
+                    if (bookdt != null && bookdt.Count > 0)
                     {
-                        book.Seat.Coach = await ctx.Coaches!.Include(x => x.Class).FirstOrDefaultAsync(x => x.Id == book.Seat.CoachId);
-                        searchTrain.TrainSchedule.ListOfBookedSeatId.Add(book.Seat);
+                        foreach (var book in bookdt)
+                        {
+                            book.Seat!.Coach = await ctx.Coaches!.Include(x => x.Class).Where(x => x.Id == book.Seat.CoachId).FirstOrDefaultAsync();
+                            schedule.ListOfBookedSeatId.Add(book.Seat);
+                        }
                     }
-                }
-                int travelT = 0;
-                foreach (var routedt in searchTrain.TrainSchedule!.Route!.RouteDetails)
-                {
-                    DateTime departureTime = searchTrain.TrainSchedule.Departure.AddMinutes(travelT);
-                    travelT += routedt.TravelTime + routedt.DelayTime;
-                    if (departureTime.Date != searchTrain.StartDate.Date)
+                    int travelT = 0;
+                    foreach (var routedt in schedule!.Route!.RouteDetails!)
                     {
-                        searchTrain.RouteDetails.Add(routedt);
+                        routedt.DepartureStation = await ctx.Stations!.Where(x=> x.Id == routedt.DepartureStationId).FirstOrDefaultAsync();
+                        routedt.ArrivalStation = await ctx.Stations!.Where(x=>x.Id == routedt.ArrivalStationId).FirstOrDefaultAsync();
+                            
+                        DateTime departureTime = schedule.Departure.AddMinutes(travelT);
+                        travelT += routedt.TravelTime + routedt.DelayTime;
+                        if (departureTime.Date != searchTrain.StartDate.Date)
+                        {
+                            searchTrain.RouteDetails!.Add(routedt);
+                        }
                     }
-                }
-                foreach (var item in searchTrain.TrainSchedule.Train.Coaches)
-                {
-                    item.Class = await ctx.CoachClasses!.Where(x => x.Code == item.ClassCode).FirstOrDefaultAsync();
-                    item.Seats = await ctx.Seats!.Where(x => x.CoachId == item.Id).ToListAsync();
-                }
-                foreach (var item in searchTrain.TrainSchedule.Route.RouteDetails)
-                {
-                    item.DepartureStation = await ctx.Stations!.FirstOrDefaultAsync(x => x.Id == item.DepartureStationId);
-                    item.ArrivalStation = await ctx.Stations!.FirstOrDefaultAsync(x => x.Id == item.ArrivalStationId);
+                    foreach (var item in schedule.Train!.Coaches!)
+                    {
+                        item.Class = await ctx.CoachClasses!.Where(x => x.Code == item.ClassCode).FirstOrDefaultAsync();
+                        item.Seats = await ctx.Seats!.Where(x => x.CoachId == item.Id).ToListAsync();
+                    }
+
                 }
             }
             else
@@ -423,6 +441,13 @@ namespace Railway_Group01.Controllers
             
             ViewData["OtherSchedules"] = time;
             ViewData["SelectTrain"] = GetTrainSelectList(searchTrain.TrainCode);
+            Console.WriteLine($"Schedule {searchTrain.StartDate}:");
+            foreach (var item in list1)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("Schedule Show:");
+            Console.WriteLine(searchTrain.TrainSchedule);
             return View(searchTrain);
         }
         public async Task<IActionResult> SearchStation(StationSearchModel searchStation) {
