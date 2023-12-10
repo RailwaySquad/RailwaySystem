@@ -1,11 +1,9 @@
 ﻿@{
     ViewData["Title"] = "FINISH";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
-
-    var paypalLogo = "/images/paypalLogo.jpg";
 }
 
-<section class="bg-gradient-cus mb-3">
+<section class="bg-gradient-cus">
     <div class="container">
         <h1 class="text-white">@ViewData["Title"]</h1>
         <div class="d-flex">
@@ -31,11 +29,17 @@
 
 <div class="container">
 
-    <section>
-        <div class="d-flex justify-content-between">
-            <a asp-controller="Booking" asp-action="Index" class="btn btn-orange fw-bold"> 👈 Back Home 🔙</a>
-            <a asp-area="Identity" asp-page="/Account/Manage/BookingHistory" class="btn btn-orange fw-bold">⏭️ View Your Booking 👉</a>
+    <div class="p-5" style="background-color: #08618d">
+        <div class="mx-auto p-3 bg-light rounded border" style="width: 420px">
+            <h2 class="text-success text-center mb-5">Your order is finish!</h2>
+            <div class="d-flex justify-content-between">
+                <a asp-area="Identity" asp-page="/Account/Manage/BookingHistory" class="btn btn-orange fw-bold">View Booking History</a>
+                <a href="#" class="btn btn-orange">View ticket</a>
+            </div>
         </div>
-    </section>
+        <div class="d-flex justify-content-between">
+            <a asp-controller="Railway" asp-action="Index" class="btn btn-orange fw-bold"> 👈 Back Home 🔙</a>
+        </div>
+    </div>
 </div>
 

@@ -12,8 +12,8 @@ using Railway_Group01.Data;
 namespace Railway_Group01.Migrations
 {
     [DbContext(typeof(RailwayDbContext))]
-    [Migration("20231209172737_v1")]
-    partial class v1
+    [Migration("20231210222755_v0")]
+    partial class v0
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -212,8 +212,7 @@ namespace Railway_Group01.Migrations
 
                     b.HasIndex("ScheduleId");
 
-                    b.HasIndex("SeatId")
-                        .IsUnique();
+                    b.HasIndex("SeatId");
 
                     b.ToTable("BookingDetails");
                 });
@@ -3509,8 +3508,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1,
-                            Arrival = new DateTime(2023, 9, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -3519,8 +3518,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 2,
-                            Arrival = new DateTime(2023, 9, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -3529,8 +3528,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 3,
-                            Arrival = new DateTime(2023, 9, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -3539,8 +3538,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 4,
-                            Arrival = new DateTime(2023, 9, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -3549,8 +3548,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 5,
-                            Arrival = new DateTime(2023, 9, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -3559,8 +3558,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 6,
-                            Arrival = new DateTime(2023, 9, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -3569,8 +3568,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 7,
-                            Arrival = new DateTime(2023, 9, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -3579,8 +3578,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 8,
-                            Arrival = new DateTime(2023, 9, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -3589,8 +3588,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 9,
-                            Arrival = new DateTime(2023, 9, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -3599,8 +3598,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 10,
-                            Arrival = new DateTime(2023, 9, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -3609,8 +3608,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 11,
-                            Arrival = new DateTime(2023, 9, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -3619,8 +3618,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 12,
-                            Arrival = new DateTime(2023, 9, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -3629,8 +3628,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 13,
-                            Arrival = new DateTime(2023, 9, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -3639,8 +3638,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 14,
-                            Arrival = new DateTime(2023, 9, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -3649,8 +3648,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 15,
-                            Arrival = new DateTime(2023, 9, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -3659,8 +3658,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 16,
-                            Arrival = new DateTime(2023, 9, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -3669,8 +3668,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 17,
-                            Arrival = new DateTime(2023, 9, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -3679,8 +3678,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 18,
-                            Arrival = new DateTime(2023, 9, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -3689,8 +3688,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 19,
-                            Arrival = new DateTime(2023, 9, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -3699,8 +3698,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 20,
-                            Arrival = new DateTime(2023, 9, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -3709,8 +3708,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 21,
-                            Arrival = new DateTime(2023, 9, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -3719,8 +3718,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 22,
-                            Arrival = new DateTime(2023, 9, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -3729,8 +3728,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 23,
-                            Arrival = new DateTime(2023, 9, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -3739,8 +3738,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 24,
-                            Arrival = new DateTime(2023, 9, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -3749,8 +3748,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 25,
-                            Arrival = new DateTime(2023, 9, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -3759,8 +3758,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 26,
-                            Arrival = new DateTime(2023, 9, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -3769,8 +3768,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 27,
-                            Arrival = new DateTime(2023, 9, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -3779,8 +3778,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 28,
-                            Arrival = new DateTime(2023, 9, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -3789,8 +3788,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 29,
-                            Arrival = new DateTime(2023, 9, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -3799,8 +3798,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 30,
-                            Arrival = new DateTime(2023, 9, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -3809,8 +3808,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 31,
-                            Arrival = new DateTime(2023, 9, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -3819,8 +3818,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 32,
-                            Arrival = new DateTime(2023, 9, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -3829,8 +3828,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 33,
-                            Arrival = new DateTime(2023, 9, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -3839,8 +3838,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 34,
-                            Arrival = new DateTime(2023, 9, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -3849,8 +3848,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 35,
-                            Arrival = new DateTime(2023, 9, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -3859,8 +3858,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 36,
-                            Arrival = new DateTime(2023, 9, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -3869,8 +3868,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 37,
-                            Arrival = new DateTime(2023, 9, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -3879,8 +3878,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 38,
-                            Arrival = new DateTime(2023, 9, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -3889,8 +3888,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 39,
-                            Arrival = new DateTime(2023, 9, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -3899,8 +3898,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 40,
-                            Arrival = new DateTime(2023, 9, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -3909,8 +3908,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 41,
-                            Arrival = new DateTime(2023, 9, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -3919,8 +3918,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 42,
-                            Arrival = new DateTime(2023, 9, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -3929,8 +3928,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 43,
-                            Arrival = new DateTime(2023, 9, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -3939,8 +3938,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 44,
-                            Arrival = new DateTime(2023, 9, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -3949,8 +3948,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 45,
-                            Arrival = new DateTime(2023, 9, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -3959,8 +3958,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 46,
-                            Arrival = new DateTime(2023, 9, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -3969,8 +3968,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 47,
-                            Arrival = new DateTime(2023, 9, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -3979,8 +3978,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 48,
-                            Arrival = new DateTime(2023, 9, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -3989,8 +3988,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 49,
-                            Arrival = new DateTime(2023, 9, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -3999,8 +3998,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 50,
-                            Arrival = new DateTime(2023, 9, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -4009,8 +4008,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 51,
-                            Arrival = new DateTime(2023, 9, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -4019,8 +4018,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 52,
-                            Arrival = new DateTime(2023, 9, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -4029,8 +4028,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 53,
-                            Arrival = new DateTime(2023, 9, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4039,8 +4038,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 54,
-                            Arrival = new DateTime(2023, 9, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4049,8 +4048,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 55,
-                            Arrival = new DateTime(2023, 9, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4059,8 +4058,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 56,
-                            Arrival = new DateTime(2023, 9, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4069,8 +4068,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 57,
-                            Arrival = new DateTime(2023, 9, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -4079,8 +4078,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 58,
-                            Arrival = new DateTime(2023, 9, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -4089,8 +4088,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 59,
-                            Arrival = new DateTime(2023, 9, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -4099,8 +4098,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 60,
-                            Arrival = new DateTime(2023, 9, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -4109,8 +4108,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 61,
-                            Arrival = new DateTime(2023, 9, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -4119,8 +4118,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 62,
-                            Arrival = new DateTime(2023, 9, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -4129,8 +4128,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 63,
-                            Arrival = new DateTime(2023, 9, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -4139,8 +4138,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 64,
-                            Arrival = new DateTime(2023, 9, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -4149,8 +4148,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 65,
-                            Arrival = new DateTime(2023, 9, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4159,8 +4158,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 66,
-                            Arrival = new DateTime(2023, 9, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4169,8 +4168,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 67,
-                            Arrival = new DateTime(2023, 9, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4179,8 +4178,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 68,
-                            Arrival = new DateTime(2023, 9, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4189,8 +4188,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 69,
-                            Arrival = new DateTime(2023, 9, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -4199,8 +4198,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 70,
-                            Arrival = new DateTime(2023, 9, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -4209,8 +4208,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 71,
-                            Arrival = new DateTime(2023, 9, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -4219,8 +4218,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 72,
-                            Arrival = new DateTime(2023, 9, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -4229,8 +4228,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 73,
-                            Arrival = new DateTime(2023, 9, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -4239,8 +4238,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 74,
-                            Arrival = new DateTime(2023, 9, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -4249,8 +4248,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 75,
-                            Arrival = new DateTime(2023, 9, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -4259,8 +4258,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 76,
-                            Arrival = new DateTime(2023, 9, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -4269,8 +4268,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 77,
-                            Arrival = new DateTime(2023, 9, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4279,8 +4278,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 78,
-                            Arrival = new DateTime(2023, 9, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4289,8 +4288,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 79,
-                            Arrival = new DateTime(2023, 9, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4299,8 +4298,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 80,
-                            Arrival = new DateTime(2023, 9, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4309,8 +4308,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 81,
-                            Arrival = new DateTime(2023, 9, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -4319,8 +4318,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 82,
-                            Arrival = new DateTime(2023, 9, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -4329,8 +4328,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 83,
-                            Arrival = new DateTime(2023, 9, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -4339,8 +4338,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 84,
-                            Arrival = new DateTime(2023, 9, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -4349,8 +4348,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 85,
-                            Arrival = new DateTime(2023, 9, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -4359,8 +4358,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 86,
-                            Arrival = new DateTime(2023, 9, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -4369,8 +4368,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 87,
-                            Arrival = new DateTime(2023, 9, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -4379,8 +4378,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 88,
-                            Arrival = new DateTime(2023, 9, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -4389,8 +4388,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 89,
-                            Arrival = new DateTime(2023, 9, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4399,8 +4398,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 90,
-                            Arrival = new DateTime(2023, 9, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4409,8 +4408,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 91,
-                            Arrival = new DateTime(2023, 9, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4419,8 +4418,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 92,
-                            Arrival = new DateTime(2023, 9, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4429,8 +4428,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 93,
-                            Arrival = new DateTime(2023, 9, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -4439,8 +4438,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 94,
-                            Arrival = new DateTime(2023, 9, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -4449,8 +4448,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 95,
-                            Arrival = new DateTime(2023, 9, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -4459,8 +4458,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 96,
-                            Arrival = new DateTime(2023, 9, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -4469,8 +4468,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 97,
-                            Arrival = new DateTime(2023, 9, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -4479,8 +4478,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 98,
-                            Arrival = new DateTime(2023, 9, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -4489,8 +4488,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 99,
-                            Arrival = new DateTime(2023, 9, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -4499,8 +4498,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 100,
-                            Arrival = new DateTime(2023, 9, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -4509,8 +4508,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 101,
-                            Arrival = new DateTime(2023, 9, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4519,8 +4518,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 102,
-                            Arrival = new DateTime(2023, 9, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4529,8 +4528,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 103,
-                            Arrival = new DateTime(2023, 9, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4539,8 +4538,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 104,
-                            Arrival = new DateTime(2023, 9, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4549,8 +4548,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 105,
-                            Arrival = new DateTime(2023, 9, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -4559,8 +4558,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 106,
-                            Arrival = new DateTime(2023, 9, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -4569,8 +4568,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 107,
-                            Arrival = new DateTime(2023, 9, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -4579,8 +4578,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 108,
-                            Arrival = new DateTime(2023, 9, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -4589,8 +4588,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 109,
-                            Arrival = new DateTime(2023, 9, 20, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 19, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 21, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 20, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -4599,8 +4598,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 110,
-                            Arrival = new DateTime(2023, 9, 21, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 20, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 22, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 21, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -4609,8 +4608,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 111,
-                            Arrival = new DateTime(2023, 9, 20, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 19, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 21, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 20, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -4619,8 +4618,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 112,
-                            Arrival = new DateTime(2023, 9, 21, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 20, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 22, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 21, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -4629,8 +4628,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 113,
-                            Arrival = new DateTime(2023, 9, 20, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 19, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 21, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 20, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4639,8 +4638,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 114,
-                            Arrival = new DateTime(2023, 9, 21, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 20, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 22, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 21, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4649,8 +4648,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 115,
-                            Arrival = new DateTime(2023, 9, 20, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 19, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 21, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 20, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4659,8 +4658,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 116,
-                            Arrival = new DateTime(2023, 9, 21, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 20, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 22, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 21, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4669,8 +4668,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 117,
-                            Arrival = new DateTime(2023, 9, 21, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 19, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 22, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 20, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -4679,8 +4678,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 118,
-                            Arrival = new DateTime(2023, 9, 22, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 20, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 23, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 21, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -4689,8 +4688,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 119,
-                            Arrival = new DateTime(2023, 9, 21, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 19, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 22, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 20, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -4699,8 +4698,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 120,
-                            Arrival = new DateTime(2023, 9, 22, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 20, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 23, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 21, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -4709,8 +4708,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 121,
-                            Arrival = new DateTime(2023, 9, 22, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 21, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 23, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 22, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -4719,8 +4718,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 122,
-                            Arrival = new DateTime(2023, 9, 23, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 22, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 24, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 23, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -4729,8 +4728,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 123,
-                            Arrival = new DateTime(2023, 9, 22, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 21, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 23, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 22, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -4739,8 +4738,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 124,
-                            Arrival = new DateTime(2023, 9, 23, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 22, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 24, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 23, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -4749,8 +4748,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 125,
-                            Arrival = new DateTime(2023, 9, 22, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 21, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 23, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 22, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4759,8 +4758,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 126,
-                            Arrival = new DateTime(2023, 9, 23, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 22, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 24, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 23, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4769,8 +4768,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 127,
-                            Arrival = new DateTime(2023, 9, 22, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 21, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 23, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 22, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4779,8 +4778,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 128,
-                            Arrival = new DateTime(2023, 9, 23, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 22, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 24, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 23, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4789,8 +4788,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 129,
-                            Arrival = new DateTime(2023, 9, 23, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 21, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 24, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 22, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -4799,8 +4798,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 130,
-                            Arrival = new DateTime(2023, 9, 24, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 22, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 25, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 23, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -4809,8 +4808,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 131,
-                            Arrival = new DateTime(2023, 9, 23, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 21, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 24, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 22, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -4819,8 +4818,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 132,
-                            Arrival = new DateTime(2023, 9, 24, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 22, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 25, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 23, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -4829,8 +4828,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 133,
-                            Arrival = new DateTime(2023, 9, 24, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 23, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 25, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 24, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -4839,8 +4838,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 134,
-                            Arrival = new DateTime(2023, 9, 25, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 24, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 26, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 25, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -4849,8 +4848,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 135,
-                            Arrival = new DateTime(2023, 9, 24, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 23, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 25, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 24, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -4859,8 +4858,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 136,
-                            Arrival = new DateTime(2023, 9, 25, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 24, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 26, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 25, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -4869,8 +4868,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 137,
-                            Arrival = new DateTime(2023, 9, 24, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 23, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 25, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 24, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4879,8 +4878,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 138,
-                            Arrival = new DateTime(2023, 9, 25, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 24, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 26, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 25, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4889,8 +4888,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 139,
-                            Arrival = new DateTime(2023, 9, 24, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 23, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 25, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 24, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -4899,8 +4898,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 140,
-                            Arrival = new DateTime(2023, 9, 25, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 24, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 26, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 25, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4909,8 +4908,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 141,
-                            Arrival = new DateTime(2023, 9, 25, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 23, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 26, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 24, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -4919,8 +4918,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 142,
-                            Arrival = new DateTime(2023, 9, 26, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 24, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 27, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 25, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -4929,8 +4928,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 143,
-                            Arrival = new DateTime(2023, 9, 25, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 23, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 26, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 24, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -4939,8 +4938,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 144,
-                            Arrival = new DateTime(2023, 9, 26, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 24, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 27, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 25, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -4949,8 +4948,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 145,
-                            Arrival = new DateTime(2023, 9, 26, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 25, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 27, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 26, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -4959,8 +4958,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 146,
-                            Arrival = new DateTime(2023, 9, 27, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 26, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 28, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 27, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -4969,8 +4968,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 147,
-                            Arrival = new DateTime(2023, 9, 26, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 25, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 27, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 26, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -4979,8 +4978,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 148,
-                            Arrival = new DateTime(2023, 9, 27, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 26, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 28, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 27, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -4989,8 +4988,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 149,
-                            Arrival = new DateTime(2023, 9, 26, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 25, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 27, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 26, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -4999,8 +4998,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 150,
-                            Arrival = new DateTime(2023, 9, 27, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 26, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 28, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 27, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5009,8 +5008,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 151,
-                            Arrival = new DateTime(2023, 9, 26, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 25, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 27, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 26, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5019,8 +5018,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 152,
-                            Arrival = new DateTime(2023, 9, 27, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 26, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 28, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 27, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5029,8 +5028,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 153,
-                            Arrival = new DateTime(2023, 9, 27, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 25, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 28, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 26, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -5039,8 +5038,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 154,
-                            Arrival = new DateTime(2023, 9, 28, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 26, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 29, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 27, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -5049,8 +5048,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 155,
-                            Arrival = new DateTime(2023, 9, 27, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 25, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 28, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 26, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -5059,8 +5058,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 156,
-                            Arrival = new DateTime(2023, 9, 28, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 26, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 29, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 27, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -5069,8 +5068,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 157,
-                            Arrival = new DateTime(2023, 9, 28, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 27, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 29, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 28, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -5079,8 +5078,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 158,
-                            Arrival = new DateTime(2023, 9, 29, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 28, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 30, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 29, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -5089,8 +5088,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 159,
-                            Arrival = new DateTime(2023, 9, 28, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 27, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 29, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 28, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -5099,8 +5098,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 160,
-                            Arrival = new DateTime(2023, 9, 29, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 28, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 30, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 29, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -5109,8 +5108,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 161,
-                            Arrival = new DateTime(2023, 9, 28, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 27, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 29, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 28, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5119,8 +5118,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 162,
-                            Arrival = new DateTime(2023, 9, 29, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 28, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 30, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 29, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5129,8 +5128,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 163,
-                            Arrival = new DateTime(2023, 9, 28, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 27, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 29, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 28, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5139,8 +5138,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 164,
-                            Arrival = new DateTime(2023, 9, 29, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 28, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 30, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 29, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5149,8 +5148,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 165,
-                            Arrival = new DateTime(2023, 9, 29, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 27, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 30, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 28, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -5159,8 +5158,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 166,
-                            Arrival = new DateTime(2023, 9, 30, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 28, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 1, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 29, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -5169,8 +5168,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 167,
-                            Arrival = new DateTime(2023, 9, 29, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 27, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 9, 30, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 28, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -5179,8 +5178,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 168,
-                            Arrival = new DateTime(2023, 9, 30, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 28, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 1, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 29, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -5189,8 +5188,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 169,
-                            Arrival = new DateTime(2023, 9, 30, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 29, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 1, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 30, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -5199,8 +5198,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 170,
-                            Arrival = new DateTime(2023, 10, 1, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 30, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 2, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 1, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -5209,8 +5208,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 171,
-                            Arrival = new DateTime(2023, 9, 30, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 29, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 1, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 30, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -5219,8 +5218,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 172,
-                            Arrival = new DateTime(2023, 10, 1, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 30, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 2, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 1, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -5229,8 +5228,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 173,
-                            Arrival = new DateTime(2023, 9, 30, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 29, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 1, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 30, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5239,8 +5238,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 174,
-                            Arrival = new DateTime(2023, 10, 1, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 30, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 2, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 1, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5249,8 +5248,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 175,
-                            Arrival = new DateTime(2023, 9, 30, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 29, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 1, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 30, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5259,8 +5258,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 176,
-                            Arrival = new DateTime(2023, 10, 1, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 30, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 2, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 1, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5269,8 +5268,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 177,
-                            Arrival = new DateTime(2023, 10, 1, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 29, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 2, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 30, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -5279,8 +5278,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 178,
-                            Arrival = new DateTime(2023, 10, 2, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 30, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 3, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 1, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -5289,8 +5288,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 179,
-                            Arrival = new DateTime(2023, 10, 1, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 29, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 2, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 9, 30, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -5299,8 +5298,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 180,
-                            Arrival = new DateTime(2023, 10, 2, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 9, 30, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 3, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 1, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -5309,8 +5308,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 181,
-                            Arrival = new DateTime(2023, 10, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -5319,8 +5318,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 182,
-                            Arrival = new DateTime(2023, 10, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -5329,8 +5328,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 183,
-                            Arrival = new DateTime(2023, 10, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -5339,8 +5338,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 184,
-                            Arrival = new DateTime(2023, 10, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -5349,8 +5348,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 185,
-                            Arrival = new DateTime(2023, 10, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5359,8 +5358,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 186,
-                            Arrival = new DateTime(2023, 10, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5369,8 +5368,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 187,
-                            Arrival = new DateTime(2023, 10, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5379,8 +5378,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 188,
-                            Arrival = new DateTime(2023, 10, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5389,8 +5388,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 189,
-                            Arrival = new DateTime(2023, 10, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -5399,8 +5398,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 190,
-                            Arrival = new DateTime(2023, 10, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -5409,8 +5408,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 191,
-                            Arrival = new DateTime(2023, 10, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -5419,8 +5418,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 192,
-                            Arrival = new DateTime(2023, 10, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -5429,8 +5428,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 193,
-                            Arrival = new DateTime(2023, 10, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -5439,8 +5438,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 194,
-                            Arrival = new DateTime(2023, 10, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -5449,8 +5448,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 195,
-                            Arrival = new DateTime(2023, 10, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -5459,8 +5458,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 196,
-                            Arrival = new DateTime(2023, 10, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -5469,8 +5468,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 197,
-                            Arrival = new DateTime(2023, 10, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5479,8 +5478,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 198,
-                            Arrival = new DateTime(2023, 10, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5489,8 +5488,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 199,
-                            Arrival = new DateTime(2023, 10, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5499,8 +5498,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 200,
-                            Arrival = new DateTime(2023, 10, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5509,8 +5508,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 201,
-                            Arrival = new DateTime(2023, 10, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -5519,8 +5518,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 202,
-                            Arrival = new DateTime(2023, 10, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -5529,8 +5528,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 203,
-                            Arrival = new DateTime(2023, 10, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -5539,8 +5538,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 204,
-                            Arrival = new DateTime(2023, 10, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -5549,8 +5548,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 205,
-                            Arrival = new DateTime(2023, 10, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -5559,8 +5558,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 206,
-                            Arrival = new DateTime(2023, 10, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -5569,8 +5568,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 207,
-                            Arrival = new DateTime(2023, 10, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -5579,8 +5578,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 208,
-                            Arrival = new DateTime(2023, 10, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -5589,8 +5588,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 209,
-                            Arrival = new DateTime(2023, 10, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5599,8 +5598,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 210,
-                            Arrival = new DateTime(2023, 10, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5609,8 +5608,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 211,
-                            Arrival = new DateTime(2023, 10, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5619,8 +5618,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 212,
-                            Arrival = new DateTime(2023, 10, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5629,8 +5628,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 213,
-                            Arrival = new DateTime(2023, 10, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -5639,8 +5638,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 214,
-                            Arrival = new DateTime(2023, 10, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -5649,8 +5648,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 215,
-                            Arrival = new DateTime(2023, 10, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -5659,8 +5658,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 216,
-                            Arrival = new DateTime(2023, 10, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -5669,8 +5668,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 217,
-                            Arrival = new DateTime(2023, 10, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -5679,8 +5678,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 218,
-                            Arrival = new DateTime(2023, 10, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -5689,8 +5688,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 219,
-                            Arrival = new DateTime(2023, 10, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -5699,8 +5698,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 220,
-                            Arrival = new DateTime(2023, 10, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -5709,8 +5708,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 221,
-                            Arrival = new DateTime(2023, 10, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5719,8 +5718,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 222,
-                            Arrival = new DateTime(2023, 10, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5729,8 +5728,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 223,
-                            Arrival = new DateTime(2023, 10, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5739,8 +5738,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 224,
-                            Arrival = new DateTime(2023, 10, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5749,8 +5748,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 225,
-                            Arrival = new DateTime(2023, 10, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -5759,8 +5758,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 226,
-                            Arrival = new DateTime(2023, 10, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -5769,8 +5768,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 227,
-                            Arrival = new DateTime(2023, 10, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -5779,8 +5778,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 228,
-                            Arrival = new DateTime(2023, 10, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -5789,8 +5788,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 229,
-                            Arrival = new DateTime(2023, 10, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -5799,8 +5798,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 230,
-                            Arrival = new DateTime(2023, 10, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -5809,8 +5808,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 231,
-                            Arrival = new DateTime(2023, 10, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -5819,8 +5818,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 232,
-                            Arrival = new DateTime(2023, 10, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -5829,8 +5828,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 233,
-                            Arrival = new DateTime(2023, 10, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5839,8 +5838,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 234,
-                            Arrival = new DateTime(2023, 10, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5849,8 +5848,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 235,
-                            Arrival = new DateTime(2023, 10, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5859,8 +5858,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 236,
-                            Arrival = new DateTime(2023, 10, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5869,8 +5868,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 237,
-                            Arrival = new DateTime(2023, 10, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -5879,8 +5878,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 238,
-                            Arrival = new DateTime(2023, 10, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -5889,8 +5888,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 239,
-                            Arrival = new DateTime(2023, 10, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -5899,8 +5898,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 240,
-                            Arrival = new DateTime(2023, 10, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -5909,8 +5908,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 241,
-                            Arrival = new DateTime(2023, 10, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -5919,8 +5918,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 242,
-                            Arrival = new DateTime(2023, 10, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -5929,8 +5928,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 243,
-                            Arrival = new DateTime(2023, 10, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -5939,8 +5938,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 244,
-                            Arrival = new DateTime(2023, 10, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -5949,8 +5948,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 245,
-                            Arrival = new DateTime(2023, 10, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5959,8 +5958,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 246,
-                            Arrival = new DateTime(2023, 10, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5969,8 +5968,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 247,
-                            Arrival = new DateTime(2023, 10, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -5979,8 +5978,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 248,
-                            Arrival = new DateTime(2023, 10, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -5989,8 +5988,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 249,
-                            Arrival = new DateTime(2023, 10, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -5999,8 +5998,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 250,
-                            Arrival = new DateTime(2023, 10, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -6009,8 +6008,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 251,
-                            Arrival = new DateTime(2023, 10, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -6019,8 +6018,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 252,
-                            Arrival = new DateTime(2023, 10, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -6029,8 +6028,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 253,
-                            Arrival = new DateTime(2023, 10, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -6039,8 +6038,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 254,
-                            Arrival = new DateTime(2023, 10, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -6049,8 +6048,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 255,
-                            Arrival = new DateTime(2023, 10, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -6059,8 +6058,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 256,
-                            Arrival = new DateTime(2023, 10, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -6069,8 +6068,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 257,
-                            Arrival = new DateTime(2023, 10, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6079,8 +6078,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 258,
-                            Arrival = new DateTime(2023, 10, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6089,8 +6088,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 259,
-                            Arrival = new DateTime(2023, 10, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6099,8 +6098,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 260,
-                            Arrival = new DateTime(2023, 10, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6109,8 +6108,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 261,
-                            Arrival = new DateTime(2023, 10, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -6119,8 +6118,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 262,
-                            Arrival = new DateTime(2023, 10, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -6129,8 +6128,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 263,
-                            Arrival = new DateTime(2023, 10, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -6139,8 +6138,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 264,
-                            Arrival = new DateTime(2023, 10, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -6149,8 +6148,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 265,
-                            Arrival = new DateTime(2023, 10, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -6159,8 +6158,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 266,
-                            Arrival = new DateTime(2023, 10, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -6169,8 +6168,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 267,
-                            Arrival = new DateTime(2023, 10, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -6179,8 +6178,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 268,
-                            Arrival = new DateTime(2023, 10, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -6189,8 +6188,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 269,
-                            Arrival = new DateTime(2023, 10, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6199,8 +6198,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 270,
-                            Arrival = new DateTime(2023, 10, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6209,8 +6208,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 271,
-                            Arrival = new DateTime(2023, 10, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6219,8 +6218,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 272,
-                            Arrival = new DateTime(2023, 10, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6229,8 +6228,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 273,
-                            Arrival = new DateTime(2023, 10, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -6239,8 +6238,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 274,
-                            Arrival = new DateTime(2023, 10, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -6249,8 +6248,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 275,
-                            Arrival = new DateTime(2023, 10, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -6259,8 +6258,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 276,
-                            Arrival = new DateTime(2023, 10, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -6269,8 +6268,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 277,
-                            Arrival = new DateTime(2023, 10, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -6279,8 +6278,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 278,
-                            Arrival = new DateTime(2023, 10, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -6289,8 +6288,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 279,
-                            Arrival = new DateTime(2023, 10, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -6299,8 +6298,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 280,
-                            Arrival = new DateTime(2023, 10, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -6309,8 +6308,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 281,
-                            Arrival = new DateTime(2023, 10, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6319,8 +6318,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 282,
-                            Arrival = new DateTime(2023, 10, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6329,8 +6328,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 283,
-                            Arrival = new DateTime(2023, 10, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6339,8 +6338,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 284,
-                            Arrival = new DateTime(2023, 10, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6349,8 +6348,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 285,
-                            Arrival = new DateTime(2023, 10, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -6359,8 +6358,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 286,
-                            Arrival = new DateTime(2023, 10, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -6369,8 +6368,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 287,
-                            Arrival = new DateTime(2023, 10, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -6379,8 +6378,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 288,
-                            Arrival = new DateTime(2023, 10, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -6389,8 +6388,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 289,
-                            Arrival = new DateTime(2023, 10, 20, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 19, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 21, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 20, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -6399,8 +6398,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 290,
-                            Arrival = new DateTime(2023, 10, 21, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 20, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 22, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 21, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -6409,8 +6408,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 291,
-                            Arrival = new DateTime(2023, 10, 20, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 19, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 21, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 20, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -6419,8 +6418,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 292,
-                            Arrival = new DateTime(2023, 10, 21, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 20, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 22, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 21, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -6429,8 +6428,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 293,
-                            Arrival = new DateTime(2023, 10, 20, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 19, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 21, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 20, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6439,8 +6438,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 294,
-                            Arrival = new DateTime(2023, 10, 21, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 20, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 22, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 21, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6449,8 +6448,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 295,
-                            Arrival = new DateTime(2023, 10, 20, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 19, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 21, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 20, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6459,8 +6458,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 296,
-                            Arrival = new DateTime(2023, 10, 21, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 20, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 22, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 21, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6469,8 +6468,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 297,
-                            Arrival = new DateTime(2023, 10, 21, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 19, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 22, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 20, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -6479,8 +6478,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 298,
-                            Arrival = new DateTime(2023, 10, 22, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 20, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 23, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 21, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -6489,8 +6488,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 299,
-                            Arrival = new DateTime(2023, 10, 21, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 19, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 22, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 20, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -6499,8 +6498,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 300,
-                            Arrival = new DateTime(2023, 10, 22, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 20, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 23, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 21, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -6509,8 +6508,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 301,
-                            Arrival = new DateTime(2023, 10, 22, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 21, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 23, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 22, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -6519,8 +6518,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 302,
-                            Arrival = new DateTime(2023, 10, 23, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 22, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 24, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 23, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -6529,8 +6528,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 303,
-                            Arrival = new DateTime(2023, 10, 22, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 21, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 23, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 22, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -6539,8 +6538,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 304,
-                            Arrival = new DateTime(2023, 10, 23, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 22, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 24, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 23, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -6549,8 +6548,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 305,
-                            Arrival = new DateTime(2023, 10, 22, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 21, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 23, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 22, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6559,8 +6558,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 306,
-                            Arrival = new DateTime(2023, 10, 23, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 22, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 24, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 23, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6569,8 +6568,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 307,
-                            Arrival = new DateTime(2023, 10, 22, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 21, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 23, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 22, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6579,8 +6578,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 308,
-                            Arrival = new DateTime(2023, 10, 23, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 22, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 24, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 23, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6589,8 +6588,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 309,
-                            Arrival = new DateTime(2023, 10, 23, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 21, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 24, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 22, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -6599,8 +6598,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 310,
-                            Arrival = new DateTime(2023, 10, 24, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 22, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 25, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 23, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -6609,8 +6608,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 311,
-                            Arrival = new DateTime(2023, 10, 23, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 21, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 24, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 22, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -6619,8 +6618,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 312,
-                            Arrival = new DateTime(2023, 10, 24, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 22, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 25, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 23, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -6629,8 +6628,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 313,
-                            Arrival = new DateTime(2023, 10, 24, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 23, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 25, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 24, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -6639,8 +6638,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 314,
-                            Arrival = new DateTime(2023, 10, 25, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 24, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 26, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 25, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -6649,8 +6648,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 315,
-                            Arrival = new DateTime(2023, 10, 24, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 23, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 25, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 24, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -6659,8 +6658,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 316,
-                            Arrival = new DateTime(2023, 10, 25, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 24, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 26, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 25, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -6669,8 +6668,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 317,
-                            Arrival = new DateTime(2023, 10, 24, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 23, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 25, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 24, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6679,8 +6678,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 318,
-                            Arrival = new DateTime(2023, 10, 25, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 24, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 26, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 25, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6689,8 +6688,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 319,
-                            Arrival = new DateTime(2023, 10, 24, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 23, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 25, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 24, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6699,8 +6698,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 320,
-                            Arrival = new DateTime(2023, 10, 25, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 24, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 26, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 25, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6709,8 +6708,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 321,
-                            Arrival = new DateTime(2023, 10, 25, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 23, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 26, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 24, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -6719,8 +6718,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 322,
-                            Arrival = new DateTime(2023, 10, 26, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 24, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 27, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 25, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -6729,8 +6728,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 323,
-                            Arrival = new DateTime(2023, 10, 25, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 23, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 26, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 24, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -6739,8 +6738,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 324,
-                            Arrival = new DateTime(2023, 10, 26, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 24, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 27, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 25, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -6749,8 +6748,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 325,
-                            Arrival = new DateTime(2023, 10, 26, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 25, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 27, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 26, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -6759,8 +6758,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 326,
-                            Arrival = new DateTime(2023, 10, 27, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 26, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 28, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 27, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -6769,8 +6768,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 327,
-                            Arrival = new DateTime(2023, 10, 26, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 25, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 27, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 26, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -6779,8 +6778,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 328,
-                            Arrival = new DateTime(2023, 10, 27, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 26, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 28, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 27, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -6789,8 +6788,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 329,
-                            Arrival = new DateTime(2023, 10, 26, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 25, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 27, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 26, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6799,8 +6798,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 330,
-                            Arrival = new DateTime(2023, 10, 27, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 26, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 28, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 27, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6809,8 +6808,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 331,
-                            Arrival = new DateTime(2023, 10, 26, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 25, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 27, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 26, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6819,8 +6818,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 332,
-                            Arrival = new DateTime(2023, 10, 27, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 26, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 28, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 27, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6829,8 +6828,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 333,
-                            Arrival = new DateTime(2023, 10, 27, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 25, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 28, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 26, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -6839,8 +6838,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 334,
-                            Arrival = new DateTime(2023, 10, 28, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 26, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 29, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 27, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -6849,8 +6848,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 335,
-                            Arrival = new DateTime(2023, 10, 27, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 25, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 28, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 26, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -6859,8 +6858,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 336,
-                            Arrival = new DateTime(2023, 10, 28, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 26, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 29, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 27, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -6869,8 +6868,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 337,
-                            Arrival = new DateTime(2023, 10, 28, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 27, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 29, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 28, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -6879,8 +6878,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 338,
-                            Arrival = new DateTime(2023, 10, 29, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 28, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 30, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 29, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -6889,8 +6888,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 339,
-                            Arrival = new DateTime(2023, 10, 28, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 27, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 29, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 28, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -6899,8 +6898,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 340,
-                            Arrival = new DateTime(2023, 10, 29, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 28, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 30, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 29, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -6909,8 +6908,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 341,
-                            Arrival = new DateTime(2023, 10, 28, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 27, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 29, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 28, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6919,8 +6918,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 342,
-                            Arrival = new DateTime(2023, 10, 29, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 28, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 30, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 29, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6929,8 +6928,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 343,
-                            Arrival = new DateTime(2023, 10, 28, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 27, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 29, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 28, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -6939,8 +6938,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 344,
-                            Arrival = new DateTime(2023, 10, 29, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 28, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 30, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 29, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -6949,8 +6948,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 345,
-                            Arrival = new DateTime(2023, 10, 29, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 27, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 30, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 28, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -6959,8 +6958,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 346,
-                            Arrival = new DateTime(2023, 10, 30, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 28, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 31, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 29, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -6969,8 +6968,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 347,
-                            Arrival = new DateTime(2023, 10, 29, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 27, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 30, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 28, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -6979,8 +6978,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 348,
-                            Arrival = new DateTime(2023, 10, 30, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 28, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 31, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 29, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -6989,8 +6988,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 349,
-                            Arrival = new DateTime(2023, 10, 30, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 29, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 31, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 30, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -6999,8 +6998,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 350,
-                            Arrival = new DateTime(2023, 10, 31, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 30, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 1, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 31, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -7009,8 +7008,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 351,
-                            Arrival = new DateTime(2023, 10, 30, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 29, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 31, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 30, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -7019,8 +7018,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 352,
-                            Arrival = new DateTime(2023, 10, 31, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 30, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 1, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 31, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -7029,8 +7028,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 353,
-                            Arrival = new DateTime(2023, 10, 30, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 29, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 31, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 30, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7039,8 +7038,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 354,
-                            Arrival = new DateTime(2023, 10, 31, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 30, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 1, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 31, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7049,8 +7048,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 355,
-                            Arrival = new DateTime(2023, 10, 30, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 29, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 10, 31, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 30, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7059,8 +7058,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 356,
-                            Arrival = new DateTime(2023, 10, 31, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 30, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 1, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 31, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7069,8 +7068,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 357,
-                            Arrival = new DateTime(2023, 10, 31, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 29, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 1, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 30, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -7079,8 +7078,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 358,
-                            Arrival = new DateTime(2023, 11, 1, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 30, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 2, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 31, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -7089,8 +7088,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 359,
-                            Arrival = new DateTime(2023, 10, 31, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 29, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 1, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 30, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -7099,8 +7098,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 360,
-                            Arrival = new DateTime(2023, 11, 1, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 30, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 2, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 10, 31, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -7109,8 +7108,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 361,
-                            Arrival = new DateTime(2023, 11, 1, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 31, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 2, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 1, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -7119,8 +7118,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 362,
-                            Arrival = new DateTime(2023, 11, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -7129,8 +7128,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 363,
-                            Arrival = new DateTime(2023, 11, 1, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 31, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 2, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 1, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -7139,8 +7138,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 364,
-                            Arrival = new DateTime(2023, 11, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -7149,8 +7148,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 365,
-                            Arrival = new DateTime(2023, 11, 1, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 31, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 2, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 1, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7159,8 +7158,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 366,
-                            Arrival = new DateTime(2023, 11, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7169,8 +7168,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 367,
-                            Arrival = new DateTime(2023, 11, 1, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 31, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 2, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 1, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7179,8 +7178,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 368,
-                            Arrival = new DateTime(2023, 11, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7189,8 +7188,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 369,
-                            Arrival = new DateTime(2023, 11, 2, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 31, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 3, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 1, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -7199,8 +7198,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 370,
-                            Arrival = new DateTime(2023, 11, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -7209,8 +7208,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 371,
-                            Arrival = new DateTime(2023, 11, 2, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 10, 31, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 3, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 1, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -7219,8 +7218,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 372,
-                            Arrival = new DateTime(2023, 11, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -7229,8 +7228,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 373,
-                            Arrival = new DateTime(2023, 11, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -7239,8 +7238,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 374,
-                            Arrival = new DateTime(2023, 11, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -7249,8 +7248,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 375,
-                            Arrival = new DateTime(2023, 11, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -7259,8 +7258,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 376,
-                            Arrival = new DateTime(2023, 11, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -7269,8 +7268,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 377,
-                            Arrival = new DateTime(2023, 11, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7279,8 +7278,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 378,
-                            Arrival = new DateTime(2023, 11, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7289,8 +7288,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 379,
-                            Arrival = new DateTime(2023, 11, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7299,8 +7298,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 380,
-                            Arrival = new DateTime(2023, 11, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7309,8 +7308,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 381,
-                            Arrival = new DateTime(2023, 11, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -7319,8 +7318,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 382,
-                            Arrival = new DateTime(2023, 11, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -7329,8 +7328,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 383,
-                            Arrival = new DateTime(2023, 11, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -7339,8 +7338,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 384,
-                            Arrival = new DateTime(2023, 11, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -7349,8 +7348,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 385,
-                            Arrival = new DateTime(2023, 11, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -7359,8 +7358,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 386,
-                            Arrival = new DateTime(2023, 11, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -7369,8 +7368,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 387,
-                            Arrival = new DateTime(2023, 11, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -7379,8 +7378,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 388,
-                            Arrival = new DateTime(2023, 11, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -7389,8 +7388,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 389,
-                            Arrival = new DateTime(2023, 11, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7399,8 +7398,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 390,
-                            Arrival = new DateTime(2023, 11, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7409,8 +7408,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 391,
-                            Arrival = new DateTime(2023, 11, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7419,8 +7418,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 392,
-                            Arrival = new DateTime(2023, 11, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7429,8 +7428,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 393,
-                            Arrival = new DateTime(2023, 11, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -7439,8 +7438,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 394,
-                            Arrival = new DateTime(2023, 11, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -7449,8 +7448,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 395,
-                            Arrival = new DateTime(2023, 11, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -7459,8 +7458,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 396,
-                            Arrival = new DateTime(2023, 11, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -7469,8 +7468,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 397,
-                            Arrival = new DateTime(2023, 11, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -7479,8 +7478,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 398,
-                            Arrival = new DateTime(2023, 11, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -7489,8 +7488,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 399,
-                            Arrival = new DateTime(2023, 11, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -7499,8 +7498,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 400,
-                            Arrival = new DateTime(2023, 11, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -7509,8 +7508,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 401,
-                            Arrival = new DateTime(2023, 11, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7519,8 +7518,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 402,
-                            Arrival = new DateTime(2023, 11, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7529,8 +7528,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 403,
-                            Arrival = new DateTime(2023, 11, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7539,8 +7538,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 404,
-                            Arrival = new DateTime(2023, 11, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7549,8 +7548,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 405,
-                            Arrival = new DateTime(2023, 11, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -7559,8 +7558,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 406,
-                            Arrival = new DateTime(2023, 11, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -7569,8 +7568,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 407,
-                            Arrival = new DateTime(2023, 11, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -7579,8 +7578,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 408,
-                            Arrival = new DateTime(2023, 11, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -7589,8 +7588,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 409,
-                            Arrival = new DateTime(2023, 11, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -7599,8 +7598,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 410,
-                            Arrival = new DateTime(2023, 11, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -7609,8 +7608,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 411,
-                            Arrival = new DateTime(2023, 11, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -7619,8 +7618,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 412,
-                            Arrival = new DateTime(2023, 11, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -7629,8 +7628,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 413,
-                            Arrival = new DateTime(2023, 11, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7639,8 +7638,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 414,
-                            Arrival = new DateTime(2023, 11, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7649,8 +7648,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 415,
-                            Arrival = new DateTime(2023, 11, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7659,8 +7658,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 416,
-                            Arrival = new DateTime(2023, 11, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7669,8 +7668,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 417,
-                            Arrival = new DateTime(2023, 11, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -7679,8 +7678,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 418,
-                            Arrival = new DateTime(2023, 11, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -7689,8 +7688,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 419,
-                            Arrival = new DateTime(2023, 11, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -7699,8 +7698,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 420,
-                            Arrival = new DateTime(2023, 11, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -7709,8 +7708,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 421,
-                            Arrival = new DateTime(2023, 11, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -7719,8 +7718,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 422,
-                            Arrival = new DateTime(2023, 11, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -7729,8 +7728,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 423,
-                            Arrival = new DateTime(2023, 11, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -7739,8 +7738,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 424,
-                            Arrival = new DateTime(2023, 11, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -7749,8 +7748,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 425,
-                            Arrival = new DateTime(2023, 11, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7759,8 +7758,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 426,
-                            Arrival = new DateTime(2023, 11, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7769,8 +7768,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 427,
-                            Arrival = new DateTime(2023, 11, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7779,8 +7778,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 428,
-                            Arrival = new DateTime(2023, 11, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7789,8 +7788,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 429,
-                            Arrival = new DateTime(2023, 11, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -7799,8 +7798,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 430,
-                            Arrival = new DateTime(2023, 11, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -7809,8 +7808,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 431,
-                            Arrival = new DateTime(2023, 11, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -7819,8 +7818,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 432,
-                            Arrival = new DateTime(2023, 11, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -7829,8 +7828,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 433,
-                            Arrival = new DateTime(2023, 11, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -7839,8 +7838,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 434,
-                            Arrival = new DateTime(2023, 11, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -7849,8 +7848,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 435,
-                            Arrival = new DateTime(2023, 11, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -7859,8 +7858,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 436,
-                            Arrival = new DateTime(2023, 11, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -7869,8 +7868,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 437,
-                            Arrival = new DateTime(2023, 11, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7879,8 +7878,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 438,
-                            Arrival = new DateTime(2023, 11, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7889,8 +7888,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 439,
-                            Arrival = new DateTime(2023, 11, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -7899,8 +7898,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 440,
-                            Arrival = new DateTime(2023, 11, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7909,8 +7908,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 441,
-                            Arrival = new DateTime(2023, 11, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -7919,8 +7918,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 442,
-                            Arrival = new DateTime(2023, 11, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -7929,8 +7928,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 443,
-                            Arrival = new DateTime(2023, 11, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -7939,8 +7938,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 444,
-                            Arrival = new DateTime(2023, 11, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -7949,8 +7948,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 445,
-                            Arrival = new DateTime(2023, 11, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -7959,8 +7958,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 446,
-                            Arrival = new DateTime(2023, 11, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -7969,8 +7968,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 447,
-                            Arrival = new DateTime(2023, 11, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -7979,8 +7978,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 448,
-                            Arrival = new DateTime(2023, 11, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -7989,8 +7988,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 449,
-                            Arrival = new DateTime(2023, 11, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -7999,8 +7998,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 450,
-                            Arrival = new DateTime(2023, 11, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8009,8 +8008,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 451,
-                            Arrival = new DateTime(2023, 11, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8019,8 +8018,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 452,
-                            Arrival = new DateTime(2023, 11, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8029,8 +8028,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 453,
-                            Arrival = new DateTime(2023, 11, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -8039,8 +8038,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 454,
-                            Arrival = new DateTime(2023, 11, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -8049,8 +8048,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 455,
-                            Arrival = new DateTime(2023, 11, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -8059,8 +8058,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 456,
-                            Arrival = new DateTime(2023, 11, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -8069,8 +8068,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 457,
-                            Arrival = new DateTime(2023, 11, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -8079,8 +8078,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 458,
-                            Arrival = new DateTime(2023, 11, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -8089,8 +8088,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 459,
-                            Arrival = new DateTime(2023, 11, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -8099,8 +8098,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 460,
-                            Arrival = new DateTime(2023, 11, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -8109,8 +8108,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 461,
-                            Arrival = new DateTime(2023, 11, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8119,8 +8118,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 462,
-                            Arrival = new DateTime(2023, 11, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8129,8 +8128,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 463,
-                            Arrival = new DateTime(2023, 11, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8139,8 +8138,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 464,
-                            Arrival = new DateTime(2023, 11, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8149,8 +8148,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 465,
-                            Arrival = new DateTime(2023, 11, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -8159,8 +8158,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 466,
-                            Arrival = new DateTime(2023, 11, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -8169,8 +8168,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 467,
-                            Arrival = new DateTime(2023, 11, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -8179,8 +8178,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 468,
-                            Arrival = new DateTime(2023, 11, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -8189,8 +8188,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 469,
-                            Arrival = new DateTime(2023, 11, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -8199,8 +8198,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 470,
-                            Arrival = new DateTime(2023, 11, 20, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 19, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 21, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 20, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -8209,8 +8208,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 471,
-                            Arrival = new DateTime(2023, 11, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -8219,8 +8218,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 472,
-                            Arrival = new DateTime(2023, 11, 20, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 19, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 21, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 20, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -8229,8 +8228,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 473,
-                            Arrival = new DateTime(2023, 11, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8239,8 +8238,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 474,
-                            Arrival = new DateTime(2023, 11, 20, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 19, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 21, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 20, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8249,8 +8248,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 475,
-                            Arrival = new DateTime(2023, 11, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8259,8 +8258,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 476,
-                            Arrival = new DateTime(2023, 11, 20, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 19, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 21, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 20, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8269,8 +8268,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 477,
-                            Arrival = new DateTime(2023, 11, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -8279,8 +8278,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 478,
-                            Arrival = new DateTime(2023, 11, 21, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 19, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 22, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 20, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -8289,8 +8288,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 479,
-                            Arrival = new DateTime(2023, 11, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -8299,8 +8298,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 480,
-                            Arrival = new DateTime(2023, 11, 21, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 19, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 22, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 20, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -8309,8 +8308,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 481,
-                            Arrival = new DateTime(2023, 11, 21, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 20, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 22, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 21, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -8319,8 +8318,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 482,
-                            Arrival = new DateTime(2023, 11, 22, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 21, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 23, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 22, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -8329,8 +8328,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 483,
-                            Arrival = new DateTime(2023, 11, 21, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 20, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 22, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 21, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -8339,8 +8338,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 484,
-                            Arrival = new DateTime(2023, 11, 22, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 21, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 23, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 22, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -8349,8 +8348,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 485,
-                            Arrival = new DateTime(2023, 11, 21, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 20, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 22, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 21, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8359,8 +8358,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 486,
-                            Arrival = new DateTime(2023, 11, 22, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 21, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 23, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 22, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8369,8 +8368,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 487,
-                            Arrival = new DateTime(2023, 11, 21, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 20, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 22, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 21, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8379,8 +8378,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 488,
-                            Arrival = new DateTime(2023, 11, 22, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 21, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 23, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 22, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8389,8 +8388,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 489,
-                            Arrival = new DateTime(2023, 11, 22, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 20, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 23, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 21, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -8399,8 +8398,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 490,
-                            Arrival = new DateTime(2023, 11, 23, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 21, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 24, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 22, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -8409,8 +8408,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 491,
-                            Arrival = new DateTime(2023, 11, 22, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 20, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 23, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 21, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -8419,8 +8418,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 492,
-                            Arrival = new DateTime(2023, 11, 23, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 21, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 24, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 22, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -8429,8 +8428,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 493,
-                            Arrival = new DateTime(2023, 11, 23, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 22, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 24, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 23, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -8439,8 +8438,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 494,
-                            Arrival = new DateTime(2023, 11, 24, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 23, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 25, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 24, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -8449,8 +8448,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 495,
-                            Arrival = new DateTime(2023, 11, 23, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 22, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 24, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 23, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -8459,8 +8458,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 496,
-                            Arrival = new DateTime(2023, 11, 24, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 23, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 25, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 24, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -8469,8 +8468,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 497,
-                            Arrival = new DateTime(2023, 11, 23, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 22, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 24, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 23, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8479,8 +8478,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 498,
-                            Arrival = new DateTime(2023, 11, 24, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 23, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 25, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 24, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8489,8 +8488,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 499,
-                            Arrival = new DateTime(2023, 11, 23, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 22, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 24, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 23, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8499,8 +8498,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 500,
-                            Arrival = new DateTime(2023, 11, 24, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 23, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 25, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 24, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8509,8 +8508,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 501,
-                            Arrival = new DateTime(2023, 11, 24, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 22, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 25, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 23, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -8519,8 +8518,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 502,
-                            Arrival = new DateTime(2023, 11, 25, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 23, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 26, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 24, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -8529,8 +8528,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 503,
-                            Arrival = new DateTime(2023, 11, 24, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 22, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 25, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 23, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -8539,8 +8538,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 504,
-                            Arrival = new DateTime(2023, 11, 25, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 23, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 26, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 24, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -8549,8 +8548,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 505,
-                            Arrival = new DateTime(2023, 11, 25, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 24, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 26, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 25, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -8559,8 +8558,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 506,
-                            Arrival = new DateTime(2023, 11, 26, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 25, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 27, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 26, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -8569,8 +8568,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 507,
-                            Arrival = new DateTime(2023, 11, 25, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 24, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 26, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 25, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -8579,8 +8578,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 508,
-                            Arrival = new DateTime(2023, 11, 26, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 25, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 27, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 26, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -8589,8 +8588,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 509,
-                            Arrival = new DateTime(2023, 11, 25, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 24, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 26, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 25, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8599,8 +8598,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 510,
-                            Arrival = new DateTime(2023, 11, 26, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 25, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 27, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 26, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8609,8 +8608,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 511,
-                            Arrival = new DateTime(2023, 11, 25, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 24, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 26, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 25, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8619,8 +8618,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 512,
-                            Arrival = new DateTime(2023, 11, 26, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 25, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 27, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 26, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8629,8 +8628,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 513,
-                            Arrival = new DateTime(2023, 11, 26, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 24, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 27, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 25, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -8639,8 +8638,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 514,
-                            Arrival = new DateTime(2023, 11, 27, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 25, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 28, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 26, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -8649,8 +8648,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 515,
-                            Arrival = new DateTime(2023, 11, 26, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 24, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 27, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 25, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -8659,8 +8658,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 516,
-                            Arrival = new DateTime(2023, 11, 27, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 25, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 28, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 26, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -8669,8 +8668,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 517,
-                            Arrival = new DateTime(2023, 11, 27, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 26, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 28, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 27, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -8679,8 +8678,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 518,
-                            Arrival = new DateTime(2023, 11, 28, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 27, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 29, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 28, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -8689,8 +8688,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 519,
-                            Arrival = new DateTime(2023, 11, 27, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 26, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 28, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 27, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -8699,8 +8698,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 520,
-                            Arrival = new DateTime(2023, 11, 28, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 27, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 29, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 28, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -8709,8 +8708,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 521,
-                            Arrival = new DateTime(2023, 11, 27, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 26, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 28, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 27, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8719,8 +8718,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 522,
-                            Arrival = new DateTime(2023, 11, 28, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 27, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 29, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 28, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8729,8 +8728,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 523,
-                            Arrival = new DateTime(2023, 11, 27, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 26, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 28, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 27, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8739,8 +8738,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 524,
-                            Arrival = new DateTime(2023, 11, 28, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 27, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 29, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 28, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8749,8 +8748,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 525,
-                            Arrival = new DateTime(2023, 11, 28, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 26, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 29, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 27, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -8759,8 +8758,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 526,
-                            Arrival = new DateTime(2023, 11, 29, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 27, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 30, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 28, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -8769,8 +8768,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 527,
-                            Arrival = new DateTime(2023, 11, 28, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 26, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 29, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 27, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -8779,8 +8778,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 528,
-                            Arrival = new DateTime(2023, 11, 29, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 27, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 30, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 28, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -8789,8 +8788,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 529,
-                            Arrival = new DateTime(2023, 11, 29, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 28, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 30, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 29, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -8799,8 +8798,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 530,
-                            Arrival = new DateTime(2023, 11, 30, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 29, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 1, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 30, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -8809,8 +8808,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 531,
-                            Arrival = new DateTime(2023, 11, 29, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 28, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 30, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 29, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -8819,8 +8818,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 532,
-                            Arrival = new DateTime(2023, 11, 30, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 29, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 1, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 30, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -8829,8 +8828,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 533,
-                            Arrival = new DateTime(2023, 11, 29, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 28, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 30, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 29, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8839,8 +8838,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 534,
-                            Arrival = new DateTime(2023, 11, 30, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 29, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 1, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 30, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8849,8 +8848,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 535,
-                            Arrival = new DateTime(2023, 11, 29, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 28, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 11, 30, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 29, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8859,8 +8858,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 536,
-                            Arrival = new DateTime(2023, 11, 30, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 29, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 1, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 30, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8869,8 +8868,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 537,
-                            Arrival = new DateTime(2023, 11, 30, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 28, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 1, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 29, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -8879,8 +8878,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 538,
-                            Arrival = new DateTime(2023, 12, 1, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 29, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 2, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 30, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -8889,8 +8888,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 539,
-                            Arrival = new DateTime(2023, 11, 30, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 28, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 1, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 29, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -8899,8 +8898,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 540,
-                            Arrival = new DateTime(2023, 12, 1, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 29, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 2, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 11, 30, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -8909,8 +8908,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 541,
-                            Arrival = new DateTime(2023, 12, 1, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 30, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 2, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 1, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -8919,8 +8918,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 542,
-                            Arrival = new DateTime(2023, 12, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -8929,8 +8928,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 543,
-                            Arrival = new DateTime(2023, 12, 1, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 30, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 2, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 1, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -8939,8 +8938,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 544,
-                            Arrival = new DateTime(2023, 12, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -8949,8 +8948,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 545,
-                            Arrival = new DateTime(2023, 12, 1, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 30, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 2, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 1, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8959,8 +8958,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 546,
-                            Arrival = new DateTime(2023, 12, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8969,8 +8968,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 547,
-                            Arrival = new DateTime(2023, 12, 1, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 30, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 2, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 1, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -8979,8 +8978,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 548,
-                            Arrival = new DateTime(2023, 12, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -8989,8 +8988,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 549,
-                            Arrival = new DateTime(2023, 12, 2, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 30, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 3, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 1, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -8999,8 +8998,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 550,
-                            Arrival = new DateTime(2023, 12, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -9009,8 +9008,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 551,
-                            Arrival = new DateTime(2023, 12, 2, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 11, 30, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 3, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 1, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -9019,8 +9018,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 552,
-                            Arrival = new DateTime(2023, 12, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -9029,8 +9028,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 553,
-                            Arrival = new DateTime(2023, 12, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -9039,8 +9038,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 554,
-                            Arrival = new DateTime(2023, 12, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -9049,8 +9048,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 555,
-                            Arrival = new DateTime(2023, 12, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -9059,8 +9058,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 556,
-                            Arrival = new DateTime(2023, 12, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -9069,8 +9068,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 557,
-                            Arrival = new DateTime(2023, 12, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9079,8 +9078,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 558,
-                            Arrival = new DateTime(2023, 12, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9089,8 +9088,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 559,
-                            Arrival = new DateTime(2023, 12, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9099,8 +9098,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 560,
-                            Arrival = new DateTime(2023, 12, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9109,8 +9108,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 561,
-                            Arrival = new DateTime(2023, 12, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -9119,8 +9118,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 562,
-                            Arrival = new DateTime(2023, 12, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -9129,8 +9128,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 563,
-                            Arrival = new DateTime(2023, 12, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -9139,8 +9138,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 564,
-                            Arrival = new DateTime(2023, 12, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -9149,8 +9148,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 565,
-                            Arrival = new DateTime(2023, 12, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -9159,8 +9158,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 566,
-                            Arrival = new DateTime(2023, 12, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -9169,8 +9168,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 567,
-                            Arrival = new DateTime(2023, 12, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -9179,8 +9178,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 568,
-                            Arrival = new DateTime(2023, 12, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -9189,8 +9188,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 569,
-                            Arrival = new DateTime(2023, 12, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9199,8 +9198,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 570,
-                            Arrival = new DateTime(2023, 12, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9209,8 +9208,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 571,
-                            Arrival = new DateTime(2023, 12, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9219,8 +9218,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 572,
-                            Arrival = new DateTime(2023, 12, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9229,8 +9228,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 573,
-                            Arrival = new DateTime(2023, 12, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -9239,8 +9238,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 574,
-                            Arrival = new DateTime(2023, 12, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -9249,8 +9248,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 575,
-                            Arrival = new DateTime(2023, 12, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -9259,8 +9258,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 576,
-                            Arrival = new DateTime(2023, 12, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -9269,8 +9268,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 577,
-                            Arrival = new DateTime(2023, 12, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -9279,8 +9278,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 578,
-                            Arrival = new DateTime(2023, 12, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -9289,8 +9288,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 579,
-                            Arrival = new DateTime(2023, 12, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -9299,8 +9298,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 580,
-                            Arrival = new DateTime(2023, 12, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -9309,8 +9308,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 581,
-                            Arrival = new DateTime(2023, 12, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9319,8 +9318,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 582,
-                            Arrival = new DateTime(2023, 12, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9329,8 +9328,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 583,
-                            Arrival = new DateTime(2023, 12, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9339,8 +9338,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 584,
-                            Arrival = new DateTime(2023, 12, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9349,8 +9348,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 585,
-                            Arrival = new DateTime(2023, 12, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -9359,8 +9358,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 586,
-                            Arrival = new DateTime(2023, 12, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -9369,8 +9368,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 587,
-                            Arrival = new DateTime(2023, 12, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -9379,8 +9378,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 588,
-                            Arrival = new DateTime(2023, 12, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -9389,8 +9388,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 589,
-                            Arrival = new DateTime(2023, 12, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -9399,8 +9398,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 590,
-                            Arrival = new DateTime(2023, 12, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -9409,8 +9408,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 591,
-                            Arrival = new DateTime(2023, 12, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -9419,8 +9418,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 592,
-                            Arrival = new DateTime(2023, 12, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -9429,8 +9428,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 593,
-                            Arrival = new DateTime(2023, 12, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9439,8 +9438,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 594,
-                            Arrival = new DateTime(2023, 12, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9449,8 +9448,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 595,
-                            Arrival = new DateTime(2023, 12, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9459,8 +9458,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 596,
-                            Arrival = new DateTime(2023, 12, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9469,8 +9468,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 597,
-                            Arrival = new DateTime(2023, 12, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -9479,8 +9478,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 598,
-                            Arrival = new DateTime(2023, 12, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -9489,8 +9488,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 599,
-                            Arrival = new DateTime(2023, 12, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -9499,8 +9498,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 600,
-                            Arrival = new DateTime(2023, 12, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -9509,8 +9508,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 601,
-                            Arrival = new DateTime(2023, 12, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -9519,8 +9518,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 602,
-                            Arrival = new DateTime(2023, 12, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -9529,8 +9528,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 603,
-                            Arrival = new DateTime(2023, 12, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -9539,8 +9538,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 604,
-                            Arrival = new DateTime(2023, 12, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -9549,8 +9548,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 605,
-                            Arrival = new DateTime(2023, 12, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9559,8 +9558,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 606,
-                            Arrival = new DateTime(2023, 12, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9569,8 +9568,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 607,
-                            Arrival = new DateTime(2023, 12, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9579,8 +9578,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 608,
-                            Arrival = new DateTime(2023, 12, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9589,8 +9588,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 609,
-                            Arrival = new DateTime(2023, 12, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -9599,8 +9598,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 610,
-                            Arrival = new DateTime(2023, 12, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -9609,8 +9608,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 611,
-                            Arrival = new DateTime(2023, 12, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -9619,8 +9618,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 612,
-                            Arrival = new DateTime(2023, 12, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -9629,8 +9628,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 613,
-                            Arrival = new DateTime(2023, 12, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -9639,8 +9638,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 614,
-                            Arrival = new DateTime(2023, 12, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -9649,8 +9648,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 615,
-                            Arrival = new DateTime(2023, 12, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -9659,8 +9658,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 616,
-                            Arrival = new DateTime(2023, 12, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -9669,8 +9668,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 617,
-                            Arrival = new DateTime(2023, 12, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9679,8 +9678,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 618,
-                            Arrival = new DateTime(2023, 12, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9689,8 +9688,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 619,
-                            Arrival = new DateTime(2023, 12, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9699,8 +9698,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 620,
-                            Arrival = new DateTime(2023, 12, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9709,8 +9708,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 621,
-                            Arrival = new DateTime(2023, 12, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -9719,8 +9718,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 622,
-                            Arrival = new DateTime(2023, 12, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -9729,8 +9728,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 623,
-                            Arrival = new DateTime(2023, 12, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -9739,8 +9738,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 624,
-                            Arrival = new DateTime(2023, 12, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -9749,8 +9748,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 625,
-                            Arrival = new DateTime(2023, 12, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -9759,8 +9758,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 626,
-                            Arrival = new DateTime(2023, 12, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -9769,8 +9768,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 627,
-                            Arrival = new DateTime(2023, 12, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -9779,8 +9778,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 628,
-                            Arrival = new DateTime(2023, 12, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -9789,8 +9788,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 629,
-                            Arrival = new DateTime(2023, 12, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9799,8 +9798,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 630,
-                            Arrival = new DateTime(2023, 12, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9809,8 +9808,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 631,
-                            Arrival = new DateTime(2023, 12, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9819,8 +9818,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 632,
-                            Arrival = new DateTime(2023, 12, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9829,8 +9828,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 633,
-                            Arrival = new DateTime(2023, 12, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -9839,8 +9838,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 634,
-                            Arrival = new DateTime(2023, 12, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -9849,8 +9848,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 635,
-                            Arrival = new DateTime(2023, 12, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -9859,8 +9858,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 636,
-                            Arrival = new DateTime(2023, 12, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -9869,8 +9868,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 637,
-                            Arrival = new DateTime(2023, 12, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -9879,8 +9878,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 638,
-                            Arrival = new DateTime(2023, 12, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -9889,8 +9888,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 639,
-                            Arrival = new DateTime(2023, 12, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -9899,8 +9898,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 640,
-                            Arrival = new DateTime(2023, 12, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -9909,8 +9908,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 641,
-                            Arrival = new DateTime(2023, 12, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9919,8 +9918,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 642,
-                            Arrival = new DateTime(2023, 12, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9929,8 +9928,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 643,
-                            Arrival = new DateTime(2023, 12, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -9939,8 +9938,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 644,
-                            Arrival = new DateTime(2023, 12, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -9949,8 +9948,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 645,
-                            Arrival = new DateTime(2023, 12, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -9959,8 +9958,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 646,
-                            Arrival = new DateTime(2023, 12, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -9969,8 +9968,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 647,
-                            Arrival = new DateTime(2023, 12, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -9979,8 +9978,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 648,
-                            Arrival = new DateTime(2023, 12, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -9989,8 +9988,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 649,
-                            Arrival = new DateTime(2023, 12, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -9999,8 +9998,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 650,
-                            Arrival = new DateTime(2023, 12, 20, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 19, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 21, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 20, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -10009,8 +10008,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 651,
-                            Arrival = new DateTime(2023, 12, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -10019,8 +10018,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 652,
-                            Arrival = new DateTime(2023, 12, 20, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 19, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 21, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 20, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -10029,8 +10028,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 653,
-                            Arrival = new DateTime(2023, 12, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10039,8 +10038,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 654,
-                            Arrival = new DateTime(2023, 12, 20, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 19, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 21, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 20, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10049,8 +10048,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 655,
-                            Arrival = new DateTime(2023, 12, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10059,8 +10058,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 656,
-                            Arrival = new DateTime(2023, 12, 20, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 19, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 21, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 20, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10069,8 +10068,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 657,
-                            Arrival = new DateTime(2023, 12, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -10079,8 +10078,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 658,
-                            Arrival = new DateTime(2023, 12, 21, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 19, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 22, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 20, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -10089,8 +10088,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 659,
-                            Arrival = new DateTime(2023, 12, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -10099,8 +10098,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 660,
-                            Arrival = new DateTime(2023, 12, 21, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 19, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 22, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 20, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -10109,8 +10108,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 661,
-                            Arrival = new DateTime(2023, 12, 21, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 20, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 22, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 21, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -10119,8 +10118,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 662,
-                            Arrival = new DateTime(2023, 12, 22, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 21, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 23, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 22, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -10129,8 +10128,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 663,
-                            Arrival = new DateTime(2023, 12, 21, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 20, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 22, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 21, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -10139,8 +10138,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 664,
-                            Arrival = new DateTime(2023, 12, 22, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 21, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 23, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 22, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -10149,8 +10148,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 665,
-                            Arrival = new DateTime(2023, 12, 21, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 20, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 22, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 21, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10159,8 +10158,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 666,
-                            Arrival = new DateTime(2023, 12, 22, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 21, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 23, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 22, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10169,8 +10168,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 667,
-                            Arrival = new DateTime(2023, 12, 21, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 20, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 22, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 21, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10179,8 +10178,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 668,
-                            Arrival = new DateTime(2023, 12, 22, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 21, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 23, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 22, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10189,8 +10188,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 669,
-                            Arrival = new DateTime(2023, 12, 22, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 20, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 23, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 21, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -10199,8 +10198,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 670,
-                            Arrival = new DateTime(2023, 12, 23, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 21, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 24, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 22, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -10209,8 +10208,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 671,
-                            Arrival = new DateTime(2023, 12, 22, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 20, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 23, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 21, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -10219,8 +10218,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 672,
-                            Arrival = new DateTime(2023, 12, 23, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 21, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 24, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 22, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -10229,8 +10228,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 673,
-                            Arrival = new DateTime(2023, 12, 23, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 22, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 24, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 23, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -10239,8 +10238,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 674,
-                            Arrival = new DateTime(2023, 12, 24, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 23, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 25, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 24, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -10249,8 +10248,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 675,
-                            Arrival = new DateTime(2023, 12, 23, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 22, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 24, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 23, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -10259,8 +10258,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 676,
-                            Arrival = new DateTime(2023, 12, 24, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 23, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 25, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 24, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -10269,8 +10268,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 677,
-                            Arrival = new DateTime(2023, 12, 23, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 22, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 24, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 23, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10279,8 +10278,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 678,
-                            Arrival = new DateTime(2023, 12, 24, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 23, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 25, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 24, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10289,8 +10288,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 679,
-                            Arrival = new DateTime(2023, 12, 23, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 22, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 24, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 23, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10299,8 +10298,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 680,
-                            Arrival = new DateTime(2023, 12, 24, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 23, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 25, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 24, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10309,8 +10308,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 681,
-                            Arrival = new DateTime(2023, 12, 24, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 22, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 25, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 23, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -10319,8 +10318,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 682,
-                            Arrival = new DateTime(2023, 12, 25, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 23, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 26, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 24, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -10329,8 +10328,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 683,
-                            Arrival = new DateTime(2023, 12, 24, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 22, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 25, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 23, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -10339,8 +10338,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 684,
-                            Arrival = new DateTime(2023, 12, 25, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 23, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 26, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 24, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -10349,8 +10348,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 685,
-                            Arrival = new DateTime(2023, 12, 25, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 24, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 26, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 25, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -10359,8 +10358,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 686,
-                            Arrival = new DateTime(2023, 12, 26, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 25, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 27, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 26, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -10369,8 +10368,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 687,
-                            Arrival = new DateTime(2023, 12, 25, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 24, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 26, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 25, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -10379,8 +10378,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 688,
-                            Arrival = new DateTime(2023, 12, 26, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 25, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 27, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 26, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -10389,8 +10388,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 689,
-                            Arrival = new DateTime(2023, 12, 25, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 24, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 26, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 25, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10399,8 +10398,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 690,
-                            Arrival = new DateTime(2023, 12, 26, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 25, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 27, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 26, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10409,8 +10408,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 691,
-                            Arrival = new DateTime(2023, 12, 25, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 24, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 26, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 25, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10419,8 +10418,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 692,
-                            Arrival = new DateTime(2023, 12, 26, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 25, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 27, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 26, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10429,8 +10428,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 693,
-                            Arrival = new DateTime(2023, 12, 26, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 24, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 27, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 25, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -10439,8 +10438,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 694,
-                            Arrival = new DateTime(2023, 12, 27, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 25, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 28, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 26, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -10449,8 +10448,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 695,
-                            Arrival = new DateTime(2023, 12, 26, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 24, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 27, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 25, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -10459,8 +10458,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 696,
-                            Arrival = new DateTime(2023, 12, 27, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 25, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 28, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 26, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -10469,8 +10468,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 697,
-                            Arrival = new DateTime(2023, 12, 27, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 26, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 28, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 27, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -10479,8 +10478,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 698,
-                            Arrival = new DateTime(2023, 12, 28, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 27, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 29, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 28, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -10489,8 +10488,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 699,
-                            Arrival = new DateTime(2023, 12, 27, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 26, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 28, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 27, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -10499,8 +10498,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 700,
-                            Arrival = new DateTime(2023, 12, 28, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 27, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 29, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 28, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -10509,8 +10508,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 701,
-                            Arrival = new DateTime(2023, 12, 27, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 26, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 28, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 27, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10519,8 +10518,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 702,
-                            Arrival = new DateTime(2023, 12, 28, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 27, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 29, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 28, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10529,8 +10528,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 703,
-                            Arrival = new DateTime(2023, 12, 27, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 26, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 28, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 27, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10539,8 +10538,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 704,
-                            Arrival = new DateTime(2023, 12, 28, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 27, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 29, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 28, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10549,8 +10548,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 705,
-                            Arrival = new DateTime(2023, 12, 28, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 26, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 29, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 27, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -10559,8 +10558,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 706,
-                            Arrival = new DateTime(2023, 12, 29, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 27, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 30, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 28, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -10569,8 +10568,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 707,
-                            Arrival = new DateTime(2023, 12, 28, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 26, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 29, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 27, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -10579,8 +10578,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 708,
-                            Arrival = new DateTime(2023, 12, 29, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 27, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 30, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 28, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -10589,8 +10588,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 709,
-                            Arrival = new DateTime(2023, 12, 29, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 28, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 30, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 29, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -10599,8 +10598,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 710,
-                            Arrival = new DateTime(2023, 12, 30, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 29, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 31, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 30, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -10609,8 +10608,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 711,
-                            Arrival = new DateTime(2023, 12, 29, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 28, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 30, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 29, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -10619,8 +10618,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 712,
-                            Arrival = new DateTime(2023, 12, 30, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 29, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 31, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 30, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -10629,8 +10628,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 713,
-                            Arrival = new DateTime(2023, 12, 29, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 28, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 30, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 29, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10639,8 +10638,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 714,
-                            Arrival = new DateTime(2023, 12, 30, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 29, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 31, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 30, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10649,8 +10648,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 715,
-                            Arrival = new DateTime(2023, 12, 29, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 28, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 30, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 29, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10659,8 +10658,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 716,
-                            Arrival = new DateTime(2023, 12, 30, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 29, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 31, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 30, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10669,8 +10668,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 717,
-                            Arrival = new DateTime(2023, 12, 30, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 28, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 31, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 29, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -10679,8 +10678,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 718,
-                            Arrival = new DateTime(2023, 12, 31, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 29, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 1, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 30, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -10689,8 +10688,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 719,
-                            Arrival = new DateTime(2023, 12, 30, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 28, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2023, 12, 31, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 29, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -10699,8 +10698,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 720,
-                            Arrival = new DateTime(2023, 12, 31, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 29, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 1, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 30, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -10709,8 +10708,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 721,
-                            Arrival = new DateTime(2023, 12, 31, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 30, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 1, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 31, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -10719,8 +10718,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 722,
-                            Arrival = new DateTime(2024, 1, 1, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 31, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 2, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 1, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -10729,8 +10728,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 723,
-                            Arrival = new DateTime(2023, 12, 31, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 30, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 1, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 31, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -10739,8 +10738,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 724,
-                            Arrival = new DateTime(2024, 1, 1, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 31, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 2, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 1, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -10749,8 +10748,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 725,
-                            Arrival = new DateTime(2023, 12, 31, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 30, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 1, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 31, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10759,8 +10758,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 726,
-                            Arrival = new DateTime(2024, 1, 1, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 31, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 2, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 1, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10769,8 +10768,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 727,
-                            Arrival = new DateTime(2023, 12, 31, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 30, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 1, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 31, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10779,8 +10778,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 728,
-                            Arrival = new DateTime(2024, 1, 1, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 31, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 2, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 1, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10789,8 +10788,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 729,
-                            Arrival = new DateTime(2024, 1, 1, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 30, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 2, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 31, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -10799,8 +10798,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 730,
-                            Arrival = new DateTime(2024, 1, 2, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 31, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 3, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 1, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -10809,8 +10808,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 731,
-                            Arrival = new DateTime(2024, 1, 1, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 30, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 2, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2023, 12, 31, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -10819,8 +10818,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 732,
-                            Arrival = new DateTime(2024, 1, 2, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2023, 12, 31, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 3, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 1, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -10829,8 +10828,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 733,
-                            Arrival = new DateTime(2024, 1, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -10839,8 +10838,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 734,
-                            Arrival = new DateTime(2024, 1, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -10849,8 +10848,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 735,
-                            Arrival = new DateTime(2024, 1, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -10859,8 +10858,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 736,
-                            Arrival = new DateTime(2024, 1, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -10869,8 +10868,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 737,
-                            Arrival = new DateTime(2024, 1, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10879,8 +10878,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 738,
-                            Arrival = new DateTime(2024, 1, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10889,8 +10888,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 739,
-                            Arrival = new DateTime(2024, 1, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -10899,8 +10898,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 740,
-                            Arrival = new DateTime(2024, 1, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10909,8 +10908,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 741,
-                            Arrival = new DateTime(2024, 1, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -10919,8 +10918,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 742,
-                            Arrival = new DateTime(2024, 1, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -10929,8 +10928,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 743,
-                            Arrival = new DateTime(2024, 1, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -10939,8 +10938,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 744,
-                            Arrival = new DateTime(2024, 1, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -10949,8 +10948,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 745,
-                            Arrival = new DateTime(2024, 1, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -10959,8 +10958,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 746,
-                            Arrival = new DateTime(2024, 1, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -10969,8 +10968,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 747,
-                            Arrival = new DateTime(2024, 1, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -10979,8 +10978,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 748,
-                            Arrival = new DateTime(2024, 1, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -10989,8 +10988,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 749,
-                            Arrival = new DateTime(2024, 1, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -10999,8 +10998,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 750,
-                            Arrival = new DateTime(2024, 1, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11009,8 +11008,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 751,
-                            Arrival = new DateTime(2024, 1, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11019,8 +11018,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 752,
-                            Arrival = new DateTime(2024, 1, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11029,8 +11028,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 753,
-                            Arrival = new DateTime(2024, 1, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -11039,8 +11038,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 754,
-                            Arrival = new DateTime(2024, 1, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -11049,8 +11048,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 755,
-                            Arrival = new DateTime(2024, 1, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -11059,8 +11058,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 756,
-                            Arrival = new DateTime(2024, 1, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -11069,8 +11068,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 757,
-                            Arrival = new DateTime(2024, 1, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -11079,8 +11078,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 758,
-                            Arrival = new DateTime(2024, 1, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -11089,8 +11088,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 759,
-                            Arrival = new DateTime(2024, 1, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -11099,8 +11098,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 760,
-                            Arrival = new DateTime(2024, 1, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -11109,8 +11108,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 761,
-                            Arrival = new DateTime(2024, 1, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11119,8 +11118,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 762,
-                            Arrival = new DateTime(2024, 1, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11129,8 +11128,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 763,
-                            Arrival = new DateTime(2024, 1, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11139,8 +11138,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 764,
-                            Arrival = new DateTime(2024, 1, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11149,8 +11148,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 765,
-                            Arrival = new DateTime(2024, 1, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -11159,8 +11158,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 766,
-                            Arrival = new DateTime(2024, 1, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -11169,8 +11168,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 767,
-                            Arrival = new DateTime(2024, 1, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -11179,8 +11178,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 768,
-                            Arrival = new DateTime(2024, 1, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -11189,8 +11188,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 769,
-                            Arrival = new DateTime(2024, 1, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -11199,8 +11198,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 770,
-                            Arrival = new DateTime(2024, 1, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -11209,8 +11208,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 771,
-                            Arrival = new DateTime(2024, 1, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -11219,8 +11218,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 772,
-                            Arrival = new DateTime(2024, 1, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -11229,8 +11228,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 773,
-                            Arrival = new DateTime(2024, 1, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11239,8 +11238,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 774,
-                            Arrival = new DateTime(2024, 1, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11249,8 +11248,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 775,
-                            Arrival = new DateTime(2024, 1, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11259,8 +11258,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 776,
-                            Arrival = new DateTime(2024, 1, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11269,8 +11268,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 777,
-                            Arrival = new DateTime(2024, 1, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -11279,8 +11278,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 778,
-                            Arrival = new DateTime(2024, 1, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -11289,8 +11288,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 779,
-                            Arrival = new DateTime(2024, 1, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -11299,8 +11298,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 780,
-                            Arrival = new DateTime(2024, 1, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -11309,8 +11308,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 781,
-                            Arrival = new DateTime(2024, 1, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -11319,8 +11318,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 782,
-                            Arrival = new DateTime(2024, 1, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -11329,8 +11328,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 783,
-                            Arrival = new DateTime(2024, 1, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -11339,8 +11338,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 784,
-                            Arrival = new DateTime(2024, 1, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -11349,8 +11348,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 785,
-                            Arrival = new DateTime(2024, 1, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11359,8 +11358,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 786,
-                            Arrival = new DateTime(2024, 1, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11369,8 +11368,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 787,
-                            Arrival = new DateTime(2024, 1, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11379,8 +11378,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 788,
-                            Arrival = new DateTime(2024, 1, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11389,8 +11388,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 789,
-                            Arrival = new DateTime(2024, 1, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -11399,8 +11398,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 790,
-                            Arrival = new DateTime(2024, 1, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -11409,8 +11408,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 791,
-                            Arrival = new DateTime(2024, 1, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -11419,8 +11418,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 792,
-                            Arrival = new DateTime(2024, 1, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -11429,8 +11428,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 793,
-                            Arrival = new DateTime(2024, 1, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -11439,8 +11438,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 794,
-                            Arrival = new DateTime(2024, 1, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -11449,8 +11448,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 795,
-                            Arrival = new DateTime(2024, 1, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -11459,8 +11458,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 796,
-                            Arrival = new DateTime(2024, 1, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -11469,8 +11468,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 797,
-                            Arrival = new DateTime(2024, 1, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11479,8 +11478,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 798,
-                            Arrival = new DateTime(2024, 1, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11489,8 +11488,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 799,
-                            Arrival = new DateTime(2024, 1, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11499,8 +11498,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 800,
-                            Arrival = new DateTime(2024, 1, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11509,8 +11508,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 801,
-                            Arrival = new DateTime(2024, 1, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -11519,8 +11518,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 802,
-                            Arrival = new DateTime(2024, 1, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -11529,8 +11528,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 803,
-                            Arrival = new DateTime(2024, 1, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -11539,8 +11538,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 804,
-                            Arrival = new DateTime(2024, 1, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -11549,8 +11548,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 805,
-                            Arrival = new DateTime(2024, 1, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -11559,8 +11558,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 806,
-                            Arrival = new DateTime(2024, 1, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -11569,8 +11568,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 807,
-                            Arrival = new DateTime(2024, 1, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -11579,8 +11578,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 808,
-                            Arrival = new DateTime(2024, 1, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -11589,8 +11588,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 809,
-                            Arrival = new DateTime(2024, 1, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11599,8 +11598,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 810,
-                            Arrival = new DateTime(2024, 1, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11609,8 +11608,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 811,
-                            Arrival = new DateTime(2024, 1, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11619,8 +11618,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 812,
-                            Arrival = new DateTime(2024, 1, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11629,8 +11628,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 813,
-                            Arrival = new DateTime(2024, 1, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -11639,8 +11638,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 814,
-                            Arrival = new DateTime(2024, 1, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -11649,8 +11648,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 815,
-                            Arrival = new DateTime(2024, 1, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -11659,8 +11658,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 816,
-                            Arrival = new DateTime(2024, 1, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -11669,8 +11668,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 817,
-                            Arrival = new DateTime(2024, 1, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -11679,8 +11678,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 818,
-                            Arrival = new DateTime(2024, 1, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -11689,8 +11688,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 819,
-                            Arrival = new DateTime(2024, 1, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -11699,8 +11698,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 820,
-                            Arrival = new DateTime(2024, 1, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -11709,8 +11708,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 821,
-                            Arrival = new DateTime(2024, 1, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11719,8 +11718,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 822,
-                            Arrival = new DateTime(2024, 1, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11729,8 +11728,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 823,
-                            Arrival = new DateTime(2024, 1, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11739,8 +11738,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 824,
-                            Arrival = new DateTime(2024, 1, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11749,8 +11748,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 825,
-                            Arrival = new DateTime(2024, 1, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -11759,8 +11758,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 826,
-                            Arrival = new DateTime(2024, 1, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -11769,8 +11768,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 827,
-                            Arrival = new DateTime(2024, 1, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -11779,8 +11778,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 828,
-                            Arrival = new DateTime(2024, 1, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -11789,8 +11788,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 829,
-                            Arrival = new DateTime(2024, 1, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -11799,8 +11798,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 830,
-                            Arrival = new DateTime(2024, 1, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -11809,8 +11808,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 831,
-                            Arrival = new DateTime(2024, 1, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -11819,8 +11818,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 832,
-                            Arrival = new DateTime(2024, 1, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -11829,8 +11828,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 833,
-                            Arrival = new DateTime(2024, 1, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11839,8 +11838,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 834,
-                            Arrival = new DateTime(2024, 1, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11849,8 +11848,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 835,
-                            Arrival = new DateTime(2024, 1, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11859,8 +11858,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 836,
-                            Arrival = new DateTime(2024, 1, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11869,8 +11868,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 837,
-                            Arrival = new DateTime(2024, 1, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -11879,8 +11878,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 838,
-                            Arrival = new DateTime(2024, 1, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -11889,8 +11888,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 839,
-                            Arrival = new DateTime(2024, 1, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -11899,8 +11898,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 840,
-                            Arrival = new DateTime(2024, 1, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -11909,8 +11908,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 841,
-                            Arrival = new DateTime(2024, 1, 20, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 19, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 21, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 20, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -11919,8 +11918,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 842,
-                            Arrival = new DateTime(2024, 1, 21, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 20, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 22, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 21, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -11929,8 +11928,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 843,
-                            Arrival = new DateTime(2024, 1, 20, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 19, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 21, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 20, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -11939,8 +11938,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 844,
-                            Arrival = new DateTime(2024, 1, 21, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 20, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 22, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 21, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -11949,8 +11948,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 845,
-                            Arrival = new DateTime(2024, 1, 20, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 19, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 21, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 20, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11959,8 +11958,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 846,
-                            Arrival = new DateTime(2024, 1, 21, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 20, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 22, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 21, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11969,8 +11968,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 847,
-                            Arrival = new DateTime(2024, 1, 20, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 19, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 21, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 20, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -11979,8 +11978,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 848,
-                            Arrival = new DateTime(2024, 1, 21, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 20, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 22, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 21, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -11989,8 +11988,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 849,
-                            Arrival = new DateTime(2024, 1, 21, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 19, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 22, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 20, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -11999,8 +11998,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 850,
-                            Arrival = new DateTime(2024, 1, 22, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 20, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 23, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 21, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -12009,8 +12008,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 851,
-                            Arrival = new DateTime(2024, 1, 21, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 19, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 22, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 20, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -12019,8 +12018,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 852,
-                            Arrival = new DateTime(2024, 1, 22, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 20, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 23, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 21, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -12029,8 +12028,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 853,
-                            Arrival = new DateTime(2024, 1, 22, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 21, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 23, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 22, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -12039,8 +12038,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 854,
-                            Arrival = new DateTime(2024, 1, 23, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 22, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 24, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 23, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -12049,8 +12048,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 855,
-                            Arrival = new DateTime(2024, 1, 22, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 21, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 23, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 22, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -12059,8 +12058,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 856,
-                            Arrival = new DateTime(2024, 1, 23, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 22, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 24, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 23, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -12069,8 +12068,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 857,
-                            Arrival = new DateTime(2024, 1, 22, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 21, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 23, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 22, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12079,8 +12078,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 858,
-                            Arrival = new DateTime(2024, 1, 23, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 22, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 24, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 23, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12089,8 +12088,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 859,
-                            Arrival = new DateTime(2024, 1, 22, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 21, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 23, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 22, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12099,8 +12098,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 860,
-                            Arrival = new DateTime(2024, 1, 23, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 22, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 24, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 23, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12109,8 +12108,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 861,
-                            Arrival = new DateTime(2024, 1, 23, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 21, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 24, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 22, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -12119,8 +12118,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 862,
-                            Arrival = new DateTime(2024, 1, 24, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 22, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 25, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 23, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -12129,8 +12128,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 863,
-                            Arrival = new DateTime(2024, 1, 23, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 21, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 24, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 22, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -12139,8 +12138,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 864,
-                            Arrival = new DateTime(2024, 1, 24, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 22, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 25, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 23, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -12149,8 +12148,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 865,
-                            Arrival = new DateTime(2024, 1, 24, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 23, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 25, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 24, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -12159,8 +12158,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 866,
-                            Arrival = new DateTime(2024, 1, 25, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 24, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 26, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 25, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -12169,8 +12168,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 867,
-                            Arrival = new DateTime(2024, 1, 24, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 23, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 25, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 24, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -12179,8 +12178,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 868,
-                            Arrival = new DateTime(2024, 1, 25, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 24, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 26, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 25, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -12189,8 +12188,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 869,
-                            Arrival = new DateTime(2024, 1, 24, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 23, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 25, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 24, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12199,8 +12198,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 870,
-                            Arrival = new DateTime(2024, 1, 25, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 24, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 26, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 25, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12209,8 +12208,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 871,
-                            Arrival = new DateTime(2024, 1, 24, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 23, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 25, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 24, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12219,8 +12218,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 872,
-                            Arrival = new DateTime(2024, 1, 25, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 24, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 26, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 25, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12229,8 +12228,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 873,
-                            Arrival = new DateTime(2024, 1, 25, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 23, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 26, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 24, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -12239,8 +12238,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 874,
-                            Arrival = new DateTime(2024, 1, 26, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 24, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 27, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 25, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -12249,8 +12248,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 875,
-                            Arrival = new DateTime(2024, 1, 25, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 23, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 26, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 24, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -12259,8 +12258,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 876,
-                            Arrival = new DateTime(2024, 1, 26, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 24, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 27, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 25, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -12269,8 +12268,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 877,
-                            Arrival = new DateTime(2024, 1, 26, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 25, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 27, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 26, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -12279,8 +12278,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 878,
-                            Arrival = new DateTime(2024, 1, 27, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 26, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 28, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 27, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -12289,8 +12288,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 879,
-                            Arrival = new DateTime(2024, 1, 26, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 25, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 27, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 26, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -12299,8 +12298,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 880,
-                            Arrival = new DateTime(2024, 1, 27, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 26, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 28, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 27, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -12309,8 +12308,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 881,
-                            Arrival = new DateTime(2024, 1, 26, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 25, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 27, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 26, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12319,8 +12318,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 882,
-                            Arrival = new DateTime(2024, 1, 27, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 26, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 28, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 27, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12329,8 +12328,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 883,
-                            Arrival = new DateTime(2024, 1, 26, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 25, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 27, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 26, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12339,8 +12338,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 884,
-                            Arrival = new DateTime(2024, 1, 27, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 26, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 28, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 27, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12349,8 +12348,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 885,
-                            Arrival = new DateTime(2024, 1, 27, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 25, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 28, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 26, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -12359,8 +12358,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 886,
-                            Arrival = new DateTime(2024, 1, 28, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 26, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 29, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 27, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -12369,8 +12368,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 887,
-                            Arrival = new DateTime(2024, 1, 27, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 25, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 28, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 26, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -12379,8 +12378,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 888,
-                            Arrival = new DateTime(2024, 1, 28, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 26, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 29, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 27, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -12389,8 +12388,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 889,
-                            Arrival = new DateTime(2024, 1, 28, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 27, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 29, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 28, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -12399,8 +12398,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 890,
-                            Arrival = new DateTime(2024, 1, 29, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 28, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 30, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 29, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -12409,8 +12408,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 891,
-                            Arrival = new DateTime(2024, 1, 28, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 27, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 29, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 28, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -12419,8 +12418,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 892,
-                            Arrival = new DateTime(2024, 1, 29, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 28, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 30, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 29, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -12429,8 +12428,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 893,
-                            Arrival = new DateTime(2024, 1, 28, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 27, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 29, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 28, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12439,8 +12438,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 894,
-                            Arrival = new DateTime(2024, 1, 29, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 28, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 30, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 29, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12449,8 +12448,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 895,
-                            Arrival = new DateTime(2024, 1, 28, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 27, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 29, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 28, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12459,8 +12458,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 896,
-                            Arrival = new DateTime(2024, 1, 29, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 28, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 30, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 29, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12469,8 +12468,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 897,
-                            Arrival = new DateTime(2024, 1, 29, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 27, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 30, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 28, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -12479,8 +12478,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 898,
-                            Arrival = new DateTime(2024, 1, 30, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 28, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 31, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 29, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -12489,8 +12488,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 899,
-                            Arrival = new DateTime(2024, 1, 29, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 27, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 30, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 28, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -12499,8 +12498,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 900,
-                            Arrival = new DateTime(2024, 1, 30, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 28, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 31, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 29, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -12509,8 +12508,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 901,
-                            Arrival = new DateTime(2024, 1, 30, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 29, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 31, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 30, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -12519,8 +12518,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 902,
-                            Arrival = new DateTime(2024, 1, 31, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 30, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 1, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 31, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -12529,8 +12528,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 903,
-                            Arrival = new DateTime(2024, 1, 30, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 29, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 31, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 30, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -12539,8 +12538,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 904,
-                            Arrival = new DateTime(2024, 1, 31, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 30, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 1, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 31, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -12549,8 +12548,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 905,
-                            Arrival = new DateTime(2024, 1, 30, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 29, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 31, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 30, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12559,8 +12558,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 906,
-                            Arrival = new DateTime(2024, 1, 31, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 30, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 1, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 31, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12569,8 +12568,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 907,
-                            Arrival = new DateTime(2024, 1, 30, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 29, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 1, 31, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 30, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12579,8 +12578,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 908,
-                            Arrival = new DateTime(2024, 1, 31, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 30, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 1, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 31, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12589,8 +12588,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 909,
-                            Arrival = new DateTime(2024, 1, 31, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 29, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 1, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 30, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -12599,8 +12598,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 910,
-                            Arrival = new DateTime(2024, 2, 1, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 30, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 2, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 31, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -12609,8 +12608,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 911,
-                            Arrival = new DateTime(2024, 1, 31, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 29, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 1, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 30, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -12619,8 +12618,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 912,
-                            Arrival = new DateTime(2024, 2, 1, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 30, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 2, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 1, 31, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -12629,8 +12628,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 913,
-                            Arrival = new DateTime(2024, 2, 1, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 31, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 2, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 1, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -12639,8 +12638,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 914,
-                            Arrival = new DateTime(2024, 2, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -12649,8 +12648,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 915,
-                            Arrival = new DateTime(2024, 2, 1, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 31, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 2, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 1, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -12659,8 +12658,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 916,
-                            Arrival = new DateTime(2024, 2, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -12669,8 +12668,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 917,
-                            Arrival = new DateTime(2024, 2, 1, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 31, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 2, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 1, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12679,8 +12678,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 918,
-                            Arrival = new DateTime(2024, 2, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12689,8 +12688,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 919,
-                            Arrival = new DateTime(2024, 2, 1, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 31, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 2, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 1, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12699,8 +12698,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 920,
-                            Arrival = new DateTime(2024, 2, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12709,8 +12708,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 921,
-                            Arrival = new DateTime(2024, 2, 2, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 31, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 3, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 1, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -12719,8 +12718,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 922,
-                            Arrival = new DateTime(2024, 2, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -12729,8 +12728,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 923,
-                            Arrival = new DateTime(2024, 2, 2, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 1, 31, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 3, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 1, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -12739,8 +12738,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 924,
-                            Arrival = new DateTime(2024, 2, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -12749,8 +12748,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 925,
-                            Arrival = new DateTime(2024, 2, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -12759,8 +12758,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 926,
-                            Arrival = new DateTime(2024, 2, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -12769,8 +12768,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 927,
-                            Arrival = new DateTime(2024, 2, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -12779,8 +12778,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 928,
-                            Arrival = new DateTime(2024, 2, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -12789,8 +12788,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 929,
-                            Arrival = new DateTime(2024, 2, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12799,8 +12798,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 930,
-                            Arrival = new DateTime(2024, 2, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12809,8 +12808,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 931,
-                            Arrival = new DateTime(2024, 2, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12819,8 +12818,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 932,
-                            Arrival = new DateTime(2024, 2, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12829,8 +12828,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 933,
-                            Arrival = new DateTime(2024, 2, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -12839,8 +12838,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 934,
-                            Arrival = new DateTime(2024, 2, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -12849,8 +12848,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 935,
-                            Arrival = new DateTime(2024, 2, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -12859,8 +12858,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 936,
-                            Arrival = new DateTime(2024, 2, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -12869,8 +12868,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 937,
-                            Arrival = new DateTime(2024, 2, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -12879,8 +12878,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 938,
-                            Arrival = new DateTime(2024, 2, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -12889,8 +12888,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 939,
-                            Arrival = new DateTime(2024, 2, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -12899,8 +12898,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 940,
-                            Arrival = new DateTime(2024, 2, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -12909,8 +12908,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 941,
-                            Arrival = new DateTime(2024, 2, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12919,8 +12918,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 942,
-                            Arrival = new DateTime(2024, 2, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12929,8 +12928,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 943,
-                            Arrival = new DateTime(2024, 2, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -12939,8 +12938,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 944,
-                            Arrival = new DateTime(2024, 2, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -12949,8 +12948,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 945,
-                            Arrival = new DateTime(2024, 2, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -12959,8 +12958,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 946,
-                            Arrival = new DateTime(2024, 2, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -12969,8 +12968,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 947,
-                            Arrival = new DateTime(2024, 2, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -12979,8 +12978,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 948,
-                            Arrival = new DateTime(2024, 2, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -12989,8 +12988,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 949,
-                            Arrival = new DateTime(2024, 2, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -12999,8 +12998,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 950,
-                            Arrival = new DateTime(2024, 2, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -13009,8 +13008,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 951,
-                            Arrival = new DateTime(2024, 2, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -13019,8 +13018,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 952,
-                            Arrival = new DateTime(2024, 2, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -13029,8 +13028,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 953,
-                            Arrival = new DateTime(2024, 2, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13039,8 +13038,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 954,
-                            Arrival = new DateTime(2024, 2, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13049,8 +13048,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 955,
-                            Arrival = new DateTime(2024, 2, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13059,8 +13058,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 956,
-                            Arrival = new DateTime(2024, 2, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13069,8 +13068,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 957,
-                            Arrival = new DateTime(2024, 2, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -13079,8 +13078,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 958,
-                            Arrival = new DateTime(2024, 2, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -13089,8 +13088,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 959,
-                            Arrival = new DateTime(2024, 2, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -13099,8 +13098,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 960,
-                            Arrival = new DateTime(2024, 2, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -13109,8 +13108,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 961,
-                            Arrival = new DateTime(2024, 2, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -13119,8 +13118,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 962,
-                            Arrival = new DateTime(2024, 2, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -13129,8 +13128,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 963,
-                            Arrival = new DateTime(2024, 2, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -13139,8 +13138,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 964,
-                            Arrival = new DateTime(2024, 2, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -13149,8 +13148,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 965,
-                            Arrival = new DateTime(2024, 2, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13159,8 +13158,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 966,
-                            Arrival = new DateTime(2024, 2, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13169,8 +13168,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 967,
-                            Arrival = new DateTime(2024, 2, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13179,8 +13178,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 968,
-                            Arrival = new DateTime(2024, 2, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13189,8 +13188,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 969,
-                            Arrival = new DateTime(2024, 2, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -13199,8 +13198,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 970,
-                            Arrival = new DateTime(2024, 2, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -13209,8 +13208,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 971,
-                            Arrival = new DateTime(2024, 2, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -13219,8 +13218,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 972,
-                            Arrival = new DateTime(2024, 2, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -13229,8 +13228,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 973,
-                            Arrival = new DateTime(2024, 2, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -13239,8 +13238,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 974,
-                            Arrival = new DateTime(2024, 2, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -13249,8 +13248,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 975,
-                            Arrival = new DateTime(2024, 2, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -13259,8 +13258,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 976,
-                            Arrival = new DateTime(2024, 2, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -13269,8 +13268,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 977,
-                            Arrival = new DateTime(2024, 2, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13279,8 +13278,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 978,
-                            Arrival = new DateTime(2024, 2, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13289,8 +13288,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 979,
-                            Arrival = new DateTime(2024, 2, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13299,8 +13298,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 980,
-                            Arrival = new DateTime(2024, 2, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13309,8 +13308,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 981,
-                            Arrival = new DateTime(2024, 2, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -13319,8 +13318,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 982,
-                            Arrival = new DateTime(2024, 2, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -13329,8 +13328,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 983,
-                            Arrival = new DateTime(2024, 2, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -13339,8 +13338,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 984,
-                            Arrival = new DateTime(2024, 2, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -13349,8 +13348,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 985,
-                            Arrival = new DateTime(2024, 2, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -13359,8 +13358,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 986,
-                            Arrival = new DateTime(2024, 2, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -13369,8 +13368,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 987,
-                            Arrival = new DateTime(2024, 2, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -13379,8 +13378,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 988,
-                            Arrival = new DateTime(2024, 2, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -13389,8 +13388,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 989,
-                            Arrival = new DateTime(2024, 2, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13399,8 +13398,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 990,
-                            Arrival = new DateTime(2024, 2, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13409,8 +13408,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 991,
-                            Arrival = new DateTime(2024, 2, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13419,8 +13418,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 992,
-                            Arrival = new DateTime(2024, 2, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13429,8 +13428,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 993,
-                            Arrival = new DateTime(2024, 2, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -13439,8 +13438,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 994,
-                            Arrival = new DateTime(2024, 2, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -13449,8 +13448,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 995,
-                            Arrival = new DateTime(2024, 2, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -13459,8 +13458,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 996,
-                            Arrival = new DateTime(2024, 2, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -13469,8 +13468,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 997,
-                            Arrival = new DateTime(2024, 2, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -13479,8 +13478,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 998,
-                            Arrival = new DateTime(2024, 2, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -13489,8 +13488,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 999,
-                            Arrival = new DateTime(2024, 2, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -13499,8 +13498,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1000,
-                            Arrival = new DateTime(2024, 2, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -13509,8 +13508,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1001,
-                            Arrival = new DateTime(2024, 2, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13519,8 +13518,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1002,
-                            Arrival = new DateTime(2024, 2, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13529,8 +13528,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1003,
-                            Arrival = new DateTime(2024, 2, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13539,8 +13538,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1004,
-                            Arrival = new DateTime(2024, 2, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13549,8 +13548,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1005,
-                            Arrival = new DateTime(2024, 2, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -13559,8 +13558,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1006,
-                            Arrival = new DateTime(2024, 2, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -13569,8 +13568,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1007,
-                            Arrival = new DateTime(2024, 2, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -13579,8 +13578,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1008,
-                            Arrival = new DateTime(2024, 2, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -13589,8 +13588,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1009,
-                            Arrival = new DateTime(2024, 2, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -13599,8 +13598,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1010,
-                            Arrival = new DateTime(2024, 2, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -13609,8 +13608,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1011,
-                            Arrival = new DateTime(2024, 2, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -13619,8 +13618,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1012,
-                            Arrival = new DateTime(2024, 2, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -13629,8 +13628,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1013,
-                            Arrival = new DateTime(2024, 2, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13639,8 +13638,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1014,
-                            Arrival = new DateTime(2024, 2, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13649,8 +13648,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1015,
-                            Arrival = new DateTime(2024, 2, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13659,8 +13658,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1016,
-                            Arrival = new DateTime(2024, 2, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13669,8 +13668,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1017,
-                            Arrival = new DateTime(2024, 2, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -13679,8 +13678,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1018,
-                            Arrival = new DateTime(2024, 2, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -13689,8 +13688,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1019,
-                            Arrival = new DateTime(2024, 2, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -13699,8 +13698,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1020,
-                            Arrival = new DateTime(2024, 2, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -13709,8 +13708,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1021,
-                            Arrival = new DateTime(2024, 2, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -13719,8 +13718,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1022,
-                            Arrival = new DateTime(2024, 2, 20, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 19, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 21, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 20, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -13729,8 +13728,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1023,
-                            Arrival = new DateTime(2024, 2, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -13739,8 +13738,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1024,
-                            Arrival = new DateTime(2024, 2, 20, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 19, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 21, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 20, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -13749,8 +13748,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1025,
-                            Arrival = new DateTime(2024, 2, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13759,8 +13758,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1026,
-                            Arrival = new DateTime(2024, 2, 20, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 19, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 21, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 20, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13769,8 +13768,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1027,
-                            Arrival = new DateTime(2024, 2, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13779,8 +13778,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1028,
-                            Arrival = new DateTime(2024, 2, 20, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 19, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 21, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 20, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13789,8 +13788,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1029,
-                            Arrival = new DateTime(2024, 2, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -13799,8 +13798,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1030,
-                            Arrival = new DateTime(2024, 2, 21, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 19, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 22, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 20, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -13809,8 +13808,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1031,
-                            Arrival = new DateTime(2024, 2, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -13819,8 +13818,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1032,
-                            Arrival = new DateTime(2024, 2, 21, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 19, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 22, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 20, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -13829,8 +13828,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1033,
-                            Arrival = new DateTime(2024, 2, 21, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 20, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 22, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 21, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -13839,8 +13838,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1034,
-                            Arrival = new DateTime(2024, 2, 22, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 21, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 23, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 22, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -13849,8 +13848,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1035,
-                            Arrival = new DateTime(2024, 2, 21, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 20, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 22, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 21, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -13859,8 +13858,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1036,
-                            Arrival = new DateTime(2024, 2, 22, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 21, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 23, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 22, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -13869,8 +13868,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1037,
-                            Arrival = new DateTime(2024, 2, 21, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 20, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 22, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 21, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13879,8 +13878,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1038,
-                            Arrival = new DateTime(2024, 2, 22, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 21, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 23, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 22, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13889,8 +13888,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1039,
-                            Arrival = new DateTime(2024, 2, 21, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 20, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 22, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 21, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -13899,8 +13898,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1040,
-                            Arrival = new DateTime(2024, 2, 22, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 21, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 23, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 22, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13909,8 +13908,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1041,
-                            Arrival = new DateTime(2024, 2, 22, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 20, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 23, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 21, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -13919,8 +13918,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1042,
-                            Arrival = new DateTime(2024, 2, 23, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 21, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 24, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 22, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -13929,8 +13928,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1043,
-                            Arrival = new DateTime(2024, 2, 22, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 20, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 23, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 21, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -13939,8 +13938,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1044,
-                            Arrival = new DateTime(2024, 2, 23, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 21, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 24, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 22, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -13949,8 +13948,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1045,
-                            Arrival = new DateTime(2024, 2, 23, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 22, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 24, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 23, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -13959,8 +13958,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1046,
-                            Arrival = new DateTime(2024, 2, 24, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 23, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 25, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 24, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -13969,8 +13968,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1047,
-                            Arrival = new DateTime(2024, 2, 23, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 22, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 24, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 23, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -13979,8 +13978,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1048,
-                            Arrival = new DateTime(2024, 2, 24, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 23, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 25, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 24, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -13989,8 +13988,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1049,
-                            Arrival = new DateTime(2024, 2, 23, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 22, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 24, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 23, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -13999,8 +13998,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1050,
-                            Arrival = new DateTime(2024, 2, 24, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 23, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 25, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 24, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14009,8 +14008,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1051,
-                            Arrival = new DateTime(2024, 2, 23, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 22, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 24, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 23, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14019,8 +14018,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1052,
-                            Arrival = new DateTime(2024, 2, 24, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 23, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 25, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 24, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14029,8 +14028,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1053,
-                            Arrival = new DateTime(2024, 2, 24, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 22, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 25, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 23, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -14039,8 +14038,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1054,
-                            Arrival = new DateTime(2024, 2, 25, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 23, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 26, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 24, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -14049,8 +14048,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1055,
-                            Arrival = new DateTime(2024, 2, 24, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 22, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 25, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 23, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -14059,8 +14058,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1056,
-                            Arrival = new DateTime(2024, 2, 25, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 23, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 26, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 24, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -14069,8 +14068,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1057,
-                            Arrival = new DateTime(2024, 2, 25, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 24, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 26, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 25, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -14079,8 +14078,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1058,
-                            Arrival = new DateTime(2024, 2, 26, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 25, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 27, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 26, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -14089,8 +14088,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1059,
-                            Arrival = new DateTime(2024, 2, 25, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 24, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 26, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 25, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -14099,8 +14098,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1060,
-                            Arrival = new DateTime(2024, 2, 26, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 25, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 27, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 26, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -14109,8 +14108,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1061,
-                            Arrival = new DateTime(2024, 2, 25, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 24, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 26, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 25, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14119,8 +14118,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1062,
-                            Arrival = new DateTime(2024, 2, 26, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 25, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 27, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 26, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14129,8 +14128,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1063,
-                            Arrival = new DateTime(2024, 2, 25, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 24, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 26, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 25, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14139,8 +14138,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1064,
-                            Arrival = new DateTime(2024, 2, 26, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 25, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 27, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 26, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14149,8 +14148,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1065,
-                            Arrival = new DateTime(2024, 2, 26, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 24, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 27, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 25, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -14159,8 +14158,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1066,
-                            Arrival = new DateTime(2024, 2, 27, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 25, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 28, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 26, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -14169,8 +14168,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1067,
-                            Arrival = new DateTime(2024, 2, 26, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 24, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 27, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 25, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -14179,8 +14178,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1068,
-                            Arrival = new DateTime(2024, 2, 27, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 25, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 28, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 26, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -14189,8 +14188,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1069,
-                            Arrival = new DateTime(2024, 2, 27, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 26, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 28, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 27, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -14199,8 +14198,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1070,
-                            Arrival = new DateTime(2024, 2, 28, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 27, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 29, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 28, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -14209,8 +14208,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1071,
-                            Arrival = new DateTime(2024, 2, 27, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 26, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 28, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 27, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -14219,8 +14218,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1072,
-                            Arrival = new DateTime(2024, 2, 28, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 27, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 29, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 28, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -14229,8 +14228,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1073,
-                            Arrival = new DateTime(2024, 2, 27, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 26, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 28, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 27, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14239,8 +14238,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1074,
-                            Arrival = new DateTime(2024, 2, 28, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 27, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 29, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 28, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14249,8 +14248,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1075,
-                            Arrival = new DateTime(2024, 2, 27, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 26, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 28, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 27, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14259,8 +14258,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1076,
-                            Arrival = new DateTime(2024, 2, 28, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 27, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 29, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 28, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14269,8 +14268,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1077,
-                            Arrival = new DateTime(2024, 2, 28, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 26, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 29, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 27, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -14279,8 +14278,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1078,
-                            Arrival = new DateTime(2024, 2, 29, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 27, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 1, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 28, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -14289,8 +14288,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1079,
-                            Arrival = new DateTime(2024, 2, 28, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 26, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 2, 29, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 27, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -14299,8 +14298,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1080,
-                            Arrival = new DateTime(2024, 2, 29, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 27, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 1, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 28, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -14309,8 +14308,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1081,
-                            Arrival = new DateTime(2024, 2, 29, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 28, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 1, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 29, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -14319,8 +14318,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1082,
-                            Arrival = new DateTime(2024, 3, 1, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 29, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 2, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 1, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -14329,8 +14328,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1083,
-                            Arrival = new DateTime(2024, 2, 29, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 28, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 1, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 29, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -14339,8 +14338,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1084,
-                            Arrival = new DateTime(2024, 3, 1, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 29, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 2, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 1, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -14349,8 +14348,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1085,
-                            Arrival = new DateTime(2024, 2, 29, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 28, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 1, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 29, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14359,8 +14358,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1086,
-                            Arrival = new DateTime(2024, 3, 1, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 29, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 2, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 1, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14369,8 +14368,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1087,
-                            Arrival = new DateTime(2024, 2, 29, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 28, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 1, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 29, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14379,8 +14378,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1088,
-                            Arrival = new DateTime(2024, 3, 1, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 29, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 2, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 1, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14389,8 +14388,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1089,
-                            Arrival = new DateTime(2024, 3, 1, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 28, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 2, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 29, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -14399,8 +14398,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1090,
-                            Arrival = new DateTime(2024, 3, 2, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 29, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 3, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 1, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -14409,8 +14408,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1091,
-                            Arrival = new DateTime(2024, 3, 1, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 28, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 2, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 2, 29, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -14419,8 +14418,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1092,
-                            Arrival = new DateTime(2024, 3, 2, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 2, 29, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 3, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 1, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -14429,8 +14428,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1093,
-                            Arrival = new DateTime(2024, 3, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -14439,8 +14438,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1094,
-                            Arrival = new DateTime(2024, 3, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -14449,8 +14448,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1095,
-                            Arrival = new DateTime(2024, 3, 2, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 1, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 3, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 2, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -14459,8 +14458,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1096,
-                            Arrival = new DateTime(2024, 3, 3, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 2, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 4, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 3, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -14469,8 +14468,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1097,
-                            Arrival = new DateTime(2024, 3, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14479,8 +14478,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1098,
-                            Arrival = new DateTime(2024, 3, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14489,8 +14488,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1099,
-                            Arrival = new DateTime(2024, 3, 2, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 1, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 3, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 2, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14499,8 +14498,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1100,
-                            Arrival = new DateTime(2024, 3, 3, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 2, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 4, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 3, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14509,8 +14508,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1101,
-                            Arrival = new DateTime(2024, 3, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -14519,8 +14518,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1102,
-                            Arrival = new DateTime(2024, 3, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -14529,8 +14528,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1103,
-                            Arrival = new DateTime(2024, 3, 3, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 1, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 4, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 2, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -14539,8 +14538,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1104,
-                            Arrival = new DateTime(2024, 3, 4, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 2, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 5, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 3, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -14549,8 +14548,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1105,
-                            Arrival = new DateTime(2024, 3, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -14559,8 +14558,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1106,
-                            Arrival = new DateTime(2024, 3, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -14569,8 +14568,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1107,
-                            Arrival = new DateTime(2024, 3, 4, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 3, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 5, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 4, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -14579,8 +14578,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1108,
-                            Arrival = new DateTime(2024, 3, 5, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 4, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 6, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 5, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -14589,8 +14588,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1109,
-                            Arrival = new DateTime(2024, 3, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14599,8 +14598,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1110,
-                            Arrival = new DateTime(2024, 3, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14609,8 +14608,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1111,
-                            Arrival = new DateTime(2024, 3, 4, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 3, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 5, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 4, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14619,8 +14618,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1112,
-                            Arrival = new DateTime(2024, 3, 5, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 4, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 6, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 5, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14629,8 +14628,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1113,
-                            Arrival = new DateTime(2024, 3, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -14639,8 +14638,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1114,
-                            Arrival = new DateTime(2024, 3, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -14649,8 +14648,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1115,
-                            Arrival = new DateTime(2024, 3, 5, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 3, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 6, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 4, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -14659,8 +14658,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1116,
-                            Arrival = new DateTime(2024, 3, 6, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 4, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 7, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 5, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -14669,8 +14668,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1117,
-                            Arrival = new DateTime(2024, 3, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -14679,8 +14678,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1118,
-                            Arrival = new DateTime(2024, 3, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -14689,8 +14688,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1119,
-                            Arrival = new DateTime(2024, 3, 6, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 5, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 7, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 6, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -14699,8 +14698,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1120,
-                            Arrival = new DateTime(2024, 3, 7, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 6, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 8, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 7, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -14709,8 +14708,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1121,
-                            Arrival = new DateTime(2024, 3, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14719,8 +14718,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1122,
-                            Arrival = new DateTime(2024, 3, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14729,8 +14728,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1123,
-                            Arrival = new DateTime(2024, 3, 6, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 5, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 7, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 6, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14739,8 +14738,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1124,
-                            Arrival = new DateTime(2024, 3, 7, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 6, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 8, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 7, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14749,8 +14748,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1125,
-                            Arrival = new DateTime(2024, 3, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -14759,8 +14758,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1126,
-                            Arrival = new DateTime(2024, 3, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -14769,8 +14768,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1127,
-                            Arrival = new DateTime(2024, 3, 7, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 5, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 8, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 6, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -14779,8 +14778,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1128,
-                            Arrival = new DateTime(2024, 3, 8, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 6, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 9, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 7, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -14789,8 +14788,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1129,
-                            Arrival = new DateTime(2024, 3, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -14799,8 +14798,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1130,
-                            Arrival = new DateTime(2024, 3, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -14809,8 +14808,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1131,
-                            Arrival = new DateTime(2024, 3, 8, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 7, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 9, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 8, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -14819,8 +14818,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1132,
-                            Arrival = new DateTime(2024, 3, 9, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 8, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 10, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 9, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -14829,8 +14828,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1133,
-                            Arrival = new DateTime(2024, 3, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14839,8 +14838,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1134,
-                            Arrival = new DateTime(2024, 3, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14849,8 +14848,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1135,
-                            Arrival = new DateTime(2024, 3, 8, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 7, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 9, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 8, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14859,8 +14858,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1136,
-                            Arrival = new DateTime(2024, 3, 9, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 8, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 10, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 9, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14869,8 +14868,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1137,
-                            Arrival = new DateTime(2024, 3, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -14879,8 +14878,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1138,
-                            Arrival = new DateTime(2024, 3, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -14889,8 +14888,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1139,
-                            Arrival = new DateTime(2024, 3, 9, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 7, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 10, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 8, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -14899,8 +14898,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1140,
-                            Arrival = new DateTime(2024, 3, 10, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 8, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 11, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 9, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -14909,8 +14908,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1141,
-                            Arrival = new DateTime(2024, 3, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -14919,8 +14918,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1142,
-                            Arrival = new DateTime(2024, 3, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -14929,8 +14928,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1143,
-                            Arrival = new DateTime(2024, 3, 10, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 9, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 11, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 10, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -14939,8 +14938,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1144,
-                            Arrival = new DateTime(2024, 3, 11, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 10, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 12, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 11, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -14949,8 +14948,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1145,
-                            Arrival = new DateTime(2024, 3, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14959,8 +14958,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1146,
-                            Arrival = new DateTime(2024, 3, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14969,8 +14968,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1147,
-                            Arrival = new DateTime(2024, 3, 10, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 9, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 11, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 10, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -14979,8 +14978,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1148,
-                            Arrival = new DateTime(2024, 3, 11, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 10, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 12, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 11, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -14989,8 +14988,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1149,
-                            Arrival = new DateTime(2024, 3, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -14999,8 +14998,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1150,
-                            Arrival = new DateTime(2024, 3, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -15009,8 +15008,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1151,
-                            Arrival = new DateTime(2024, 3, 11, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 9, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 12, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 10, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -15019,8 +15018,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1152,
-                            Arrival = new DateTime(2024, 3, 12, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 10, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 13, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 11, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -15029,8 +15028,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1153,
-                            Arrival = new DateTime(2024, 3, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -15039,8 +15038,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1154,
-                            Arrival = new DateTime(2024, 3, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -15049,8 +15048,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1155,
-                            Arrival = new DateTime(2024, 3, 12, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 11, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 13, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 12, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -15059,8 +15058,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1156,
-                            Arrival = new DateTime(2024, 3, 13, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 12, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 14, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 13, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -15069,8 +15068,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1157,
-                            Arrival = new DateTime(2024, 3, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -15079,8 +15078,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1158,
-                            Arrival = new DateTime(2024, 3, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -15089,8 +15088,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1159,
-                            Arrival = new DateTime(2024, 3, 12, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 11, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 13, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 12, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -15099,8 +15098,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1160,
-                            Arrival = new DateTime(2024, 3, 13, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 12, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 14, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 13, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -15109,8 +15108,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1161,
-                            Arrival = new DateTime(2024, 3, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -15119,8 +15118,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1162,
-                            Arrival = new DateTime(2024, 3, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -15129,8 +15128,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1163,
-                            Arrival = new DateTime(2024, 3, 13, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 11, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 14, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 12, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -15139,8 +15138,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1164,
-                            Arrival = new DateTime(2024, 3, 14, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 12, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 15, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 13, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -15149,8 +15148,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1165,
-                            Arrival = new DateTime(2024, 3, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -15159,8 +15158,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1166,
-                            Arrival = new DateTime(2024, 3, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -15169,8 +15168,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1167,
-                            Arrival = new DateTime(2024, 3, 14, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 13, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 15, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 14, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -15179,8 +15178,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1168,
-                            Arrival = new DateTime(2024, 3, 15, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 14, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 16, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 15, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -15189,8 +15188,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1169,
-                            Arrival = new DateTime(2024, 3, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -15199,8 +15198,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1170,
-                            Arrival = new DateTime(2024, 3, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -15209,8 +15208,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1171,
-                            Arrival = new DateTime(2024, 3, 14, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 13, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 15, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 14, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -15219,8 +15218,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1172,
-                            Arrival = new DateTime(2024, 3, 15, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 14, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 16, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 15, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -15229,8 +15228,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1173,
-                            Arrival = new DateTime(2024, 3, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -15239,8 +15238,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1174,
-                            Arrival = new DateTime(2024, 3, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -15249,8 +15248,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1175,
-                            Arrival = new DateTime(2024, 3, 15, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 13, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 16, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 14, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -15259,8 +15258,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1176,
-                            Arrival = new DateTime(2024, 3, 16, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 14, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 17, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 15, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -15269,8 +15268,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1177,
-                            Arrival = new DateTime(2024, 3, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -15279,8 +15278,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1178,
-                            Arrival = new DateTime(2024, 3, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -15289,8 +15288,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1179,
-                            Arrival = new DateTime(2024, 3, 16, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 15, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 17, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 16, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -15299,8 +15298,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1180,
-                            Arrival = new DateTime(2024, 3, 17, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 16, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 18, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 17, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -15309,8 +15308,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1181,
-                            Arrival = new DateTime(2024, 3, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -15319,8 +15318,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1182,
-                            Arrival = new DateTime(2024, 3, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -15329,8 +15328,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1183,
-                            Arrival = new DateTime(2024, 3, 16, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 15, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 17, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 16, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -15339,8 +15338,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1184,
-                            Arrival = new DateTime(2024, 3, 17, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 16, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 18, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 17, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -15349,8 +15348,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1185,
-                            Arrival = new DateTime(2024, 3, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -15359,8 +15358,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1186,
-                            Arrival = new DateTime(2024, 3, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -15369,8 +15368,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1187,
-                            Arrival = new DateTime(2024, 3, 17, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 15, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 18, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 16, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -15379,8 +15378,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1188,
-                            Arrival = new DateTime(2024, 3, 18, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 16, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 19, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 17, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -15389,8 +15388,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1189,
-                            Arrival = new DateTime(2024, 3, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 HN-SG Fast Train",
                             RouteId = 4,
@@ -15399,8 +15398,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1190,
-                            Arrival = new DateTime(2024, 3, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE1 SG-HN Fast Train",
                             RouteId = 3,
@@ -15409,8 +15408,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1191,
-                            Arrival = new DateTime(2024, 3, 18, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 17, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 19, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 18, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 SG-HN Fast Train",
                             RouteId = 3,
@@ -15419,8 +15418,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1192,
-                            Arrival = new DateTime(2024, 3, 19, 7, 52, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 18, 0, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 20, 12, 52, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 19, 5, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE2 HN-SG Fast Train",
                             RouteId = 4,
@@ -15429,8 +15428,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1193,
-                            Arrival = new DateTime(2024, 3, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -15439,8 +15438,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1194,
-                            Arrival = new DateTime(2024, 3, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE3 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -15449,8 +15448,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1195,
-                            Arrival = new DateTime(2024, 3, 18, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 17, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 19, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 18, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 SG-HN Super Fast Train",
                             RouteId = 5,
@@ -15459,8 +15458,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1196,
-                            Arrival = new DateTime(2024, 3, 19, 17, 42, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 18, 8, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 20, 22, 42, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 19, 13, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE4 HN-SG Super Fast Train",
                             RouteId = 6,
@@ -15469,8 +15468,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1197,
-                            Arrival = new DateTime(2024, 3, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 HN-SG Slow Train",
                             RouteId = 2,
@@ -15479,8 +15478,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1198,
-                            Arrival = new DateTime(2024, 3, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE5 SG-HN Slow Train",
                             RouteId = 1,
@@ -15489,8 +15488,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1199,
-                            Arrival = new DateTime(2024, 3, 19, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 17, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 20, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 18, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 SG-HN Slow Train",
                             RouteId = 1,
@@ -15499,8 +15498,8 @@ namespace Railway_Group01.Migrations
                         new
                         {
                             Id = 1200,
-                            Arrival = new DateTime(2024, 3, 20, 2, 5, 34, 930, DateTimeKind.Local).AddTicks(8515),
-                            Departure = new DateTime(2024, 3, 18, 16, 27, 34, 930, DateTimeKind.Local).AddTicks(8515),
+                            Arrival = new DateTime(2024, 3, 21, 7, 5, 54, 734, DateTimeKind.Local).AddTicks(5850),
+                            Departure = new DateTime(2024, 3, 19, 21, 27, 54, 734, DateTimeKind.Local).AddTicks(5850),
                             IsFinished = false,
                             Name = "SE6 HN-SG Slow Train",
                             RouteId = 2,
@@ -34494,6 +34493,9 @@ namespace Railway_Group01.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDone")
+                        .HasColumnType("bit");
+
                     b.Property<string>("PaymentId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -34661,15 +34663,16 @@ namespace Railway_Group01.Migrations
                 {
                     b.HasOne("Railway_Group01.Data.Booking", "Booking")
                         .WithMany("BookingDetails")
-                        .HasForeignKey("BookingId");
+                        .HasForeignKey("BookingId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Railway_Group01.Data.Schedule", "Schedule")
                         .WithMany("BookingDetails")
                         .HasForeignKey("ScheduleId");
 
                     b.HasOne("Railway_Group01.Data.Seat", "Seat")
-                        .WithOne("BookingDetail")
-                        .HasForeignKey("Railway_Group01.Data.BookingDetail", "SeatId")
+                        .WithMany("BookingDetails")
+                        .HasForeignKey("SeatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -34685,7 +34688,7 @@ namespace Railway_Group01.Migrations
                     b.HasOne("Railway_Group01.Data.Ticket", "Ticket")
                         .WithOne("Cancelling")
                         .HasForeignKey("Railway_Group01.Data.Cancelling", "PNRNo")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Railway_Group01.Data.RefundRule", "RefundRule")
@@ -34854,7 +34857,7 @@ namespace Railway_Group01.Migrations
                     b.HasOne("Railway_Group01.Data.BookingDetail", "BookingDetail")
                         .WithOne("Ticket")
                         .HasForeignKey("Railway_Group01.Data.Ticket", "BookingDetailId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Railway_Group01.Data.Fare", "Fare")
@@ -34983,7 +34986,7 @@ namespace Railway_Group01.Migrations
 
             modelBuilder.Entity("Railway_Group01.Data.Seat", b =>
                 {
-                    b.Navigation("BookingDetail");
+                    b.Navigation("BookingDetails");
                 });
 
             modelBuilder.Entity("Railway_Group01.Data.Station", b =>

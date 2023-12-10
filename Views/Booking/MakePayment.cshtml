@@ -2,8 +2,6 @@
 @{
     ViewData["Title"] = "MAKE PAYMENT";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
-
-    var paypalLogo = "/images/paypalLogo.jpg";
 }
 <script src="https://www.paypal.com/sdk/js?client-id=@(ViewBag.PaypalClientId)&components=buttons"></script>
 
@@ -79,17 +77,51 @@
                 paypal_buttons.close();
                 console.log(data.orderID)
                 // This function captures the funds from the transaction.
-                return fetch("/Paypal/CompleteOrder?OrderID=" + data.orderID, {
+                return fetch("/Paypal/CompleteOrder", {
                     method: "POST",
-                    body: {
-                        orderID: data.orderID
-                    }
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        orderID: data.orderID,
+                        bookingID: @Model.BookingId
+                    })
                 })
                     .then((response) => response.json())
                     .then((details) => {
+                        console.log(details);
+                        if (details == "success") {
+                            document.getElementById("notification-container").innerHTML =
+                                '<div class="alert alert-success" role="alert">The order is created successfully!</div>'
+                            window.location.href = "/Booking/Finish/" + @Model.BookingId
+                        }
+                        else {
+                            document.getElementById("notification-container").innerHTML =
+                                '<div class="alert alert-danger" role="alert">Failed to create the order!</div>'
+                        }
                         // This function shows a transaction success message to your buyer.
                         alert('Transaction completed by ' + details.payer.name.given_name);
                     });
+            },
+
+            onCancel(data) {
+                document.getElementById("notification-container").innerHTML = 
+                '<div class="alert alert-danger" role="alert">Order Canceled!</div>'
+
+                return fetch("/Paypal/CancelOrder", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        orderID: data.orderID
+                    })
+                });
+            },
+
+            onError(err) {
+                document.getElementById("notification-container").innerHTML =
+                    '<div class="alert alert-danger" role="alert">Failed to create the order!</div>'
             }
         });
         paypal_buttons.render('#paypal-button-container');
