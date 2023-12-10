@@ -184,7 +184,7 @@
 
     <section>
         <div class="d-flex justify-content-between">
-            <a href="@ViewBag.returnUrl" class="btn btn-orange fw-bold">👈 Back</a>
+            <a href="@(ViewBag.returnUrl?? "/")" class="btn btn-orange fw-bold">👈 Back</a>
 
             @if (Model.Cart != null && Model.Cart.Count > 0)
             {

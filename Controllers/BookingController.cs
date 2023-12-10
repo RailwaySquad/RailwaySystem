@@ -17,18 +17,14 @@ namespace Railway_Group01.Controllers
     {
         RailwayDbContext _ctx;
         UserManager<User> _userManager;
+
         public string PaypalClientId { get; set; } = "";
-        public string PaypalSecret { get; set; } = "";
-        public string PaypalUrl { get; set; } = "";
 
         public BookingController(RailwayDbContext ctx, UserManager<User> userManager, IConfiguration configuration)
         {
             _ctx = ctx;
             _userManager = userManager;
-
             PaypalClientId = configuration["PaypalSettings:ClientId"]!;
-            PaypalSecret = configuration["PaypalSettings:Secret"]!;
-            PaypalUrl = configuration["PaypalSettings:Url"]!;
         }
 
         public async Task<IActionResult> Index()
@@ -100,8 +96,12 @@ namespace Railway_Group01.Controllers
         public async Task<IActionResult> FillInformation(List<PassengerDTO> Passengers)
         {
             var user = await _userManager.GetUserAsync(User);
-            var bookingNotBeingPay = await _ctx.Bookings!.Where(b => b.User == user).AnyAsync(b => b.Transactions == null);
-            if (bookingNotBeingPay)
+            var hasBookingNotBeingPay = await _ctx.Bookings!
+                .Include(b => b.Transactions)
+                .Include(b => b.User)
+                .Where(b => b.User == user)
+                .AnyAsync(b => b.Transactions!.Count == 0 || b.Transactions!.Any(t => !t.IsDone));
+            if (hasBookingNotBeingPay)
             {
                 TempData["error"] = "You have an unfinished order. Please check your Booking history";
                 return RedirectToAction(nameof(Index));
@@ -135,7 +135,7 @@ namespace Railway_Group01.Controllers
                     case CHILD:
                         {
                             p.Birthday = DateTime.Parse(p.ID!);
-                            p.ID = Guid.NewGuid().ToString();
+                            p.ID = Guid.NewGuid().ToString()[..20];
                             p.DiscountPercent = GetDiscountPercent(p.TypeCode);
                             break;
                         }
@@ -148,7 +148,6 @@ namespace Railway_Group01.Controllers
                         }
                     default: break;
                 }
-
             }
 
             const decimal insurance = 0.1M;
@@ -183,24 +182,26 @@ namespace Railway_Group01.Controllers
 
             foreach (var info in infoList)
             {
+                var passenger = await _ctx.Passengers!.SingleOrDefaultAsync(p => p.ID == info.ID);
+                passenger ??= new Passenger()
+                    {
+                        ID = info.ID,
+                        Birthday = info.Birthday,
+                        Name = info.Name,
+                        PassengerType = info.PassengerType
+                    };
                 booking.BookingDetails!.Add(new BookingDetail()
                 {
                     Booking = booking,
                     Schedule = await _ctx.Schedules!.FindAsync(info.ScheduleId),
                     Seat = await _ctx.Seats!.FindAsync(info.SeatId),
                     Trip = info.Trip,
-                    Passenger = new Passenger()
-                    {
-                        ID = info.ID,
-                        Birthday = info.Birthday,
-                        Name = info.Name,
-                        PassengerType = info.PassengerType,
-                    },
+                    Passenger = passenger,
                     Price = info.Price
             });
             }
             _ctx.Add(booking);
-            var result = await _ctx.SaveChangesAsync() > 0;
+            var result = await _ctx.SaveChangesAsync();
             var bookModel = await _ctx.Bookings!.OrderBy(b => b.CreatedAt).LastOrDefaultAsync();
             return RedirectToAction(nameof(ConfirmInformation), new { id = bookModel?.Id });
         }
@@ -226,13 +227,15 @@ namespace Railway_Group01.Controllers
 
         public async Task<IActionResult> MakePayment(int id)
         {
-            var booking = await _ctx.Bookings!.Include(b => b.BookingDetails).FirstOrDefaultAsync(b => b.Id == id);
+            var booking = await _ctx.Bookings!.Include(b => b.BookingDetails).Include(b=>b.Transactions).FirstOrDefaultAsync(b => b.Id == id);
+            if (booking!.Transactions!.Count > 0)
+            {
+                return RedirectToAction(nameof(Finish), new { id = booking?.Id });
+            } 
             var amount = booking!.BookingDetails!.Sum(bd => bd.Price);
             var quantity = booking.BookingDetails!.Count;
             ViewBag.returnUrl = Request.Headers["Referer"].ToString();
             ViewData["PaypalClientId"] = PaypalClientId;
-            ViewData["PaypalSecret"] = PaypalSecret;
-            ViewData["PaypalUrl"] = PaypalUrl;
             OrderDTO order = new()
             {
                 BookingId = id,
@@ -242,112 +245,12 @@ namespace Railway_Group01.Controllers
             return View(order);
         }
 
-        [HttpPost]
-        public ActionResult CreateOrder()
+        public async Task<IActionResult> Finish(int id)
         {
-            JsonObject createOrderRequest = new JsonObject();
-            createOrderRequest.Add("intent", "CAPTURE");
-
-            JsonObject amount = new JsonObject();
-            amount.Add("currency_code", "USD");
-            amount.Add("value", "100.00");
-
-            JsonObject purchaseUnit1 = new JsonObject();
-            purchaseUnit1.Add("amount", amount);
-
-            JsonArray purchaseUnits = new JsonArray();
-            purchaseUnits.Add(purchaseUnit1);
-
-            createOrderRequest.Add("purchase_units", purchaseUnits);
-
-            string accessToken = GetPaypalAccessToken();
-
-            string url = PaypalUrl + "/v2/checkout/orders";
-
-            string orderId = "";
-
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
-
-                var requestMessage = new HttpRequestMessage(HttpMethod.Post, url);
-                requestMessage.Content = new StringContent(createOrderRequest.ToString(), null, "application/json");
-
-                var responseTask = client.SendAsync(requestMessage);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = result.Content.ReadAsStringAsync();
-                    readTask.Wait();
-
-                    var strResponse = readTask.Result;
-                    var jsonResponse = JsonNode.Parse(strResponse);
-                    if (jsonResponse != null)
-                    {
-                        orderId = jsonResponse["id"]!.ToString() ?? "";
-
-                    }
-                }
-            }
-
-            var response = new
-            {
-                Id = orderId
-            };
-            return new JsonResult(response);
-        }
-
-        [HttpPost]
-        public ActionResult CompleteOrder(string orderID)
-        {
-            return new JsonResult(orderID);
-        }
-
-        private string GetPaypalAccessToken()
-        {
-            string accessToken = "";
-
-            string url = PaypalUrl + "/v1/oauth2/token";
-
-            using (var client = new HttpClient())
-            {
-                string credentials64 =
-                    Convert.ToBase64String(Encoding.UTF8.GetBytes(PaypalClientId + ":" + PaypalSecret));
-
-                client.DefaultRequestHeaders.Add("Authorization", "Basic " + credentials64);
-
-                var requestMessage = new HttpRequestMessage(HttpMethod.Post, url);
-                requestMessage.Content = new StringContent("grant_type=client_credentials", null
-                    , "application/x-www-form-urlencoded");
-
-                var responseTask = client.SendAsync(requestMessage);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = result.Content.ReadAsStringAsync();
-                    readTask.Wait();
-
-                    var strResponse = readTask.Result;
-
-                    var jsonResponse = JsonNode.Parse(strResponse);
-                    if (jsonResponse != null)
-                    {
-                        accessToken = jsonResponse["access_token"]?.ToString() ?? "";
-                    }
-
-                }
-            }
-
-            return accessToken;
-        }
-
-        public IActionResult Finish()
-        {
-            return View();
+            var booking = await _ctx.Bookings!.Include(b => b.Transactions).FirstOrDefaultAsync(b=>b.Id == id);
+            if (booking is not null)
+                return View(id);
+            else return RedirectToAction(nameof(ConfirmInformation), new { id = id });
         }
     }
 }

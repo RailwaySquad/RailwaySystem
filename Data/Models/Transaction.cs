@@ -21,6 +21,8 @@ namespace Railway_Group01.Data
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Amount { get; set; }
 
+        public bool IsDone { get; set; }
+
         public DateTime CreatedAt { get; set; }
 
         public Booking? Booking { get; set; }
