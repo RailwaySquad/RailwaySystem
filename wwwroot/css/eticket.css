@@ -1997,7 +1997,7 @@ button.close {
     border: 3px solid #385d8a;
     margin: 0;
     padding: 5px 10px;
-    height: 176px
+    height: auto
 }
 
 .et-car-next-floor {
