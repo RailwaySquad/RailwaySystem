@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using Railway_Group01.Data;
 using Railway_Group01.Models;
 using Railway_Group01.Models.ViewModels;
+using System.Text.Json.Nodes;
+using System.Text;
 
 namespace Railway_Group01.Controllers
 {
@@ -15,11 +17,18 @@ namespace Railway_Group01.Controllers
     {
         RailwayDbContext _ctx;
         UserManager<User> _userManager;
+        public string PaypalClientId { get; set; } = "";
+        public string PaypalSecret { get; set; } = "";
+        public string PaypalUrl { get; set; } = "";
 
-        public BookingController(RailwayDbContext ctx, UserManager<User> userManager)
+        public BookingController(RailwayDbContext ctx, UserManager<User> userManager, IConfiguration configuration)
         {
             _ctx = ctx;
             _userManager = userManager;
+
+            PaypalClientId = configuration["PaypalSettings:ClientId"]!;
+            PaypalSecret = configuration["PaypalSettings:Secret"]!;
+            PaypalUrl = configuration["PaypalSettings:Url"]!;
         }
 
         public async Task<IActionResult> Index()
@@ -215,15 +224,125 @@ namespace Railway_Group01.Controllers
             return View(booking);
         }
 
-        public IActionResult MakePayment(int id)
+        public async Task<IActionResult> MakePayment(int id)
         {
+            var booking = await _ctx.Bookings!.Include(b => b.BookingDetails).FirstOrDefaultAsync(b => b.Id == id);
+            var amount = booking!.BookingDetails!.Sum(bd => bd.Price);
+            var quantity = booking.BookingDetails!.Count;
             ViewBag.returnUrl = Request.Headers["Referer"].ToString();
-            return View();
+            ViewData["PaypalClientId"] = PaypalClientId;
+            ViewData["PaypalSecret"] = PaypalSecret;
+            ViewData["PaypalUrl"] = PaypalUrl;
+            OrderDTO order = new()
+            {
+                BookingId = id,
+                Amount = amount,
+                Quantity = quantity
+            };
+            return View(order);
         }
 
-        public IActionResult Pay()
+        [HttpPost]
+        public ActionResult CreateOrder()
         {
-            return RedirectToAction(nameof(Finish));
+            JsonObject createOrderRequest = new JsonObject();
+            createOrderRequest.Add("intent", "CAPTURE");
+
+            JsonObject amount = new JsonObject();
+            amount.Add("currency_code", "USD");
+            amount.Add("value", "100.00");
+
+            JsonObject purchaseUnit1 = new JsonObject();
+            purchaseUnit1.Add("amount", amount);
+
+            JsonArray purchaseUnits = new JsonArray();
+            purchaseUnits.Add(purchaseUnit1);
+
+            createOrderRequest.Add("purchase_units", purchaseUnits);
+
+            string accessToken = GetPaypalAccessToken();
+
+            string url = PaypalUrl + "/v2/checkout/orders";
+
+            string orderId = "";
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+
+                var requestMessage = new HttpRequestMessage(HttpMethod.Post, url);
+                requestMessage.Content = new StringContent(createOrderRequest.ToString(), null, "application/json");
+
+                var responseTask = client.SendAsync(requestMessage);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsStringAsync();
+                    readTask.Wait();
+
+                    var strResponse = readTask.Result;
+                    var jsonResponse = JsonNode.Parse(strResponse);
+                    if (jsonResponse != null)
+                    {
+                        orderId = jsonResponse["id"]!.ToString() ?? "";
+
+                    }
+                }
+            }
+
+            var response = new
+            {
+                Id = orderId
+            };
+            return new JsonResult(response);
+        }
+
+        [HttpPost]
+        public ActionResult CompleteOrder(string orderID)
+        {
+            return new JsonResult(orderID);
+        }
+
+        private string GetPaypalAccessToken()
+        {
+            string accessToken = "";
+
+            string url = PaypalUrl + "/v1/oauth2/token";
+
+            using (var client = new HttpClient())
+            {
+                string credentials64 =
+                    Convert.ToBase64String(Encoding.UTF8.GetBytes(PaypalClientId + ":" + PaypalSecret));
+
+                client.DefaultRequestHeaders.Add("Authorization", "Basic " + credentials64);
+
+                var requestMessage = new HttpRequestMessage(HttpMethod.Post, url);
+                requestMessage.Content = new StringContent("grant_type=client_credentials", null
+                    , "application/x-www-form-urlencoded");
+
+                var responseTask = client.SendAsync(requestMessage);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsStringAsync();
+                    readTask.Wait();
+
+                    var strResponse = readTask.Result;
+
+                    var jsonResponse = JsonNode.Parse(strResponse);
+                    if (jsonResponse != null)
+                    {
+                        accessToken = jsonResponse["access_token"]?.ToString() ?? "";
+                    }
+
+                }
+            }
+
+            return accessToken;
         }
 
         public IActionResult Finish()

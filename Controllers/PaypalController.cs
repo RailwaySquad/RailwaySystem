@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Railway_Group01.Data;
 using System.Text;
 using System.Text.Json.Nodes;
 
@@ -6,12 +8,14 @@ namespace Railway_Group01.Controllers
 {
     public class PaypalController: Controller
     {
+        RailwayDbContext _ctx;
         public string PaypalClientId { get; set; } = "";
         public string PaypalSecret { get; set; } = "";
         public string PaypalUrl { get; set; } = "";
 
-        public PaypalController(IConfiguration configuration)
+        public PaypalController(IConfiguration configuration, RailwayDbContext ctx)
         {
+            _ctx = ctx;
             PaypalClientId = configuration["PaypalSettings:ClientId"]!;
             PaypalSecret = configuration["PaypalSettings:Secret"]!;
             PaypalUrl = configuration["PaypalSettings:Url"]!;
@@ -26,14 +30,16 @@ namespace Railway_Group01.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateOrder()
+        public async Task <ActionResult> CreateOrder(int BookingId)
         {
+            var booking = await _ctx.Bookings!.Include(b => b.BookingDetails).FirstOrDefaultAsync(b => b.Id == BookingId);
+            var amountValue = booking!.BookingDetails!.Sum(b => b.Price);
             JsonObject createOrderRequest = new JsonObject();
             createOrderRequest.Add("intent", "CAPTURE");
 
             JsonObject amount = new JsonObject();
             amount.Add("currency_code", "USD");
-            amount.Add("value", "100.00");
+            amount.Add("value", amountValue.ToString("0.00"));
 
             JsonObject purchaseUnit1 = new JsonObject();
             purchaseUnit1.Add("amount", amount);
@@ -85,6 +91,7 @@ namespace Railway_Group01.Controllers
         [HttpPost]
         public ActionResult CompleteOrder(string orderID)
         {
+
             return new JsonResult(orderID);
         }
 
