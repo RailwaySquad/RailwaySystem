@@ -35,10 +35,7 @@
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a class="text-decoration-none text-orange" href="/trains">Trains</a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a class="text-decoration-none text-orange" href="/trains/trains-list">Trains List</a>
+                                <a class="text-decoration-none text-orange" asp-action="Index">Trains</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">@Html.DisplayFor(x=>Model.Item2.Code)</li>
                         </ol>
@@ -52,8 +49,8 @@
                                 <div class="lh-2 row w-75">
                                     <div class="col-3 align-top pt-2 mx-auto me-0" style="width: 130px;">
                                         <div class="h6 ">@Html.DisplayFor(x=>x.Item3.Code)</div>
-                                        <div class="fw-500" style="font-size:15px">@Model.Item1.Departure.ToString("HH:mm")</div>
-                                        <div class="fw-500" style="font-size:15px">@Model.Item1.Departure.ToString("ddd, dd MMM")</div>
+                                        <div class="fw-500" style="font-size:15px">@ViewBag.Start.ToString("HH:mm")</div>
+                                        <div class="fw-500" style="font-size:15px">@ViewBag.Start.ToString("ddd, dd MMM")</div>
                                         <div class="text-orange fw-600 text-decoration-none">@Html.DisplayFor(x=>x.Item3.Name)</div>
                                     </div>
                                     <div class="col-4 d-flex flex-column justify-content-center align-items-center" style="width: 200px;padding: 0 10px 10px;">
@@ -71,8 +68,8 @@
                                     </div>
                                     <div class="col-3 align-top pt-2 mx-auto ms-0"style="width: 130px;">
                                         <div class="h6 ">@Html.DisplayFor(x=>x.Item4.Code)</div>
-                                        <div class="fw-500" style="font-size:15px">@Model.Item1.Arrival.ToString("HH:mm")</div>
-                                        <div class="fw-500" style="font-size:15px">@Model.Item1.Arrival.ToString("ddd, dd MMM")</div>
+                                        <div class="fw-500" style="font-size:15px">@ViewBag.Start.ToString("HH:mm")</div>
+                                        <div class="fw-500" style="font-size:15px">@ViewBag.End.ToString("ddd, dd MMM")</div>
                                     <div class="text-orange fw-600 text-decoration-none">@Html.DisplayFor(x=>x.Item4.Name)</div>
                                     </div>
                                 </div>
@@ -139,34 +136,57 @@
                                         <div class="d-flex flex-row align-items-center justify-content-center pt-3">
                                             @if (coach.NoOfCompartments == 0)
                                             {
+                                                var available1 = false;
                                                 int count = 1;
                                                 <div class="row et-car-floor ">
                                                     <div class="et-full-width">
                                                         @while (count <= coach.NoOfSeats)
                                                         {
-                                                            <div class="et-car-nm-64-sit ng-isolate-scope">
-                                                                <div class="et-car-seat-left et-seat-h-35">
-                                                                    <div class="et-col-16 et-sit-side"></div>
-                                                                    <div class="et-col-84 et-sit-sur-outer">
-                                                                        <div class="et-sit-sur text-center et-sit-avaiable">
-                                                                            <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available"
-                                                                                 data-schedule="@Model.Item1.Id"
-                                                                                 data-coach="@coach.Id"
-                                                                                 data-seat="@count"
-                                                                                 data-start="@Model.Item1.Departure"
-                                                                                 data-end="@Model.Item1.Arrival"
-                                                                                 data-cabin="0"
-                                                                                 data-coachNo="@coach.CoachNo"
-                                                                                 data-fromStation="@Model.Item3.Id"
-                                                                                 data-toStation="@Model.Item4.Id"
-                                                                                 data-class="@coach.ClassCode"
-                                                                                 data-className="@coach.Class.Name">
-                                                                                <span>@count</span>
+                                                            if (coach.Seats.Count() != 0 && Model.Item1.ListOfBookedSeatId.Count() != 0)
+                                                            {
+                                                                available1 = Model.Item1.ListOfBookedSeatId.Any(x => x.CoachId == coach.Id && x.SeatNo == count);
+                                                            }
+                                                            if (available1)
+                                                            {
+                                                                <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                                    <div class="et-car-seat-left et-seat-h-35">
+                                                                        <div class="et-col-16 et-sit-side"></div>
+                                                                        <div class="et-col-84 et-sit-sur-outer">
+                                                                            <div class="et-sit-sur text-center et-sit-bought">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Ticket sold" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no">
+                                                                                    <span>@count</span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                                    <div class="et-car-seat-left et-seat-h-35">
+                                                                        <div class="et-col-16 et-sit-side"></div>
+                                                                        <div class="et-col-84 et-sit-sur-outer">
+                                                                            <div class="et-sit-sur text-center et-sit-avaiable">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available"
+                                                                                     data-schedule="@Model.Item1.Id"
+                                                                                     data-coach="@coach.Id"
+                                                                                     data-seat="@count"
+                                                                                     data-start="@Model.Item1.Departure"
+                                                                                     data-end="@Model.Item1.Arrival"
+                                                                                     data-cabin="0"
+                                                                                     data-coachNo="@coach.CoachNo"
+                                                                                     data-fromStation="@Model.Item3.Id"
+                                                                                     data-toStation="@Model.Item4.Id"
+                                                                                     data-class="@coach.ClassCode"
+                                                                                     data-className="@coach.Class.Name">
+                                                                                    <span>@count</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
                                                             count++;
                                                         }
                                                     </div>
@@ -176,6 +196,7 @@
                                             {
                                                 int count = 1;
                                                 int cabinNum = 1;
+                                                var available2 = false;
                                                 <div class="row et-car-floor w-100">
                                                     <div class="et-col-1-18 et-car-floor-full-height"></div>
                                                     <div class="et-col-8-9">
@@ -197,6 +218,10 @@
                                                         }
                                                         @while (count <= coach.NoOfSeats)
                                                         {
+                                                            if (coach.Seats.Count() != 0 && Model.Item1.ListOfBookedSeatId.Count() != 0)
+                                                            {
+                                                                available2 = Model.Item1.ListOfBookedSeatId.Any(x => x.CoachId == coach.Id && x.SeatNo == count);
+                                                            }
                                                             if (brek == 0)
                                                             {
                                                                 <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
@@ -212,52 +237,92 @@
                                                             }
                                                             if (count % 2 == 0)
                                                             {
-                                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
-                                                                    <div class="et-bed-right">
-                                                                        <div class="et-bed-outer">
-                                                                            <div class="et-bed text-center et-sit-avaiable">
-                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available"
-                                                                                     data-schedule="@Model.Item1.Id"
-                                                                                     data-cabin="@cabinNum"
-                                                                                     data-coach="@coach.Id"
-                                                                                     data-seat="@count"
-                                                                                     data-start="@Model.Item1.Departure"
-                                                                                     data-end="@Model.Item1.Arrival"
-                                                                                     data-coachNo="@coach.CoachNo"
-                                                                                     data-fromStation="@Model.Item3.Id"
-                                                                                     data-toStation="@Model.Item4.Id">
-                                                                                    <span>@count</span>
+                                                                if (available2)
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                        <div class="et-bed-right">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-bought">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Ticket sold" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no ">
+                                                                                        <span>@count</span>
+                                                                                    </div>
                                                                                 </div>
+                                                                                <div class="et-bed-illu"></div>
                                                                             </div>
-                                                                            <div class="et-bed-illu"></div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                        <div class="et-bed-right">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available"
+                                                                                         data-schedule="@Model.Item1.Id"
+                                                                                         data-coach="@coach.Id"
+                                                                                         data-seat="@count"
+                                                                                         data-start="@Model.Item1.Departure"
+                                                                                         data-end="@Model.Item1.Arrival"
+                                                                                         data-cabin="@cabinNum"
+                                                                                         data-coachNo="@coach.CoachNo"
+                                                                                         data-fromStation="@Model.Item3.Id"
+                                                                                         data-toStation="@Model.Item4.Id"
+                                                                                         data-class="@coach.ClassCode"
+                                                                                         data-className="@coach.Class.Name">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="et-bed-illu"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
                                                                 cabinNum++;
                                                             }
                                                             else
                                                             {
-                                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                                    <div class="et-bed-left ">
-                                                                        <div class="et-bed-outer">
-                                                                            <div class="et-bed text-center et-sit-avaiable">
-                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available"
-                                                                                     data-schedule="@Model.Item1.Id"
-                                                                                     data-cabin="@cabinNum"
-                                                                                     data-coach="@coach.Id"
-                                                                                     data-seat="@count"
-                                                                                     data-start="@Model.Item1.Departure"
-                                                                                     data-end="@Model.Item1.Arrival"
-                                                                                     data-coachNo="@coach.CoachNo"
-                                                                                     data-fromStation="@Model.Item3.Id"
-                                                                                     data-toStation="@Model.Item4.Id">
-                                                                                    <span>@count</span>
+                                                                if (available2)
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                        <div class="et-bed-left">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-bought">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Ticket sold" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no ">
+                                                                                        <span>@count</span>
+                                                                                    </div>
                                                                                 </div>
+                                                                                <div class="et-bed-illu"></div>
                                                                             </div>
-                                                                            <div class="et-bed-illu"></div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                        <div class="et-bed-left ">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available"
+                                                                                         data-schedule="@Model.Item1.Id"
+                                                                                         data-coach="@coach.Id"
+                                                                                         data-seat="@count"
+                                                                                         data-start="@Model.Item1.Departure"
+                                                                                         data-end="@Model.Item1.Arrival"
+                                                                                         data-cabin="@cabinNum"
+                                                                                         data-coachNo="@coach.CoachNo"
+                                                                                         data-fromStation="@Model.Item3.Id"
+                                                                                         data-toStation="@Model.Item4.Id"
+                                                                                         data-class="@coach.ClassCode"
+                                                                                         data-className="@coach.Class.Name">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="et-bed-illu"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
                                                             }
 
                                                             brek--;
@@ -274,12 +339,34 @@
                                     {
                                     <div class="collapse" id="@Model.Item1.TrainCode-@coach.Id">
                                             <div class="d-flex flex-row align-items-center justify-content-center pt-3">
-                                                @if (coach.NoOfCompartments == 0)
-                                                {
-                                                    int count = 1;
-                                                    <div class="row et-car-floor ">
-                                                        <div class="et-full-width">
-                                                            @while (count <= coach.NoOfSeats)
+                                            @if (coach.NoOfCompartments == 0)
+                                            {
+                                                var available1 = false;
+                                                int count = 1;
+                                                <div class="row et-car-floor ">
+                                                    <div class="et-full-width">
+                                                        @while (count <= coach.NoOfSeats)
+                                                        {
+                                                            if (coach.Seats.Count() != 0 && Model.Item1.ListOfBookedSeatId.Count() != 0)
+                                                            {
+                                                                available1 = Model.Item1.ListOfBookedSeatId.Any(x => x.CoachId == coach.Id && x.SeatNo == count);
+                                                            }
+                                                            if (available1)
+                                                            {
+                                                                <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                                    <div class="et-car-seat-left et-seat-h-35">
+                                                                        <div class="et-col-16 et-sit-side"></div>
+                                                                        <div class="et-col-84 et-sit-sur-outer">
+                                                                            <div class="et-sit-sur text-center et-sit-bought">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Ticket sold" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no">
+                                                                                    <span>@count</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
                                                             {
                                                                 <div class="et-car-nm-64-sit ng-isolate-scope">
                                                                     <div class="et-car-seat-left et-seat-h-35">
@@ -287,80 +374,81 @@
                                                                         <div class="et-col-84 et-sit-sur-outer">
                                                                             <div class="et-sit-sur text-center et-sit-avaiable">
                                                                                 <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available"
-                                                                                        data-schedule="@Model.Item1.Id"
-                                                                                        data-coach="@coach.Id"
-                                                                                        data-seat="@count"
-                                                                                        data-start="@Model.Item1.Departure"
-                                                                                        data-end="@Model.Item1.Arrival"
-                                                                                        data-cabin="0"
-                                                                                        data-coachNo="@coach.CoachNo"
-                                                                                        data-fromStation="@Model.Item3.Id"
-                                                                                        data-toStation="@Model.Item4.Id">
+                                                                                     data-schedule="@Model.Item1.Id"
+                                                                                     data-coach="@coach.Id"
+                                                                                     data-seat="@count"
+                                                                                     data-start="@Model.Item1.Departure"
+                                                                                     data-end="@Model.Item1.Arrival"
+                                                                                     data-cabin="0"
+                                                                                     data-coachNo="@coach.CoachNo"
+                                                                                     data-fromStation="@Model.Item3.Id"
+                                                                                     data-toStation="@Model.Item4.Id"
+                                                                                     data-class="@coach.ClassCode"
+                                                                                     data-className="@coach.Class.Name">
                                                                                     <span>@count</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                count++;
+                                                            }
+                                                            count++;
+                                                        }
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                int count = 1;
+                                                int cabinNum = 1;
+                                                var available2 = false;
+                                                <div class="row et-car-floor w-100">
+                                                    <div class="et-col-1-18 et-car-floor-full-height"></div>
+                                                    <div class="et-col-8-9">
+                                                        <div class="et-bed-way et-full-width et-text-sm">
+                                                            @for (int i = 1; i <= 8; i++)
+                                                            {
+                                                                @if (coach.NoOfCompartments < i)
+                                                                {
+                                                                    <div class="et-col-1-8 text-center ng-binding et-hidden">Cabin @i</div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="et-col-1-8 text-center ng-binding">Cabin @i</div>
+                                                                }
                                                             }
                                                         </div>
-                                                    </div>
-                                                }
-                                                else
-                                                {
-                                                    int count = 1;
-                                                    int cabinNum = 1;
-                                                    <div class="row et-car-floor w-100">
-                                                        <div class="et-col-1-18 et-car-floor-full-height"></div>
-                                                        <div class="et-col-8-9">
-                                                            <div class="et-bed-way et-full-width et-text-sm">
-                                                                @for (int i = 1; i <= 8; i++)
-                                                                {
-                                                                    @if (coach.NoOfCompartments < i)
-                                                                    {
-                                                                        <div class="et-col-1-8 text-center ng-binding et-hidden">Cabin @i</div>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <div class="et-col-1-8 text-center ng-binding">Cabin @i</div>
-                                                                    }
-                                                                }
-                                                            </div>
-                                                            @{
-                                                                int brek = coach.NoOfCompartments * 2;
-                                                            }
-                                                            @while (count <= coach.NoOfSeats)
+                                                        @{
+                                                            int brek = coach.NoOfCompartments * 2;
+                                                        }
+                                                        @while (count <= coach.NoOfSeats)
+                                                        {
+                                                            if (coach.Seats.Count() != 0 && Model.Item1.ListOfBookedSeatId.Count() != 0)
                                                             {
-                                                                if (brek == 0)
-                                                                {
-                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
-                                                                        <div class="et-bed-right invisible">
-                                                                        </div>
+                                                                available2 = Model.Item1.ListOfBookedSeatId.Any(x => x.CoachId == coach.Id && x.SeatNo == count);
+                                                            }
+                                                            if (brek == 0)
+                                                            {
+                                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                    <div class="et-bed-right invisible">
                                                                     </div>
+                                                                </div>
+                                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                    <div class="et-bed-left invisible">
+                                                                    </div>
+                                                                </div>
+                                                                brek = coach.NoOfCompartments * 2;
+                                                                cabinNum = 1;
+                                                            }
+                                                            if (count % 2 == 0)
+                                                            {
+                                                                if (available2)
+                                                                {
                                                                     <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                                        <div class="et-bed-left invisible">
-                                                                        </div>
-                                                                    </div>
-                                                                    brek = coach.NoOfCompartments * 2;
-                                                                    cabinNum = 1;
-                                                                }
-                                                                if (count % 2 == 0)
-                                                                {
-                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
                                                                         <div class="et-bed-right">
                                                                             <div class="et-bed-outer">
-                                                                                <div class="et-bed text-center et-sit-avaiable">
-                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available"
-                                                                                            data-schedule="@Model.Item1.Id"
-                                                                                            data-cabin="@cabinNum"
-                                                                                            data-coach="@coach.Id"
-                                                                                            data-seat="@count"
-                                                                                            data-start="@Model.Item1.Departure"
-                                                                                            data-end="@Model.Item1.Arrival"
-                                                                                            data-coachNo="@coach.CoachNo"
-                                                                                            data-fromStation="@Model.Item3.Id"
-                                                                                            data-toStation="@Model.Item4.Id">
+                                                                                <div class="et-bed text-center et-sit-bought">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Ticket sold" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no ">
                                                                                         <span>@count</span>
                                                                                     </div>
                                                                                 </div>
@@ -368,7 +456,51 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    cabinNum++;
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                        <div class="et-bed-right">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available"
+                                                                                         data-schedule="@Model.Item1.Id"
+                                                                                         data-coach="@coach.Id"
+                                                                                         data-seat="@count"
+                                                                                         data-start="@Model.Item1.Departure"
+                                                                                         data-end="@Model.Item1.Arrival"
+                                                                                         data-cabin="@cabinNum"
+                                                                                         data-coachNo="@coach.CoachNo"
+                                                                                         data-fromStation="@Model.Item3.Id"
+                                                                                         data-toStation="@Model.Item4.Id"
+                                                                                         data-class="@coach.ClassCode"
+                                                                                         data-className="@coach.Class.Name">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="et-bed-illu"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
+                                                                cabinNum++;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (available2)
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                        <div class="et-bed-left">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-bought">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Ticket sold" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no ">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="et-bed-illu"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 }
                                                                 else
                                                                 {
@@ -376,16 +508,18 @@
                                                                         <div class="et-bed-left ">
                                                                             <div class="et-bed-outer">
                                                                                 <div class="et-bed text-center et-sit-avaiable">
-                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available"
-                                                                                            data-schedule="@Model.Item1.Id"
-                                                                                            data-cabin="@cabinNum"
-                                                                                            data-coach="@coach.Id"
-                                                                                            data-seat="@count"
-                                                                                            data-start="@Model.Item1.Departure"
-                                                                                            data-end="@Model.Item1.Arrival"
-                                                                                            data-coachNo="@coach.CoachNo"
-                                                                                            data-fromStation="@Model.Item3.Id"
-                                                                                            data-toStation="@Model.Item4.Id">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available"
+                                                                                         data-schedule="@Model.Item1.Id"
+                                                                                         data-coach="@coach.Id"
+                                                                                         data-seat="@count"
+                                                                                         data-start="@Model.Item1.Departure"
+                                                                                         data-end="@Model.Item1.Arrival"
+                                                                                         data-cabin="@cabinNum"
+                                                                                         data-coachNo="@coach.CoachNo"
+                                                                                         data-fromStation="@Model.Item3.Id"
+                                                                                         data-toStation="@Model.Item4.Id"
+                                                                                         data-class="@coach.ClassCode"
+                                                                                         data-className="@coach.Class.Name">
                                                                                         <span>@count</span>
                                                                                     </div>
                                                                                 </div>
@@ -394,14 +528,15 @@
                                                                         </div>
                                                                     </div>
                                                                 }
-
-                                                                brek--;
-                                                                count++;
                                                             }
-                                                        </div>
-                                                        <div class="et-col-1-18 et-car-floor-full-height"></div>
+
+                                                            brek--;
+                                                            count++;
+                                                        }
                                                     </div>
-                                                }
+                                                    <div class="et-col-1-18 et-car-floor-full-height"></div>
+                                                </div>
+                                            }
                                             </div>
                                         </div>
                                     }
@@ -528,4 +663,24 @@
                 
             </div>
         </div>
+    <div class="col-lg-3 position-relative mt-3 mb-5">
+        <div class="toast-container position-fixed end-0 p-3" style="z-index:4;top:100px;">
+            <div class="toast align-items-center text-bg-success border-0" role="alert" id="alertBsAdd" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        Add Ticket To Cart Successfully!
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="toast align-items-center text-bg-danger border-0" role="alert" id="alertBsRm" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        Remove 1 Ticket
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
