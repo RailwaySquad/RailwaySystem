@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Railway_Group01.Data
 {
@@ -13,10 +14,15 @@ namespace Railway_Group01.Data
         public string? Name { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime? Birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
-        public User? User { get; set; }
+        [ForeignKey("TypeCode")]
+        public PassengerType? PassengerType { get; set; }
+        public string? TypeCode { get; set; }
 
         public Ticket? Ticket { get; set; }
+
+        public BookingDetail? BookingDetail { get; set; }
+        public int BookingDetailId { get; set; }
     }
 }

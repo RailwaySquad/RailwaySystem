@@ -1,0 +1,258 @@
+﻿@model Railway_Group01.Models.ViewModels.BookingIndexViewModel;
+
+@{
+    ViewData["Title"] = "BOOKING";
+    Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+
+    var paypalLogo = "/images/paypalLogo.jpg";
+}
+
+<header class="bg-gradient-cus mb-3">
+    <div class="container">
+        <h1 class="text-white">@ViewData["Title"]</h1>
+        <div class="d-flex">
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step checked"></span>
+                <p class="text-white text-center">Fill passenger information</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Confirm information</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Make payment</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Finish</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <section class="mb-3">
+        <h6><span class="text-orange ">BOOKING DETAILS</span></h6>
+        <p>@TempData["error"]</p>
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table-primary">
+                    <th class="text-center">Passenger</th>
+                    <th class="text-center">Seat</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Passenger type discount</th>
+                    <th class="text-center">Insurance</th>
+                    <th class="text-center">Sub total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <form method="post" id="formPassengerScheme" asp-action="FillInformation">
+                    @if (Model.Cart != null && Model.Cart.Count > 0)
+                    {
+                        decimal total = 0;
+                        @for (var i = 0; i < Model.Cart.Count; i++)
+                        {
+                            total += Model.Cart[i].Price + 0.1M;
+                        <tr>
+                            <td class="bg-body-secondary px-3">
+
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-4 border-bottom">
+                                        <label for="Passengers[@i].Name" class="col-form-label">Full name</label><i class="text-danger">*</i>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="hidden" name="Passengers[@i].SeatId" asp-for="@Model.Cart[i].SeatId" />
+                                        <input type="text" id="Passengers[@i].Name" name="Passengers[@i].Name" class="form-control form-control-sm" required autofocus>
+                                    </div>
+                                </div>
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-4 border-bottom">
+                                        <label for="Passengers[@i].PassengerType" class="col-form-label">Type</label><i class="text-danger">*</i>
+                                    </div>
+                                    <div class="col-8">
+                                        <select onchange="updatePrice(@i, @Model.Cart[i].Price)" id="Passengers[@i].TypeCode" name="Passengers[@i].TypeCode" class="form-select form-select-sm" asp-items="Model.PassengerTypes" required></select>
+                                    </div>
+                                </div>
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-4 border-bottom">
+                                        <label for="Passengers[@i].ID" class="col-form-label" id="inputLabelToBeChange[@i]">Citizen ID</label><i class="text-danger">*</i>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="text" id="Passengers[@i].ID" name="Passengers[@i].ID" class="form-control form-control-sm" required>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td class="small text-center">
+                                    @Model.Cart[i].ScheduleName <br />
+                                    @Model.Cart[i].Trip <br />
+                                    @Model.Cart[i].StartAt<br />
+                                Coach: @Model.Cart[i].CoachNo, Cabin @Model.Cart[i].Cabin, Seat @Model.Cart[i].Seat<br />
+                                Class: @Model.Cart[i].CoachClassName<br />
+                            </td>
+                            <td class="text-center">
+                                    @Model.Cart[i].Price
+                            </td>
+                            <td class="text-center" id="Passenger[@i].Discount">0</td>
+                            <td class="text-center" id="Cart[@i].Insurance">0.1</td>
+                            <td class="text-center subtotal" id="Cart[@i].SubTotal">@(Model.Cart[i].Price + 0.1M)</td>
+                        </tr>
+                        }
+                    <tr class="table-info">
+                        <td colspan="5"><p class="text-end fw-bold">Total</p></td>
+                        <td class="text-center" id="CartTotal">@(total)</td>
+                    </tr>
+                    }
+                    else
+                    {
+                    <tr><td colspan="6">No item in cart.</td></tr>
+                    }
+                </form>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="mb-3">
+        <h6 class="text-orange">TICKET BOOKER</h6>
+        <form id="formUpdateUser">
+            <div class="d-flex mb-2">
+                <div class="w-50">
+                    <div class="d-flex align-items-center">
+                        <div class="w-25 ps-3">
+                            <label for="Name" class="col-form-label">User Name</label>
+                        </div>
+                        <div class="w-50">
+                            <input id="Name" name="UserName" asp-for="@Model.User!.UserName" class="form-control form-control-sm" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-50">
+                    <div class="d-flex align-items-center">
+                        <div class="w-25 ps-3">
+                            <label for="Phone" class="col-form-label">Phone</label>
+                        </div>
+                        <div class="w-50">
+                            <input type="tel" name="PhoneNumber" id="PhoneNumber" asp-for="@Model.User!.PhoneNumber" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex">
+                <div class="w-50">
+                    <div class="d-flex align-items-center">
+                        <div class="w-25 ps-3">
+                            <label for="Email" class="col-form-label">Email</label>
+                        </div>
+                        <div class="w-50">
+                            <input type="email" name="Email" id="Email" asp-for="@Model.User!.Email" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-50 d-flex">
+                    <div class="w-25 ps-3">
+                        <span id="updateSuccessMessage" class="text-success ms-2"></span>
+                    </div>
+                    <div class="w-50">
+                        <button id="btnUpdateUser" class="btn btn-orange">Update</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </section>
+
+    <section class="mb-3">
+        <h6 class="text-orange">PAYMENT METHOD</h6>
+        <ul class="list-group">
+            <li class="list-group-item d-flex align-items-center">
+                <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox" checked>
+                <label class="form-check-label text-info fw-bold ml-2" for="firstCheckbox"><img class="me-1" src=@paypalLogo /> Online payment with PayPal</label>
+            </li>
+        </ul>
+    </section>
+
+    <section class="mb-3">
+        <div class="alert alert-info" role="alert" style="border-left:0.25rem solid #9eeaf9">
+            <h6>NOTICE:</h6>
+            - To see refund policies, for holidays, please click <a href="">here</a><br />
+            - To see refund policies, change ticket (Apply to all trains run from 30/8/2023 to the end of 31/12/2023), please click <a href="">here</a> <br />
+        </div>
+    </section>
+
+    <section>
+        <div class="d-flex justify-content-between">
+            <a href="@ViewBag.returnUrl" class="btn btn-orange fw-bold">👈 Back</a>
+
+            @if (Model.Cart != null && Model.Cart.Count > 0)
+            {
+                <button id="btnSubmitBookingInfo" class="btn btn-orange fw-bold"> Submit 👉</button>
+            }
+        </div>
+    </section>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function updatePrice(id, price) {
+            var selectValue = document.getElementById("Passengers[" + id + "].TypeCode").value;
+            var discountElement = document.getElementById("Passenger[" + id + "].Discount");
+            var subTotalElement = document.getElementById("Cart[" + id + "].SubTotal");
+            var totalElement = document.getElementById("CartTotal");
+            var subTotals = document.getElementsByClassName("subtotal");
+            var subTotal = document.getElementById("Cart[" + id + "].SubTotal");
+            var insurance = document.getElementById("Cart[" + id + "].Insurance");
+            var inputId = document.getElementById("Passengers[" + id + "].ID");
+            var label = document.getElementById("inputLabelToBeChange[" + id + "]");
+
+            if (selectValue == "CH") {
+                inputId.type = "date";
+                label.innerText = "Birthday";
+            } else {
+                inputId.type = "text";
+                label.innerText = "Citizen number";
+            }
+
+            $.ajax({
+                url: 'Booking/UpdateDiscountPrice',
+                type: 'POST',
+                data: { code: selectValue },
+                success: function (data) {
+                    discountElement.textContent = parseFloat(price * data.response / 100).toFixed(2);
+                    subTotal.textContent = parseFloat(price * data.response / 100).toFixed(2);
+                    var total = 0;
+                    for (let i = 0; i < subTotals.length; i++) {
+                        total += +subTotals[i].textContent
+                    }
+                    totalElement.textContent = parseFloat(total).toFixed(2);
+                },
+                error: function (e) {
+                    console.error(e);
+                }
+            })
+        }
+
+        $("#btnUpdateUser").click(function (e) {
+            e.preventDefault();
+            var message = document.getElementById("updateSuccessMessage");
+            $.ajax({
+                type: 'POST',
+                url: 'Booking/UpdateUser',
+                dataType: 'json',
+                data: $("#formUpdateUser").serialize(),
+                success: function (data) {
+                    if (data.success) {
+                        message.innerText = "Updated"
+                    }
+                }
+            })
+        })
+
+        $("#btnSubmitBookingInfo").click(function () {
+            $("#formPassengerScheme").trigger("submit");
+        });
+    </script>
+}

@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "MAKE PAYMENT";
+    Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+
+    var paypalLogo = "/images/paypalLogo.jpg";
+}
+
+<header class="bg-gradient-cus mb-3">
+    <div class="container">
+        <h1 class="text-white">@ViewData["Title"]</h1>
+        <div class="d-flex">
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Fill passenger information</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Confirm information</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step checked"></span>
+                <p class="text-white text-center">Make payment</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Finish</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <section>
+        <div class="d-flex justify-content-between">
+            <a href="@ViewBag.returnUrl" class="btn btn-orange fw-bold">👈 Back</a>
+            <a asp-action="Pay" class="btn btn-orange fw-bold">⏭️ Pay 👉</a>
+        </div>
+    </section>
+</div>

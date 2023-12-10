@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.CodeAnalysis.Emit;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using System.Reflection.Emit;
 
 namespace Railway_Group01.Data;
@@ -11,6 +12,25 @@ public class RailwayDbContext : IdentityDbContext<User>
         : base(options)
     {
     }
+    public DbSet<Passenger>? Passengers { get; set; }
+    public DbSet<PassengerType>? PassengerTypes { get; set; }
+    public DbSet<Ticket>? Tickets { get; set; }
+    public DbSet<Feedback>? Feedbacks { get; set; }
+    public DbSet<Booking>? Bookings { get; set; }
+    public DbSet<BookingDetail>? BookingDetails { get; set; }
+    public DbSet<Transaction>? Transactions { get; set; }
+    public DbSet<Cancelling>? Cancellings { get; set; }
+    public DbSet<RefundRule>? RefundRules { get; set; }
+    public DbSet<Schedule>? Schedules { get; set; }
+    public DbSet<Train>? Trains { get; set; }
+    public DbSet<TrainType>? TrainTypes { get; set; }
+    public DbSet<Route>? Routes { get; set; }
+    public DbSet<RouteDetail>? RouteDetails { get; set; }
+    public DbSet<Coach>? Coaches { get; set; }
+    public DbSet<Seat>? Seats { get; set; }
+    public DbSet<CoachClass>? CoachClasses { get; set; }
+    public DbSet<Station>? Stations { get; set; }
+    public DbSet<Fare>? Fares { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -49,6 +69,14 @@ public class RailwayDbContext : IdentityDbContext<User>
         .HasOne(e => e.Ticket)
         .WithOne(e => e.Passenger)
         .HasForeignKey<Ticket>(e => e.PassengerID)
+        .OnDelete(DeleteBehavior.NoAction)
+        .IsRequired();
+
+        // Booking Detail 1:1 Passenger
+        builder.Entity<BookingDetail>()
+        .HasOne(e => e.Passenger)
+        .WithOne(e => e.BookingDetail)
+        .HasForeignKey<Passenger>(e => e.BookingDetailId)
         .IsRequired();
 
         // Station 1:m Route
@@ -70,26 +98,62 @@ public class RailwayDbContext : IdentityDbContext<User>
         builder.Entity<Route>().HasMany(p => p.RouteDetails).WithOne(p => p.Route);
         builder.Entity<Route>().HasMany(p => p.Schedules).WithOne(p => p.Route);
         builder.Entity<Route>().HasMany(p => p.Fares).WithOne(p => p.Route);
+        builder.Entity<PassengerType>().HasMany(p => p.Passengers).WithOne(p => p.PassengerType);
 
         ModelBuilderExtension.Seed(builder);
     }
 
-    public DbSet<Passenger>? Passengers { get; set; }
-    public DbSet<PassengerType>? PassengerTypes { get; set; }
-    public DbSet<Ticket>? Tickets { get; set; }
-    public DbSet<Feedback>? Feedbacks { get; set; }
-    public DbSet<Booking>? Bookings { get; set; }
-    public DbSet<BookingDetail>? BookingDetails { get; set; }
-    public DbSet<Transaction>? Transactions { get; set; }
-    public DbSet<Cancelling>? Cancellings { get; set; }
-    public DbSet<RefundRule>? RefundRules { get; set; }
-    public DbSet<Schedule>? Schedules { get; set; }
-    public DbSet<Train>? Trains { get; set; }
-    public DbSet<TrainType>? TrainTypes { get; set; }
-    public DbSet<Route>? Routes { get; set; }
-    public DbSet<RouteDetail>? RouteDetails { get; set; }
-    public DbSet<Coach>? Coaches { get; set; }
-    public DbSet<CoachClass>? CoachClasses { get; set; }
-    public DbSet<Station>? Stations { get; set; }
-    public DbSet<Fare>? Fares { get; set; }
+    /*
+     * @
+     */
+    public async Task<List<Schedule>> SearchScheduleByRoute(int from, int to)
+    {
+        List<Schedule> result;
+        string op = from < to ? "<" : ">";
+        var query = @"
+                    WITH QueryRoute AS (
+                      SELECT * 
+                      FROM RouteDetails 
+                      WHERE DepartureStationId = {0} AND DepartureStationId "+ op + @" ArrivalStationId
+                      UNION
+                      SELECT * 
+                      FROM RouteDetails 
+                      WHERE ArrivalStationId = {1} AND DepartureStationId "+ op + @" ArrivalStationId
+                    )
+                    , RankedDistances AS (
+                      SELECT 
+                        s.Id,
+                        s.TrainCode,
+	                    s.Arrival,
+	                    s.Departure,
+	                    s.IsFinished,
+	                    s.Name,
+	                    s.RouteId,
+                        qr.Distance,
+                        ROW_NUMBER() OVER (PARTITION BY s.TrainCode ORDER BY qr.Distance DESC) AS rn
+                      FROM 
+                        QueryRoute qr 
+                        JOIN Schedules s ON qr.RouteId = s.RouteId
+                    )
+                    SELECT
+                      Id,
+                      TrainCode,
+	                  Arrival,
+	                  Departure,
+	                  IsFinished,
+	                  Name,
+	                  RouteId
+                    FROM
+                      RankedDistances
+                    WHERE
+                      rn = 1;";
+        try
+        {
+            result = await Schedules!.FromSqlRaw(query, from, to).ToListAsync();
+        }
+        catch {
+            throw new Exception("Query error");
+        }
+        return result;
+    }
 }

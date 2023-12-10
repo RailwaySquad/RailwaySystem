@@ -1,0 +1,19 @@
+﻿@page
+@model BookingHistoryModel
+@{
+    ViewData["Title"] = "Booking History";
+    ViewData["ActivePage"] = ManageNavPages.BookingHistory;
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <p>View all your booking history here.</p>
+        <p>
+            <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Delete</a>
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

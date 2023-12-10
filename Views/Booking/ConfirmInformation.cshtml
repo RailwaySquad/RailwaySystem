@@ -1,0 +1,96 @@
+﻿@model Railway_Group01.Data.Booking;
+@{
+    ViewData["Title"] = "CONFIRM BOOKING INFORMATION";
+    Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+
+    var paypalLogo = "/images/paypalLogo.jpg";
+    var cnt = 1;
+}
+
+<section class="bg-gradient-cus mb-3">
+    <div class="container">
+        <h1 class="text-white">@ViewData["Title"]</h1>
+        <div class="d-flex">
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Fill passenger information</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step checked"></span>
+                <p class="text-white text-center">Confirm information</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Make payment</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Finish</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+
+    <section class="mb-3">
+        <h6 class="text-orange">TICKET BOOKER INFORMATION</h6>
+        <div>
+            <p> - Full name: <span class="fw-bold">@Model.User?.UserName</span></p>
+            <p> - Phone number: <span class="fw-bold">@Model.User?.PhoneNumber</span></p>
+            <p> - Email: <span class="fw-bold">@Model.User?.Email</span></p>
+            <p> - Payment method: <span class="fw-bold">Online payment with PayPal</span></p>
+        </div>
+    </section>
+
+
+    <section class="mb-3">
+        <h6><span class="text-orange ">BOOKING DETAILS</span></h6>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">No</th>
+                    <th class="text-center">Passenger detail</th>
+                    <th class="text-center">Ticket detail</th>
+                    <th class="text-center">Price <br /> ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.BookingDetails != null && Model.BookingDetails.Count > 0)
+                    foreach (var item in Model.BookingDetails)
+                    {
+                        <tr>
+                            <td class="text-center">@(cnt++)</td>
+                            <td>
+                                <p>Full name: @item.Passenger?.Name</p>
+                                <p>Age: @item.Passenger?.PassengerType?.Name</p>
+                                <p>Citizen Number: @item.Passenger?.ID</p>
+                                <p>Birthday: @item.Passenger?.Birthday.Date.ToString("MM/dd/yyyy")</p>
+                            </td>
+                            <td class="small text-center">
+                                @item.Schedule?.Name <br />
+                                @item.Trip <br />
+                                @item.Schedule?.Departure<br />
+                                Coach: @item.Seat?.Coach?.CoachNo, Cabin @item.Seat?.CompartmentNo, Seat @item.Seat?.SeatNo<br />
+                                Class: @item.Seat?.Coach?.Class?.Name<br />
+                            </td>
+                            <td class="text-center">
+                                @item.Price.ToString("0.00")
+                            </td>
+                        </tr>
+                    }
+                <tr class="table-info">
+                    <td colspan="3"><p class="text-end fw-bold">Total</p></td>
+                    <td class="text-center">@(Model?.BookingDetails?.Sum(b => b.Price).ToString("0.00"))</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <div class="d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-orange fw-bold">👈 Fill again</a>
+            <a asp-action="MakePayment" asp-route-id="@Model?.Id" class="btn btn-orange fw-bold">Make Payment 👉</a>
+        </div>
+    </section>
+</div>
