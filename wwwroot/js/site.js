@@ -135,4 +135,5 @@ $(document).ready(function () {
     jQuery('.train-coach, .train-coach2').click(function (e) {
         jQuery('.collapse').collapse('hide');
     });
+    
 });

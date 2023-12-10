@@ -275,6 +275,10 @@ namespace Railway_Group01.Controllers
             {
                 return RedirectToAction("Error404", new { type = "train" });
             }
+            foreach (var coach in train.Coaches)
+            {
+                coach.Seats = await ctx.Seats.Where(x => x.CoachId == coach.Id).ToListAsync();
+            }
             foreach (var item in train.Coaches)
             {
                 item.Class = await ctx.CoachClasses!.FirstOrDefaultAsync(x => x.Code == item.ClassCode);
@@ -283,7 +287,6 @@ namespace Railway_Group01.Controllers
             int arrivalId = !String.IsNullOrEmpty(arrival) || int.TryParse(arrival, out _) ? Int32.Parse(arrival) : 38;
            
             DateTime startTime = time.GetValueOrDefault();
-            Console.WriteLine(startTime.Date);
             if (scheduleId == null )
             {
                 return RedirectToAction("Error404", new { type = "schedule" });
@@ -320,6 +323,16 @@ namespace Railway_Group01.Controllers
                 }
                 start = sche.Departure.Add(TimeSpan.FromMinutes(travel1+deplay1));
                 end = sche.Departure.Add(TimeSpan.FromMinutes(travel2+deplay2));
+                List<BookingDetail>? bookdt = await ctx.BookingDetails!.Include(x => x.Schedule).Include(x => x.Seat).Where(x => x.Schedule.Id == sche.Id).ToListAsync();
+                sche.ListOfBookedSeatId = new List<Seat>();
+                if (bookdt != null && bookdt.Count > 0)
+                {
+                    foreach (var book in bookdt)
+                    {
+                        book.Seat!.Coach = await ctx.Coaches!.Include(x => x.Class).Where(x => x.Id == book.Seat.CoachId).FirstOrDefaultAsync();
+                        sche.ListOfBookedSeatId.Add(book.Seat);
+                    }
+                }
                 duration = travel2 - travel1;
             }
             else
