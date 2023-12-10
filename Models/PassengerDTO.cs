@@ -23,5 +23,7 @@ namespace Railway_Group01.Models
 
         public int DiscountPercent { get; set; }
         public int SeatId { get; set; }
+        public BookingDetail? BookingDetail { get; set; }
+
     }
 }
