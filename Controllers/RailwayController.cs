@@ -578,7 +578,15 @@ namespace Railway_Group01.Controllers
         }
         public async Task<IActionResult> TicketBookingSeach([FromQuery(Name = "TicketPNR")] string? PNR)
         {
-            Ticket? ticket = await ctx.Tickets!.Include(x => x.Cancelling).Include(x => x.Passenger).Include(x=>x.Passenger.PassengerType).Include(x=>x.Fare).Include(x=>x.BookingDetail).Include(x=>x.BookingDetail.Seat).Include(x=>x.Schedule).Include(x=>x.BookingDetail.Seat.Coach).FirstOrDefaultAsync(x => x.PNRNo == PNR);
+            Ticket? ticket = await ctx.Tickets!.Include(x => x.Cancelling)
+                                               .Include(x => x.Passenger)
+                                               .Include(x=>x.Passenger.PassengerType)
+                                               .Include(x=>x.Fare)
+                                               .Include(x=>x.BookingDetail)
+                                               .Include(x=>x.BookingDetail.Seat)
+                                               .Include(x=>x.Schedule)
+                                               .Include(x=>x.BookingDetail.Seat.Coach)
+                                               .Include(x=>x.BookingDetail.Seat.Coach.Class).FirstOrDefaultAsync(x => x.PNRNo == PNR);
             ViewData["SearchPNR"] = PNR;
             return View(ticket);
         }

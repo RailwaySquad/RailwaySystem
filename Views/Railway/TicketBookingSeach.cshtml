@@ -21,58 +21,77 @@
     </div>
 </div>
 <div class="container">
-    <div class="row mt-4">
-        @if (Model != null && Model.Passenger!=null)
-        {
-            <div class="col-3">
-                <h3>@Model.PNRNo</h3>
-            </div>
-            <div class="col-9">
-                <table class="table table-borderless w-100">
-                    <tr>
-                        <td>Passenger Name:</td>
-                        <td>@Html.DisplayFor(x=>Model.Passenger.Name)</td>
-                    </tr>
-                    <tr>
-                        <td>Birthday:</td>
-                        <td>@Model.Passenger.Birthday.ToString("MM/dd/yyyy")</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.DisplayFor(x=>Model.Passenger.PassengerType.Name)</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-12 ">
-                <h5>Booking Detail</h5>
-                <table class="table">
-                    <tr>
-                        <td>Schedule: </td>
-                        <td>@Html.DisplayFor(x=>Model.Schedule.Name)</td>
-                        <td>@Html.DisplayFor(x=>Model.Schedule.Departure)</td>
-                    </tr>
-                    <tr>
-                        <td>Coach: </td>
-                        <td>@Html.DisplayFor(x=>Model.BookingDetail.Seat.Coach.CoachNo)</td>
-                        <td>Seat: @Html.DisplayFor(x=>Model.BookingDetail.Seat.SeatNo)</td>
-                    </tr>
-                    <tr>
-                        <td>Status:</td>
-                        <td>
-                            @if(DateTime.Now < Model.Schedule.Arrival){
-                                <span class="text-uppercase texttext-success fw-bold" style="font-size:14px">Valid</span>
-                            }
-                            else{
-                                <span class="text-uppercase texttext-success fw-bold" style="font-size:14px">expired</span>
-                            }
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        }
-        else
-        {
-            <h3 class="text-secondary text-uppercase text-center mt-5">Not found Ticket</h3>
-        }
+    <div class="row mt-5">
+        <div class="col-sm-12 col-md-8 col-lg-6 mx-auto row">
+            @if (Model != null && Model.Passenger!=null && Model.BookingDetail!=null && Model.Schedule !=null)
+            {
+                <div class="col-4">
+                    <h5>PNR Code: @Model.PNRNo</h5>
+                </div>
+                <div class="col-8">
+                    <table class="table table-borderless w-100">
+                        <tr>
+                            <td>Passenger Name:</td>
+                            <td>@Html.DisplayFor(x=>Model.Passenger.Name)</td>
+                        </tr>
+                        <tr>
+                            <td>Birthday:</td>
+                            <td>@Model.Passenger.Birthday.ToString("dd/MM/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(x=>Model.Passenger.PassengerType.Name)</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-12 mt-2">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td>Trip:</td>
+                            <td class="fw-bold">@Model.BookingDetail.Trip</td>
+                        </tr>
+                        <tr>
+                            <td>Train:</td>
+                            <td class="fw-bold" >@Model.BookingDetail.Schedule!.TrainCode</td>
+                        </tr>
+                        <tr>
+                            <td>Departure Date:</td>
+                            <td class="fw-bold" >@Model.Schedule.Departure.ToString("dd/MM/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td>Departure Time:</td>
+                            <td class="fw-bold" >@Model.Schedule.Departure.ToString("HH:MM")</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Coach: @Model.BookingDetail.Seat.Coach.CoachNo</td>
+                            <td class="fw-bold">Seat: @Model.BookingDetail.Seat.SeatNo</td>
+                        </tr>
+                        <tr>
+                            <td>Class: </td>
+                            <td>@Model.BookingDetail.Seat.Coach.Class.Name</td>
+                        </tr>
+                        <tr>
+                            <td>Price: </td>
+                            <td>@Model.BookingDetail.Price USD</td>
+                        </tr>
+                        <tr>
+                            <td>Status:</td>
+                            <td>
+                                @if(DateTime.Now < Model.Schedule.Arrival){
+                                    <span class="text-uppercase text-success fw-bold" style="font-size:14px">Valid</span>
+                                }
+                                else{
+                                    <span class="text-uppercase text-danger fw-bold" style="font-size:14px">expired</span>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <h3 class="text-secondary text-uppercase text-center mt-5">Not found Ticket</h3>
+            }
+        </div>
     </div>
 </div>
 

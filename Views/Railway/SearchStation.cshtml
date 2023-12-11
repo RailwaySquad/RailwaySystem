@@ -96,6 +96,15 @@
                                                    asp-route-time="@Model.StartDate">
                                                     @schedule.Name
                                                 </a>
+                                                <div class="mt-1">
+                                                    @if (schedule.Departure > DateTime.Now)
+                                                    {
+                                                        <span class="badge text-bg-success text-uppercase">Valid</span>
+                                                    }else
+                                                    {
+                                                        <span class="badge text-bg-danger text-uppercase">expired</span>
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="w-75">
@@ -166,9 +175,10 @@
                                             }
                                         </div>
                                     }
-
-                                    @foreach (var coach in schedule.Train!.Coaches)
+                                    @if (schedule.Departure > DateTime.Now)
                                     {
+                                        @foreach (var coach in schedule.Train!.Coaches)
+                                        {
                                         <div class="collapse " id="@schedule.TrainCode-@coach.Id">
                                             <div class="d-flex flex-row align-items-center justify-content-center pt-3">
                                                 @if (coach.NoOfCompartments == 0)
@@ -371,6 +381,7 @@
                                                 }
                                             </div>
                                         </div>
+                                        }
                                     }
                                 </div>
                             </div>

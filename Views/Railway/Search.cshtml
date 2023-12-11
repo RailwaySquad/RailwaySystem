@@ -304,31 +304,46 @@
                                                                     </div>
                                                                 </div>
                                                             }
-                                                            else
+                                                            else if(schedule.Departure > DateTime.Now)
                                                             {
                                                                 <div class="et-car-nm-64-sit ng-isolate-scope">
-                                                                <div class="et-car-seat-left et-seat-h-35">
-                                                                    <div class="et-col-16 et-sit-side"></div>
-                                                                    <div class="et-col-84 et-sit-sur-outer">
-                                                                        <div class="et-sit-sur text-center et-sit-avaiable">
-                                                                            <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available" 
-                                                                                data-schedule="@schedule.Id" 
-                                                                                data-coach="@coach.Id" 
-                                                                                data-seat="@count" 
-                                                                                data-start="@schedule.Departure" 
-                                                                                data-end="@schedule.Arrival" 
-                                                                                data-cabin="0" 
-                                                                                data-coachNo="@coach.CoachNo"
-                                                                                 data-fromStation="@schedule.Route.RouteDetails.FirstOrDefault().DepartureStationId"
-                                                                                 data-toStation="@schedule.Route.RouteDetails.LastOrDefault().ArrivalStationId"
-                                                                                 data-class="@coach.ClassCode"
-                                                                                 data-className="@coach.Class.Name">
-                                                                                <span>@count</span>
+                                                                    <div class="et-car-seat-left et-seat-h-35">
+                                                                        <div class="et-col-16 et-sit-side"></div>
+                                                                        <div class="et-col-84 et-sit-sur-outer">
+                                                                            <div class="et-sit-sur text-center et-sit-avaiable">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no sit-available" 
+                                                                                    data-schedule="@schedule.Id" 
+                                                                                    data-coach="@coach.Id" 
+                                                                                    data-seat="@count" 
+                                                                                    data-start="@schedule.Departure" 
+                                                                                    data-end="@schedule.Arrival" 
+                                                                                    data-cabin="0" 
+                                                                                    data-coachNo="@coach.CoachNo"
+                                                                                     data-fromStation="@schedule.Route.RouteDetails.FirstOrDefault().DepartureStationId"
+                                                                                     data-toStation="@schedule.Route.RouteDetails.LastOrDefault().ArrivalStationId"
+                                                                                     data-class="@coach.ClassCode"
+                                                                                     data-className="@coach.Class.Name">
+                                                                                    <span>@count</span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>    
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                                    <div class="et-car-seat-left et-seat-h-35">
+                                                                        <div class="et-col-16 et-sit-side"></div>
+                                                                        <div class="et-col-84 et-sit-sur-outer">
+                                                                            <div class="et-sit-sur text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Invalid to add to cart" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no ">
+                                                                                    <span>@count</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             }
                                                             count++;
                                                         }
@@ -395,7 +410,7 @@
                                                                         </div>
                                                                     </div>
                                                                 }
-                                                                else
+                                                                else if (schedule.Departure > DateTime.Now)
                                                                 {
                                                                     <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
                                                                         <div class="et-bed-right">
@@ -421,6 +436,22 @@
                                                                         </div>
                                                                     </div>
                                                                 }
+                                                                else
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                        <div class="et-bed-right">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Invalid to add to cart" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no ">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="et-bed-illu"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                }
                                                                 cabinNum++;
                                                             }
                                                             else
@@ -440,31 +471,46 @@
                                                                         </div>
                                                                     </div>
                                                                 }
+                                                                else if (schedule.Departure > DateTime.Now)
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                        <div class="et-bed-left ">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available" 
+                                                                                        data-schedule="@schedule.Id" 
+                                                                                        data-cabin="@cabinNum" 
+                                                                                        data-coach="@coach.Id" 
+                                                                                        data-seat="@count" 
+                                                                                        data-start="@schedule.Departure" 
+                                                                                        data-end="@schedule.Arrival"
+                                                                                         data-coachNo="@coach.CoachNo"
+                                                                                         data-fromStation="@schedule.Route.RouteDetails.FirstOrDefault().DepartureStationId"
+                                                                                         data-toStation="@schedule.Route.RouteDetails.LastOrDefault().ArrivalStationId"
+                                                                                         data-class="@coach.ClassCode"
+                                                                                         data-className="@coach.Class.Name">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="et-bed-illu"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
                                                                 else
                                                                 {
                                                                     <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                                                                    <div class="et-bed-left ">
-                                                                        <div class="et-bed-outer">
-                                                                            <div class="et-bed text-center et-sit-avaiable">
-                                                                                <div data-bs-toggle="tooltip" data-bs-title="Available seat" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no sit-available" 
-                                                                                    data-schedule="@schedule.Id" 
-                                                                                    data-cabin="@cabinNum" 
-                                                                                    data-coach="@coach.Id" 
-                                                                                    data-seat="@count" 
-                                                                                    data-start="@schedule.Departure" 
-                                                                                    data-end="@schedule.Arrival"
-                                                                                     data-coachNo="@coach.CoachNo"
-                                                                                     data-fromStation="@schedule.Route.RouteDetails.FirstOrDefault().DepartureStationId"
-                                                                                     data-toStation="@schedule.Route.RouteDetails.LastOrDefault().ArrivalStationId"
-                                                                                     data-class="@coach.ClassCode"
-                                                                                     data-className="@coach.Class.Name">
-                                                                                    <span>@count</span>
+                                                                        <div class="et-bed-left ">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Invalid to add to cart" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no">
+                                                                                        <span>@count</span>
+                                                                                    </div>
                                                                                 </div>
+                                                                                <div class="et-bed-illu"></div>
                                                                             </div>
-                                                                            <div class="et-bed-illu"></div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
                                                                 }
                                                             }
                                                             

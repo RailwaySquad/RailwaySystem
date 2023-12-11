@@ -12,6 +12,7 @@ $(document).ready(function () {
         if (!dataCart) {
             lis += `<li class="list-group-item ms-1 text-center">Emty</li>`;
             $(".countCart").text(0);
+            $("timer").hide();
         } else {
             dataCart.forEach((item, i) => {
                 lis += `<li class="list-group-item ms-1">
@@ -24,9 +25,11 @@ $(document).ready(function () {
                                     </table></li>`;
             });
             $(".countCart").text(dataCart.length);
+            $("timer").show();
         }
         $(".list-cart").html(lis);
     };
+    
     $.get(window.location.origin + "/api/RailwayAjax/listcart", function (data) {
         listItemCart(data);
         if (data != null) {
@@ -35,8 +38,9 @@ $(document).ready(function () {
                 selectSeat = `[data-schedule="${ele.scheduleId}"][data-coach="${ele.coachId}"][data-seat="${ele.seat}"][data-cabin="${ele.cabin}"]`;
                 $(selectSeat).parent().removeClass("et-sit-avaiable");
                 $(selectSeat).parent().addClass("et-sit-buying");
-            })
+            });
         }
+        
     })
     $(".sit-available").click(function () {
         let schedule = $(this).data("schedule");
@@ -79,7 +83,8 @@ $(document).ready(function () {
             }).always(function () {
                 console.log("complete");
             });
-            toastBootstrapAdd.show()
+            toastBootstrapAdd.show();
+            
         } else {
             $.ajax({
                 type: "POST",
@@ -115,7 +120,8 @@ $(document).ready(function () {
                         element.parent().removeClass("et-sit-buying");
                         element.parent().addClass("et-sit-avaiable");
                     }
-                })
+                });
+                $("#timer").hide();
             },
             dataType: 'json'
         }).fail(function () {
