@@ -7,6 +7,11 @@
     string str = "";
 }
 <div class="row position-relative " style=" padding-top: 65px; "> 
+    <div class="spinner-wrapper d-flex flex-column justify-content-center align-items-center ">
+        <div class="spinner-border text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
     <div class="col-12 bg-white shadow position-fixed start-0 w-100 px-4 py-0" style="z-index:3">
         <nav id="navbar-example2" class="navbar px-5 pb-0" >
             <ul class="nav nav-underline">
@@ -68,7 +73,7 @@
                                     </div>
                                     <div class="col-3 align-top pt-2 mx-auto ms-0"style="width: 130px;">
                                         <div class="h6 ">@Html.DisplayFor(x=>x.Item4.Code)</div>
-                                        <div class="fw-500" style="font-size:15px">@ViewBag.Start.ToString("HH:mm")</div>
+                                        <div class="fw-500" style="font-size:15px">@ViewBag.End.ToString("HH:mm")</div>
                                         <div class="fw-500" style="font-size:15px">@ViewBag.End.ToString("ddd, dd MMM")</div>
                                     <div class="text-orange fw-600 text-decoration-none">@Html.DisplayFor(x=>x.Item4.Name)</div>
                                     </div>
@@ -161,7 +166,7 @@
                                                                     </div>
                                                                 </div>
                                                             }
-                                                            else
+                                                            else if (ViewBag.Start > DateTime.Now)
                                                             {
                                                                 <div class="et-car-nm-64-sit ng-isolate-scope">
                                                                     <div class="et-car-seat-left et-seat-h-35">
@@ -180,6 +185,21 @@
                                                                                      data-toStation="@Model.Item4.Id"
                                                                                      data-class="@coach.ClassCode"
                                                                                      data-className="@coach.Class.Name">
+                                                                                    <span>@count</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                                    <div class="et-car-seat-left et-seat-h-35">
+                                                                        <div class="et-col-16 et-sit-side"></div>
+                                                                        <div class="et-col-84 et-sit-sur-outer">
+                                                                            <div class="et-sit-sur text-center et-sit-avaiable">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Invalid to add to cart" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no ">
                                                                                     <span>@count</span>
                                                                                 </div>
                                                                             </div>
@@ -252,7 +272,7 @@
                                                                         </div>
                                                                     </div>
                                                                 }
-                                                                else
+                                                                else if (ViewBag.Start > DateTime.Now)
                                                                 {
                                                                     <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
                                                                         <div class="et-bed-right">
@@ -270,6 +290,21 @@
                                                                                          data-toStation="@Model.Item4.Id"
                                                                                          data-class="@coach.ClassCode"
                                                                                          data-className="@coach.Class.Name">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="et-bed-illu"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                        <div class="et-bed-right">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Invalid to add to cart" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no ">
                                                                                         <span>@count</span>
                                                                                     </div>
                                                                                 </div>
@@ -297,7 +332,7 @@
                                                                         </div>
                                                                     </div>
                                                                 }
-                                                                else
+                                                                else if(ViewBag.Start > DateTime.Now)
                                                                 {
                                                                     <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
                                                                         <div class="et-bed-left ">
@@ -315,6 +350,21 @@
                                                                                          data-toStation="@Model.Item4.Id"
                                                                                          data-class="@coach.ClassCode"
                                                                                          data-className="@coach.Class.Name">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="et-bed-illu"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                        <div class="et-bed-left ">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Invalid to add to cart" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no">
                                                                                         <span>@count</span>
                                                                                     </div>
                                                                                 </div>
@@ -366,7 +416,7 @@
                                                                     </div>
                                                                 </div>
                                                             }
-                                                            else
+                                                            else if (ViewBag.Start > DateTime.Now)
                                                             {
                                                                 <div class="et-car-nm-64-sit ng-isolate-scope">
                                                                     <div class="et-car-seat-left et-seat-h-35">
@@ -385,6 +435,21 @@
                                                                                      data-toStation="@Model.Item4.Id"
                                                                                      data-class="@coach.ClassCode"
                                                                                      data-className="@coach.Class.Name">
+                                                                                    <span>@count</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                                    <div class="et-car-seat-left et-seat-h-35">
+                                                                        <div class="et-col-16 et-sit-side"></div>
+                                                                        <div class="et-col-84 et-sit-sur-outer">
+                                                                            <div class="et-sit-sur text-center et-sit-avaiable">
+                                                                                <div data-bs-toggle="tooltip" data-bs-title="Invalid to add to cart" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no ">
                                                                                     <span>@count</span>
                                                                                 </div>
                                                                             </div>
@@ -457,7 +522,7 @@
                                                                         </div>
                                                                     </div>
                                                                 }
-                                                                else
+                                                                else if (ViewBag.Start > DateTime.Now)
                                                                 {
                                                                     <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
                                                                         <div class="et-bed-right">
@@ -475,6 +540,21 @@
                                                                                          data-toStation="@Model.Item4.Id"
                                                                                          data-class="@coach.ClassCode"
                                                                                          data-className="@coach.Class.Name">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="et-bed-illu"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                        <div class="et-bed-right">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Invalid to add to cart" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no">
                                                                                         <span>@count</span>
                                                                                     </div>
                                                                                 </div>
@@ -502,7 +582,7 @@
                                                                         </div>
                                                                     </div>
                                                                 }
-                                                                else
+                                                                else if (ViewBag.Start > DateTime.Now)
                                                                 {
                                                                     <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
                                                                         <div class="et-bed-left ">
@@ -520,6 +600,21 @@
                                                                                          data-toStation="@Model.Item4.Id"
                                                                                          data-class="@coach.ClassCode"
                                                                                          data-className="@coach.Class.Name">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="et-bed-illu"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                        <div class="et-bed-left ">
+                                                                            <div class="et-bed-outer">
+                                                                                <div class="et-bed text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Invalid to add to cart" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no">
                                                                                         <span>@count</span>
                                                                                     </div>
                                                                                 </div>
@@ -663,7 +758,7 @@
                 
             </div>
         </div>
-    <div class="col-lg-3 position-relative mt-3 mb-5">
+    <div class="col-1 position-relative mt-3 mb-5">
         <div class="toast-container position-fixed end-0 p-3" style="z-index:4;top:100px;">
             <div class="toast align-items-center text-bg-success border-0" role="alert" id="alertBsAdd" aria-live="assertive" aria-atomic="true">
                 <div class="d-flex">
@@ -684,3 +779,12 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    <script>
+        const load = document.querySelector(".spinner-wrapper");
+        setTimeout(() => {
+            $(".spinner-wrapper").addClass("d-none");
+        }, 1500)
+
+    </script>
+}

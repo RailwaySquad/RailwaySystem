@@ -189,7 +189,6 @@
                                             }
                                         </div>
                                     }
-
                                     @foreach (var coach in schedule.Train!.Coaches!)
                                     {
                                         <div class="collapse " id="@Model.TrainCode-@coach.Id-@route.Id">
@@ -221,7 +220,7 @@
                                                                         </div>
                                                                     </div>
                                                                 }
-                                                                else
+                                                                    else if (departureTime > DateTime.Now)
                                                                 {
                                                                     <div class="et-car-nm-64-sit ng-isolate-scope">
                                                                         <div class="et-car-seat-left et-seat-h-35">
@@ -240,6 +239,21 @@
                                                                                             data-toStation="@route.ArrivalStationId"
                                                                                             data-class="@coach.ClassCode"
                                                                                             data-className="@coach.Class.Name">
+                                                                                        <span>@count</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                                            <div class="et-col-16 et-sit-side"></div>
+                                                                            <div class="et-col-84 et-sit-sur-outer">
+                                                                                <div class="et-sit-sur text-center et-sit-avaiable">
+                                                                                    <div data-bs-toggle="tooltip" data-bs-title="Invalid to add to cart" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="et-sit-no">
                                                                                         <span>@count</span>
                                                                                     </div>
                                                                                 </div>
@@ -312,7 +326,7 @@
                                                                             </div>
                                                                         </div>
                                                                     }
-                                                                    else
+                                                                    else if (departureTime > DateTime.Now)
                                                                     {
                                                                         <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
                                                                             <div class="et-bed-right">
@@ -330,6 +344,21 @@
                                                                                                 data-toStation="@route.ArrivalStationId"
                                                                                                 data-class="@coach.ClassCode"
                                                                                                 data-className="@coach.Class.Name">
+                                                                                            <span>@count</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="et-bed-illu"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope ">
+                                                                            <div class="et-bed-right">
+                                                                                <div class="et-bed-outer">
+                                                                                    <div class="et-bed text-center et-sit-avaiable">
+                                                                                        <div data-bs-toggle="tooltip" data-bs-title="Invalid to add to cart" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no">
                                                                                             <span>@count</span>
                                                                                         </div>
                                                                                     </div>
@@ -357,7 +386,7 @@
                                                                             </div>
                                                                         </div>
                                                                     }
-                                                                    else
+                                                                    else if (departureTime > DateTime.Now)
                                                                     {
                                                                         <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
                                                                             <div class="et-bed-left ">
@@ -375,6 +404,21 @@
                                                                                                 data-toStation="@route.ArrivalStationId"
                                                                                                 data-class="@coach.ClassCode"
                                                                                                 data-className="@coach.Class.Name">
+                                                                                            <span>@count</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="et-bed-illu"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                                            <div class="et-bed-left ">
+                                                                                <div class="et-bed-outer">
+                                                                                    <div class="et-bed text-center et-sit-avaiable">
+                                                                                        <div data-bs-toggle="tooltip" data-bs-title="Invalid to add to cart" data-bs-custom-class="custom-tooltip" data-bs-placement="top" class="et-sit-no ">
                                                                                             <span>@count</span>
                                                                                         </div>
                                                                                     </div>
