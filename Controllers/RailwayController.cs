@@ -69,7 +69,7 @@ namespace Railway_Group01.Controllers
             {
                 listroute = await ctx.RouteDetails!.Where(x => x.DepartureStationId < x.ArrivalStationId && (x.DepartureStationId == railwayModel.From || x.ArrivalStationId == railwayModel.To)).Select(x => x.RouteId).ToListAsync();
             }
-            List<Schedule> schedulesMatchRoute = await ctx.Schedules!.Include(x=>x.Train).Include(x=>x.Route).Where(x => listroute.Contains(x.RouteId) && x.Departure.Date <= railwayModel.StartDate.Date && x.Arrival.Date >= railwayModel.StartDate.Date).ToListAsync();
+            List<Schedule> schedulesMatchRoute = await ctx.Schedules!.Include(x=>x.Train).Include(x=>x.Route).Where(x => listroute.Contains((int)x.RouteId) && x.Departure.Date <= railwayModel.StartDate.Date && x.Arrival.Date >= railwayModel.StartDate.Date).ToListAsync();
            
             railwayModel.Schedules = await GetScheduleRelationships(schedulesMatchRoute, railwayModel.From,railwayModel.To, railwayModel.StartDate,time,coachTypes, selectType);
             
@@ -472,7 +472,7 @@ namespace Railway_Group01.Controllers
             List<int> routeIdPassSt = await ctx.RouteDetails!.Where(x => x.DepartureStationId == searchStation.Station || x.ArrivalStationId == searchStation.Station).Select(x => x.RouteId).ToListAsync();
             DateTime se = searchStation.StartDate.AddDays(1);
             List<Schedule>? schedules = await ctx.Schedules!.Include(x => x.Route).Include(x=>x.Route.RouteDetails)
-                                                            .Where(x => x.Departure <= se && x.Arrival >= se && routeIdPassSt.Contains(x.RouteId)).ToListAsync();
+                                                            .Where(x => x.Departure <= se && x.Arrival >= se && routeIdPassSt.Contains((int)x.RouteId)).ToListAsync();
             searchStation.Schedules = new List<Schedule>();
             int start = 0;
             int delay1 = 0;
