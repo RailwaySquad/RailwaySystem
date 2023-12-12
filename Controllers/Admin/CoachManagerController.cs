@@ -40,15 +40,15 @@ namespace Railway_Group01.Controllers.Admin
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> CreateCoach(CoachDto coachDto,Seat seat)
+		public async Task<IActionResult> CreateCoach(CoachAdminDTO coachDto,Seat seat)
 		{
 			if (ModelState.IsValid)
 			{
 				var coach = new Coach()
 				{
 					CoachNo = coachDto.CoachNo,
-					NoOfCompartments = coachDto.NoOfCompartment,
-					NoOfSeats = coachDto.NoOfSeat,
+					NoOfCompartments = coachDto.NoOfCompartments,
+					NoOfSeats = coachDto.NoOfSeats,
 					TrainCode = coachDto.TrainCode,
 					ClassCode = coachDto.ClassCode
 				};
@@ -93,6 +93,10 @@ namespace Railway_Group01.Controllers.Admin
 				TempData["SuccessMessage"] = "Coach Added successfully.";
 				return RedirectToAction("CoachList");
 			}
+			var train = await ctx.Trains!.ToListAsync();
+			ViewData["listTrain"] = train;
+			var coachclass = await ctx.CoachClasses!.ToListAsync();
+			ViewData["listClass"] = coachclass;
 			return View();
 		}
 		public async Task<IActionResult> DeleteCoach(int id)
