@@ -14,6 +14,7 @@ namespace Railway_Group01.Migrations
     [DbContext(typeof(RailwayDbContext))]
     [Migration("20231210222755_v0")]
     partial class v0
+>>>>>>>> 5747dd29b2aa711920f663149cdda51e2be78d03:Migrations/20231206180527_v0.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

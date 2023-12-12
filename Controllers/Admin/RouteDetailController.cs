@@ -21,6 +21,7 @@ namespace Railway_Group01.Controllers.Admin
 		{
             var totalItemCount = await ctx.RouteDetails.CountAsync();
             var route = await ctx.RouteDetails!
+				.OrderByDescending(r => r.Id)
 				.Include(r=>r.ArrivalStation)
 				.Include(r=>r.DepartureStation)
 				.Include(r=>r.Route.StartStation)
@@ -31,7 +32,8 @@ namespace Railway_Group01.Controllers.Admin
             ViewBag.Page = page;
             ViewBag.PageSize = pageSize;
             ViewBag.TotalItemCount = totalItemCount;
-            return View(route);
+			ViewBag.counter = (page - 1) * pageSize + 1;
+			return View(route);
 		}
 		public async Task<IActionResult> CreateRouteDetail()
 		{
@@ -104,6 +106,26 @@ namespace Railway_Group01.Controllers.Admin
 			await ctx.SaveChangesAsync();
 			TempData["SuccessMessage"] = "RouteDetail Deleted successfully.";
 			return RedirectToAction("RouteDetailList");
+		}
+		public async Task<IActionResult> SearchRouteDetail(string start, string end)
+		{
+			IQueryable<RouteDetail> query = ctx.RouteDetails.Include(r => r.ArrivalStation)
+															 .Include(r => r.DepartureStation)
+															 .Include(r => r.Route.StartStation)
+															 .Include(r => r.Route.EndStation);
+
+			if (!string.IsNullOrEmpty(start))
+			{
+				query = query.Where(r => r.DepartureStation.Name.Contains(start));
+			}
+
+			if (!string.IsNullOrEmpty(end))
+			{
+				query = query.Where(r => r.ArrivalStation.Name.Contains(end));
+			}
+
+			var route = await query.ToListAsync();
+			return View("RouteDetailList", route);
 		}
 	}
 }

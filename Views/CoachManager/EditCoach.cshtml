@@ -1,21 +1,21 @@
-﻿@model IEnumerable<Railway_Group01.Data.BookingDetail>
+﻿@model Railway_Group01.Data.Coach
 @{
 	Layout = null;
-
+	var listClass = ViewData["listClass"] as List<Railway_Group01.Data.CoachClass>;
+	var listTrain = ViewData["listTrain"] as List<Railway_Group01.Data.Train>;
 }
+
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta content="Codescandy" name="author">
-<title>Booking Details</title>
-<!-- Favicon icon-->
-<style>
-	.colerth {
-		background-color: #EC5B24 !important;
-		color: white !important;
-	}
-</style>
+<title>Edit Coaches</title>
+
+<!-- main wrapper -->
+<!-- navbar -->
 <partial name="_AdminHeader" />
+
+
 <div class="main-wrapper">
 	<!-- navbar vertical -->
 	<!-- navbar -->
@@ -43,7 +43,7 @@
 						<span class="nav-label">Store Managements</span>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link  active " href="../dashboard/products.html">
+						<a class="nav-link " href="../dashboard/products.html">
 							<div class="d-flex align-items-center">
 								<span class="nav-link-icon"><i class="bi bi-cart"></i></span>
 								<span class="nav-link-text">Products</span>
@@ -51,7 +51,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href="../dashboard/categories.html">
+						<a class="nav-link  active " href="../dashboard/categories.html">
 							<div class="d-flex align-items-center">
 								<span class="nav-link-icon"><i class="bi bi-list-task"></i></span>
 								<span class="nav-link-text">Categories</span>
@@ -242,85 +242,90 @@
 
 	<!-- main -->
 	<main class="main-content-wrapper">
+		<!-- container -->
 		<div class="container">
+			<!-- row -->
 			<div class="row mb-8">
 				<div class="col-md-12">
-					<!-- page header -->
 					<div class="d-md-flex justify-content-between align-items-center">
+						<!-- page header -->
 						<div>
-							<h2>Booking Details</h2>
+							<h2>Add New Coaches</h2>
 							<!-- breacrumb -->
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb mb-0">
 									<li class="breadcrumb-item"><a href="#" class="text-inherit">Dashboard</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Booking List</li>
-									<li class="breadcrumb-item active" aria-current="page">Booking Details</li>
+									<li class="breadcrumb-item"><a href="#" class="text-inherit">Coach List</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Add New Coaches</li>
 								</ol>
 							</nav>
 						</div>
-						<!-- button -->
-
+						<div>
+							<a href="/CoachManager/CreateCoach" class="btn btn-me">Back to Coach List</a>
+						</div>
 					</div>
 				</div>
 			</div>
-			<!-- row -->
 			<div class="row">
-				<div class="col-xl-12 col-12 mb-5">
+				<div class="col-lg-12 col-12">
 					<!-- card -->
-					<div class="card h-100 card-lg">
-						<div class="px-6 py-6">
-							<div class="row justify-content-between">
-								<!-- form -->
-								<div class="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
-									<form class="d-flex" role="search">
-										<input class="form-control" type="search" placeholder="Search Booking" aria-label="Search" />
-									</form>
-								</div>
-								<!-- select option -->
-
-							</div>
-						</div>
+					<div class="card mb-6 shadow border-0">
 						<!-- card body -->
-						<div class="card-body p-0">
-							<!-- table -->
-							<div class="table-responsive">
-								<table class="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
-									<thead class="bg-light">
-										<tr>
-											<th class="colerth">Id</th>
-											<th class="colerth">Seat Id</th>
-											<th class="colerth">Schedule Id</th>
-											<th class="colerth">Booking Id</th>
-										</tr>
-									</thead>
-									@foreach (var item in Model)
-									{
-										<tbody>
-											<tr>
-												<td>
-													@item.Id
-												</td>
-												<td>@item.Seat.Id</td>
-												<td>@item.Schedule.Id</td>
-												<td>@item.Booking.Id</td>
-											</tr>
-										</tbody>
-									}
+						<div class="card-body p-6">
+							<h4 class="mb-4 h5 mt-5">Coaches Information</h4>
+							<form asp-action="EditCoach" method="post">
+								<div class="row">
+									<div class="mb-3 col-lg-6">
+										<label class="form-label">Coach No</label>										
+										<input asp-for="CoachNo" class="form-control" placeholder="Coach No" />
+										
+									</div>
+									<div class="mb-3 col-lg-6">
+										<label class="form-label">No Of Compartments</label>									
+										<input asp-for="NoOfCompartments" class="form-control" placeholder="No Of Compartments (must be number)" />
+										
+									</div>
+									<div class="mb-3 col-lg-6">
+										<label class="form-label">No Of Seats</label>
+										<input asp-for="NoOfSeats" class="form-control" placeholder="No Of Seats (must be numbar)" />
+									</div>
+									<!-- input -->
+									<div class="mb-3 col-lg-6">
+										<label class="form-label">Train Code</label>
+										<select class="form-select" asp-for="TrainCode">
+											@if (listTrain != null)
+											{
+												@foreach (var train in listTrain)
+												{
+													<option value="@train.Code">@train.Code</option>
+												}
+											}
+										</select>
+									</div>
+									<!-- input -->
+									<div class="mb-3 col-lg-6">
+										<label class="form-label">Class Code</label>
+										<select class="form-select" asp-for="ClassCode">
+											@if (listClass != null)
+											{
+												@foreach (var Coachclass in listClass)
+												{
+													<option value="@Coachclass.Code">@Coachclass.Name</option>
+												}
+											}
+										</select>
+									</div>
 
-								</table>
-							</div>
-						</div>
-						<div class="border-top d-md-flex justify-content-between align-items-center px-6 py-6">
-							<span>Showing 1 to 8 of 12 entries</span>
-							<nav class="mt-2 mt-md-0">
-								<ul class="pagination mb-0">
-									<li class="page-item disabled"><a class="page-link" href="#!">Previous</a></li>
-									<li class="page-item"><a class="page-link active" href="#!">1</a></li>
-									<li class="page-item"><a class="page-link" href="#!">2</a></li>
-									<li class="page-item"><a class="page-link" href="#!">3</a></li>
-									<li class="page-item"><a class="page-link" href="#!">Next</a></li>
-								</ul>
-							</nav>
+									<div></div>
+									<!-- input -->
+									<!-- input -->
+
+									<div class="col-lg-12">
+										<input type="submit" class="btn btn-me" value="Edit Coaches" />
+									</div>
+								</div>
+							</form>
+
 						</div>
 					</div>
 				</div>
@@ -330,5 +335,6 @@
 </div>
 
 <partial name="_AdminFooter" />
+
 
 

@@ -21,7 +21,7 @@ namespace Railway_Group01.Data
 		[Required(ErrorMessage = "Zipcode is required.")]
 		public int ZipCode { get; set; }
 
-        public ICollection<Route>? StartRoutes { get; set; }
+		public ICollection<Route>? StartRoutes { get; set; }
         public ICollection<Route>? EndRoutes { get; set; }
 
         public ICollection<RouteDetail>? DepartureRouteDetails { get; set; }

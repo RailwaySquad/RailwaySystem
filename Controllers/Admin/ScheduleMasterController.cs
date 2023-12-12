@@ -17,20 +17,41 @@ namespace Railway_Group01.Controllers.Admin
 		{
 			this.ctx = ctx;
 		}
-		public async Task<IActionResult> TrainSchedule()
-		{
+        public async Task<IActionResult> TrainSchedule(string date = null)
+        {
+            string selectedMonth;
 
-			var schedule = await ctx.Schedules!
-				.Where(s=>s.Departure.Month == DateTime.Now.Month
-				&& s.Departure.Year == DateTime.Now.Year)
-				.Include(s=>s.Train)
-				.Include(s=>s.Route.StartStation)
-                .Include(s=>s.Route.EndStation)
+            // Nếu date được cung cấp, sử dụng giá trị mới
+            if (!string.IsNullOrEmpty(date))
+            {
+                selectedMonth = date;
+                // Lưu giá trị mới vào ViewBag để sử dụng cho lần gọi sau
+                ViewBag.SelectedMonth = selectedMonth;
+            }
+            else if (!string.IsNullOrEmpty(ViewBag.SelectedMonth))
+            {
+                selectedMonth = ViewBag.SelectedMonth;
+            }
+            else
+            {
+                // Sử dụng giá trị mặc định là tháng và năm hiện tại
+                selectedMonth = DateTime.Now.ToString("yyyy-MM");
+            }
+
+            var schedule = await ctx.Schedules!
+                .Where(s => s.Departure.Month == DateTime.Now.Month
+                    && s.Departure.Year == DateTime.Now.Year)
+                .Include(s => s.Train)
+                .Include(s => s.Route.StartStation)
+                .Include(s => s.Route.EndStation)
                 .OrderBy(s => s.Departure)
                 .ToListAsync();
-            
+
+            // Truyền giá trị selectedMonth đến view
+            ViewBag.SelectedMonth = selectedMonth;
+
             return View(schedule);
-		}
+        }
         [HttpPost]
         public async Task<IActionResult> SearchByDatetime(string date)
         {
@@ -44,6 +65,9 @@ namespace Railway_Group01.Controllers.Admin
                 .Include(s => s.Route.EndStation)
                 .OrderBy(s => s.Departure)
                 .ToListAsync();
+
+            // Lưu giá trị date vào ViewBag để sử dụng trong lần gọi sau của hàm TrainSchedule
+            ViewBag.SelectedMonth = date;
 
             return View("TrainSchedule", schedule);
         }
@@ -110,21 +134,10 @@ namespace Railway_Group01.Controllers.Admin
 		public async Task<IActionResult> EditStatusSchedule(int id, bool isfinished)
 		{
 			var schedule = await ctx.Schedules!
-				.Include(s=>s.Train)
-				.ThenInclude(c=>c.Coaches)
-				.ThenInclude(s=>s.Seats)
+
 				.SingleOrDefaultAsync(s=>s.Id==id);
 			schedule.IsFinished = isfinished;
-            if (isfinished)
-            {
-                foreach (var coach in schedule.Train.Coaches)
-                {
-                    foreach (var seat in coach.Seats)
-                    {
-                        seat.Available = false;
-                    }
-                }
-            }
+
             ctx.Entry(schedule).State= EntityState.Modified;
 			await ctx.SaveChangesAsync();
 			return RedirectToAction("DetailDate",schedule);

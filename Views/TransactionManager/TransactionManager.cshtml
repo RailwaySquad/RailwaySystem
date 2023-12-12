@@ -1,51 +1,34 @@
-﻿@model IEnumerable<Railway_Group01.Data.Train>
+﻿@model IEnumerable<Railway_Group01.Data.Transaction>
 @{
 	Layout = null;
-	var trains = ViewBag.Trains as IEnumerable<Railway_Group01.Data.Train>;
+	var transaction = ViewBag.transactions as IEnumerable<Railway_Group01.Data.Transaction>;
 	var page = ViewBag.Page;
 	var pageSize = ViewBag.PageSize;
 	var totalItemCount = ViewBag.TotalItemCount;
 
-	var pageCount = (int)Math.Ceiling((totalItemCount ?? 0) / (double)(pageSize ?? 1));
+	var pageCount = (int)Math.Ceiling(totalItemCount / (double)pageSize);
 	var visiblePages = 6;
 	var halfVisiblePages = visiblePages / 2;
 
-	var startPage = Math.Max(1, Convert.ToInt32(page - halfVisiblePages));
+	var startPage = Math.Max(1, page - halfVisiblePages);
 	var endPage = Math.Min(startPage + visiblePages - 1, pageCount);
 
 	var hasPreviousPage = page > 1;
 	var hasNextPage = page < pageCount;
 	int counter = ViewBag.DisplayCounter != null ? (int)ViewBag.DisplayCounter : 1;
 }
-<style>
-	.name {
-		position: relative;
-		bottom: 15px;
-		left: 20px;
-	}
-
-	.colerth {
-		background-color: #EC5B24 !important;
-		color: white !important;
-	}
-	.searchButton {
-		background-color: white;
-		width: 120px;
-		border-radius: 6px;
-		position: relative;
-		right: 70px;
-		border: 0px;
-		height: 1px;
-		top: 13px;
-	}
-</style>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta content="Codescandy" name="author">
-<title>Train Master</title>
+<title>Transaction List</title>
 <!-- Favicon icon-->
-
+<style>
+	.colerth {
+		background-color: #EC5B24 !important;
+		color: white !important;
+	}
+</style>
 <partial name="_AdminHeader" />
 <div class="main-wrapper">
 	<!-- navbar vertical -->
@@ -56,14 +39,14 @@
 		<div class="navbar-vertical">
 			<div class="px-4 py-5 d-flex justify-content-between align-items-center">
 				<a href="../index.html" class="navbar-brand">
-					<img src="/images/ixigo.jpg" alt="" />
+					<img src="../assets/images/logo/freshcart-logo.svg" alt="" />
 				</a>
 				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 			</div>
 			<div class="navbar-vertical-content flex-grow-1" data-simplebar="">
 				<ul class="navbar-nav flex-column">
 					<li class="nav-item">
-						<a class="nav-link " href="/Admin/index.html">
+						<a class="nav-link " href="../dashboard/index.html">
 							<div class="d-flex align-items-center">
 								<span class="nav-link-icon"><i class="bi bi-house"></i></span>
 								<span>Dashboard</span>
@@ -77,7 +60,7 @@
 						<a class="nav-link  active " href="../dashboard/products.html">
 							<div class="d-flex align-items-center">
 								<span class="nav-link-icon"><i class="bi bi-cart"></i></span>
-								<span class="nav-link-text">Trains</span>
+								<span class="nav-link-text">Products</span>
 							</div>
 						</a>
 					</li>
@@ -279,19 +262,17 @@
 					<!-- page header -->
 					<div class="d-md-flex justify-content-between align-items-center">
 						<div>
-							<h2>Trains</h2>
+							<h2>Booking List</h2>
 							<!-- breacrumb -->
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb mb-0">
-									<li class="breadcrumb-item"><a href="/Admin/Index" class="text-inherit">Dashboard</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Trains</li>
+									<li class="breadcrumb-item"><a href="#" class="text-inherit">Dashboard</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Transaction List</li>
 								</ol>
 							</nav>
 						</div>
 						<!-- button -->
-						<div>
-							<a href="/TrainMaster/CreateTrain" class="btn btn-me">Add Trains</a>
-						</div>
+
 					</div>
 				</div>
 			</div>
@@ -304,30 +285,14 @@
 							<div class="row justify-content-between">
 								<!-- form -->
 								<div class="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
-									<form class="d-flex" asp-action="SearchTrain" method="get">
-										<input class="form-control" name="name" type="text" placeholder="Search Train" aria-label="Search" />
-										<button type="submit" class="searchButton"><i class="fas fa-search"></i></button>
+									<form class="d-flex" role="search">
+										<input class="form-control" type="search" placeholder="Search Transaction" aria-label="Search" />
 									</form>
 								</div>
 								<!-- select option -->
-								<div class="col-lg-2 col-md-4 col-12">
-									<form asp-action="filterStatusTrains" id="fiterForm">
-										<select class="form-select" name="status" onchange="submitFilterForm()">
-											<option selected>Status</option>
-											<option value="True">Finished</option>
-											<option value="False">Unfinished</option>
-										</select>
-									</form>
-									
-								</div>
+							
 							</div>
 						</div>
-						@if (TempData["SuccessMessage"] != null)
-						{
-							<script>
-								alert('@TempData["SuccessMessage"]');
-							</script>
-						}
 						<!-- card body -->
 						<div class="card-body p-0">
 							<!-- table -->
@@ -335,57 +300,51 @@
 								<table class="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
 									<thead class="bg-light">
 										<tr>
-											<th class="colerth">No</th>
-											<th class="colerth">Train Code</th>
-											<th class="colerth">Status</th>
-											<th class="colerth">Type</th>
-											<th class="colerth">Action</th>
+											<th class="colerth">@counter</th>
+											<th class="colerth">Payment Id</th>
+											<th class="colerth">Sender</th>
+											<th class="colerth">Receiver</th>
+											<th class="colerth">Amount</th>
+											<th class="colerth">Create At</th>
+											<th class="colerth">Booking Id</th>
+											<th class="colerth">Cancelling Id</th>
+											<th class="colerth">Detail</th>
 										</tr>
-									</thead>
+									</thead>								
 									<tbody>
-										@foreach(var item in Model)
-										{										
+										@foreach (var item in Model)
+										{
 											<tr>
-												<td>@counter</td>
-												<td>@item.Code</td>
 												<td>
-													@if(@item.IsRunning == true)
+													@item.Id
+												</td>
+												<td>@item.PaymentId</td>
+												<td>@item.CreatedAt</td>
+												<td>@item.Sender</td>
+												<td>@item.Receiver</td>
+												<td>@item.Amount</td>
+												<td>@item.CreatedAt</td>
+												<td>@item.Booking.Id</td>
+												<td>
+													@if(item.Cancelling.Id != null)
 													{
-														<span class="badge bg-light-primary text-dark-primary">Active</span>
+														@item.Cancelling.Id
 													}
 													else
 													{
-														<span class="badge bg-light-danger text-dark-primary">Un Active</span>
+														<p>Null</p>
 													}
 												</td>
-												<td>@item.TypeCode</td>
 												<td>
-													<div class="dropdown">
-														<a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
-															<i class="bi bi-three-dots-vertical"></i>
-														</a>
-														<ul class="dropdown-menu">
-															<li>
-																<form asp-action="DeleteTrain" asp-route-id="@item.Code" onsubmit="return confirmDelete()">
-																	<button class="dropdown-item" type="submit">
-																		<i class="bi bi-trash me-3"></i>
-																		Delete
-																	</button>
-																</form>
-															</li>
-															<li>
-																<a class="dropdown-item" href="@Url.Action("EditTrain", new {id = item.Code})">
-																	<i class="bi bi-pencil-square me-3"></i>
-																	Edit
-																</a>
-															</li>
-														</ul>
-													</div>
+													<a href="@Url.Action("TransactionDetail", new {id = item.Id})" class="text-reset" >
+														<i class="fa-solid fa-circle-info"></i>
+													</a>
 												</td>
 											</tr>
 											counter++;
 										}
 									</tbody>
+
 								</table>
 							</div>
 						</div>
@@ -393,13 +352,14 @@
 							<span> @Model.Count() Items</span>
 							<nav class="mt-2 mt-md-0">
 								<ul class="pagination mb-0">
+									
 
 									<nav aria-label="Page navigation">
 										<ul class="pagination">
 											@if (hasPreviousPage)
 											{
 												<li class="page-item">
-													<a class="page-link" href="@Url.Action("TrainMaster", new { page = page - 1, pageSize = pageSize })" aria-label="Previous">
+													<a class="page-link" href="@Url.Action("TransactionManager", new { page = page - 1, pageSize = pageSize })" aria-label="Previous">
 														<span aria-hidden="true">&laquo;</span>
 													</a>
 												</li>
@@ -408,14 +368,14 @@
 											@for (int i = startPage; i <= endPage; i++)
 											{
 												<li class="page-item @(i == page ? "active" : "")">
-													<a class="page-link" href="@Url.Action("TrainMaster", new { page = i, pageSize = pageSize })">@i</a>
+													<a class="page-link" href="@Url.Action("TransactionManager", new { page = i, pageSize = pageSize })">@i</a>
 												</li>
 											}
 
 											@if (hasNextPage)
 											{
 												<li class="page-item">
-													<a class="page-link" href="@Url.Action("TrainMaster", new { page = page + 1, pageSize = pageSize })" aria-label="Next">
+													<a class="page-link" href="@Url.Action("TransactionManager", new { page = page + 1, pageSize = pageSize })" aria-label="Next">
 														<span aria-hidden="true">&raquo;</span>
 													</a>
 												</li>
@@ -431,15 +391,7 @@
 		</div>
 	</main>
 </div>
-<script>
-	function confirmDelete() {
-		var result = confirm("Do you want to delete?");
-		return result;
-	}
-	function submitFilterForm() {
-		document.getElementById("fiterForm").submit();
-	}
-</script>
+
 <partial name="_AdminFooter" />
 
 

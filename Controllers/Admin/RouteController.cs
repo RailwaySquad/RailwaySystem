@@ -19,18 +19,20 @@ namespace Railway_Group01.Controllers.Admin
 		{
 			var totalItemCount = await ctx.Routes.CountAsync();
 			var routes = await ctx.Routes!
-        .Include(r => r.StartStation)
-        .Include(r => r.EndStation)
-        .Include(r => r.RouteDetails)
-            .ThenInclude(rd => rd.DepartureStation) // Bao gồm DepartureStation trong RouteDetails
-        .Include(r => r.RouteDetails)
-            .ThenInclude(rd => rd.ArrivalStation)   // Bao gồm ArrivalStation trong RouteDetails
+			.OrderByDescending(r => r.Id)
+			.Include(r => r.StartStation)
+			.Include(r => r.EndStation)
+			.Include(r => r.RouteDetails)
+            .ThenInclude(rd => rd.DepartureStation) 
+			.Include(r => r.RouteDetails)
+            .ThenInclude(rd => rd.ArrivalStation)   
 			.Skip((page - 1) * pageSize).Take(pageSize)
-		.ToListAsync();
+			.ToListAsync();
 			ViewBag.Routes = routes;
 			ViewBag.Page = page;
 			ViewBag.PageSize = pageSize;
 			ViewBag.TotalItemCount = totalItemCount;
+			ViewBag.counter = (page - 1) * pageSize + 1;
 			return View(routes);
         }
 		public async Task<IActionResult> CreateRoute()
@@ -89,10 +91,33 @@ namespace Railway_Group01.Controllers.Admin
 			TempData["SuccessMessage"] = "Route Deleted successfully.";
 			return RedirectToAction("RouteList");
 		}
+		public async Task<IActionResult> SearchRoute(string start, string end)
+		{
+			IQueryable<Data.Route> query = ctx.Routes.Include(r => r.StartStation)
+			.Include(r => r.EndStation)
+			.Include(r => r.RouteDetails)
+			.ThenInclude(rd => rd.DepartureStation)
+			.Include(r => r.RouteDetails)
+			.ThenInclude(rd => rd.ArrivalStation);
+
+			if (!string.IsNullOrEmpty(start))
+			{
+				query = query.Where(r => r.StartStation.Name.Contains(start));
+			}
+
+			if (!string.IsNullOrEmpty(end))
+			{
+				query = query.Where(r => r.EndStation.Name.Contains(end));
+			}
+
+			var route = await query.ToListAsync();
+			return View("RouteList", route);
+		}
 	/*	public async Task<IActionResult> Detail(int id)
 		{
 			var route = await ctx.RouteDetails!.Where(r => r.Id == id).ToListAsync();
 			return View(route);
 		}*/
+		
 	}
 }
