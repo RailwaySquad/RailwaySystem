@@ -3,10 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
-    var now = DateTime.Parse("2023-12-05");
-    var tenMoreDays = now.AddDays(10);
-    var nowString = now.ToString("yyyy-MM-dd");
-    var tenMoreDaysString = tenMoreDays.ToString("yyyy-MM-dd");
+    var now = DateTime.Now;
 }
 
 <div class="banner">
@@ -22,8 +19,8 @@
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link tb-link rounded-0" data-bs-toggle="tab" data-bs-target="#pnrStatusForm" type="button" role="tab" aria-controls="pnrStatusForm" aria-selected="false">
-                    <span class="text-uppercase fw-700">Running Status</span>
+                <button class="nav-link tb-link rounded-0" data-bs-toggle="tab" data-bs-target="#trainNameNumberSearchForm" type="button" role="tab" aria-controls="trainNameNumberSearchForm" aria-selected="false">
+                    <span class="text-uppercase fw-700">Search Train</span>
                 </button>
             </li>
             <li class="nav-item" role="presentation">
@@ -32,8 +29,8 @@
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link tb-link rounded-0" data-bs-toggle="tab" data-bs-target="#trainNameNumberSearchForm" type="button" role="tab" aria-controls="trainNameNumberSearchForm" aria-selected="false">
-                    <span class="text-uppercase fw-700">Search Train</span>
+                <button class="nav-link tb-link rounded-0" data-bs-toggle="tab" data-bs-target="#searchTicketPnr" type="button" role="tab" aria-controls="searchTicketPnr" aria-selected="false">
+                    <span class="text-uppercase fw-700">Search Ticket</span>
                 </button>
             </li>
         </ul>
@@ -41,21 +38,21 @@
             <div id="trainSearchForm" class="tab-pane fade show active w-100" role="tabpanel" tabindex="0">
                 <div class="d-flex flex-row justify-content-center align-items-center">
                     <form class="row" method="get" asp-action="Search">
-                        <div class="col-md-4 ">
+                        <div class="col-md-4 mb-3">
                             <label for="gaDi" class="form-label">From</label>
                             <select class="form-select" name="From" asp-items="@Model.SelectListItems" required></select>
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-3">
                             <label for="gaDen" class="form-label">To</label>
                             <select class="form-select" name="To" asp-items="@Model.SelectListItems" required></select>
                         </div>
-                        <div class="col-md-3 mx-auto">
+                        <div class="col-md-3 mx-auto mb-3">
                             <label for="ngayXP" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="ngayXP" asp-for="@Model.StartDate" min="@nowString" max="@tenMoreDaysString" required />
+                            <input type="date" class="form-control" id="ngayXP" asp-for="@Model.StartDate" required />
                         </div>
-                        <div class="col-12 mt-2">
-                            <button type="submit" class="text-uppercase btn btn-orange">
+                        <div class="col-12 mt-2 ">
+                            <button type="submit" class="text-uppercase btn btn-orange rounded-0 fw-700">
                                 Search
                             </button>
                         </div>
@@ -63,23 +60,20 @@
                 </div>
             </div>
 
-            <div id="pnrStatusForm" class="tab-pane fade w-100 " role="tabpanel" tabindex="0">
+            <div id="trainNameNumberSearchForm" class="tab-pane fade w-100 " role="tabpanel" tabindex="0">
                 <div class="row">
                     <div class="col-5">
                         <img src="https://images.ixigo.com/rt-train/pc/img/trainsHome/pnr.png" />
                         <div class="">
                             <div class="">Search by Train name and number</div>
-                            <small class="text-secondary">
-                                Get seat availability, running status, route,
-                                fare, coach position and seat map.
-                            </small>
+                            <small class="text-secondary">Get running status</small>
                         </div>
                     </div>
                     <div class="col-7">
-                        <form class="row gx-3 gy-2">
+                        <form class="row gx-3 gy-2" asp-action="SearchTrain" method="get">
                             <div class="col-md-9">
-                                <label for="name" class="form-label">TRAIN NAME/NUMBER</label>
-                                <input type="text" class="form-control" name="name" placeholder="Enter the train name or number" />
+                                <label for="traincode" class="form-label">TRAIN NAME/NUMBER</label>
+                                <select class="form-select" name="TrainCode" asp-items="@Model.SelectListTrains" required></select>
                             </div>
                             <div class="col-3 align-self-end">
                                 <button class="btn btn-orange " type="submit">
@@ -98,15 +92,14 @@
                             <div class="">Search by Station</div>
                             <small class="text-secondary">
                                 Get list of all trains passing from a station.
-                                Check Station’s rating on Cleanliness, Safety and food.
                             </small>
                         </div>
                     </div>
                     <div class="col-7">
-                        <form class="row ">
+                        <form class="row" asp-action="SearchStation" method="get">
                             <div class="col-md-9">
                                 <label for="station" class="form-label">STATION NAME/CODE</label>
-                                <input type="text" class="form-control" name="station" placeholder="Enter the station name or code" />
+                                <select class="form-select" name="Station" asp-items="@Model.SelectListItems" placeholder="Enter the station name"></select>
                             </div>
                             <div class="col-3 align-self-end">
                                 <button class="btn btn-orange " type="submit">
@@ -117,20 +110,22 @@
                     </div>
                 </div>
             </div>
-            <div id="trainNameNumberSearchForm" class="tab-pane fade w-100" role="tabpanel" tabindex="0">
+            <div id="searchTicketPnr" class="tab-pane fade w-100 " role="tabpanel" tabindex="0">
                 <div class="row">
                     <div class="col-5">
                         <img src="https://images.ixigo.com/rt-train/pc/img/trainsHome/pnr.png" />
                         <div class="">
-                            <div class="">Search by Train name and number</div>
-                            <small class="text-secondary">Get running status</small>
+                            <div class="">Ticket Status </div>
+                            <small class="text-secondary">
+                                Know current status of your Train ticket and chances of W/L confirmation.
+                            </small>
                         </div>
                     </div>
                     <div class="col-7">
-                        <form class="row gx-3 gy-2">
+                        <form class="row" asp-action="TicketBookingSeach" method="get">
                             <div class="col-md-9">
-                                <label for="train" class="form-label">TRAIN NAME/NUMBER</label>
-                                <input type="text" class="form-control" name="train" placeholder="Enter the train name or number" />
+                                <label for="station" class="form-label">PNR NUMBER</label>
+                                <input class="form-control" type="text" name="TicketPNR" placeholder="Enter your pnr number" required />
                             </div>
                             <div class="col-3 align-self-end">
                                 <button class="btn btn-orange " type="submit">
@@ -145,33 +140,33 @@
     </div>
 </div>
 <section class="row pt-4 mx-0 mb-3">
-    <h2 class="mt-2 text-center">IRCTC Train Ticket Booking on ixigo</h2>
+    <h2 class="mt-2 text-center">VietNam Train Ticket Booking on Ease </h2>
     <div class="text-center mt-2">
-        <h4 class="text-center">IRCTC Authorised Partner</h4>
+        <h4 class="text-center">Authorised Partner</h4>
     </div>
-    <div class="col-lg-8 col-md-10 col-12 mx-auto row mt-4">
+    <div class="col-lg-8 col-md-10 col-12 mx-auto row mt-4 mb-3">
         <div class="col-6 d-flex flex-row align-items-center">
-            <img src="https://images.ixigo.com/image/upload/train/ecb835b55223186c49d55750b422ed10-oscpe.png" width="70" height="70" />
+            <img src="~/images/svg/icon1.png" width="70" height="70" />
             <div class="ms-4">
-                <h5>0 VND Payment Gateway Fee on Payments via UPI</h5>
+                <h5>0 VND Payment Gateway Fee</h5>
             </div>
         </div>
-        <div class="col-6 d-flex flex-row align-items-center">
-            <img src="https://images.ixigo.com/image/upload/801ca10aa0964d95bdcd76df1573b5e1-hlzsy.png" width="70" height="70" />
+        <div class="col-6 d-flex flex-row align-items-center mb-3">
+            <img src="~/images/svg/icon2.png" width="70" height="70" />
             <div class="ms-4">
-                <h5>ixigo Assured: Free Cancellation of Train Tickets</h5>
+                <h5>Ease Train Assured: Free Cancellation of Train Tickets</h5>
             </div>
         </div>
-        <div class="col-6 d-flex flex-row align-items-center">
-            <img src="https://images.ixigo.com/image/upload/train/a21427142a38e7331574b034aa4a687a-lwpxr.png" width="70" height="70" />
+        <div class="col-6 d-flex flex-row align-items-center mb-3">
+            <img src="~/images/svg/icon3.png" width="70" height="70" />
             <div class="ms-4">
                 <h5>Instant Refund on VietNam Railway Reservation Cancellation</h5>
             </div>
         </div>
-        <div class="col-6 d-flex flex-row align-items-center">
-            <img src="https://images.ixigo.com/image/upload/train/d522fcf3866c18b343060ab3cb49b3b1-xnmqx.png" width="70" height="70" />
+        <div class="col-6 d-flex flex-row align-items-center mb-3">
+            <img src="~/images/svg/icon4.png" width="70" height="70" />
             <div class="ms-4">
-                <h5>24*7 Support for IRCTC Train Ticket Booking</h5>
+                <h5>24*7 Support for Ease Train Ticket Booking</h5>
             </div>
         </div>
     </div>
@@ -184,82 +179,54 @@
             <h2 class="text-center text-orange">More Train Information</h2>
             <div class="row">
                 <div class="mt-3 col-12 row">
-                    <a href="https://www.ixigo.com/trains/train-seat-availability" class="card text-decoration-none col-3 mx-auto text-secondary">
+                    <a asp-action="TrainSeatAvailability" class="card text-decoration-none col-3 mx-auto text-secondary">
                         <div class="card-body">
                             <div class="d-flex flex-row">
-                                <img src="https://images.ixigo.com/image/upload/trains/86db5d79396ba8e8be30ae63b1c9961e-eeaul.png" height="56" width="56" />
+                                <img src="~/images/svg/iconseat.png" height="56" width="56" />
                                 <div class="ms-2">
                                     <div class="">Train Seat Availability</div>
                                     <div class="">Check train seat availability online</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="interlink__icon"><span class="ixi-icon-chevron"></span></div>
                     </a>
-                    <a href="https://www.ixigo.com/pnr-status-enquiry" class="card text-decoration-none col-3 mx-auto text-secondary">
+                    <a asp-action="TicketBookingSeach" class="card text-decoration-none col-3 mx-auto text-secondary">
                         <div class="card-body">
                             <div class="d-flex flex-row">
-                                <img src="https://images.ixigo.com/image/upload/trains/2e704451e3551cf6f85c8f5d08c3e1f8-vangr.png" height="56" width="56" />
+                                <img src="~/images/svg/iconticket.png" height="56" width="56" />
                                 <div class="ms-2">
                                     <div class="">PNR Status Enquiry</div>
                                     <div class="">Check PNR Status &amp; ticket booking</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="interlink__icon"><span class="ixi-icon-chevron"></span></div>
                     </a>
-                    <a href="https://www.ixigo.com/trains/train-running-status" class="card text-decoration-none col-3 mx-auto text-secondary">
+                    <a asp-action="TrainRunningSearch" class="card text-decoration-none col-3 mx-auto text-secondary">
                         <div class="card-body">
                             <div class="d-flex flex-row">
-                                <img src="https://images.ixigo.com/image/upload/trains/10dcd8077f244965638a6a483b97451f-umnfy.png"
+                                <img src="~/images//svg/icontrain.png"
                                      height="56" width="56" />
                                 <div class="ms-2">
                                     <div class="">Train Running Status</div>
-                                    <div class="">Check IRCTC live train running status</div>
+                                    <div class="">Check live train running status</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="interlink__icon"><span class="ixi-icon-chevron"></span></div>
+                    </a>
+                    <a asp-action="StationStatusSearch" class="card text-decoration-none col-3 mx-auto text-secondary">
+                        <div class="card-body">
+                            <div class="d-flex flex-row">
+                                <img src="~/images/svg/iconstation.png"
+                                     height="56" width="56" />
+                                <div class="ms-2">
+                                    <div class="">Station Schedule</div>
+                                    <div class="">Check Schedule of Station</div>
+                                </div>
+                            </div>
+                        </div>
                     </a>
                 </div>
-                <div class="mt-3 col-12 row">
-                    <a href="https://www.ixigo.com/trains/irctc-cancellation-charges-icms" class="card text-decoration-none col-3 mx-auto text-secondary">
-                        <div class="card-body">
-                            <div class="d-flex flex-row">
-                                <img src="https://images.ixigo.com/image/upload/trains/555412c877f9225e51b40c6b28e40410-rxehn.png" height="56" width="56" />
-                                <div class="ms-2">
-                                    <div class="">IRCTC Cancellation Chargess</div>
-                                    <div class="">Cancellation Rules for Train Tickets</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="interlink__icon"><span class="ixi-icon-chevron"></span></div>
-                    </a>
-                    <a href="https://www.ixigo.com/trains/tatkal-railway-reservation" class="card text-decoration-none col-3 mx-auto text-secondary">
-                        <div class="card-body">
-                            <div class="d-flex flex-row">
-                                <img src="https://images.ixigo.com/image/upload/trains/551e245f7ea23fdd947331d0aeb1a4f8-stzha.png" height="56" width="56" />
-                                <div class="ms-2">
-                                    <div class="">VietNam Railway Reservation</div>
-                                    <div class="">Book tatkal train tickets quikly</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="interlink__icon"><span class="ixi-icon-chevron"></span></div>
-                    </a>
-                    <a href="https://www.ixigo.com/trains/platform-locator" class="card text-decoration-none col-3 mx-auto text-secondary">
-                        <div class="card-body">
-                            <div class="d-flex flex-row">
-                                <img src="https://images.ixigo.com/image/upload/trains/trains/1d820492523e3c3b0bd47abaf76c3107-gwnxv.png" height="56" width="56" />
-                                <div class="ms-2">
-                                    <div class="">Train Platform Locator</div>
-                                    <div class="">Locate your train platform number</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="interlink__icon"><span class="ixi-icon-chevron"></span></div>
-                    </a>
-                </div>
+                
             </div>
         </div>
     </div>

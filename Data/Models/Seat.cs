@@ -16,6 +16,8 @@ namespace Railway_Group01.Data
         public Coach? Coach { get; set; }
         public int CoachId { get; set; }
 
-        public BookingDetail? BookingDetail { get; set; }
+        public List<BookingDetail>? BookingDetails { get; set; }
+
+        public List<Schedule>? Schedules { get; set; }
     }
 }

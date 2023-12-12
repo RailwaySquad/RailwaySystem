@@ -1,0 +1,97 @@
+﻿@model Railway_Group01.Data.Ticket
+@{
+    ViewData["Title"] = "TicketBookingSeach";
+    Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+}
+
+<div class="bg-gradient-cus">
+    <h3 class="text-center my-5 text-light">Seach Ticket</h3>
+    <div class="form-fields mb-5 ">
+        <form class="row g-1 ui form w-100 mx-auto" method="get" >
+            <div class="col-sm-4 col-6 field mx-auto me-0">
+                <label for="ticket" class="form-label text-white-50 fw-500" style="font-size:12px">Ticket PNR</label>
+                <input type="text" class="form-control" name="TicketPNR" style="border-bottom:solid 1px white; border-top:0; border-left:0; border-right:0;" required/>
+            </div>
+            <div class="d-flex flex-row justify-content-center align-items-end col-sm-3 col-3 mx-auto ms-0">
+                <button type="submit" class=" text-uppercase btn btn-orange w-100">
+                    Search
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-sm-12 col-md-8 col-lg-6 mx-auto row">
+            @if (Model != null && Model.Passenger!=null && Model.BookingDetail!=null && Model.Schedule !=null)
+            {
+                <div class="col-4">
+                    <h5>PNR Code: @Model.PNRNo</h5>
+                </div>
+                <div class="col-8">
+                    <table class="table table-borderless w-100">
+                        <tr>
+                            <td>Passenger Name:</td>
+                            <td>@Html.DisplayFor(x=>Model.Passenger.Name)</td>
+                        </tr>
+                        <tr>
+                            <td>Birthday:</td>
+                            <td>@Model.Passenger.Birthday.ToString("dd/MM/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(x=>Model.Passenger.PassengerType.Name)</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-12 mt-2">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td>Trip:</td>
+                            <td class="fw-bold">@Model.BookingDetail.Trip</td>
+                        </tr>
+                        <tr>
+                            <td>Train:</td>
+                            <td class="fw-bold" >@Model.BookingDetail.Schedule!.TrainCode</td>
+                        </tr>
+                        <tr>
+                            <td>Departure Date:</td>
+                            <td class="fw-bold" >@Model.Schedule.Departure.ToString("dd/MM/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td>Departure Time:</td>
+                            <td class="fw-bold" >@Model.Schedule.Departure.ToString("HH:MM")</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Coach: @Model.BookingDetail.Seat.Coach.CoachNo</td>
+                            <td class="fw-bold">Seat: @Model.BookingDetail.Seat.SeatNo</td>
+                        </tr>
+                        <tr>
+                            <td>Class: </td>
+                            <td>@Model.BookingDetail.Seat.Coach.Class.Name</td>
+                        </tr>
+                        <tr>
+                            <td>Price: </td>
+                            <td>@Model.BookingDetail.Price USD</td>
+                        </tr>
+                        <tr>
+                            <td>Status:</td>
+                            <td>
+                                @if(DateTime.Now < Model.Schedule.Arrival){
+                                    <span class="text-uppercase text-success fw-bold" style="font-size:14px">Valid</span>
+                                }
+                                else{
+                                    <span class="text-uppercase text-danger fw-bold" style="font-size:14px">expired</span>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <h3 class="text-secondary text-uppercase text-center mt-5">Not found Ticket</h3>
+            }
+        </div>
+    </div>
+</div>
+
