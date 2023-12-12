@@ -14,7 +14,7 @@ namespace Railway_Group01.Controllers.Admin
         {
             this.ctx = ctx;
         }
-		public async Task<IActionResult> CoachList(int page = 1, int pageSize = 30)
+		public async Task<IActionResult> CoachList(int page = 1, int pageSize = 10)
 		{
 			var totalItemCount = await ctx.Coaches.CountAsync(); // Đếm tổng số mục
 			var coach = await ctx.Coaches!

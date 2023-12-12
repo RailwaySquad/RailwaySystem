@@ -300,7 +300,7 @@
 								<table class="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
 									<thead class="bg-light">
 										<tr>
-											<th class="colerth">@counter</th>
+											<th class="colerth">No</th>
 											<th class="colerth">Payment Id</th>
 											<th class="colerth">Sender</th>
 											<th class="colerth">Receiver</th>
@@ -309,7 +309,6 @@
 											<th class="colerth">Create At</th>
 											<th class="colerth">Booking Id</th>
 											<th class="colerth">Cancelling Id</th>
-											<th class="colerth">Detail</th>
 										</tr>
 									</thead>								
 									<tbody>
@@ -317,10 +316,9 @@
 										{
 											<tr>
 												<td>
-													@item.Id
+													@counter
 												</td>
 												<td>@item.PaymentId</td>
-												<td>@item.CreatedAt</td>
 												<td>@item.Sender</td>
 												<td>@item.Receiver</td>
 												<td>@item.Amount</td>
@@ -328,19 +326,14 @@
 												<td>@item.CreatedAt</td>
 												<td>@item.Booking.Id</td>
 												<td>
-													@if(item.Cancelling.Id != null)
+													@if (@item.Cancelling == null)
 													{
-														@item.Cancelling.Id
+														<span>Null</span>
 													}
 													else
 													{
-														<p>Null</p>
+														@item.Cancelling.Id
 													}
-												</td>
-												<td>
-													<a href="@Url.Action("TransactionDetail", new {id = item.Id})" class="text-reset" >
-														<i class="fa-solid fa-circle-info"></i>
-													</a>
 												</td>
 											</tr>
 											counter++;

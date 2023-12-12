@@ -46,12 +46,23 @@ namespace Railway_Group01.Controllers.Admin
 		[HttpPost]
 		public async Task<IActionResult> CreateRouteDetail(RouteDetailDTO routeDetailDTO)
 		{
-			if (ModelState.IsValid)
-			{
+			// Check if the combination of DepartureStationId, ArrivalStationId, and RouteId already exists
+			var existingRouteDetail = await ctx.RouteDetails
+				.FirstOrDefaultAsync(r =>
+					r.DepartureStationId == routeDetailDTO.DepartureStationId &&
+					r.ArrivalStationId == routeDetailDTO.ArrivalStationId &&
+					r.RouteId == routeDetailDTO.RouteId);
 
-				var routeDetail = new RouteDetail()
+			if (existingRouteDetail != null)
+			{
+				ModelState.AddModelError("", "RouteDetail with the same combination already exists.");
+			}
+			else if (ModelState.IsValid)
+			{
+				// Create new RouteDetail if the model is valid and the combination doesn't exist
+				var routeDetail = new RouteDetail
 				{
-					DepartureStationId= routeDetailDTO.DepartureStationId,
+					DepartureStationId = routeDetailDTO.DepartureStationId,
 					ArrivalStationId = routeDetailDTO.ArrivalStationId,
 					RouteId = routeDetailDTO.RouteId,
 					Distance = routeDetailDTO.Distance,
@@ -64,12 +75,14 @@ namespace Railway_Group01.Controllers.Admin
 				TempData["SuccessMessage"] = "RouteDetail Added successfully.";
 				return RedirectToAction("RouteDetailList");
 			}
+
 			// Đặt ViewData ở đây để giữ nguyên dữ liệu khi có lỗi
 			var listStation = await ctx.Stations!.ToListAsync();
 			ViewData["liststation"] = listStation;
 
 			var listRoute = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
 			ViewData["listroute"] = listRoute;
+
 			return View(routeDetailDTO);
 		}
 		public async Task<IActionResult> EditRouteDetail(int id)

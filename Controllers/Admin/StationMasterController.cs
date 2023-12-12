@@ -37,15 +37,25 @@ namespace Railway_Group01.Controllers.Admin
 		[HttpPost]
 		public async Task<IActionResult> CreateStation(Station station)
 		{
-			if(ModelState.IsValid)
+			if (ModelState.IsValid)
 			{
+				// Check if a station with the same code already exists
+				bool stationExists = await ctx.Stations.AnyAsync(s => s.Code == station.Code);
 
+				if (stationExists)
+				{
+					ModelState.AddModelError("Code", "Station with this code already exists.");
+					return View(station);
+				}
+
+				// If the station doesn't exist, proceed with adding it to the database
 				ctx.Stations!.Add(station);
 				await ctx.SaveChangesAsync();
-                TempData["SuccessMessage"] = "Station added successfully.";
-                return RedirectToAction("StationMaster");
+				TempData["SuccessMessage"] = "Station added successfully.";
+				return RedirectToAction("StationMaster");
 			}
-			return View();
+
+			return View(station);
 		}
 
 		public async Task<IActionResult> EditStation(int id)

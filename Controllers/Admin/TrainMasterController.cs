@@ -43,19 +43,32 @@ namespace Railway_Group01.Controllers.Admin
 		{
 			if (ModelState.IsValid)
 			{
+				// Check if a train with the same code already exists
+				bool trainExists = await ctx.Trains.AnyAsync(t => t.Code == trainDTO.Code);
+
+				if (trainExists)
+				{
+					ModelState.AddModelError("Code", "Train with this code already exists.");
+					var listType = await ctx.TrainTypes.ToListAsync();
+					ViewData["listType"] = listType;
+					return View(trainDTO);
+				}
+
+				// If the train doesn't exist, proceed with adding it to the database
 				var train = new Train()
 				{
 					Code = trainDTO.Code,
 					TypeCode = trainDTO.TypeCode,
 					IsRunning = trainDTO.IsRunning
 				};
-				ctx.Trains!.Add(train);
+				ctx.Trains.Add(train);
 				await ctx.SaveChangesAsync();
 				TempData["SuccessMessage"] = "Train Added successfully.";
 				return RedirectToAction("TrainMaster");
 			}
-			var listType = await ctx.TrainTypes!.ToListAsync();
-			ViewData["listType"] = listType;
+
+			var listTypeForView = await ctx.TrainTypes.ToListAsync();
+			ViewData["listType"] = listTypeForView;
 			return View(trainDTO);
 		}
 		public async Task<IActionResult> EditTrain(string id)
