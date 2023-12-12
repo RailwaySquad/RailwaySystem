@@ -329,7 +329,15 @@
 		</div>
 	</main>
 </div>
-
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		// Kiểm tra nếu có thông báo lỗi, hiển thị alert
+		var errorMessage = "@ViewBag.ErrorMessage";
+		if (errorMessage !== "") {
+			alert(errorMessage);
+		}
+	});
+</script>
 <partial name="_AdminFooter" />
 
 

@@ -17,20 +17,41 @@ namespace Railway_Group01.Controllers.Admin
 		{
 			this.ctx = ctx;
 		}
-		public async Task<IActionResult> TrainSchedule()
-		{
+        public async Task<IActionResult> TrainSchedule(string date = null)
+        {
+            string selectedMonth;
 
-			var schedule = await ctx.Schedules!
-				.Where(s=>s.Departure.Month == DateTime.Now.Month
-				&& s.Departure.Year == DateTime.Now.Year)
-				.Include(s=>s.Train)
-				.Include(s=>s.Route.StartStation)
-                .Include(s=>s.Route.EndStation)
+            // Nếu date được cung cấp, sử dụng giá trị mới
+            if (!string.IsNullOrEmpty(date))
+            {
+                selectedMonth = date;
+                // Lưu giá trị mới vào ViewBag để sử dụng cho lần gọi sau
+                ViewBag.SelectedMonth = selectedMonth;
+            }
+            else if (!string.IsNullOrEmpty(ViewBag.SelectedMonth))
+            {
+                selectedMonth = ViewBag.SelectedMonth;
+            }
+            else
+            {
+                // Sử dụng giá trị mặc định là tháng và năm hiện tại
+                selectedMonth = DateTime.Now.ToString("yyyy-MM");
+            }
+
+            var schedule = await ctx.Schedules!
+                .Where(s => s.Departure.Month == DateTime.Now.Month
+                    && s.Departure.Year == DateTime.Now.Year)
+                .Include(s => s.Train)
+                .Include(s => s.Route.StartStation)
+                .Include(s => s.Route.EndStation)
                 .OrderBy(s => s.Departure)
                 .ToListAsync();
-            
+
+            // Truyền giá trị selectedMonth đến view
+            ViewBag.SelectedMonth = selectedMonth;
+
             return View(schedule);
-		}
+        }
         [HttpPost]
         public async Task<IActionResult> SearchByDatetime(string date)
         {
@@ -44,6 +65,9 @@ namespace Railway_Group01.Controllers.Admin
                 .Include(s => s.Route.EndStation)
                 .OrderBy(s => s.Departure)
                 .ToListAsync();
+
+            // Lưu giá trị date vào ViewBag để sử dụng trong lần gọi sau của hàm TrainSchedule
+            ViewBag.SelectedMonth = date;
 
             return View("TrainSchedule", schedule);
         }
@@ -59,31 +83,58 @@ namespace Railway_Group01.Controllers.Admin
 			return View();
 }
 		[HttpPost]
-		public async Task<IActionResult> CreateTrainSchedule(ScheduleDTO scheduleDTO)
-		{
-			if (ModelState.IsValid)
-			{
-				var schedule = new Schedule()
-				{
-					Name = scheduleDTO.Name,
-					Departure = scheduleDTO.Departure,
-					Arrival = scheduleDTO.Arrival,
-					IsFinished = scheduleDTO.IsFinished,
-					TrainCode = scheduleDTO.TrainCode,
-					RouteId = scheduleDTO.RouteId
-				};
-				ctx.Schedules!.Add(schedule);
-				await ctx.SaveChangesAsync();
-				TempData["SuccessMessage"] = "Schedule Added successfully.";
-				return RedirectToAction("TrainSchedule");
-			}
-			var listTrain = await ctx.Trains!.ToListAsync();
-			ViewData["listTrain"] = listTrain;
+        public async Task<IActionResult> CreateTrainSchedule(ScheduleDTO scheduleDTO)
+        {
+            // Kiểm tra xem TrainCode đã có lịch trình trong ngày hôm đó chưa
+            var existingSchedule = await ctx.Schedules
+                .FirstOrDefaultAsync(s => s.TrainCode == scheduleDTO.TrainCode
+                    && s.Departure.Date == scheduleDTO.Departure.Date);
 
-			var listRoute = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
-			ViewData["listroute"] = listRoute;
-			return View(scheduleDTO);
-		}
+            if (existingSchedule != null)
+            {
+                // Nếu đã có lịch trình, gán giá trị thông báo lỗi cho biến errorMessage
+                ViewBag.ErrorMessage = $"Train {scheduleDTO.TrainCode} has a schedule for the day {scheduleDTO.Departure.Date}";
+            }
+
+            // Kiểm tra Departure không được nhỏ hơn thời gian hiện tại
+            if (scheduleDTO.Departure <= DateTime.Now)
+            {
+                ModelState.AddModelError("Departure", "Departure time must not be earlier than the current time.");
+            }
+
+            // Kiểm tra Arrival không được nhỏ hơn Departure
+            if (scheduleDTO.Arrival < scheduleDTO.Departure)
+            {
+                ModelState.AddModelError("Arrival", "Arrival time must not be earlier than Departure time.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                var schedule = new Schedule()
+                {
+                    Name = scheduleDTO.Name,
+                    Departure = scheduleDTO.Departure,
+                    Arrival = scheduleDTO.Arrival,
+                    IsFinished = scheduleDTO.IsFinished,
+                    TrainCode = scheduleDTO.TrainCode,
+                    RouteId = scheduleDTO.RouteId
+                };
+
+                ctx.Schedules.Add(schedule);
+                await ctx.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Schedule Added successfully.";
+                return RedirectToAction("TrainSchedule");
+            }
+
+            // Nếu có lỗi, load lại danh sách Train và Route
+            var listTrain = await ctx.Trains!.ToListAsync();
+            ViewData["listTrain"] = listTrain;
+
+            var listRoute = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
+            ViewData["listroute"] = listRoute;
+
+            return View(scheduleDTO);
+        }
 		public async Task<IActionResult> EditTrainSchedule(int id)
 		{
 			var listTrain = await ctx.Trains!.ToListAsync();
@@ -110,21 +161,10 @@ namespace Railway_Group01.Controllers.Admin
 		public async Task<IActionResult> EditStatusSchedule(int id, bool isfinished)
 		{
 			var schedule = await ctx.Schedules!
-				.Include(s=>s.Train)
-				.ThenInclude(c=>c.Coaches)
-				.ThenInclude(s=>s.Seats)
+
 				.SingleOrDefaultAsync(s=>s.Id==id);
 			schedule.IsFinished = isfinished;
-            if (isfinished)
-            {
-                foreach (var coach in schedule.Train.Coaches)
-                {
-                    foreach (var seat in coach.Seats)
-                    {
-                        seat.Available = false;
-                    }
-                }
-            }
+
             ctx.Entry(schedule).State= EntityState.Modified;
 			await ctx.SaveChangesAsync();
 			return RedirectToAction("DetailDate",schedule);

@@ -27,5 +27,7 @@ namespace Railway_Group01.Models
 		[Required(ErrorMessage = "Route is required.")]
 		public int RouteId { get; set; }
 
-	}
+        public List<int>? BookedList { get; set; }
+
+    }
 }

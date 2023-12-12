@@ -63,8 +63,9 @@
                         <div>
                             <label for="monthSelect">Select </label>
                         </div>
-                        <div>                           
-                            <input class="form-select" id="monthInput" type="month" name="date"  onchange="submitDateTimeForm()">
+                        <div>
+                            <!-- Sử dụng ViewBag.SelectedMonth nếu có giá trị, ngược lại sử dụng giá trị mặc định -->
+                            <input class="form-select" id="monthInput" type="month" name="date" value="@(!string.IsNullOrEmpty(ViewBag.SelectedMonth) ? ViewBag.SelectedMonth : DateTime.Now.ToString("yyyy-MM"))" onchange="submitDateTimeForm()">
                         </div>
                     </form>
                 </div>
@@ -226,20 +227,19 @@
 
 </div>
 <script>
-    // Lấy phần tử input month
     const monthInput = document.getElementById('monthInput');
 
-    // Kiểm tra xem local storage có giá trị hay không
-    const savedMonth = localStorage.getItem('selectedMonth');
+    // Kiểm tra xem có giá trị trong ViewBag.SelectedMonth hay không
+    const savedMonth = "@(ViewBag.SelectedMonth)";
 
-    // Nếu có giá trị, đặt giá trị cho input month
+    // Nếu có giá trị, đặt giá trị cho input month và lưu vào localStorage
     if (savedMonth) {
         monthInput.value = savedMonth;
+        localStorage.setItem('selectedMonth', savedMonth);
     }
 
-    // Lắng nghe sự kiện khi giá trị thay đổi
+    // Lắng nghe sự kiện khi giá trị thay đổi và cập nhật localStorage
     monthInput.addEventListener('change', function () {
-        // Lưu giá trị vào local storage khi giá trị thay đổi
         localStorage.setItem('selectedMonth', this.value);
     });
 	function confirmDelete() {

@@ -6,11 +6,79 @@
 }
 
 <div class="row">
-    <div class="col-md-6">
-        <p>View all your booking history here.</p>
-        <p>
-            <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Delete</a>
-        </p>
+    <div class="col">
+        <section class="mb-3">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @if (Model.UserBookingHistory != null && Model.UserBookingHistory.Count > 0)
+            {
+                foreach (var booking in Model.UserBookingHistory)
+                {
+                    var isPay = booking.Transactions!.Any(t => t.IsDone);
+
+                    <h6><span class="text-orange ">BOOKING ID @booking.Id</span></h6>
+                    <p>Created: @booking.CreatedAt | Transaction: @isPay</p>
+                    <table class="table table-bordered mb-3">
+                        <thead>
+                            <tr>
+                                <th class="text-center">No</th>
+                                <th class="text-center">Passenger detail</th>
+                                <th class="text-center">Ticket detail</th>
+                                <th class="text-center">Price <br /> ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (booking != null && booking.BookingDetails != null && booking.BookingDetails.Count > 0)
+                            {
+                                var cnt = 1;
+                                @foreach (var item in booking.BookingDetails)
+                                {
+                                    <tr>
+                                        <td class="text-center">@(cnt++)</td>
+                                        <td>
+                                            <p>Full name: @item.Passenger?.Name</p>
+                                            <p>Age: @item.Passenger?.PassengerType?.Name</p>
+                                            <p>Citizen Number: @item.Passenger?.ID</p>
+                                            <p>Birthday: @item.Passenger?.Birthday.Date.ToString("MM/dd/yyyy")</p>
+                                        </td>
+                                        <td class="small text-center">
+                                            @item.Schedule?.Name <br />
+                                            @item.Trip <br />
+                                            @item.Schedule?.Departure<br />
+                                            Coach: @item.Seat?.Coach?.CoachNo, Cabin @item.Seat?.CompartmentNo, Seat @item.Seat?.SeatNo<br />
+                                            Class: @item.Seat?.Coach?.Class?.Name<br />
+                                        </td>
+                                        <td class="text-center">
+                                            @item.Price.ToString("0.00")
+                                        </td>
+                                    </tr>
+                                }
+                                <tr class="table-info">
+
+                                    <td colspan="3">
+                                        <div class="d-flex justify-content-between">
+                                            @if (!isPay)
+                                            {
+                                                <div>
+                                                    <a asp-controller="Booking" asp-action="MakePayment" asp-route-id="@booking.Id" class="btn btn-orange">Continue payment</a>
+                                                    <form method="post" class="d-inline-block ms-2">
+                                                        <input type="hidden" name="id" asp-for="@booking.Id" />
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+
+                                                    </form>
+                                                </div>
+                                            }
+                                            <p class="text-end fw-bold">Total</p>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">@(booking?.BookingDetails?.Sum(b => b.Price).ToString("0.00"))</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            }
+        </section>
     </div>
 </div>
 

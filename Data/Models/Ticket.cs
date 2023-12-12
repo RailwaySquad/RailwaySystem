@@ -21,8 +21,6 @@ namespace Railway_Group01.Data
 
         [StringLength(20, ErrorMessage = "Passenger ID must not exceed 20 characters.")]
         public string? PassengerID { get; set; }
-
-        [Required(ErrorMessage = "Passenger is required.")]
         public Passenger? Passenger { get; set; }
 
         public Cancelling? Cancelling { get; set; }

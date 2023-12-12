@@ -1,6 +1,21 @@
 ﻿@model IEnumerable<Railway_Group01.Data.Train>
 @{
 	Layout = null;
+	var trains = ViewBag.Trains as IEnumerable<Railway_Group01.Data.Train>;
+	var page = ViewBag.Page;
+	var pageSize = ViewBag.PageSize;
+	var totalItemCount = ViewBag.TotalItemCount;
+
+	var pageCount = (int)Math.Ceiling((totalItemCount ?? 0) / (double)(pageSize ?? 1));
+	var visiblePages = 6;
+	var halfVisiblePages = visiblePages / 2;
+
+	var startPage = Math.Max(1, Convert.ToInt32(page - halfVisiblePages));
+	var endPage = Math.Min(startPage + visiblePages - 1, pageCount);
+
+	var hasPreviousPage = page > 1;
+	var hasNextPage = page < pageCount;
+	int counter = ViewBag.DisplayCounter != null ? (int)ViewBag.DisplayCounter : 1;
 }
 <style>
 	.name {
@@ -13,7 +28,16 @@
 		background-color: #EC5B24 !important;
 		color: white !important;
 	}
-
+	.searchButton {
+		background-color: white;
+		width: 120px;
+		border-radius: 6px;
+		position: relative;
+		right: 70px;
+		border: 0px;
+		height: 1px;
+		top: 13px;
+	}
 </style>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -280,18 +304,21 @@
 							<div class="row justify-content-between">
 								<!-- form -->
 								<div class="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
-									<form class="d-flex" role="search">
-										<input class="form-control" type="search" placeholder="Search Trains" aria-label="Search" />
+									<form class="d-flex" asp-action="SearchTrain" method="get">
+										<input class="form-control" name="name" type="text" placeholder="Search Train" aria-label="Search" />
+										<button type="submit" class="searchButton"><i class="fas fa-search"></i></button>
 									</form>
 								</div>
 								<!-- select option -->
 								<div class="col-lg-2 col-md-4 col-12">
-									<select class="form-select">
-										<option selected>Status</option>
-										<option value="1">Active</option>
-										<option value="2">Deactive</option>
-										<option value="3">Draft</option>
-									</select>
+									<form asp-action="filterStatusTrains" id="fiterForm">
+										<select class="form-select" name="status" onchange="submitFilterForm()">
+											<option selected>Status</option>
+											<option value="True">Finished</option>
+											<option value="False">Unfinished</option>
+										</select>
+									</form>
+									
 								</div>
 							</div>
 						</div>
@@ -308,6 +335,7 @@
 								<table class="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
 									<thead class="bg-light">
 										<tr>
+											<th class="colerth">No</th>
 											<th class="colerth">Train Code</th>
 											<th class="colerth">Status</th>
 											<th class="colerth">Type</th>
@@ -318,9 +346,17 @@
 										@foreach(var item in Model)
 										{										
 											<tr>
+												<td>@counter</td>
 												<td>@item.Code</td>
 												<td>
-													<span class="badge bg-light-primary text-dark-primary">@item.IsRunning</span>
+													@if(@item.IsRunning == true)
+													{
+														<span class="badge bg-light-primary text-dark-primary">Running</span>
+													}
+													else
+													{
+														<span class="badge bg-light-danger text-dark-danger">Stop</span>
+													}
 												</td>
 												<td>@item.TypeCode</td>
 												<td>
@@ -346,7 +382,8 @@
 														</ul>
 													</div>
 												</td>
-											</tr>									
+											</tr>
+											counter++;
 										}
 									</tbody>
 								</table>
@@ -356,22 +393,6 @@
 							<span> @Model.Count() Items</span>
 							<nav class="mt-2 mt-md-0">
 								<ul class="pagination mb-0">
-									@{
-										var trains = ViewBag.Trains as IEnumerable<Railway_Group01.Data.Train>;
-										var page = ViewBag.Page;
-										var pageSize = ViewBag.PageSize;
-										var totalItemCount = ViewBag.TotalItemCount;
-
-										var pageCount = (int)Math.Ceiling(totalItemCount / (double)pageSize);
-										var visiblePages = 6;
-										var halfVisiblePages = visiblePages / 2;
-
-										var startPage = Math.Max(1, page - halfVisiblePages);
-										var endPage = Math.Min(startPage + visiblePages - 1, pageCount);
-
-										var hasPreviousPage = page > 1;
-										var hasNextPage = page < pageCount;
-									}
 
 									<nav aria-label="Page navigation">
 										<ul class="pagination">
@@ -414,6 +435,9 @@
 	function confirmDelete() {
 		var result = confirm("Do you want to delete?");
 		return result;
+	}
+	function submitFilterForm() {
+		document.getElementById("fiterForm").submit();
 	}
 </script>
 <partial name="_AdminFooter" />

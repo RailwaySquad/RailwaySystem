@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Railway_Group01.Data.Schedule>
 @{
     Layout = null;
-
+    var routeId = @Model.FirstOrDefault()?.Route?.Id ?? 0;
 }
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -9,6 +9,14 @@
 <meta content="Codescandy" name="author">
 <title>Schedule Detail</title>
 <!-- Favicon icon-->
+<style>
+
+
+    .colerth {
+        background-color: #EC5B24 !important;
+        color: white !important;
+    }
+</style>
 
 <partial name="_AdminHeader" />
 <div class="main-wrapper">
@@ -286,31 +294,30 @@
                                 <table class="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
                                     <thead class="bg-light">
                                         <tr>
-                                            <th>No</th>
-                                            <th>Train Code</th>
-                                            <th>Route Id</th>
-                                            <th>Departure</th>
-                                            <th>Arrival</th>
-                                            <th>Schedule Finished</th>
-                                            <th>Detail</th>
-                                            <th>Action</th>
+                                            <th class="colerth">No</th>
+                                            <th class="colerth">Train Code</th>
+                                            <th class="colerth">Route Id</th>
+                                            <th class="colerth">Departure</th>
+                                            <th class="colerth">Arrival</th>
+                                            <th class="colerth">Schedule Finished</th>
+                                            <th class="colerth">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var Departure in Model)
+                                        @foreach (var item in Model)
                                         {
-                                            @if(Departure.IsFinished == false)
+                                            @if(item.IsFinished == false)
                                             {
                                                 <tr>
                                                     <td>
-                                                        @Departure.Id
+                                                        @item.Id
                                                     </td>
-                                                    <td>@Departure.Train.Code</td>
-                                                    <td>@Departure.Route.Id</td>
-                                                    <td>@Departure.Departure</td>
-                                                    <td>@Departure.Arrival</td>
+                                                    <td>@item.Train.Code</td>
+                                                    <td>@item.Route.Id (@item.Route.StartStation.Name to @item.Route.EndStation.Name)</td>
+                                                    <td>@item.Departure</td>
+                                                    <td>@item.Arrival</td>
                                                     <td>
-                                                        @if (Departure.IsFinished == true)
+                                                        @if (item.IsFinished == true)
                                                         {
                                                             <span class="badge bg-light-primary text-dark-primary">Finished</span>
                                                         }
@@ -321,7 +328,7 @@
                                                                     <button class="badge bg-light-danger text-dark-danger">Unfinished</button>
                                                                 </a>
                                                                 <ul class="dropdown-menu">
-                                                                    <form asp-action="EditStatusSchedule" asp-route-id="@Departure.Id" method="post" onsubmit="return confirmEditStatus()">
+                                                                    <form asp-action="EditStatusSchedule" asp-route-id="@item.Id" method="post" onsubmit="return confirmEditStatus()">
                                                                         <input type="hidden" name="isfinished" value="True" />
                                                                         <button class="dropdown-item" type="submit" >
                                                                             <span style="width:80px;height:24px;font-size:12px;" class="badge bg-light-primary text-dark-primary">Finished</span>
@@ -332,24 +339,19 @@
                                                         }
                                                     </td>
                                                     <td>
-                                                        <a href="/Schedule/TrainScheduleDetail" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i class="fa-solid fa-circle-info"></i>
-                                                        </a>
-                                                    </td>
-                                                    <td>
                                                         <div class="dropdown">
                                                             <a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
                                                                 <i class="bi bi-three-dots-vertical"></i>
                                                             </a>
                                                             <ul class="dropdown-menu">
-                                                                <form asp-action="DeleteTrainSchedule" asp-route-id="@Departure.Id" onsubmit="return confirmDelete()">
+                                                                <form asp-action="DeleteTrainSchedule" asp-route-id="@item.Id" onsubmit="return confirmDelete()">
                                                                     <button class="dropdown-item" type="submit">
                                                                         <i class="bi bi-trash me-3"></i>
                                                                         Delete
                                                                     </button>
                                                                 </form>
                                                                 <li>
-                                                                    <a class="dropdown-item" href="@Url.Action("EditTrainSchedule", new {id = Departure.Id})">
+                                                                    <a class="dropdown-item" href="@Url.Action("EditTrainSchedule", new {id = item.Id})">
                                                                         <i class="bi bi-pencil-square me-3"></i>
                                                                         Edit
                                                                     </a>
@@ -363,14 +365,14 @@
                                             {
                                                 <tr>
                                                     <td>
-                                                        @Departure.Id
+                                                        @item.Id
                                                     </td>
-                                                    <td>@Departure.Train.Code</td>
-                                                    <td>@Departure.Route.Id</td>
-                                                    <td>@Departure.Departure</td>
-                                                    <td>@Departure.Arrival</td>
+                                                    <td>@item.Train.Code</td>
+                                                    <td>@item.Route.Id (@item.Route.StartStation.Name to @item.Route.EndStation.Name)</td>
+                                                    <td>@item.Departure</td>
+                                                    <td>@item.Arrival</td>
                                                     <td>
-                                                        @if (Departure.IsFinished == true)
+                                                        @if (item.IsFinished == true)
                                                         {
                                                             <span class="badge bg-light-primary text-dark-primary">Finished</span>
                                                         }
@@ -379,11 +381,7 @@
                                                             <span class="badge bg-light-danger text-dark-danger">Unfinished</span>
                                                         }
                                                     </td>
-                                                    <td>
-                                                        <a href="/Schedule/TrainScheduleDetail" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i class="fa-solid fa-circle-info"></i>
-                                                        </a>
-                                                    </td>
+
 
                                                 </tr>
                                             }
@@ -408,5 +406,6 @@
         var result = confirm("Are you sure the schedule is finished?");
         return result;
     }
+
 </script>
 <partial name="_AdminFooter" />

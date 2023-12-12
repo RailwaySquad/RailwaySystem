@@ -22,47 +22,50 @@ window.theme = theme,
     $(function () {
         // Biểu đồ không được khởi tạo ban đầu
         var myChart = null;
-        var _chartLabels = ['Label 1', 'Label 2', 'Label 3'];
-        var _total = [100, 150, 200];
-        var myChart;
+
         // Hàm khởi tạo biểu đồ
         function initializeChart(BookingDate, total) {
             // Chuyển đổi chuỗi ngày thành đối tượng Date
             BookingDate = BookingDate.map(dateString => new Date(dateString));
+
+            // Sắp xếp dữ liệu theo thời gian
+            var sortedData = BookingDate.map((date, index) => ({ date, total: total[index] }))
+                .sort((a, b) => a.date - b.date);
+
             // Chuyển đối tượng Date thành tên tháng
-            var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            var monthLabels = BookingDate.map(date => monthNames[date.getMonth()]);
+            var monthLabels = sortedData.map(item => item.date.toLocaleString('en-us', { month: 'short' }));
+
             var options = {
                 series: [{
-                    name: "Total Income", data: total
+                    name: "Total Income", data: sortedData.map(item => item.total)
                 }],
                 labels: monthLabels,
                 chart: {
-                    height: 350, type: "area", toolbar: { show: !1 }
+                    height: 350, type: "area", toolbar: { show: false }
                 },
-                dataLabels: { enabled: !1 },
+                dataLabels: { enabled: false },
                 markers: { size: 5, hover: { size: 6, sizeOffset: 3 } },
                 colors: ["#0aad0a", "#ffc107"],
                 stroke: { curve: "smooth", width: 2 },
                 grid: { borderColor: window.theme.gray300 },
                 xaxis: {
                     labels: {
-                        show: !0, align: "right", minWidth: 0, maxWidth: 160, style: {
+                        show: true, align: "right", minWidth: 0, maxWidth: 160, style: {
                             fontSize: "12px", fontWeight: 400, colors: [window.theme.gray600],
                             fontFamily: '"Inter", "sans-serif"'
                         }
                     },
-                    axisBorder: { show: !0, color: window.theme.gray300, height: 1, width: "100%", offsetX: 0, offsetY: 0 },
-                    axisTicks: { show: !0, borderType: "solid", color: window.theme.gray300, height: 6, offsetX: 0, offsetY: 0 }
+                    axisBorder: { show: true, color: window.theme.gray300, height: 1, width: "100%", offsetX: 0, offsetY: 0 },
+                    axisTicks: { show: true, borderType: "solid", color: window.theme.gray300, height: 6, offsetX: 0, offsetY: 0 }
                 },
                 legend: {
                     position: "top", fontWeight: 600, color: window.theme.gray600, markers: { width: 8, height: 8, strokeWidth: 0, strokeColor: "#fff", fillColors: void 0, radius: 12, customHTML: void 0, onClick: void 0, offsetX: 0, offsetY: 0 },
-                    labels: { colors: window.theme.gray600, useSeriesColors: !1 }
+                    labels: { colors: window.theme.gray600, useSeriesColors: false }
                 },
                 yaxis: {
                     labels: {
                         formatter: function (e) { return e + "k" },
-                        show: !0, align: "right", minWidth: 0, maxWidth: 160, style: {
+                        show: true, align: "right", minWidth: 0, maxWidth: 160, style: {
                             fontSize: "12px", fontWeight: 400, colors: window.theme.gray600, fontFamily: '"Inter", "sans-serif"'
                         }
                     }
@@ -76,8 +79,8 @@ window.theme = theme,
                 myChart.render();
             } else {
                 // Nếu đã khởi tạo, cập nhật dữ liệu và tùy chọn
-                myChart.updateSeries([{ data: total }]);
-                myChart.updateOptions({ xaxis: { categories: BookingDate } });
+                myChart.updateSeries([{ data: sortedData.map(item => item.total) }]);
+                myChart.updateOptions({ xaxis: { categories: monthLabels } });
             }
         }
 
@@ -94,7 +97,6 @@ window.theme = theme,
             url: "/DashBoard/ShowData",
             data: { year: selectedYear },
             success: function (data) {
-
                 if (data) {
                     var _data = data;
                     var _chartLabels = _data[0];

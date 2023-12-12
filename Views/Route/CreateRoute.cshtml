@@ -283,7 +283,7 @@
 											{
 												@foreach (var station in list)
 												{
-													<option value="@station.Id">@station.Code</option>
+													<option value="@station.Id">@station.Name</option>
 												}
 											}
 										</select>
@@ -296,7 +296,7 @@
 											{
 												@foreach (var station in list)
 												{
-													<option value="@station.Id">@station.Code</option>
+													<option value="@station.Id">@station.Name</option>
 												}
 											}
 										</select>
@@ -318,7 +318,17 @@
 									</div>
 								</div>
 							</form>
+							@if (!ViewData.ModelState.IsValid)
+							{
+								<div class="alert alert-danger" role="alert">
+									@foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+									{
+										<span>@error.ErrorMessage</span>
 
+										<br />
+									}
+								</div>
+							}
 						</div>
 					</div>
 				</div>

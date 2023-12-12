@@ -21,6 +21,7 @@ namespace Railway_Group01.Controllers.Admin
 		{
             var totalItemCount = await ctx.RouteDetails.CountAsync();
             var route = await ctx.RouteDetails!
+				.OrderByDescending(r => r.Id)
 				.Include(r=>r.ArrivalStation)
 				.Include(r=>r.DepartureStation)
 				.Include(r=>r.Route.StartStation)
@@ -31,7 +32,8 @@ namespace Railway_Group01.Controllers.Admin
             ViewBag.Page = page;
             ViewBag.PageSize = pageSize;
             ViewBag.TotalItemCount = totalItemCount;
-            return View(route);
+			ViewBag.counter = (page - 1) * pageSize + 1;
+			return View(route);
 		}
 		public async Task<IActionResult> CreateRouteDetail()
 		{
@@ -44,12 +46,23 @@ namespace Railway_Group01.Controllers.Admin
 		[HttpPost]
 		public async Task<IActionResult> CreateRouteDetail(RouteDetailDTO routeDetailDTO)
 		{
-			if (ModelState.IsValid)
-			{
+			// Check if the combination of DepartureStationId, ArrivalStationId, and RouteId already exists
+			var existingRouteDetail = await ctx.RouteDetails
+				.FirstOrDefaultAsync(r =>
+					r.DepartureStationId == routeDetailDTO.DepartureStationId &&
+					r.ArrivalStationId == routeDetailDTO.ArrivalStationId &&
+					r.RouteId == routeDetailDTO.RouteId);
 
-				var routeDetail = new RouteDetail()
+			if (existingRouteDetail != null)
+			{
+				ModelState.AddModelError("", "RouteDetail with the same combination already exists.");
+			}
+			else if (ModelState.IsValid)
+			{
+				// Create new RouteDetail if the model is valid and the combination doesn't exist
+				var routeDetail = new RouteDetail
 				{
-					DepartureStationId= routeDetailDTO.DepartureStationId,
+					DepartureStationId = routeDetailDTO.DepartureStationId,
 					ArrivalStationId = routeDetailDTO.ArrivalStationId,
 					RouteId = routeDetailDTO.RouteId,
 					Distance = routeDetailDTO.Distance,
@@ -62,12 +75,14 @@ namespace Railway_Group01.Controllers.Admin
 				TempData["SuccessMessage"] = "RouteDetail Added successfully.";
 				return RedirectToAction("RouteDetailList");
 			}
+
 			// Đặt ViewData ở đây để giữ nguyên dữ liệu khi có lỗi
 			var listStation = await ctx.Stations!.ToListAsync();
 			ViewData["liststation"] = listStation;
 
 			var listRoute = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
 			ViewData["listroute"] = listRoute;
+
 			return View(routeDetailDTO);
 		}
 		public async Task<IActionResult> EditRouteDetail(int id)
@@ -104,6 +119,26 @@ namespace Railway_Group01.Controllers.Admin
 			await ctx.SaveChangesAsync();
 			TempData["SuccessMessage"] = "RouteDetail Deleted successfully.";
 			return RedirectToAction("RouteDetailList");
+		}
+		public async Task<IActionResult> SearchRouteDetail(string start, string end)
+		{
+			IQueryable<RouteDetail> query = ctx.RouteDetails.Include(r => r.ArrivalStation)
+															 .Include(r => r.DepartureStation)
+															 .Include(r => r.Route.StartStation)
+															 .Include(r => r.Route.EndStation);
+
+			if (!string.IsNullOrEmpty(start))
+			{
+				query = query.Where(r => r.DepartureStation.Name.Contains(start));
+			}
+
+			if (!string.IsNullOrEmpty(end))
+			{
+				query = query.Where(r => r.ArrivalStation.Name.Contains(end));
+			}
+
+			var route = await query.ToListAsync();
+			return View("RouteDetailList", route);
 		}
 	}
 }
