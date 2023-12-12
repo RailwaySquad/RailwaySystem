@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "CONFIRM BOOKING INFORMATION";
+    Layout = "~/Views/Shared/_LayoutofTuong.cshtml";
+
+    var paypalLogo = "/images/paypalLogo.jpg";
+}
+
+<section class="bg-gradient-cus mb-3">
+    <div class="container">
+        <h1 class="text-white">@ViewData["Title"]</h1>
+        <div class="d-flex">
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Fill passenger information</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step checked"></span>
+                <p class="text-white text-center">Confirm information</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Make payment</p>
+            </div>
+            <div class="w-25 d-flex flex-column align-items-center">
+                <span class="step"></span>
+                <p class="text-white text-center">Finish</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+
+    <section class="mb-3">
+        <h6 class="text-orange">TICKET BOOKER INFORMATION</h6>
+        <div>
+            <p> - Full name: <span class="fw-bold">Tu</span></p>
+            <p> - Citizen number: <span class="fw-bold">056098002987</span></p>
+            <p> - Phone number: <span class="fw-bold">0878399145</span></p>
+            <p> - Email: <span>tuminhvo98@gmail.com</span></p>
+            <p> - Payment method: Online payment with PayPal</p>
+        </div>
+    </section>
+
+
+    <section class="mb-3">
+        <h6><span class="text-orange ">BOOKING DETAILS</span></h6>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">No</th>
+                    <th class="text-center">Ticket detail</th>
+                    <th class="text-center">Price <br /> ($)</th>
+                    <th class="text-center">Sub total<br />($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <p>Full name: Vo minh tu</p>
+                                <p>Age: Adult</p>
+                                <p>Citizen number: 056098002987</p>
+                                <p>Trip:</p>
+                            </td>
+                            <td class="text-center">
+                                900
+                            </td>
+                            <td class="text-center">901</td>
+                        </tr>
+                    }
+                <tr class="table-info">
+                    <td colspan="2"><p class="text-end fw-bold">Total</p></td>
+                    <td class="text-center">901</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <div class="d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-orange fw-bold">👈 Fill again 🔙</a>
+            <a asp-action="MakePayment" class="btn btn-orange fw-bold">⏭️ Confirm Information 👉</a>
+        </div>
+    </section>
+</div>
