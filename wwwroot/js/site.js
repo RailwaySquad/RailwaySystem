@@ -3,31 +3,44 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
+    const toastLive1 = document.getElementById("alertBsAdd");
+    const toastLive2 = document.getElementById("alertBsRm");
+    const toastBootstrapAdd = bootstrap.Toast.getOrCreateInstance(toastLive1);
+    const toastBootstrapRm = bootstrap.Toast.getOrCreateInstance(toastLive2);
     const listItemCart = (dataCart) => {
         let lis = "";
         if (!dataCart) {
             lis += `<li class="list-group-item ms-1 text-center">Emty</li>`;
             $(".countCart").text(0);
+            $("timer").hide();
         } else {
             dataCart.forEach((item, i) => {
-                lis += `<li class="list-group-item ms-1 d-flex flex-column">
-                                    <div class="row w-100">
-                                        <div class="col-10 ">
-                                        <p>Train: ${item.scheduleName}<br/>Trip: ${item.trip}<br/>Departure: ${item.startAt}<br/>${item.seatDetail}<br/>${item.coachClass}</p>
-                                        </div>
-                                        <div class="col-2">
-                                        <a class="text-danger" href="">
-                                            <i class="bi bi-trash3"></i>
-                                        </a>
-                                        </div>
-                                    </div></li>`;
+                lis += `<li class="list-group-item ms-1">
+                                    <table class="table table-borderless mb-0">
+                                        <tr><td>Train:</td><td>${item.scheduleName}</td></tr>
+                                        <tr><td>Trip:</td> <td class='fw-bold'>${item.trip}</td></tr>
+                                        <tr><td>Departure:</td><td>${item.startAt}</td></tr>
+                                        <tr><td colspan='2' class='fw-bold'>${item.seatDetail}</td></tr>
+                                        <tr><td colspan='2'>${item.coachClass}</td></tr>
+                                    </table></li>`;
             });
             $(".countCart").text(dataCart.length);
+            $("timer").show();
         }
         $(".list-cart").html(lis);
     };
+    
     $.get(window.location.origin + "/api/RailwayAjax/listcart", function (data) {
         listItemCart(data);
+        if (data != null) {
+            let selectSeat
+            data.forEach(ele => {
+                selectSeat = `[data-schedule="${ele.scheduleId}"][data-coach="${ele.coachId}"][data-seat="${ele.seat}"][data-cabin="${ele.cabin}"]`;
+                $(selectSeat).parent().removeClass("et-sit-avaiable");
+                $(selectSeat).parent().addClass("et-sit-buying");
+            });
+        }
+        
     })
     $(".sit-available").click(function () {
         let schedule = $(this).data("schedule");
@@ -43,20 +56,7 @@ $(document).ready(function () {
         let classCode = $(this).data("class");
         let urlAdd = window.location.origin + "/api/RailwayAjax/addcart";
         let urlRemove = window.location.origin + "/api/RailwayAjax/removeitem";
-        /*alert(`Schedule: ${schedule}\nCoach: ${coach}\nSeat :${seat}`);*/
-        console.log({
-            "scheduleId": schedule,
-            "coachId": coach,
-            "seat": seat,
-            "startAt": starttime,
-            "endAt": endtime,
-            "cabin": cabin,
-            "coachNo": coachNo,
-            "fromStation": from,
-            "toStation": to,
-            "coachClass": classCode,
-            "coachClassName": className 
-        });
+        
         if ($(this).parent().hasClass("et-sit-avaiable")) {
             $.ajax({
                 type: "POST",
@@ -82,7 +82,9 @@ $(document).ready(function () {
                 console.log("error");
             }).always(function () {
                 console.log("complete");
-            });;
+            });
+            toastBootstrapAdd.show();
+            
         } else {
             $.ajax({
                 type: "POST",
@@ -101,6 +103,7 @@ $(document).ready(function () {
             }).always(function () {
                 console.log("complete");
             });;
+            toastBootstrapRm.show();
         }
         $(this).parent().toggleClass("et-sit-avaiable");
         $(this).parent().toggleClass("et-sit-buying");
@@ -117,7 +120,8 @@ $(document).ready(function () {
                         element.parent().removeClass("et-sit-buying");
                         element.parent().addClass("et-sit-avaiable");
                     }
-                })
+                });
+                $("#timer").hide();
             },
             dataType: 'json'
         }).fail(function () {
@@ -137,4 +141,5 @@ $(document).ready(function () {
     jQuery('.train-coach, .train-coach2').click(function (e) {
         jQuery('.collapse').collapse('hide');
     });
+    
 });

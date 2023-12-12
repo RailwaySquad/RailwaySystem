@@ -17,10 +17,12 @@ namespace Railway_Group01.Data
         public DateTime Birthday { get; set; }
 
         [ForeignKey("TypeCode")]
-        public PassengerType PassengerType { get; set; }
+        public PassengerType? PassengerType { get; set; }
         public string? TypeCode { get; set; }
 
         public Ticket? Ticket { get; set; }
 
+        public BookingDetail? BookingDetail { get; set; }
+        public int BookingDetailId { get; set; }
     }
 }

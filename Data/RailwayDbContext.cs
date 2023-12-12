@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.CodeAnalysis.Emit;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using System.Reflection.Emit;
 
 namespace Railway_Group01.Data;
@@ -42,18 +43,20 @@ public class RailwayDbContext : IdentityDbContext<User>
                 entityType.SetTableName(tableName.Substring(6));
         }
 
-        // Seat 1:1 BookingDetail
-        builder.Entity<Seat>()
-        .HasOne(e => e.BookingDetail)
-        .WithOne(e => e.Seat)
-        .HasForeignKey<BookingDetail>(e => e.SeatId)
-        .IsRequired();
-
         // BookingDetail 1:1 Ticket
         builder.Entity<BookingDetail>()
         .HasOne(e => e.Ticket)
         .WithOne(e => e.BookingDetail)
         .HasForeignKey<Ticket>(e => e.BookingDetailId)
+        .OnDelete(DeleteBehavior.NoAction)
+        .IsRequired();
+
+        // Booking Detail 1:1 Passenger
+        builder.Entity<BookingDetail>()
+        .HasOne(e => e.Passenger)
+        .WithOne(e => e.BookingDetail)
+        .HasForeignKey<Passenger>(e => e.BookingDetailId)
+        .OnDelete(DeleteBehavior.Cascade)
         .IsRequired();
 
         // Ticket 1:1 Cancelling
@@ -61,6 +64,7 @@ public class RailwayDbContext : IdentityDbContext<User>
         .HasOne(e => e.Cancelling)
         .WithOne(e => e.Ticket)
         .HasForeignKey<Cancelling>(e => e.PNRNo)
+        .OnDelete(DeleteBehavior.NoAction)
         .IsRequired();
 
         // Passenger 1:1 Ticket
@@ -68,6 +72,7 @@ public class RailwayDbContext : IdentityDbContext<User>
         .HasOne(e => e.Ticket)
         .WithOne(e => e.Passenger)
         .HasForeignKey<Ticket>(e => e.PassengerID)
+        .OnDelete(DeleteBehavior.NoAction)
         .IsRequired();
 
         // Station 1:m Route
@@ -77,8 +82,9 @@ public class RailwayDbContext : IdentityDbContext<User>
         // Station 1:m RouteDetails
         builder.Entity<Station>().HasMany(p => p.DepartureRouteDetails).WithOne(p => p.DepartureStation).OnDelete(DeleteBehavior.NoAction);
         builder.Entity<Station>().HasMany(p => p.ArrivalRouteDetails).WithOne(p => p.ArrivalStation).OnDelete(DeleteBehavior.NoAction);
-        
+
         // m:1
+        builder.Entity<Seat>().HasMany(e => e.BookingDetails).WithOne(e => e.Seat);
         builder.Entity<CoachClass>().HasMany(p => p.Coaches).WithOne(p => p.Class);
         builder.Entity<CoachClass>().HasMany(p => p.Fares).WithOne(p => p.Class);
         builder.Entity<Train>().HasMany(p => p.Coaches).WithOne(p => p.Train);
@@ -90,13 +96,11 @@ public class RailwayDbContext : IdentityDbContext<User>
         builder.Entity<Route>().HasMany(p => p.Schedules).WithOne(p => p.Route);
         builder.Entity<Route>().HasMany(p => p.Fares).WithOne(p => p.Route);
         builder.Entity<PassengerType>().HasMany(p => p.Passengers).WithOne(p => p.PassengerType);
+        builder.Entity<Booking>().HasMany(b => b.BookingDetails).WithOne(b => b.Booking).OnDelete(DeleteBehavior.Cascade);
 
         ModelBuilderExtension.Seed(builder);
     }
 
-    /*
-     * @
-     */
     public async Task<List<Schedule>> SearchScheduleByRoute(int from, int to)
     {
         List<Schedule> result;

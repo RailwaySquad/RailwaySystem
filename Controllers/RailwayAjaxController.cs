@@ -76,10 +76,8 @@ namespace Railway_Group01.Controllers
             Station? startStation = await ctx.Stations!.FindAsync(from);
             Station? endStation = await ctx.Stations!.FindAsync(to);
             Schedule? sche = await ctx.Schedules!.FindAsync(scheduleId);
-            string trip = "<span class='fw-bold'>" + startStation.Name+ " - " + endStation.Name+"</span>";
-            string seatDetail = "<span class='fw-bold'>";
-            seatDetail += cart.Cabin == 0 ? "Coach " + cart.CoachNo + ", Seat: " + cart.Seat : "Coach " + cart.CoachNo + " Cabin: " + cart.Cabin + ", Seat: " + cart.Seat;
-            seatDetail += "</span>";
+            string trip = startStation.Name+ " - " + endStation.Name;
+            string seatDetail = cart.Cabin == 0 ? "Coach " + cart.CoachNo + ", Seat: " + cart.Seat : "Coach " + cart.CoachNo + " Cabin: " + cart.Cabin + ", Seat: " + cart.Seat;
             cart.ScheduleName = sche.Name;
             cart.Trip = trip;
             cart.StartAt = cart.StartTime.ToString("HH:mm dd/MM/yyyy");

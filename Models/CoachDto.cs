@@ -9,32 +9,19 @@ namespace Railway_Group01.Models
     public class CoachDto
     {
         public int Id { get; set; }
-        [Required]
-		public int CoachNo { get; set; }
-		[Required]
-		public string? TrainCode { get; set; }
-		[Required]
-		public Train? Trains { get; set; }
-		[Required]
-		public string? Name { get; set; }
-		[Required]
-		public string? TypeCode { get; set; }
-		[Required]
-		[Range(0, int.MaxValue)]
-        public int NoOfCompartment { get; set; }
-		[Required]
-		[Range(0, int.MaxValue)]
-        public int NoOfSeat { get; set; }
-		[Required]
-		[Range(0, int.MaxValue)]
-        public int SeatAvailable { get; set; }
-		[Required]
-		public string? Description { get; set; }
-		[Required]
-		[AllowNull]
-        public double? CoachFare { get; set; }
-		[Required]
-		public string? ClassCode { get; set; }
+        public int CoachNo { get; set; }
 
-	}
+        public int NoOfCompartments { get; set; } = 0;
+
+        public int NoOfSeats { get; set; } = 0;
+        public CoachClass? Class { get; set; }
+        public string? ClassCode { get; set; }
+
+        public Train? Train { get; set; }
+        public string? TrainCode { get; set; }
+
+        public List<Seat>? Seats { get; set; }
+        public int Price { get; set; } = 0;
+
+    }
 }
