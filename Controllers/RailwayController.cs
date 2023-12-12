@@ -187,7 +187,7 @@ namespace Railway_Group01.Controllers
             }
             time.GetValueOrDefault();
             Schedule? sche = await ctx.Schedules!.Where(x => 
-                                    routeIds.Contains(x.RouteId) &&
+                                    routeIds.Contains(x.Route.Id) &&
                                     x.Departure.Date <= time.Value.Date &&
                                     x.TrainCode == trainCode 
                                     ).Include(x=>x.Route).FirstOrDefaultAsync();

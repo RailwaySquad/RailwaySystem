@@ -10,10 +10,10 @@ namespace Railway_Group01.Data
 
         [Required(ErrorMessage = "CoachNo is required.")]
         public int CoachNo { get; set; }
-
-        public int NoOfCompartments { get; set; } = 0;
-
-        public int NoOfSeats { get; set; } = 0;
+		[Required(ErrorMessage = "NoOfCompartments is required.")]
+		public int NoOfCompartments { get; set; } = 0;
+		[Required(ErrorMessage = "NoOfSeats is required.")]
+		public int NoOfSeats { get; set; } = 0;
 
         [ForeignKey("ClassCode")]
         public CoachClass? Class { get; set; }
