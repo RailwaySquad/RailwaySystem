@@ -172,24 +172,25 @@ namespace Railway_Group01.Controllers
                     switch (time)
                     {
                         case 1:
-                            if( schedule.Departure.Hour > startTime.AddHours(6).Hour){
+                            if (schedule.Departure.Hour > 6)
+                            {
                                 filter.Add(schedule);
                             }
                             break;
                         case 2:
-                            if(schedule.Departure.Hour <= startTime.AddHours(6).Hour || schedule.Departure.Hour > startTime.AddHours(12).Hour)
+                            if (schedule.Departure.Hour <= 6 || schedule.Departure.Hour > 12)
                             {
                                 filter.Add(schedule);
                             }
                             break;
                         case 3:
-                            if(schedule.Departure.Hour <= startTime.AddHours(12).Hour || schedule.Departure.Hour >startTime.AddHours(18).Hour)
+                            if (schedule.Departure.Hour <= 12 || schedule.Departure.Hour > 18)
                             {
                                 filter.Add(schedule);
                             }
                             break;
                         case 4:
-                            if(schedule.Departure.Hour <= startTime.AddHours(18).Hour || schedule.Departure.Hour >startTime.AddHours(24).Hour)
+                            if (schedule.Departure.Hour <= 18)
                             {
                                 filter.Add(schedule);
                             };
