@@ -119,6 +119,7 @@
                                             <li class="nav-item">
                                                 <a role="button" class="nav-link  train-coach2 active" data-bs-toggle="collapse" href="#@Model.Item1.TrainCode-@coach.Id" aria-expanded="true" aria-controls="@Model.Item1.TrainCode-@coach.Id">
                                                     Coach @coach.CoachNo
+                                                    
                                                 </a>
                                             </li>
                                             }
@@ -127,6 +128,7 @@
                                             <li class="nav-item">
                                                 <a role="button" class=" nav-link  train-coach2" data-bs-toggle="collapse" href="#@Model.Item1.TrainCode-@coach.Id" aria-expanded="false" aria-controls="@Model.Item1.TrainCode-@coach.Id">
                                                     Coach @coach.CoachNo
+                                                    
                                                 </a>
                                             </li>
                                             }
@@ -680,7 +682,7 @@
                     </table>
                 </div>
                 <div class="data-section my-4" id="schedule">
-                    <h3 class="fw-400 my-5">Ashram Express 12916 Schedule, Routes &amp; Time Table</h3>
+                <h3 class="fw-400 my-5">@Model.Item3.Name Schedule, Routes &amp; Time Table</h3>
                     <div class="description">
                     </div>
                     <table class="table my-3 " >
