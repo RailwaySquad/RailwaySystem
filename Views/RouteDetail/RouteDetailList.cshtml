@@ -1,13 +1,36 @@
 ﻿@model IEnumerable<Railway_Group01.Data.RouteDetail>
 @{
 	Layout = null;
+	var route = ViewBag.RouteDetails as IEnumerable<Railway_Group01.Data.RouteDetail>;
+	var page = ViewBag.Page;
+	var pageSize = ViewBag.PageSize;
+	var totalItemCount = ViewBag.TotalItemCount;
 
+	var pageCount = (int)Math.Ceiling((totalItemCount ?? 0) / (double)(pageSize ?? 1));
+	var visiblePages = 6;
+	var halfVisiblePages = visiblePages / 2;
+
+	var startPage = Math.Max(1, Convert.ToInt32(page - halfVisiblePages));
+	var endPage = Math.Min(startPage + visiblePages - 1, pageCount);
+
+	var hasPreviousPage = page > 1;
+	var hasNextPage = page < pageCount;
+	int counter = ViewBag.DisplayCounter != null ? (int)ViewBag.DisplayCounter : 1;
 }
+
+									
 <style>
 	.colerth {
 		background-color: #EC5B24 !important;
 		color: white !important;
 	}
+
+	.buttonSearch {
+		border-radius: 5px;
+		background-color: f17e52;
+		color: white;
+	}
+
 </style>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -273,13 +296,17 @@
 						<div class="px-6 py-6">
 							<div class="row justify-content-between">
 								<!-- form -->
-								<div class="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
-									<form class="d-flex" role="search">
-										<input class="form-control" type="search" placeholder="Search RouteDetail" aria-label="Search" />
-									</form>
-								</div>
-								<!-- select option -->
-								
+								<form class="d-flex" asp-action="SearchRouteDetail" method="get">
+									<div class="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
+										<input class="form-control" name="start" type="text" placeholder="Stations Start" aria-label="Search" />
+									</div>
+									<div class="col-lg-1"></div>
+									<div class="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">			
+										<input class="form-control" name="end" type="text" placeholder="Stations End" aria-label="Search" />								
+									</div>									
+									<button type="submit" class="buttonSearch">Search</button>
+								</form>
+								<!-- select option -->								
 							</div>
 						</div>
 						<!-- card body -->
@@ -306,11 +333,14 @@
 										</tr>
 									</thead>
 									<tbody>
+										@{
+											
+										}
 										@foreach (var item in Model)
 										{										
 											<tr>
 												<td>
-													@item.Id
+													@counter
 												</td>
 												<td>@item.DepartureStation.Name</td>
 												<td>@item.ArrivalStation.Name</td>
@@ -341,7 +371,8 @@
 														</ul>
 													</div>
 												</td>
-											</tr>										
+											</tr>
+											 counter++;
 										}
 									</tbody>
 								</table>
@@ -351,22 +382,7 @@
 							<span> @Model.Count() Items</span>
 							<nav class="mt-2 mt-md-0">
 								<ul class="pagination mb-0">
-									@{
-										var route = ViewBag.RouteDetails as IEnumerable<Railway_Group01.Data.RouteDetail>;
-										var page = ViewBag.Page;
-										var pageSize = ViewBag.PageSize;
-										var totalItemCount = ViewBag.TotalItemCount;
-
-										var pageCount = (int)Math.Ceiling(totalItemCount / (double)pageSize);
-										var visiblePages = 6;
-										var halfVisiblePages = visiblePages / 2;
-
-										var startPage = Math.Max(1, page - halfVisiblePages);
-										var endPage = Math.Min(startPage + visiblePages - 1, pageCount);
-
-										var hasPreviousPage = page > 1;
-										var hasNextPage = page < pageCount;
-									}
+									
 
 									<nav aria-label="Page navigation">
 										<ul class="pagination">

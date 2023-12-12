@@ -28,7 +28,7 @@ namespace Railway_Group01.Data
         [ForeignKey("RouteId")]
         [Required(ErrorMessage = "Route is required.")]
         public Route? Route { get; set; }
-        public int RouteId { get; set; }
+        public int? RouteId { get; set; }
 
         public List<Ticket>? Tickets { get; set; }
         public List<BookingDetail>? BookingDetails { get; set; }

@@ -61,7 +61,7 @@ namespace Railway_Group01.Data
                 var l = 1;
                 if (coach.NoOfCompartments == 0)
                 {
-                    for (var i = 1; i <= coach.NoOfCompartments; i++)
+                    for (var i = 1; i <= coach.NoOfSeats; i++)
                     {
                         builder.Entity<Seat>().HasData(
                             new Seat { Id = k++, SeatNo = l++, CoachId = coach.Id, Available = false }

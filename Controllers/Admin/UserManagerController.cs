@@ -23,12 +23,16 @@ namespace Railway_Group01.Controllers.Admin
 		public async Task<IActionResult> UserManager(int page = 1, int pageSize = 10)
 		{
 			var totalItemCount = await ctx.Users.CountAsync(); // Đếm tổng số mục
-			var users = await ctx.Users!.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+			var users = await ctx.Users!
+				.OrderByDescending(u => u.Id)
+				.Skip((page - 1) * pageSize)
+				.Take(pageSize).ToListAsync();
 
 			ViewBag.Users = users;
 			ViewBag.Page = page;
 			ViewBag.PageSize = pageSize;
 			ViewBag.TotalItemCount = totalItemCount;
+
 
 			return View(users);
 		}
@@ -139,6 +143,11 @@ namespace Railway_Group01.Controllers.Admin
 
 			TempData["ErrorMessage"] = "Failed to delete user.";
 			return RedirectToAction("UserManager");
+		}
+		public async Task<IActionResult> SearchUser(string name)
+		{
+			var user = await ctx.Users!.Where(s => s.UserName.Contains(name)).ToListAsync();
+			return View("UserManager", user);
 		}
 	}
 }

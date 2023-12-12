@@ -1,16 +1,16 @@
-﻿@model IEnumerable<Railway_Group01.Data.Train>
+﻿@model IEnumerable<Railway_Group01.Data.Coach>
 @{
 	Layout = null;
-	var trains = ViewBag.Trains as IEnumerable<Railway_Group01.Data.Train>;
+	var coach = ViewBag.Coaches as IEnumerable<Railway_Group01.Data.Coach>;
 	var page = ViewBag.Page;
 	var pageSize = ViewBag.PageSize;
 	var totalItemCount = ViewBag.TotalItemCount;
 
-	var pageCount = (int)Math.Ceiling((totalItemCount ?? 0) / (double)(pageSize ?? 1));
+	var pageCount = (int)Math.Ceiling(totalItemCount / (double)pageSize);
 	var visiblePages = 6;
 	var halfVisiblePages = visiblePages / 2;
 
-	var startPage = Math.Max(1, Convert.ToInt32(page - halfVisiblePages));
+	var startPage = Math.Max(1, page - halfVisiblePages);
 	var endPage = Math.Min(startPage + visiblePages - 1, pageCount);
 
 	var hasPreviousPage = page > 1;
@@ -28,6 +28,7 @@
 		background-color: #EC5B24 !important;
 		color: white !important;
 	}
+
 	.searchButton {
 		background-color: white;
 		width: 120px;
@@ -43,7 +44,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta content="Codescandy" name="author">
-<title>Train Master</title>
+<title>Coach List</title>
 <!-- Favicon icon-->
 
 <partial name="_AdminHeader" />
@@ -279,18 +280,18 @@
 					<!-- page header -->
 					<div class="d-md-flex justify-content-between align-items-center">
 						<div>
-							<h2>Trains</h2>
+							<h2>Seat</h2>
 							<!-- breacrumb -->
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb mb-0">
 									<li class="breadcrumb-item"><a href="/Admin/Index" class="text-inherit">Dashboard</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Trains</li>
+									<li class="breadcrumb-item active" aria-current="page">Coach List</li>
 								</ol>
 							</nav>
 						</div>
 						<!-- button -->
 						<div>
-							<a href="/TrainMaster/CreateTrain" class="btn btn-me">Add Trains</a>
+							<a href="/CoachManager/CreateCoach" class="btn btn-me">Add Coaches</a>
 						</div>
 					</div>
 				</div>
@@ -304,22 +305,13 @@
 							<div class="row justify-content-between">
 								<!-- form -->
 								<div class="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
-									<form class="d-flex" asp-action="SearchTrain" method="get">
-										<input class="form-control" name="name" type="text" placeholder="Search Train" aria-label="Search" />
+									<form class="d-flex" asp-action="SearchTrainCoach" method="get">
+										<input class="form-control" name="name" type="text" placeholder="Search Train Coach" aria-label="Search" />
 										<button type="submit" class="searchButton"><i class="fas fa-search"></i></button>
 									</form>
 								</div>
 								<!-- select option -->
-								<div class="col-lg-2 col-md-4 col-12">
-									<form asp-action="filterStatusTrains" id="fiterForm">
-										<select class="form-select" name="status" onchange="submitFilterForm()">
-											<option selected>Status</option>
-											<option value="True">Finished</option>
-											<option value="False">Unfinished</option>
-										</select>
-									</form>
-									
-								</div>
+
 							</div>
 						</div>
 						@if (TempData["SuccessMessage"] != null)
@@ -335,30 +327,25 @@
 								<table class="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
 									<thead class="bg-light">
 										<tr>
-											<th class="colerth">No</th>
+											<th class="colerth">Id</th>
+											<th class="colerth">Coach No</th>
+											<th class="colerth">No Of Compartmentse</th>
+											<th class="colerth">No Of Seats</th>
+											<th class="colerth">Class Code</th>
 											<th class="colerth">Train Code</th>
-											<th class="colerth">Status</th>
-											<th class="colerth">Type</th>
 											<th class="colerth">Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										@foreach(var item in Model)
-										{										
+										@foreach (var item in Model)
+										{
 											<tr>
 												<td>@counter</td>
-												<td>@item.Code</td>
-												<td>
-													@if(@item.IsRunning == true)
-													{
-														<span class="badge bg-light-primary text-dark-primary">Active</span>
-													}
-													else
-													{
-														<span class="badge bg-light-danger text-dark-primary">Un Active</span>
-													}
-												</td>
-												<td>@item.TypeCode</td>
+												<td>@item.CoachNo</td>
+												<td>@item.NoOfCompartments</td>
+												<td>@item.NoOfSeats</td>
+												<td>@item.ClassCode</td>
+												<td>@item.TrainCode</td>
 												<td>
 													<div class="dropdown">
 														<a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
@@ -366,7 +353,7 @@
 														</a>
 														<ul class="dropdown-menu">
 															<li>
-																<form asp-action="DeleteTrain" asp-route-id="@item.Code" onsubmit="return confirmDelete()">
+																<form asp-action="DeleteCoach" asp-route-id="@item.Id" onsubmit="return confirmDelete()">
 																	<button class="dropdown-item" type="submit">
 																		<i class="bi bi-trash me-3"></i>
 																		Delete
@@ -374,7 +361,7 @@
 																</form>
 															</li>
 															<li>
-																<a class="dropdown-item" href="@Url.Action("EditTrain", new {id = item.Code})">
+																<a class="dropdown-item" href="@Url.Action("EditCoach", new {id = item.Id})">
 																	<i class="bi bi-pencil-square me-3"></i>
 																	Edit
 																</a>
@@ -399,7 +386,7 @@
 											@if (hasPreviousPage)
 											{
 												<li class="page-item">
-													<a class="page-link" href="@Url.Action("TrainMaster", new { page = page - 1, pageSize = pageSize })" aria-label="Previous">
+													<a class="page-link" href="@Url.Action("CoachList", new { page = page - 1, pageSize = pageSize })" aria-label="Previous">
 														<span aria-hidden="true">&laquo;</span>
 													</a>
 												</li>
@@ -408,14 +395,14 @@
 											@for (int i = startPage; i <= endPage; i++)
 											{
 												<li class="page-item @(i == page ? "active" : "")">
-													<a class="page-link" href="@Url.Action("TrainMaster", new { page = i, pageSize = pageSize })">@i</a>
+													<a class="page-link" href="@Url.Action("CoachList", new { page = i, pageSize = pageSize })">@i</a>
 												</li>
 											}
 
 											@if (hasNextPage)
 											{
 												<li class="page-item">
-													<a class="page-link" href="@Url.Action("TrainMaster", new { page = page + 1, pageSize = pageSize })" aria-label="Next">
+													<a class="page-link" href="@Url.Action("CoachList", new { page = page + 1, pageSize = pageSize })" aria-label="Next">
 														<span aria-hidden="true">&raquo;</span>
 													</a>
 												</li>
@@ -435,9 +422,6 @@
 	function confirmDelete() {
 		var result = confirm("Do you want to delete?");
 		return result;
-	}
-	function submitFilterForm() {
-		document.getElementById("fiterForm").submit();
 	}
 </script>
 <partial name="_AdminFooter" />
