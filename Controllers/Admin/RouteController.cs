@@ -46,19 +46,34 @@ namespace Railway_Group01.Controllers.Admin
 		{
 			if (ModelState.IsValid)
 			{
+				// Check if a route with the same start and end stations already exists
+				bool routeExists = await ctx.Routes.AnyAsync(r =>
+					r.StartStationId == routeDTO.StartStationId &&
+					r.EndStationId == routeDTO.EndStationId);
+
+				if (routeExists)
+				{
+					ModelState.AddModelError(string.Empty, "Route with these start and end stations already exists.");
+					var list = await ctx.Stations.ToListAsync();
+					ViewData["list"] = list;
+					return View(routeDTO);
+				}
+
+				// If the route doesn't exist, proceed with adding it to the database
 				var route = new Data.Route()
 				{
 					StartStationId = routeDTO.StartStationId,
 					EndStationId = routeDTO.EndStationId,
 					Distance = routeDTO.Distance
 				};
-				ctx.Routes!.Add(route);
+				ctx.Routes.Add(route);
 				await ctx.SaveChangesAsync();
 				TempData["SuccessMessage"] = "Route Added successfully.";
 				return RedirectToAction("RouteList");
 			}
-			var list = await ctx.Stations!.ToListAsync();
-			ViewData["list"] = list;
+
+			var listForView = await ctx.Stations.ToListAsync();
+			ViewData["list"] = listForView;
 			return View(routeDTO);
 		}
 		public async Task<IActionResult> EditRoute(int id)
@@ -81,7 +96,9 @@ namespace Railway_Group01.Controllers.Admin
 		[HttpPost]
 		public async Task<IActionResult> DeleteRoute(int id)
 		{
-			var route = await ctx.Routes!.SingleOrDefaultAsync(r=> r.Id == id);
+			var route = await ctx.Routes!
+				.Include(r=>r.RouteDetails)
+				.SingleOrDefaultAsync(r=> r.Id == id);
 			if(route == null)
 			{
 				return NotFound();
