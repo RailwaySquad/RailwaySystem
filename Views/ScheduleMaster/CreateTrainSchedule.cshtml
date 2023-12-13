@@ -276,14 +276,14 @@
 							<form asp-action="CreateTrainSchedule" method="post">
 								<div class="row">
 									<div class="mb-3 col-lg-6">
-										<label class="form-label">Name Trains</label>
+										<label class="form-label">Name TrainSchedule</label>
 										<span style="color:red">*</span>
 										<input asp-for="Name" class="form-control" placeholder="Name Train" />
 										<span asp-validation-for="Name" class="text-danger"></span>
 									</div>
 									<!-- input -->
 									<div class="mb-3 col-lg-6">
-										<label class="form-label">Train</label>
+										<label class="form-label">TrainCode</label>
 										<select class="form-select" asp-for="TrainCode">
 											@if (listRoute != null)
 											{
@@ -340,7 +340,17 @@
 									</div>
 								</div>
 							</form>
+							@if (!ViewData.ModelState.IsValid)
+							{
+								<div class="alert alert-danger" role="alert">
+									@foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+									{
+										<span>@error.ErrorMessage</span>
 
+										<br />
+									}
+								</div>
+							}
 						</div>
 					</div>
 				</div>

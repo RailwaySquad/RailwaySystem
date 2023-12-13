@@ -365,14 +365,14 @@
 															<i class="bi bi-three-dots-vertical"></i>
 														</a>
 														<ul class="dropdown-menu">
-															<li>
+															@* <li>
 																<form asp-action="DeleteTrain" asp-route-id="@item.Code" onsubmit="return confirmDelete()">
 																	<button class="dropdown-item" type="submit">
 																		<i class="bi bi-trash me-3"></i>
 																		Delete
 																	</button>
 																</form>
-															</li>
+															</li> *@
 															<li>
 																<a class="dropdown-item" href="@Url.Action("EditTrain", new {id = item.Code})">
 																	<i class="bi bi-pencil-square me-3"></i>

@@ -95,17 +95,74 @@ namespace Railway_Group01.Controllers.Admin
 			return View(route);
 		}
 		[HttpPost]
-		public async Task<IActionResult> EditRouteDetail(RouteDetail routeDetails,int id)
+		public async Task<IActionResult> EditRouteDetail(RouteDetail routeDetails, int id)
 		{
-			routeDetails.Route = await ctx.Routes!.FindAsync(routeDetails.Route.Id);
-			routeDetails.DepartureStation = await ctx.Stations!.FindAsync(routeDetails.DepartureStation.Id);
-			routeDetails.ArrivalStation = await ctx.Stations!.FindAsync(routeDetails.ArrivalStation.Id);
-			ctx.Entry(routeDetails).State = EntityState.Modified;
-			await ctx.SaveChangesAsync();
-			TempData["SuccessMessage"] = "RouteDetail Edit successfully.";
-			return RedirectToAction("RouteDetailList");
+			ModelState.Clear();
+
+			if (!ModelState.IsValid)
+			{
+				var stationsForView = await ctx.Stations!.ToListAsync();
+				ViewData["liststation"] = stationsForView;
+
+				var routesForView = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
+				ViewData["listroute"] = routesForView;
+
+				return View(routeDetails);
+			}
+
+			var existingRoute = await ctx.RouteDetails.FindAsync(id);
+
+			if (existingRoute != null)
+			{
+				routeDetails.Route = await ctx.Routes!.FindAsync(routeDetails.RouteId);
+				routeDetails.DepartureStation = await ctx.Stations!.FindAsync(routeDetails.DepartureStationId);
+				routeDetails.ArrivalStation = await ctx.Stations!.FindAsync(routeDetails.ArrivalStationId);
+
+				if (routeDetails.DepartureStation != null && routeDetails.ArrivalStation != null)
+				{
+					bool routeExists = await ctx.RouteDetails.AnyAsync(r => r.Id != id &&
+																	   r.DepartureStationId == routeDetails.DepartureStationId &&
+																	   r.ArrivalStationId == routeDetails.ArrivalStationId);
+
+					if (routeExists)
+					{
+						ModelState.AddModelError(string.Empty, "RouteDetail with these start and end stations already exists.");
+						var stationsForView = await ctx.Stations.ToListAsync();
+						ViewData["liststation"] = stationsForView;
+						var routesForView = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
+						ViewData["listroute"] = routesForView;
+						return View(routeDetails);
+					}
+
+					existingRoute.DepartureStationId = routeDetails.DepartureStationId;
+					existingRoute.ArrivalStationId = routeDetails.ArrivalStationId;
+					existingRoute.RouteId = routeDetails.RouteId;
+					existingRoute.Distance = routeDetails.Distance;
+					existingRoute.TravelTime = routeDetails.TravelTime;
+					existingRoute.DelayTime = routeDetails.DelayTime;
+					await ctx.SaveChangesAsync();
+					TempData["SuccessMessage"] = "RouteDetail Edit successfully.";
+					return RedirectToAction("RouteDetailList");
+				}
+				else
+				{
+					ModelState.AddModelError("DepartureStationId", "Invalid DepartureStation selected.");
+					ModelState.AddModelError("ArrivalStationId", "Invalid ArrivalStation selected.");
+				}
+			}
+
+			// Xử lý khi existingRoute là null
+			ModelState.AddModelError(string.Empty, "Invalid RouteDetail ID.");
+
+			var stationsForView2 = await ctx.Stations!.ToListAsync();
+			ViewData["liststation"] = stationsForView2;
+
+			var routesForView2 = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
+			ViewData["listroute"] = routesForView2;
+
+			return View(routeDetails);
 		}
-		[HttpPost]
+		/*[HttpPost]
 		public async Task<IActionResult> DeleteRouteDetail(int id)
 		{
 			var route = await ctx.RouteDetails!.SingleOrDefaultAsync(r => r.Id == id);
@@ -119,7 +176,7 @@ namespace Railway_Group01.Controllers.Admin
 			await ctx.SaveChangesAsync();
 			TempData["SuccessMessage"] = "RouteDetail Deleted successfully.";
 			return RedirectToAction("RouteDetailList");
-		}
+		}*/
 		public async Task<IActionResult> SearchRouteDetail(string start, string end)
 		{
 			IQueryable<RouteDetail> query = ctx.RouteDetails.Include(r => r.ArrivalStation)

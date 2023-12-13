@@ -279,12 +279,12 @@
 									<!-- input -->
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">DepartureStation</label>
-										<select class="form-select" asp-for="DepartureStation.Id">
+										<select class="form-select" asp-for="DepartureStationId">
 											@if (listStation != null)
 											{
 												@foreach (var station in listStation)
 												{
-													<option value="@station.Id">@station.Code</option>
+													<option value="@station.Id">@station.Name</option>
 												}
 											}
 										</select>
@@ -292,24 +292,24 @@
 									<!-- input -->
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">ArrivalStation</label>
-										<select class="form-select" asp-for="ArrivalStation.Id">
+										<select class="form-select" asp-for="ArrivalStationId">
 											@if (listStation != null)
 											{
 												@foreach (var station in listStation)
 												{
-													<option value="@station.Id">@station.Code</option>
+													<option value="@station.Id">@station.Name</option>
 												}
 											}
 										</select>
 									</div>
 									<div class="mb-3 col-lg-6">
 										<label class="form-label">Route</label>
-										<select class="form-select" asp-for="Route.Id">
+										<select class="form-select" asp-for="RouteId">
 											@if (listRoute != null)
 											{
 												@foreach (var route in listRoute)
 												{
-													<option value="@route.Id">@route.StartStation.Code to @route.EndStation.Code (@route.Id)</option>
+													<option value="@route.Id">@route.StartStation.Name to @route.EndStation.Name (@route.Id)</option>
 												}
 											}
 										</select>
@@ -340,7 +340,16 @@
 									</div>
 								</div>
 							</form>
-
+							@if (!ViewData.ModelState.IsValid)
+							{
+								<div class="alert alert-danger" role="alert">
+									@foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+									{
+										<span>@error.ErrorMessage</span>
+										<br />
+									}
+								</div>
+							}
 						</div>
 					</div>
 				</div>

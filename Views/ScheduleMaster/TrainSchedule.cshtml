@@ -138,6 +138,7 @@
                         </tbody>
                     </table>
                 </div>
+
                 <div style="height: 540px; overflow: auto; position: relative; zoom: 1;">
                     <div style="zoom: 1; position: relative;">
                         <table cellspacing="0" cellpadding="0" border="0" style="border: 0px none; width: 100%; position: absolute;">
@@ -150,31 +151,66 @@
                                                 <tbody>
                                                     
                                                     <tr class="borderTable">
-                                                        @foreach (var dayOfWeek in Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>())
-                                                        {
-                                                            <td class="borderTable" style="padding: 0px; border: 0px none; vertical-align: top; height: 30px; overflow: hidden;">
-                                                                @{
-                                                                    var dailySchedules = Model
-                                                                    .Where(s => s.Departure.DayOfWeek == dayOfWeek)
+                                                        @{
+                                                            var count = 0;
+                                                            DateTime firstDayOfMonth;
+                                                            
+                                                            // Kiểm tra xem có giá trị TempData không
+                                                            if (TempData.ContainsKey("CurrentMonthFirstDay"))
+                                                            {
+                                                                // Lấy giá trị ngày đầu tiên của tháng từ TempData
+                                                                firstDayOfMonth = DateTime.ParseExact(TempData["CurrentMonthFirstDay"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                                                            }
+                                                            else
+                                                            {
+                                                                // Nếu không có giá trị TempData, sử dụng ngày đầu tiên của tháng hiện tại
+                                                                firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                                                            }
+
+                                                            var isFirstSunday = firstDayOfMonth.DayOfWeek == DayOfWeek.Sunday;
+
+                                                            // Tạo các td trống nếu ngày đầu tiên không phải Chủ nhật
+                                                            if (!isFirstSunday)
+                                                            {
+                                                                var emptyDays = (7 + (int)firstDayOfMonth.DayOfWeek) % 7;
+                                                                for (int i = 0; i < emptyDays; i++)
+                                                                {
+                                                                    @:<td class="borderTable" style="padding: 0px; border: 0px none; vertical-align: top; height: 30px; overflow: hidden;"></td>
+                                                                    count++;
+                                                                }
+                                                            }
+
+                                                            foreach (var dayOfMonth in Model.Select(s => s.Departure.Day).Distinct())
+                                                            {
+                                                                var dailySchedules = Model
+                                                                    .Where(s => s.Departure.Day == dayOfMonth)
                                                                     .GroupBy(s => s.Departure.Date)
                                                                     .Select(group => new { Departure = group.Key, Count = group.Count() })
                                                                     .ToList();
-                                                                }
 
-                                                                @foreach (var item in dailySchedules)
+                                                                foreach (var item in dailySchedules)
                                                                 {
-                                                                    <div class="calendar_default_cell" style="height: 100px; position: relative;">
-                                                                        <div style="color:green" unselectable="on" class="calendar_default_cell_inner true">
-                                                                            <a href="@Url.Action("DetailDate", new { Departure = item.Departure })">
-                                                                                <div>Total Schedule: @item.Count</div>
-                                                                                <div>@item.Departure.ToShortDateString()</div>
-                                                                            </a>
-                                                                            
+                                                                    if (count % 7 == 0)
+                                                                    {
+                                                                        @:</tr><tr class="borderTable">
+                                                                    }
+
+                                                                    <td class="borderTable" style="padding: 0px; border: 0px none; vertical-align: top; height: 30px; overflow: hidden;">
+                                                                        <div class="calendar_default_cell" style="height: 100px; position: relative;">
+                                                                            <div style="color:green" unselectable="on" class="calendar_default_cell_inner true">
+                                                                                <a href="@Url.Action("DetailDate", new { Departure = item.Departure })">
+                                                                                    <div>Total Schedule: @item.Count</div>
+                                                                                    <div>@item.Departure.ToShortDateString()</div>
+                                                                                </a>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </td>
+
+                                                                    count++;
                                                                 }
-                                                            </td>
+                                                            }
                                                         }
+
                                                     </tr>
                                                 </tbody>
                                             </table>

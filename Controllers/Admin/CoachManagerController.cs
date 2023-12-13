@@ -40,9 +40,19 @@ namespace Railway_Group01.Controllers.Admin
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> CreateCoach(CoachAdminDTO coachDto,Seat seat)
+		public async Task<IActionResult> CreateCoach(CoachAdminDTO coachDto, Seat seat)
 		{
-			if (ModelState.IsValid)
+			// Check if the combination of CoachNo and TrainCode already exists
+			var existingCoach = await ctx.Coaches
+				.FirstOrDefaultAsync(c =>
+					c.CoachNo == coachDto.CoachNo &&
+					c.TrainCode == coachDto.TrainCode);
+
+			if (existingCoach != null)
+			{
+				ModelState.AddModelError("", "Coach with the same CoachNo and TrainCode already exists.");
+			}
+			else if (ModelState.IsValid)
 			{
 				var coach = new Coach()
 				{
@@ -93,6 +103,7 @@ namespace Railway_Group01.Controllers.Admin
 				TempData["SuccessMessage"] = "Coach Added successfully.";
 				return RedirectToAction("CoachList");
 			}
+
 			var train = await ctx.Trains!.ToListAsync();
 			ViewData["listTrain"] = train;
 			var coachclass = await ctx.CoachClasses!.ToListAsync();
@@ -106,6 +117,7 @@ namespace Railway_Group01.Controllers.Admin
 				.SingleOrDefaultAsync(c=>c.Id== id);
 			ctx.Coaches.Remove(coach);
 			await ctx.SaveChangesAsync();
+
 			TempData["SuccessMessage"] = "Coach Deleted successfully.";
 			return RedirectToAction("CoachList");
 		}
@@ -118,18 +130,80 @@ namespace Railway_Group01.Controllers.Admin
 			ViewData["listClass"] = coachclass;
 			return View(coach);
 		}
+	
 		[HttpPost]
 		public async Task<IActionResult> EditCoach(Coach coach)
 		{
+			// Check if the combination of CoachNo and TrainCode already exists for a different coach
+			var existingCoach = await ctx.Coaches
+				.FirstOrDefaultAsync(c =>
+					c.CoachNo == coach.CoachNo &&
+					c.TrainCode == coach.TrainCode &&
+					c.Id != coach.Id);
+
+			if (existingCoach != null)
+			{
+				ModelState.AddModelError("", "Coach with the same CoachNo and TrainCode already exists for a different coach.");
+				// Reload data for dropdowns or any other necessary data
+				var train = await ctx.Trains!.ToListAsync();
+				ViewData["listTrain"] = train;
+				var coachclass = await ctx.CoachClasses!.ToListAsync();
+				ViewData["listClass"] = coachclass;
+				return View(coach);
+			}
+
 			ctx.Entry(coach).State = EntityState.Modified;
 			await ctx.SaveChangesAsync();
+
+			var l = 1;
+			var seatPerCompartment = coach.NoOfSeats / coach.NoOfCompartments;
+
+			// Clear existing seats for this coach
+			var existingSeats = await ctx.Seats.Where(s => s.CoachId == coach.Id).ToListAsync();
+			ctx.Seats.RemoveRange(existingSeats);
+			await ctx.SaveChangesAsync();
+
+			if (coach.NoOfCompartments != 0)
+			{
+				for (int i = 1; i <= coach.NoOfCompartments; i++)
+				{
+					for (int j = 0; j < seatPerCompartment; j++)
+					{
+						var seat = new Seat()
+						{
+							CoachId = coach.Id,
+							SeatNo = l++,
+							Available = false,
+							CompartmentNo = i,
+						};
+						ctx.Add(seat);
+					}
+				}
+			}
+			else
+			{
+				for (int i = 1; i <= coach.NoOfSeats; i++)
+				{
+					var seat = new Seat()
+					{
+						CoachId = coach.Id,
+						SeatNo = l++,
+						Available = false,
+						CompartmentNo = i,
+					};
+					ctx.Add(seat);
+				}
+			}
+
+			await ctx.SaveChangesAsync();
+
 			TempData["SuccessMessage"] = "Coach Edit successfully.";
 			return RedirectToAction("CoachList");
 		}
 		public async Task<IActionResult> SearchTrainCoach(string name)
 		{
 			var trainCoach = await ctx.Coaches!.Where(s => s.Train.Code.Contains(name)).ToListAsync();
-			return View("TrainMaster", trainCoach);
+			return View("CoachList", trainCoach);
 		}
 	}
 }
