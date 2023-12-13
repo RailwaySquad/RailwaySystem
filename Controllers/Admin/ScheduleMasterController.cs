@@ -150,7 +150,7 @@ namespace Railway_Group01.Controllers.Admin
             ctx.Schedules!.Add(schedule);
             await ctx.SaveChangesAsync();
             TempData["SuccessMessage"] = "Schedule Added successfully.";
-            return RedirectToAction("TrainSchedule");
+            return RedirectToAction("DetailDate", schedule);
         }
         public async Task<IActionResult> EditTrainSchedule(int id)
 		{
@@ -163,59 +163,72 @@ namespace Railway_Group01.Controllers.Admin
 		}
 		[HttpPost]
 		public async Task<IActionResult> EditTrainSchedule(Schedule schedule, int id)
-		{
-			ModelState.Clear();
-			// Kiểm tra Departure không được nhỏ hơn thời gian hiện tại
-			if (schedule.Departure < DateTime.Now)
-			{
-				ModelState.AddModelError("Departure", "Departure time cannot be in the past.");
-			}
+        {
+            ModelState.Clear();
 
-			// Kiểm tra Arrival không được nhỏ hơn Departure
-			if (schedule.Arrival <= schedule.Departure)
-			{
-				ModelState.AddModelError("Arrival", "Arrival time must be after Departure time.");
-			}
+            // Kiểm tra Departure không được nhỏ hơn thời gian hiện tại
+            if (schedule.Departure < DateTime.Now)
+            {
+                ModelState.AddModelError("Departure", "Departure time cannot be in the past.");
+            }
 
-			// Kiểm tra sự trùng lặp của Departure và TrainCode
-			DateTime startOfDay = TimeZoneInfo.ConvertTimeToUtc(schedule.Departure.Date, TimeZoneInfo.Utc);
-			DateTime endOfDay = startOfDay.AddDays(1).AddTicks(-1);
+            // Kiểm tra Arrival không được nhỏ hơn Departure
+            if (schedule.Arrival <= schedule.Departure)
+            {
+                ModelState.AddModelError("Arrival", "Arrival time must be after Departure time.");
+            }
 
-			var existingSchedule = await ctx.Schedules
-				.FirstOrDefaultAsync(s =>
-					s.Departure >= startOfDay && s.Departure <= endOfDay && s.TrainCode == schedule.TrainCode && s.Id != id);
+            // Kiểm tra sự trùng lặp của Departure và TrainCode
+            DateTime startOfDay = TimeZoneInfo.ConvertTimeToUtc(schedule.Departure.Date, TimeZoneInfo.Utc);
+            DateTime endOfDay = startOfDay.AddDays(1).AddTicks(-1);
 
-			if (existingSchedule != null)
-			{
-				ModelState.AddModelError("", "Schedule with the same Departure and TrainCode already exists.");
-			}
+            var existingSchedule = await ctx.Schedules
+                .FirstOrDefaultAsync(s =>
+                    s.Departure >= startOfDay && s.Departure <= endOfDay && s.TrainCode == schedule.TrainCode && s.Id != id);
 
-			// Kiểm tra ModelState có lỗi không
-			if (!ModelState.IsValid)
-			{
-				// Nếu có lỗi, trả về view với model và ModelState chứa thông tin lỗi
-				var listTrain = await ctx.Trains!.ToListAsync();
-				ViewData["listTrain"] = listTrain;
+            if (existingSchedule != null)
+            {
+                ModelState.AddModelError("", "Schedule with the same Departure and TrainCode already exists.");
+            }
 
-				var listRoute = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
-				ViewData["listroute"] = listRoute;
+            // Kiểm tra Departure phải lớn hơn Arrival trong schedule gần nhất của tàu đó
+            var latestArrival = await ctx.Schedules
+                .Where(s => s.Id != id && s.TrainCode == schedule.TrainCode && s.Departure < schedule.Departure )
+                .OrderByDescending(s => s.Departure)
+                .Select(s => s.Arrival)
+                .FirstOrDefaultAsync();
 
-				return View(schedule);
-			}
+            if ( schedule.Departure <= latestArrival)
+            {
+                ModelState.AddModelError("Departure", $"Departure must be after the latest Arrival time ({latestArrival}).");
+            }
 
-			// Nếu không có lỗi, tiếp tục chỉnh sửa schedule
-			if (ModelState.IsValid)
-			{
-				schedule.Route = await ctx.Routes!.FindAsync(schedule.RouteId);
-				schedule.Train = await ctx.Trains!.FindAsync(schedule.TrainCode);
-				ctx.Entry(schedule).State = EntityState.Modified;
-				await ctx.SaveChangesAsync();
-				TempData["SuccessMessage"] = "Schedule Edit successfully.";
-				return RedirectToAction("TrainSchedule");
-			}
+            // Kiểm tra ModelState có lỗi không
+            if (!ModelState.IsValid)
+            {
+                // Nếu có lỗi, trả về view với model và ModelState chứa thông tin lỗi
+                var listTrain = await ctx.Trains!.ToListAsync();
+                ViewData["listTrain"] = listTrain;
 
-			return View(schedule);
-		}
+                var listRoute = await ctx.Routes!.Include(r => r.StartStation).Include(r => r.EndStation).ToListAsync();
+                ViewData["listroute"] = listRoute;
+
+                return View(schedule);
+            }
+
+            // Nếu không có lỗi, tiếp tục chỉnh sửa schedule
+            if (ModelState.IsValid)
+            {
+                schedule.Route = await ctx.Routes!.FindAsync(schedule.RouteId);
+                schedule.Train = await ctx.Trains!.FindAsync(schedule.TrainCode);
+                ctx.Entry(schedule).State = EntityState.Modified;
+                await ctx.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Schedule Edit successfully.";
+                return RedirectToAction("DetailDate", schedule);
+            }
+
+            return View(schedule);
+        }
 		[HttpPost]
 		public async Task<IActionResult> EditStatusSchedule(int id, bool isfinished)
 		{
@@ -244,6 +257,7 @@ namespace Railway_Group01.Controllers.Admin
         public async Task<IActionResult> DetailDate(DateTime Departure)
         {
             var schedules = await ctx.Schedules!
+                .OrderByDescending(r => r.Id)
                 .Where(s => s.Departure.Date == Departure.Date)
                 .Include(s => s.Train)
                 .Include(s => s.Route.StartStation)

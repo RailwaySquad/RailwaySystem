@@ -14,6 +14,19 @@ namespace Railway_Group01.Controllers.Admin
 		}
 		public IActionResult DashBoard()
 		{
+			decimal totalAmount = ctx.Transactions.Sum(t => t.Amount);
+
+			// Đếm tổng số Id trong transactions
+			int totalTransactionCount = ctx.Transactions.Count();
+
+			// Đếm tổng số Id trong users
+			int totalUserCount = ctx.Users.Count();
+
+			// Truyền biến vào ViewBag để sử dụng trong view
+			ViewBag.TotalAmount = totalAmount;
+			ViewBag.TotalTransactionCount = totalTransactionCount;
+			ViewBag.TotalUserCount = totalUserCount;
+
 			return View();
 		}
 		[HttpPost]
