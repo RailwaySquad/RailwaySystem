@@ -86,7 +86,7 @@ namespace Railway_Group01.Controllers.Admin
 			TempData["SuccessMessage"] = "Train Edit successfully.";
 			return RedirectToAction("TrainMaster");
 		}
-		[HttpPost]
+		/*[HttpPost]
 		public async Task<IActionResult> DeleteTrain(string id)
 		{
 			var train = await ctx.Trains!.SingleOrDefaultAsync(s => s.Code == id);
@@ -98,7 +98,7 @@ namespace Railway_Group01.Controllers.Admin
 			await ctx.SaveChangesAsync();
 			TempData["SuccessMessage"] = "Train Deleted successfully.";
 			return RedirectToAction("TrainMaster");
-		}
+		}*/
 		public async Task<IActionResult> SearchTrain(string name)
 		{
 			var train = await ctx.Trains!.Where(s => s.Code.Contains(name)).ToListAsync();

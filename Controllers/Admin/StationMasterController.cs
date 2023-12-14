@@ -66,12 +66,24 @@ namespace Railway_Group01.Controllers.Admin
 		[HttpPost]
 		public async Task<IActionResult> EditStation(Station station, int id)
 		{
-			ctx.Entry(station).State = EntityState.Modified;
-			await ctx.SaveChangesAsync();
-            TempData["SuccessMessage"] = "Station Edit successfully.";
-            return RedirectToAction("StationMaster");
+			if (ModelState.IsValid)
+			{
+				bool stationWithSameCodeExists = await ctx.Stations.AnyAsync(s => s.Code == station.Code && s.Id != id);
+
+				if (stationWithSameCodeExists)
+				{
+					ModelState.AddModelError("Code", "Station with this code already exists.");
+					return View(station);
+				}
+				ctx.Entry(station).State = EntityState.Modified;
+				await ctx.SaveChangesAsync();
+				TempData["SuccessMessage"] = "Station edited successfully.";
+				return RedirectToAction("StationMaster");
+			}
+
+			return View(station);
 		}
-		[HttpPost]
+		/*[HttpPost]
 		public async Task<IActionResult> DeleteStation(int id)
 		{
 			var station = await ctx.Stations!
@@ -97,7 +109,7 @@ namespace Railway_Group01.Controllers.Admin
 
 			TempData["SuccessMessage"] = "Station deleted successfully.";
 			return RedirectToAction("StationMaster");
-		}
+		}*/
 		public async Task<IActionResult> SearchStation(string name)
 		{
 			var station = await ctx.Stations!.Where(s => s.Name.Contains(name)).ToListAsync();

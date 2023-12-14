@@ -123,7 +123,7 @@ namespace Railway_Group01.Controllers.Admin
 			}
 			return View(userDTO);
 		}
-		[HttpPost]
+		/*[HttpPost]
 		public async Task<IActionResult> DeleteUser(string id)
 		{
 			var user = await userManager.FindByIdAsync(id);
@@ -143,7 +143,7 @@ namespace Railway_Group01.Controllers.Admin
 
 			TempData["ErrorMessage"] = "Failed to delete user.";
 			return RedirectToAction("UserManager");
-		}
+		}*/
 		public async Task<IActionResult> SearchUser(string name)
 		{
 			var user = await ctx.Users!.Where(s => s.UserName.Contains(name)).ToListAsync();

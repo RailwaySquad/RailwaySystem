@@ -86,14 +86,62 @@ namespace Railway_Group01.Controllers.Admin
 		[HttpPost]
 		public async Task<IActionResult> EditRoute(Data.Route route, int id)
 		{
-			route.StartStation = await ctx.Stations!.FindAsync(route.StartStation.Id);
-			route.EndStation = await ctx.Stations!.FindAsync(route.EndStation.Id);
-			ctx.Entry(route).State = EntityState.Modified;
-			await ctx.SaveChangesAsync();
-			TempData["SuccessMessage"] = "Route Edit successfully.";
-			return RedirectToAction("RouteList");
+			// Xóa rõ ràng các lỗi ModelState hiện tại
+			ModelState.Clear();
+
+			if (ModelState.IsValid)
+			{
+				// Tìm route cần sửa
+				var existingRoute = await ctx.Routes
+					.Where(r => r.Id == id)
+					.FirstOrDefaultAsync();
+
+				if (existingRoute != null)
+				{
+					// Load StartStation và EndStation từ database
+					var startStation = await ctx.Stations.FindAsync(route.StartStationId);
+					var endStation = await ctx.Stations.FindAsync(route.EndStationId);
+
+					// Kiểm tra xem StartStation và EndStation có tồn tại không
+					if (startStation != null && endStation != null)
+					{
+						// Kiểm tra xem route mới có trùng với route khác không
+						bool routeExists = await ctx.Routes.AnyAsync(r => r.Id != id &&
+																		   r.StartStationId == route.StartStationId &&
+																		   r.EndStationId == route.EndStationId);
+
+						if (routeExists)
+						{
+							ModelState.AddModelError(string.Empty, "Route with these start and end stations already exists.");
+							var list = await ctx.Stations.ToListAsync();
+							ViewData["list"] = list;
+							return View(route);
+						}
+
+						// Cập nhật thông tin của route
+						existingRoute.StartStationId = route.StartStationId;
+						existingRoute.EndStationId = route.EndStationId;
+						existingRoute.Distance = route.Distance;
+
+						await ctx.SaveChangesAsync();
+						TempData["SuccessMessage"] = "Route Edit successfully.";
+						return RedirectToAction("RouteList");
+					}
+					else
+					{
+						// Xử lý lỗi khi StartStation hoặc EndStation không tồn tại
+						ModelState.AddModelError(string.Empty, "Invalid StartStation or EndStation selected.");
+					}
+				}
+
+			}
+
+			// Lấy danh sách Stations
+			var listForView = await ctx.Stations.ToListAsync();
+			ViewData["list"] = listForView;
+			return View(route);
 		}
-		[HttpPost]
+		/*[HttpPost]
 		public async Task<IActionResult> DeleteRoute(int id)
 		{
 			var route = await ctx.Routes!
@@ -107,7 +155,7 @@ namespace Railway_Group01.Controllers.Admin
 			await ctx.SaveChangesAsync();
 			TempData["SuccessMessage"] = "Route Deleted successfully.";
 			return RedirectToAction("RouteList");
-		}
+		}*/
 		public async Task<IActionResult> SearchRoute(string start, string end)
 		{
 			IQueryable<Data.Route> query = ctx.Routes.Include(r => r.StartStation)

@@ -6,11 +6,11 @@
 	var pageSize = ViewBag.PageSize;
 	var totalItemCount = ViewBag.TotalItemCount;
 
-	var pageCount = (int)Math.Ceiling(totalItemCount / (double)pageSize);
+	var pageCount = (int)Math.Ceiling((totalItemCount ?? 0) / (double)(pageSize ?? 1));
 	var visiblePages = 6;
 	var halfVisiblePages = visiblePages / 2;
 
-	var startPage = Math.Max(1, page - halfVisiblePages);
+	var startPage = Math.Max(1, Convert.ToInt32(page - halfVisiblePages));
 	var endPage = Math.Min(startPage + visiblePages - 1, pageCount);
 
 	var hasPreviousPage = page > 1;
@@ -352,14 +352,14 @@
 															<i class="bi bi-three-dots-vertical"></i>
 														</a>
 														<ul class="dropdown-menu">
-															<li>
+															@* <li>
 																<form asp-action="DeleteCoach" asp-route-id="@item.Id" onsubmit="return confirmDelete()">
 																	<button class="dropdown-item" type="submit">
 																		<i class="bi bi-trash me-3"></i>
 																		Delete
 																	</button>
 																</form>
-															</li>
+															</li> *@
 															<li>
 																<a class="dropdown-item" href="@Url.Action("EditCoach", new {id = item.Id})">
 																	<i class="bi bi-pencil-square me-3"></i>
